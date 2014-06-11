@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Miam.Web.ViewModels.HomeViewModels.HomeIndexViewModel>
+
+<link href="~/content/toastr.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.9.0.js"></script>
+<script src="~/Scripts/toastr.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // show when page load
+        toastr.info('Page Loaded!');
+    });
+</script>
+
+<div>
+    <h2>La MIAM Liste</h2>
+
+
+    <ul class="list-group">
+        @foreach (var restaurant in Model)
+        {
+            <li class="list-group-item">
+                <div>
+                    <h4>@restaurant.Name</h4>
+                    <div>
+                        <i>@restaurant.City (@restaurant.Country) </i>
+                    </div>
+                    <div>
+                        Moyenne des critiques: @restaurant.RatingReviewsAverage /5
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+
+
+
+</div>
+
+
+

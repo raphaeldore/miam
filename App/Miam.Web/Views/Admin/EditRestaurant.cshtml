@@ -1,0 +1,54 @@
+﻿@model Miam.Web.ViewModels.AdminViewModels.AdminRestaurantEditViewModel
+
+
+<div id="restaurantPage_edit">
+    <h2>Modifier un restaurant</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Restaurant</h3>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Adresse</h3>
+                                
+                                @Html.EditorFor(model => model)
+
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Adresse</h3>
+
+                                @Html.EditorFor(model => model.RestaurantContactDetail)
+
+                            </div>
+                            
+                        </div>
+                        <input class="btn btn-sm btn-success" type="submit" value="Confirmer" />
+                        @Html.ActionLink("Annuler", MVC.Admin.Index(), new { @class = "btn btn-sm btn-danger" })
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Critiques</h3>
+                </div>
+                <div class="panel-body">
+                    @foreach (var review in Model.Reviews)
+                    {
+                        <div>
+                            @review.Body (<i>@review.WriterName</i>)
+                            <a class="fa fa-trash-o" id="delete_button" @review.Id href="@Url.Action(MVC.Admin.DeleteReview())?reviewId=@review.Id"></a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
