@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miam.Web", "App\Miam.Web\Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miam.Web.UnitTests", "Tests\Miam.Web.UnitTests\Miam.Web.UnitTests.csproj", "{732EFE0F-9683-45F9-828E-8D8628746B2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miam.Web.Automation", "Tests\Miam.Web.Automation\Miam.Web.Automation.csproj", "{E1316495-D453-49AF-BEA8-6E4395422F41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miam.Web.AcceptanceTests", "Tests\Miam.Web.AcceptanceTests\Miam.Web.AcceptanceTests.csproj", "{E1F505B0-2A17-46B1-807B-C3CCA8FB87DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +56,14 @@ Global
 		{732EFE0F-9683-45F9-828E-8D8628746B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{732EFE0F-9683-45F9-828E-8D8628746B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{732EFE0F-9683-45F9-828E-8D8628746B2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1316495-D453-49AF-BEA8-6E4395422F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1316495-D453-49AF-BEA8-6E4395422F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1316495-D453-49AF-BEA8-6E4395422F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1316495-D453-49AF-BEA8-6E4395422F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1F505B0-2A17-46B1-807B-C3CCA8FB87DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F505B0-2A17-46B1-807B-C3CCA8FB87DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F505B0-2A17-46B1-807B-C3CCA8FB87DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F505B0-2A17-46B1-807B-C3CCA8FB87DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

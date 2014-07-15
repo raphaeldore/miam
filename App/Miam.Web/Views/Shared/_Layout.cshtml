@@ -9,8 +9,10 @@
 
     <title>Miam</title>
 
-    <link href="~/content/bootstrap.css" rel="stylesheet">
+    <link href="~/content/miam.css" rel="stylesheet">
+    <link href="~/Content/Bootstrap/bootstrap.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    @RenderSection("SectionCss", required: false)
 </head>
 <body>
 
@@ -56,5 +58,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("SectionJavascript", required: false)
+
 
 </body>
