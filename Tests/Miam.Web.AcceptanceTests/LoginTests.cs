@@ -20,7 +20,7 @@ namespace Miam.Web.AcceptanceTests
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.UserAdmin.Email).WithPassowrd(TestData.UserAdmin.Password).Login();
 
-            Assert.IsTrue(HomePage.IsAdminLogged);
+            Assert.IsTrue(HomePage.IsAdminLogged, "L'administrateur n'est pas connecté.");
         }
 
         [TestMethod]
@@ -29,7 +29,7 @@ namespace Miam.Web.AcceptanceTests
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.Writer1.Email).WithPassowrd(TestData.Writer1.Password).Login();
 
-            Assert.IsTrue(HomePage.IsUserLogged);
+            Assert.IsTrue(HomePage.IsUserLogged, "L'utilisateur n'est pas connecté.");
         }
 
         [TestCleanup]

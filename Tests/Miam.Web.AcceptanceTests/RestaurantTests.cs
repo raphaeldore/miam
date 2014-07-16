@@ -27,7 +27,7 @@ namespace Miam.Web.AcceptanceTests
                 .WithCountry("Canada")
                 .Create();
 
-            Assert.IsTrue(HomePage.Contain(RESATURANT_NAME));
+            Assert.IsTrue(HomePage.Contain(RESATURANT_NAME), "Le nom du restaurat ne se trouve pas dans la page.");
         }
 
 
