@@ -1,27 +1,26 @@
 ﻿using System.Web.Mvc;
 using FluentAssertions;
+using Miam.DataLayer;
+using Miam.Domain.Entities;
 using Miam.Web.Controllers;
-using Miam.Web.UnitTests.Controllers.Home;
-using Miam.Web.ViewModels.Account;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
-using Ploeh.AutoFixture;
-using Miam.Web.Services;
 
 namespace Miam.Web.UnitTests.Controllers.Account
 {
     [TestClass]
     public class AccountControllerLoginTests : ControllerBaseTestsClass
     {
-        private ILoginService _loginServiceMock;
+        private IEntityRepository<User> _userRepository;
         private AccountController _accountController;
 
         [TestInitialize]
         public void AccountControllerTestInit()
         {
 
-            _loginServiceMock = Substitute.For<ILoginService>();
-            _accountController = new AccountController(_loginServiceMock);
+            _userRepository = Substitute.For<IEntityRepository<User>>();
+            _accountController = new AccountController(_userRepository);
         }
 
          [TestMethod]

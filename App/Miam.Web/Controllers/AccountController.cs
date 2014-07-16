@@ -1,8 +1,9 @@
-﻿using System.Security.Claims;
+﻿using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using Miam.DataLayer;
 using Miam.Domain.Entities;
-using Miam.Web.Services;
 using Miam.Web.ViewModels.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -12,16 +13,16 @@ namespace Miam.Web.Controllers
 {
     public partial class AccountController : Controller
     {
-        private ILoginService _loginService;
+        private IEntityRepository<User> _userRepository;
 
         private IAuthenticationManager AuthenticationOwinContext
         {
             get { return HttpContext.GetOwinContext().Authentication; }
         }
 
-        public AccountController(ILoginService loginService)
+        public AccountController(IEntityRepository<User> userRepository)
         {
-            _loginService = loginService;
+            _userRepository = userRepository;
         }
 
         public virtual ActionResult Login()
@@ -37,15 +38,20 @@ namespace Miam.Web.Controllers
             {
                 return View("");
             }
-
-            var user = _loginService.ValidateUser(accountLoginViewModel.Email, accountLoginViewModel.Password);
+            var user = _userRepository.GetAll().FirstOrDefault(x => x.Email == accountLoginViewModel.Email);
             if (user == null)
             {
-                ModelState.AddModelError("loginError", "Email ou mot de passe invalide");
+                ModelState.AddModelError("loginError", "Utilisateur inexistant");
                 return View("");
             }
-
+            if (user.Password != accountLoginViewModel.Password)
+            {
+                ModelState.AddModelError("loginError", "Le mot de passe est invalide");
+                return View("");
+            }
+            
             AuthentificateUser(user);
+
             return RedirectToAction(MVC.Home.Index());
         }
 
