@@ -25,5 +25,11 @@ namespace Miam.Web.AcceptanceTests
             Assert.IsTrue(HomePage.IsAdminLogged);
 
         }
+
+        [TestCleanup]
+        public void Cleanup ()
+        {
+            Driver.Close();
+        }
     }
 }
