@@ -1,6 +1,6 @@
 ﻿@model Miam.Web.ViewModels.RestaurantViewModel.RestaurantCreateViewModel
 @*<div id="restaurantPage_create">*@
-    <h2>CreateRestaurant Restaurant</h2>
+    <h2>Ajouter un restaurant</h2>
 
     @using (Html.BeginForm()) 
     {
@@ -26,7 +26,7 @@
                 <div class="validation_field">@Html.ValidationMessageFor(model => model.RestaurantContactDetail.Facebook)</div>
 
             
-            <input class="btn btn-sm btn-success" type="submit" value="Ajouter" />
+            <input class="btn btn-sm btn-success" id="create_button" type="submit" value="Ajouter" />
             @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
 
 

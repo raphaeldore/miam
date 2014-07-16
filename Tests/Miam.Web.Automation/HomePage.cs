@@ -24,10 +24,15 @@ namespace Miam.Web.Automation
         {
             get
             {
-                var body = Driver.Instance.FindElement(By.ClassName("navbar"));
-                return body.Text.Contains("User");
+                return Driver.Instance.FindElement(By.Id("restaurant_menu")) != null; 
             }
             
+        }
+
+        public static bool Contain(string textToFind)
+        {
+            var body = Driver.Instance.FindElement(By.CssSelector("body"));
+            return body.Text.Contains(textToFind);
         }
     }
 }

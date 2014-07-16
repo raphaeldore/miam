@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Miam.TestUtility.Database;
 using Miam.Web.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Miam.TestUtility.Database;
 
 namespace Miam.Web.AcceptanceTests
 {
     [TestClass]
-    public class LoginTests
+    public class RestaurantTests
     {
         [TestInitialize]
         public void Init()
@@ -15,27 +14,29 @@ namespace Miam.Web.AcceptanceTests
         }
 
         [TestMethod]
-        public void Admin_Can_Log_In()
+        public void Writer_Can_Add_A_Restaurant()
         {
-            LoginPage.GoTo();
-            LoginPage.LoginAs(TestData.UserAdmin.Email).WithPassowrd(TestData.UserAdmin.Password).Login();
+            const string RESATURANT_NAME = "Lulu la patate";
 
-            Assert.IsTrue(HomePage.IsAdminLogged);
-        }
-
-        [TestMethod]
-        public void User_Can_Log_In()
-        {
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.Writer1.Email).WithPassowrd(TestData.Writer1.Password).Login();
 
-            Assert.IsTrue(HomePage.IsUserLogged);
+            RestaurantCreatePage.GoTo();
+            RestaurantCreatePage.CreateRestaurant(RESATURANT_NAME)
+                .WithCity("Québec")
+                .WithCountry("Canada")
+                .Create();
+
+            Assert.IsTrue(HomePage.Contain(RESATURANT_NAME));
         }
 
+
         [TestCleanup]
-        public void Cleanup ()
+        public void Cleanup()
         {
             Driver.Close();
         }
     }
 }
+
+ 
