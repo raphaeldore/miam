@@ -28,7 +28,7 @@ namespace Miam.Web.Controllers
             {
                 return Content(ex.Message);
             }
-            return Content("Le contenu de la BD a été remplie avec les données de tests </Br> <a href=\"\\\">E.T téléphone maison</a> ");
+            return Content("Le contenu de la BD a été remplie avec les données de tests </Br> <a href=\"\\\" id='go_home'>E.T téléphone maison</a> ");
         }
 
         public virtual ActionResult ClearDB()
@@ -41,7 +41,7 @@ namespace Miam.Web.Controllers
             {
                 return Content(ex.Message);
             }
-            return Content("Le contenu de la BD a été effacée.</Br> <a href=\"\\\">E.T téléphone maison</a> ");
+            return Content("Le contenu de la BD a été effacée.</Br> <a href=\"\\\" id='go_home'>E.T téléphone maison</a> ");
         }
 
         private void DeleteDb()

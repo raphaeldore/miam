@@ -15,7 +15,7 @@ namespace Miam.Web.AcceptanceTests
         }
 
         [TestMethod]
-        public void Admin_User_Can_Log_In()
+        public void Admin_Can_Log_In()
         {
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.UserAdmin.Email)
@@ -23,7 +23,16 @@ namespace Miam.Web.AcceptanceTests
                      .Login();
 
             Assert.IsTrue(HomePage.IsAdminLogged);
+        }
 
+        [TestMethod]
+        public void User_Can_Log_In()
+        {
+            LoginPage.GoTo();
+            LoginPage.LoginAs(TestData.Writer1.Email)
+                     .WithPassowrd(TestData.Writer1.Password)
+                     .Login();
+            Assert.IsTrue(HomePage.IsUserLogged);
         }
 
         [TestCleanup]

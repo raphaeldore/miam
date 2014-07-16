@@ -19,5 +19,15 @@ namespace Miam.Web.Automation
                 return body.Text.Contains("Admin");
             } 
         }
+
+        public static bool IsUserLogged
+        {
+            get
+            {
+                var body = Driver.Instance.FindElement(By.ClassName("navbar"));
+                return body.Text.Contains("User");
+            }
+            
+        }
     }
 }

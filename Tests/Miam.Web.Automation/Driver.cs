@@ -14,6 +14,10 @@ namespace Miam.Web.Automation
             
             //Selenium doir attendre 5 seconde avant d'indiquer qu'un objet n'est pas sur une page.
             Instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+
+            //Efface et peuple la BD avec des données
+            Instance.Navigate().GoToUrl("http://miam.local/Ci");
+            Instance.FindElement(By.Id("go_home")).Click();
         }
 
         public static void Close()
