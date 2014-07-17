@@ -60,11 +60,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AdminTests.cs" />
-    <Compile Include="LoginTests.cs" />
-    <Compile Include="MiamAcceptanceTests.cs" />
+    <Compile Include="Tests\AdminTests.cs" />
+    <Compile Include="Tests\LoginTests.cs" />
+    <Compile Include="Base\MiamAcceptanceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WriterTests.cs" />
+    <Compile Include="Tests\WriterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\App\Miam.Domain\Miam.Domain.csproj">

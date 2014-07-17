@@ -1,4 +1,5 @@
-﻿using Miam.Domain.Entities;
+﻿using System.ComponentModel.Design;
+using Miam.Domain.Entities;
 using OpenQA.Selenium;
 
 namespace Miam.Web.Automation
@@ -26,11 +27,7 @@ namespace Miam.Web.Automation
 
         public static void Goto()
         {
-            var adminMenu = Driver.Instance.FindElement(By.Id("admin-menu"));
-            adminMenu.Click();
-
-            var editRestaurantMenuItem = Driver.Instance.FindElement(By.Id("manage-restaurant-menu-item"));
-            editRestaurantMenuItem.Click();
+            Navigation.Admin.ManageRestaurant.Select();
         }
 
 
@@ -55,12 +52,12 @@ namespace Miam.Web.Automation
         public static void ModifytFirstRestaurantWith(Restaurant newRestaurant)
         {
             Driver.Instance.FindElement(By.Id("edit_button1")).Click();
-            clearAllRestaurantFields();
-            fillAllRestaurantFieldsWith(newRestaurant);
+            ClearAllRestaurantFields();
+            FillAllRestaurantFieldsWith(newRestaurant);
             Driver.Instance.FindElement(By.Id("submit_button")).Click();
         }
 
-        private static void fillAllRestaurantFieldsWith(Restaurant newRestaurant)
+        private static void FillAllRestaurantFieldsWith(Restaurant newRestaurant)
         {
             Driver.Instance.FindElement(By.Id("Name")).SendKeys(newRestaurant.Name);
             Driver.Instance.FindElement(By.Id("City")).SendKeys(newRestaurant.City);
@@ -72,7 +69,7 @@ namespace Miam.Web.Automation
             Driver.Instance.FindElement(By.Id("RestaurantContactDetail_WebPage")).SendKeys(newRestaurant.RestaurantContactDetail.WebPage);
         }
 
-        private static void clearAllRestaurantFields()
+        private static void ClearAllRestaurantFields()
         {
             Driver.Instance.FindElement(By.Id("Name")).Clear();
             Driver.Instance.FindElement(By.Id("City")).Clear();

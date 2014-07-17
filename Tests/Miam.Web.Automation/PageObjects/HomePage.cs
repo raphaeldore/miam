@@ -13,7 +13,7 @@ namespace Miam.Web.Automation
             } 
         }
 
-        public static bool IsUserLogged
+        public static bool IsWriterLogged
         {
             get
             {

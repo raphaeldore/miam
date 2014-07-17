@@ -23,7 +23,7 @@ namespace Miam.Web.AcceptanceTests
         public void writer_can_log_in()
         {
             LoginPage.LoginAs(TestData.Writer1.Email).WithPassowrd(TestData.Writer1.Password).Login();
-            Assert.IsTrue(HomePage.IsUserLogged, "L'utilisateur n'est pas connecté.");
+            Assert.IsTrue(HomePage.IsWriterLogged, "L'utilisateur n'est pas connecté.");
         }
 
     }
