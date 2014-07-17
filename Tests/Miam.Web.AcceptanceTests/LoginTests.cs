@@ -6,7 +6,7 @@ using Miam.TestUtility.Database;
 namespace Miam.Web.AcceptanceTests
 {
     [TestClass]
-    public class LoginTests
+    public class LoginTests 
     {
         [TestInitialize]
         public void Init()
@@ -15,7 +15,7 @@ namespace Miam.Web.AcceptanceTests
         }
 
         [TestMethod]
-        public void Admin_Can_Log_In()
+        public void admin_can_log_in()
         {
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.UserAdmin.Email).WithPassowrd(TestData.UserAdmin.Password).Login();
@@ -24,7 +24,7 @@ namespace Miam.Web.AcceptanceTests
         }
 
         [TestMethod]
-        public void User_Can_Log_In()
+        public void writer_can_log_in()
         {
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.Writer1.Email).WithPassowrd(TestData.Writer1.Password).Login();

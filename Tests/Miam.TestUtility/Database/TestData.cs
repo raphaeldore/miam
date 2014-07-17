@@ -67,6 +67,30 @@ namespace Miam.TestUtility.Database
         }
         #endregion
 
+        #region Resto 3 - Bambine et Bounette
+        public static Restaurant Restaurant3
+        {
+            get
+            {
+                var newRestaurant = new Restaurant()
+                {
+                    Name = "Bambine et Bounette",
+                    City = "Trois-Rivière",
+                    Country = "Canada",
+                    RestaurantContactDetail = new RestaurantContactDetail()
+                    {
+                        Facebook = "BamBounette",
+                        OfficePhone = "123-888-4567",
+                        FaxPhone = "123-888-4569",
+                        TwitterAlias = "BamBou",
+                        WebPage = "www.bambinebounette.com"
+                    }
+                };
+                return newRestaurant;
+            }
+        }
+        #endregion
+
         #region Writers
         
         static public Writer Writer1
@@ -207,7 +231,6 @@ namespace Miam.TestUtility.Database
                 return user;
             }
         }
-        
         #endregion
     }
 }

@@ -14,20 +14,20 @@ namespace Miam.Web.AcceptanceTests
         }
 
         [TestMethod]
-        public void Writer_Can_Add_A_Restaurant()
+        public void writer_can_add_a_restaurant()
         {
             const string RESATURANT_NAME = "Lulu la patate";
 
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.Writer1.Email).WithPassowrd(TestData.Writer1.Password).Login();
 
-            RestaurantCreatePage.GoTo();
-            RestaurantCreatePage.CreateRestaurant(RESATURANT_NAME)
+            WriterCreateRestaurantPage.GoTo();
+            WriterCreateRestaurantPage.CreateRestaurant(RESATURANT_NAME)
                                 .WithCity("Québec")
                                 .WithCountry("Canada")
                                 .Create();
 
-            Assert.IsTrue(HomePage.Contain(RESATURANT_NAME), "Le nom du restaurat ne se trouve pas dans la page.");
+            Assert.IsTrue(HomePage.Contain(RESATURANT_NAME), "Le nom du restaurant ne se trouve pas dans la page.");
         }
 
 

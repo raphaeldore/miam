@@ -3,15 +3,15 @@ using OpenQA.Selenium;
 
 namespace Miam.Web.AcceptanceTests
 {
-    public  class RestaurantCreatePage
+    public  class WriterCreateRestaurantPage
     {
         public static void GoTo()
         {
-            var userMenu = Driver.Instance.FindElement(By.Id("writer_menu"));
-            userMenu.Click();
+            var writerMenu = Driver.Instance.FindElement(By.Id("writer_menu"));
+            writerMenu.Click();
 
-            var addRestaurant = Driver.Instance.FindElement(By.Id("add_restaurant_menu_item"));
-            addRestaurant.Click();
+            var addRestaurantMenuItem = Driver.Instance.FindElement(By.Id("add_restaurant_menu_item"));
+            addRestaurantMenuItem.Click();
         }
 
         public static CreateRestaurantCommand CreateRestaurant(string restaurantName)

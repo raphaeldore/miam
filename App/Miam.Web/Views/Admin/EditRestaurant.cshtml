@@ -1,7 +1,5 @@
 ﻿@model Miam.Web.ViewModels.AdminViewModels.AdminRestaurantEditViewModel
 
-
-
     <h2>Modifier un restaurant</h2>
     <div class="row">
         <div class="col-md-6">
@@ -21,14 +19,14 @@
 
                             </div>
                             <div class="col-md-6">
-                                <h3>Adresse</h3>
+                                <h3>Contacts</h3>
 
                                 @Html.EditorFor(model => model.RestaurantContactDetail)
 
                             </div>
                             
                         </div>
-                        <input class="btn btn-sm btn-success" type="submit" value="Confirmer" />
+                        <input class="btn btn-sm btn-success" id="submit_button" type="submit" value="Confirmer" />
                         @Html.ActionLink("Annuler", MVC.Admin.Index(), new { @class = "btn btn-sm btn-danger" })
                     </div>
                 }
