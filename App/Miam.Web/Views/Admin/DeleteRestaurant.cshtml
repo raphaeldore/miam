@@ -1,11 +1,11 @@
 ﻿@model Miam.Web.ViewModels.AdminViewModels.AdminRestaurantDeleteViewModel
-<div id="restaurantPage_delete">
+
     <h2>Effacer un restaurant</h2>
 
     @using (Html.BeginForm()) 
     {
         <fieldset>
-            <legend>Restaurant1</legend>
+            <legend>Restaurant</legend>
 
             <div class="display_field"> @Html.DisplayFor(model => model.Name) </div>
             <div class="display_field"> @Html.DisplayFor(model => model.City) </div>
@@ -18,6 +18,6 @@
 
         </fieldset>
     }
-</div>
+
 
 

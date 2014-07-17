@@ -54,15 +54,19 @@ namespace Miam.Web.Controllers
 
             return RedirectToAction(MVC.Home.Index());
         }
-
+        public virtual ActionResult Logout()
+        {
+            AuthenticationOwinContext.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction(MVC.Account.Login());
+        }
         private void AuthentificateUser(User user)
         {
             var identity = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Email),
                 },
-            DefaultAuthenticationTypes.ApplicationCookie,
-            ClaimTypes.NameIdentifier, ClaimTypes.Role);
+                DefaultAuthenticationTypes.ApplicationCookie,
+                ClaimTypes.NameIdentifier, ClaimTypes.Role);
 
             foreach (var role in user.Roles)
             {
@@ -72,11 +76,7 @@ namespace Miam.Web.Controllers
             AuthenticationOwinContext.SignIn(new AuthenticationProperties(), identity);
         }
 
-        public virtual ActionResult Logout()
-        {
-            AuthenticationOwinContext.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction(MVC.Account.Login());
-        }
+       
 
     }
 

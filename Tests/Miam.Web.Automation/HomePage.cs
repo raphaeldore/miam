@@ -24,7 +24,7 @@ namespace Miam.Web.Automation
         {
             get
             {
-                return Driver.Instance.FindElement(By.Id("restaurant_menu")) != null; 
+                return Driver.Instance.FindElement(By.Id("writer_menu")) != null; 
             }
             
         }

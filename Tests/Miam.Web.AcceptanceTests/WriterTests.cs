@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Miam.Web.AcceptanceTests
 {
     [TestClass]
-    public class RestaurantTests
+    public class WriterTests
     {
         [TestInitialize]
         public void Init()
@@ -23,9 +23,9 @@ namespace Miam.Web.AcceptanceTests
 
             RestaurantCreatePage.GoTo();
             RestaurantCreatePage.CreateRestaurant(RESATURANT_NAME)
-                .WithCity("Québec")
-                .WithCountry("Canada")
-                .Create();
+                                .WithCity("Québec")
+                                .WithCountry("Canada")
+                                .Create();
 
             Assert.IsTrue(HomePage.Contain(RESATURANT_NAME), "Le nom du restaurat ne se trouve pas dans la page.");
         }

@@ -79,7 +79,7 @@ namespace Miam.TestUtility.Database
                          {
                              Roles = new List<UserRole>()
                              {
-                                 new UserRole() {RoleName = RoleName.RegistredUser}
+                                 new UserRole() {RoleName = RoleName.Writer}
                              },
                              Password= "irma",
                              Name = "Irma Larose",
@@ -99,7 +99,7 @@ namespace Miam.TestUtility.Database
                 {
                     Roles = new List<UserRole>()
                              {
-                                 new UserRole() {RoleName = RoleName.RegistredUser}
+                                 new UserRole() {RoleName = RoleName.Writer}
                              },
                     Password = "lucien", 
                     Name = "Lucien Lafleur",
@@ -196,7 +196,7 @@ namespace Miam.TestUtility.Database
                 {
                     Roles = new List<UserRole>()
                              {
-                                 new UserRole() {RoleName = RoleName.RegistredUser},
+                                 new UserRole() {RoleName = RoleName.Writer},
                                  new UserRole() {RoleName = RoleName.Admin}
                              },
                     Password = "admin",

@@ -4,19 +4,19 @@
 @if (Request.IsAuthenticated && User.IsInRole(RoleName.Admin))
 {
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="admin_menu">Admin <b class="caret"></b></a>
         <ul class="dropdown-menu">
-            <li>@Html.ActionLink("Editer les restaurants", MVC.Admin.Index()) </li>
+            <li id="edit_restaurant">@Html.ActionLink("Editer les restaurants", MVC.Admin.Index()) </li>
         </ul>
     </li>
 }
 
-@if (Request.IsAuthenticated && User.IsInRole(RoleName.RegistredUser))
+@if (Request.IsAuthenticated && User.IsInRole(RoleName.Writer))
 {
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="restaurant_menu">Restaurant<b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="writer_menu">Chroniqueur<b class="caret"></b></a>
         <ul class="dropdown-menu">
-            <li id="add_restaurant">@Html.ActionLink("Ajouter un restaurant", MVC.Restaurant.Create()) </li>
+            <li id="add_restaurant_menu_item">@Html.ActionLink("Ajouter un restaurant", MVC.Restaurant.Create()) </li>
         </ul>
     </li>
 }

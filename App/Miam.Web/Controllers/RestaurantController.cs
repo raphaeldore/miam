@@ -10,7 +10,7 @@ using Miam.Web.ViewModels.RestaurantViewModel;
 
 namespace Miam.Web.Controllers
 {
-    [Authorize(Roles = RoleName.RegistredUser)]
+    [Authorize(Roles = RoleName.Writer)]
     public partial class RestaurantController : Controller
     {
         private readonly IEntityRepository<Restaurant> _restaurantRepository;
