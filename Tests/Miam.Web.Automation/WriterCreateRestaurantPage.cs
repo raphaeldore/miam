@@ -7,10 +7,10 @@ namespace Miam.Web.AcceptanceTests
     {
         public static void GoTo()
         {
-            var writerMenu = Driver.Instance.FindElement(By.Id("writer_menu"));
+            var writerMenu = Driver.Instance.FindElement(By.Id("writer-menu"));
             writerMenu.Click();
 
-            var addRestaurantMenuItem = Driver.Instance.FindElement(By.Id("add_restaurant_menu_item"));
+            var addRestaurantMenuItem = Driver.Instance.FindElement(By.Id("add-restaurant-menu-item"));
             addRestaurantMenuItem.Click();
         }
 

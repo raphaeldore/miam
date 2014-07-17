@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Miam.Web.Automation;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Miam.Web.AcceptanceTests
 {
-    class MiamTests
+    public class MiamAcceptanceTests
     {
+        [TestInitialize]
+        public void Init()
+        {
+            Driver.Initialize();
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            Driver.Close();
+        }
     }
 }

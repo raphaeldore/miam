@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Miam.Domain.Entities;
+﻿using Miam.Domain.Entities;
 using OpenQA.Selenium;
 
 namespace Miam.Web.Automation
@@ -28,10 +26,10 @@ namespace Miam.Web.Automation
 
         public static void Goto()
         {
-            var adminMenu = Driver.Instance.FindElement(By.Id("admin_menu"));
+            var adminMenu = Driver.Instance.FindElement(By.Id("admin-menu"));
             adminMenu.Click();
 
-            var editRestaurantMenuItem = Driver.Instance.FindElement(By.Id("manage_restaurant"));
+            var editRestaurantMenuItem = Driver.Instance.FindElement(By.Id("manage-restaurant-menu-item"));
             editRestaurantMenuItem.Click();
         }
 

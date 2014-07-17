@@ -8,6 +8,11 @@ namespace Miam.Web.Automation
     {
         public static IWebDriver Instance { get; set; }
 
+        public static string BaseAddress
+        {
+            get { return "http://miam.local"; }
+        }
+
         public static void Initialize()
         {
             Instance = new FirefoxDriver();
@@ -16,7 +21,7 @@ namespace Miam.Web.Automation
             Instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
 
             //Efface et peuple la BD avec des données
-            Instance.Navigate().GoToUrl("http://miam.local/Ci");
+            Instance.Navigate().GoToUrl(BaseAddress + "/Ci");
             Instance.FindElement(By.Id("go_home")).Click();
         }
 

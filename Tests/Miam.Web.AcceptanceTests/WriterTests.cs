@@ -5,14 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Miam.Web.AcceptanceTests
 {
     [TestClass]
-    public class WriterTests
+    public class WriterTests : MiamAcceptanceTests
     {
-        [TestInitialize]
-        public void Init()
-        {
-            Driver.Initialize();
-        }
-
         [TestMethod]
         public void writer_can_add_a_restaurant()
         {
@@ -28,13 +22,6 @@ namespace Miam.Web.AcceptanceTests
                                 .Create();
 
             Assert.IsTrue(HomePage.Contain(RESATURANT_NAME), "Le nom du restaurant ne se trouve pas dans la page.");
-        }
-
-
-        [TestCleanup]
-        public void Cleanup()
-        {
-            Driver.Close();
         }
     }
 }

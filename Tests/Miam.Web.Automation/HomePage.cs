@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Miam.TestUtility.Database;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Miam.Web.Automation
 {
@@ -24,7 +17,7 @@ namespace Miam.Web.Automation
         {
             get
             {
-                return Driver.Instance.FindElement(By.Id("writer_menu")) != null; 
+                return Driver.Instance.FindElement(By.Id("writer-menu")) != null; 
             }
             
         }

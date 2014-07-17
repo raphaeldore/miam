@@ -1,6 +1,4 @@
-﻿
-using FluentAssertions;
-using Miam.Domain.Entities;
+﻿using FluentAssertions;
 using Miam.TestUtility.Database;
 using Miam.Web.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -8,23 +6,21 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Miam.Web.AcceptanceTests
 {
     [TestClass]
-    public class AdminTests 
+    public class AdminTests : MiamAcceptanceTests
     {
         [TestInitialize]
-        public void Init()
+        public void initialize()
         {
-            Driver.Initialize();
+            LoginPage.GoTo();
+            LoginPage.LoginAs(TestData.UserAdmin.Email).WithPassowrd(TestData.UserAdmin.Password).Login();
         }
+
 
         [TestMethod]
         public void admin_can_delete_restaurant()
         {
-            LoginPage.GoTo();
-            LoginPage.LoginAs(TestData.UserAdmin.Email).WithPassowrd(TestData.UserAdmin.Password).Login();
-            
             AdminPage.Goto();
             var restaurantNameToDelete = AdminPage.FirstRestaurantName;
-            
             AdminPage.DeleteFirstRestaurant();
 
             Assert.AreNotEqual(AdminPage.FirstRestaurantName, restaurantNameToDelete);
@@ -33,22 +29,10 @@ namespace Miam.Web.AcceptanceTests
          [TestMethod]
         public void admin_can_edit_restaurant()
         {
-            LoginPage.GoTo();
-            LoginPage.LoginAs(TestData.UserAdmin.Email).WithPassowrd(TestData.UserAdmin.Password).Login();
-
             AdminPage.Goto();
             AdminPage.ModifytFirstRestaurantWith(TestData.Restaurant3);
 
             AdminPage.FirstRestaurant.ShouldBeEquivalentTo(TestData.Restaurant3);
         }
-
-
-         [TestCleanup]
-         public void Cleanup()
-         {
-             Driver.Close();
-         }
-        
-
     }
 }
