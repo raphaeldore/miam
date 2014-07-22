@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 
-namespace Miam.Web.Automation
+namespace Miam.Web.Automation.Selenium
 {
     public class Driver
     {

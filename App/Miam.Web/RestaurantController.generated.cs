@@ -54,6 +54,30 @@ namespace Miam.Web.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult EditRestaurant()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditRestaurant);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DeleteRestaurant()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteRestaurant);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DeleteRestaurantConfirmed()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteRestaurantConfirmed);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DeleteReview()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteReview);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public RestaurantController Actions { get { return MVC.Restaurant; } }
@@ -70,16 +94,51 @@ namespace Miam.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
+            public readonly string Index = "Index";
+            public readonly string EditRestaurant = "EditRestaurant";
+            public readonly string DeleteRestaurant = "DeleteRestaurant";
+            public readonly string DeleteRestaurantConfirmed = "DeleteRestaurant";
             public readonly string Create = "Create";
+            public readonly string DeleteReview = "DeleteReview";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
+            public const string Index = "Index";
+            public const string EditRestaurant = "EditRestaurant";
+            public const string DeleteRestaurant = "DeleteRestaurant";
+            public const string DeleteRestaurantConfirmed = "DeleteRestaurant";
             public const string Create = "Create";
+            public const string DeleteReview = "DeleteReview";
         }
 
 
+        static readonly ActionParamsClass_EditRestaurant s_params_EditRestaurant = new ActionParamsClass_EditRestaurant();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_EditRestaurant EditRestaurantParams { get { return s_params_EditRestaurant; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_EditRestaurant
+        {
+            public readonly string restaurantID = "restaurantID";
+            public readonly string restaurantEditViewModel = "RestaurantEditViewModel";
+        }
+        static readonly ActionParamsClass_DeleteRestaurant s_params_DeleteRestaurant = new ActionParamsClass_DeleteRestaurant();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DeleteRestaurant DeleteRestaurantParams { get { return s_params_DeleteRestaurant; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DeleteRestaurant
+        {
+            public readonly string restaurantId = "restaurantId";
+        }
+        static readonly ActionParamsClass_DeleteRestaurantConfirmed s_params_DeleteRestaurantConfirmed = new ActionParamsClass_DeleteRestaurantConfirmed();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DeleteRestaurantConfirmed DeleteRestaurantConfirmedParams { get { return s_params_DeleteRestaurantConfirmed; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DeleteRestaurantConfirmed
+        {
+            public readonly string restaurantId = "restaurantId";
+        }
         static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
@@ -87,6 +146,14 @@ namespace Miam.Web.Controllers
         public class ActionParamsClass_Create
         {
             public readonly string restaurantCreateViewModel = "restaurantCreateViewModel";
+        }
+        static readonly ActionParamsClass_DeleteReview s_params_DeleteReview = new ActionParamsClass_DeleteReview();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DeleteReview DeleteReviewParams { get { return s_params_DeleteReview; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DeleteReview
+        {
+            public readonly string reviewId = "reviewId";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -99,8 +166,14 @@ namespace Miam.Web.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Create = "Create";
+                public readonly string DeleteRestaurant = "DeleteRestaurant";
+                public readonly string EditRestaurant = "EditRestaurant";
+                public readonly string Index = "Index";
             }
             public readonly string Create = "~/Views/Restaurant/Create.cshtml";
+            public readonly string DeleteRestaurant = "~/Views/Restaurant/DeleteRestaurant.cshtml";
+            public readonly string EditRestaurant = "~/Views/Restaurant/EditRestaurant.cshtml";
+            public readonly string Index = "~/Views/Restaurant/Index.cshtml";
         }
     }
 
@@ -108,6 +181,65 @@ namespace Miam.Web.Controllers
     public partial class T4MVC_RestaurantController : Miam.Web.Controllers.RestaurantController
     {
         public T4MVC_RestaurantController() : base(Dummy.Instance) { }
+
+        [NonAction]
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Index()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditRestaurantOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int restaurantID);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult EditRestaurant(int restaurantID)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditRestaurant);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantID", restaurantID);
+            EditRestaurantOverride(callInfo, restaurantID);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditRestaurantOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.RestaurantViewModel.RestaurantEditViewModel restaurantEditViewModel);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult EditRestaurant(Miam.Web.ViewModels.RestaurantViewModel.RestaurantEditViewModel restaurantEditViewModel)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditRestaurant);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "RestaurantEditViewModel", restaurantEditViewModel);
+            EditRestaurantOverride(callInfo, restaurantEditViewModel);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteRestaurantOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int restaurantId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DeleteRestaurant(int restaurantId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteRestaurant);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantId", restaurantId);
+            DeleteRestaurantOverride(callInfo, restaurantId);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteRestaurantConfirmedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int restaurantId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DeleteRestaurantConfirmed(int restaurantId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteRestaurantConfirmed);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantId", restaurantId);
+            DeleteRestaurantConfirmedOverride(callInfo, restaurantId);
+            return callInfo;
+        }
 
         [NonAction]
         partial void CreateOverride(T4MVC_System_Web_Mvc_ViewResult callInfo);
@@ -129,6 +261,18 @@ namespace Miam.Web.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantCreateViewModel", restaurantCreateViewModel);
             CreateOverride(callInfo, restaurantCreateViewModel);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteReviewOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int reviewId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DeleteReview(int reviewId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteReview);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "reviewId", reviewId);
+            DeleteReviewOverride(callInfo, reviewId);
             return callInfo;
         }
 

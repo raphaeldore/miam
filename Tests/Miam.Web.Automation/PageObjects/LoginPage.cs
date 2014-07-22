@@ -1,6 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using Miam.Web.Automation.Selenium;
+using OpenQA.Selenium;
 
-namespace Miam.Web.Automation
+namespace Miam.Web.Automation.PageObjects
 {
     public class LoginPage
     {
@@ -40,7 +41,7 @@ namespace Miam.Web.Automation
             var passwordInput = Driver.Instance.FindElement(By.Id("Password"));
             passwordInput.SendKeys(_password);
 
-            var loginButton = Driver.Instance.FindElement(By.Id("login_submit"));
+            var loginButton = Driver.Instance.FindElement(By.Id("login-submit"));
             loginButton.Click();
 
         }

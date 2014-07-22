@@ -1,35 +1,35 @@
 ﻿@model Miam.Web.ViewModels.RestaurantViewModel.RestaurantCreateViewModel
 
-    <h2>Ajouter un restaurant</h2>
+<h2>Ajouter un restaurant</h2>
 
-    @using (Html.BeginForm()) 
-    {
-        <fieldset>
-            <legend>Restaurant</legend> 
-            
-                @Html.ValidationSummary(true)
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Restaurant</legend>
 
-                <div class="label_field">@Html.LabelFor(model => model.Name,"Nom") </div>
-                <div class="editor_field" id="restaurant_name_field"> @Html.EditorFor(model => model.Name) </div>
-                <div class="validation_field">@Html.ValidationMessageFor(model => model.Name)</div>
+        @Html.ValidationSummary(true)
 
-                <div class="label_field"> @Html.LabelFor(model => model.City,"Ville") </div>
-                <div class="editor_field" id="restaurant_city_field"> @Html.EditorFor(model => model.City) </div>
-                <div class="validation_field">@Html.ValidationMessageFor(model => model.City)</div>
+        <div class="label_field">@Html.LabelFor(model => model.Name, "Nom") </div>
+        <div class="editor_field" id="restaurant_name_field"> @Html.EditorFor(model => model.Name) </div>
+        <div class="validation_field">@Html.ValidationMessageFor(model => model.Name)</div>
 
-                <div class="label_field"> @Html.LabelFor(model => model.Country,"Pays") </div>
-                <div class="editor_field" id="restaurant_contry_field"> @Html.EditorFor(model => model.Country) </div>
-                <div class="validation_field">@Html.ValidationMessageFor(model => model.Country)</div>
-            
-                <div class="label_field"> @Html.LabelFor(model => model.RestaurantContactDetail.Facebook,"Facebook") </div>
-                <div class="editor_field" id="restaurant_facebook_field"> @Html.EditorFor(model =>  model.RestaurantContactDetail.Facebook) </div>
-                <div class="validation_field">@Html.ValidationMessageFor(model => model.RestaurantContactDetail.Facebook)</div>
+        <div class="label_field"> @Html.LabelFor(model => model.City, "Ville") </div>
+        <div class="editor_field" id="restaurant_city_field"> @Html.EditorFor(model => model.City) </div>
+        <div class="validation_field">@Html.ValidationMessageFor(model => model.City)</div>
 
-            
-            <input class="btn btn-sm btn-success" id="create_button" type="submit" value="Ajouter" />
-            @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
+        <div class="label_field"> @Html.LabelFor(model => model.Country, "Pays") </div>
+        <div class="editor_field" id="restaurant_contry_field"> @Html.EditorFor(model => model.Country) </div>
+        <div class="validation_field">@Html.ValidationMessageFor(model => model.Country)</div>
+
+        <div class="label_field"> @Html.LabelFor(model => model.RestaurantContactDetail.Facebook, "Facebook") </div>
+        <div class="editor_field" id="restaurant_facebook_field"> @Html.EditorFor(model => model.RestaurantContactDetail.Facebook) </div>
+        <div class="validation_field">@Html.ValidationMessageFor(model => model.RestaurantContactDetail.Facebook)</div>
 
 
-        </fieldset>
-    }
-    
+        <input class="btn btn-sm btn-success" id="create_button" type="submit" value="Ajouter" />
+        @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
+
+
+    </fieldset>
+}
+

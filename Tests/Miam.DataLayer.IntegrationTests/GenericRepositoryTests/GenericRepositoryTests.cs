@@ -224,8 +224,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             writerRepository.DeleteById(writer.Id);
 
             //Assert 
-            int reviewsCountAfter = _miamDbContextAfter.Reviews
-                .Count(r => r.WriterId == writer.Id);
+            int reviewsCountAfter = _miamDbContextAfter.Reviews.Count(r => r.WriterId == writer.Id);
             Assert.AreEqual(0, reviewsCountAfter);
         }
     }

@@ -13,14 +13,14 @@ namespace Miam.Web.Controllers
 {
     public partial class AccountController : Controller
     {
-        private IEntityRepository<User> _userRepository;
+        private IEntityRepository<ApplicationUser> _userRepository;
 
         private IAuthenticationManager AuthenticationOwinContext
         {
             get { return HttpContext.GetOwinContext().Authentication; }
         }
 
-        public AccountController(IEntityRepository<User> userRepository)
+        public AccountController(IEntityRepository<ApplicationUser> userRepository)
         {
             _userRepository = userRepository;
         }
@@ -49,7 +49,7 @@ namespace Miam.Web.Controllers
                 ModelState.AddModelError("loginError", "Le mot de passe est invalide");
                 return View("");
             }
-            
+
             AuthentificateUser(user);
 
             return RedirectToAction(MVC.Home.Index());
@@ -59,26 +59,22 @@ namespace Miam.Web.Controllers
             AuthenticationOwinContext.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction(MVC.Account.Login());
         }
-        private void AuthentificateUser(User user)
+        private void AuthentificateUser(ApplicationUser applicationUser)
         {
             var identity = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, user.Email),
-                },
-                DefaultAuthenticationTypes.ApplicationCookie,
-                ClaimTypes.NameIdentifier, ClaimTypes.Role);
+            {
+                new Claim(ClaimTypes.Name, applicationUser.Email),
+                new Claim(ClaimTypes.NameIdentifier, applicationUser.Id.ToString()),
+            },
+                DefaultAuthenticationTypes.ApplicationCookie);
 
-            foreach (var role in user.Roles)
+            foreach (var role in applicationUser.Roles)
             {
                 identity.AddClaim(new Claim(ClaimTypes.Role, role.RoleName));
             }
 
             AuthenticationOwinContext.SignIn(new AuthenticationProperties(), identity);
         }
-
-       
-
     }
-
 }
 

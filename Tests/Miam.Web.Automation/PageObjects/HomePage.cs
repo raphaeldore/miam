@@ -1,6 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using Miam.Web.Automation.Selenium;
+using OpenQA.Selenium;
 
-namespace Miam.Web.Automation
+namespace Miam.Web.Automation.PageObjects
 {
     public class HomePage
     {

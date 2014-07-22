@@ -6,10 +6,10 @@
         public string RoleName { get; set; }
 
         // Foreign key
-        public int UserId { get; set; }
+        public int ApplicationUserId { get; set; }
 
         //Navigation properties
-        public User Users { get; set; }
+        public ApplicationUser ApplicationUsers { get; set; }
 
     }
 }

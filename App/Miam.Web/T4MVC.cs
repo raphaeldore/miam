@@ -26,10 +26,10 @@ using T4MVC;
 public static partial class MVC
 {
     public static Miam.Web.Controllers.AccountController Account = new Miam.Web.Controllers.T4MVC_AccountController();
-    public static Miam.Web.Controllers.AdminController Admin = new Miam.Web.Controllers.T4MVC_AdminController();
     public static Miam.Web.Controllers.CIController CI = new Miam.Web.Controllers.T4MVC_CIController();
     public static Miam.Web.Controllers.HomeController Home = new Miam.Web.Controllers.T4MVC_HomeController();
     public static Miam.Web.Controllers.RestaurantController Restaurant = new Miam.Web.Controllers.T4MVC_RestaurantController();
+    public static Miam.Web.Controllers.ReviewController Review = new Miam.Web.Controllers.T4MVC_ReviewController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -101,19 +101,37 @@ namespace Links
         private const string URLPATH = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-        public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class Bootstrap {
+            private const string URLPATH = "~/Content/Bootstrap";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
+                 
+            public static readonly string bootstrap_theme_css_map = Url("bootstrap-theme.css.map");
+            public static readonly string bootstrap_theme_min_css = Url("bootstrap-theme.min.css");
+            public static readonly string bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.css") ? Url("bootstrap.min.css") : Url("bootstrap.css");
+                 
+            public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
+            public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
+        }
+    
+        public static readonly string miam_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/miam.min.css") ? Url("miam.min.css") : Url("miam.css");
              
-        public static readonly string bootstrap_theme_css_map = Url("bootstrap-theme.css.map");
-        public static readonly string bootstrap_theme_min_css = Url("bootstrap-theme.min.css");
-        public static readonly string bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.css") ? Url("bootstrap.min.css") : Url("bootstrap.css");
+        public static readonly string signin_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/signin.min.css") ? Url("signin.min.css") : Url("signin.css");
              
-        public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
-        public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
-        public static readonly string toastr_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/toastr.min.css") ? Url("toastr.min.css") : Url("toastr.css");
-             
-        public static readonly string toastr_less = Url("toastr.less");
-        public static readonly string toastr_min_css = Url("toastr.min.css");
-        public static readonly string toastr_scss = Url("toastr.scss");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class Toastr {
+            private const string URLPATH = "~/Content/Toastr";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string toastr_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/toastr.min.css") ? Url("toastr.min.css") : Url("toastr.css");
+                 
+            public static readonly string toastr_less = Url("toastr.less");
+            public static readonly string toastr_min_css = Url("toastr.min.css");
+            public static readonly string toastr_scss = Url("toastr.scss");
+        }
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

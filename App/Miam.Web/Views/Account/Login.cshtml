@@ -7,23 +7,23 @@
 
 <div class="container">
 
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-signin" , role = "form"}))
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-signin", role = "form" }))
     {
         @Html.AntiForgeryToken()
 
         <h3 class="form-signin-heading">Connectez-vous à votre compte Miam</h3>
-        
+
         @Html.ValidationMessage("loginError")
 
         @Html.ValidationMessageFor(model => model.Email, "Le champ courriel est requis")
-        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Courriel", type = "email"  })
-        
-    
-        @Html.ValidationMessageFor(model => model.Password, "Le champ mot de passe est requis")
-        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Mot de passe", type = "password"})
-        
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Courriel", type = "email" })
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit" id="login_submit">Se connecter</button>
+
+        @Html.ValidationMessageFor(model => model.Password, "Le champ mot de passe est requis")
+        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Mot de passe", type = "password" })
+
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="login-submit">Se connecter</button>
     }
 
 </div> 

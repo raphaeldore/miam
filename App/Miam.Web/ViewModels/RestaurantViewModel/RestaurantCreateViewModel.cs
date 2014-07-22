@@ -9,11 +9,11 @@ namespace Miam.Web.ViewModels.RestaurantViewModel
 
         [HiddenInput]
         public int RestaurantId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Le champ nom est requis")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Le champ ville est requis")]
         public string City { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Le champ pays est requis")]
         public string Country { get; set; }
 
         public RestaurantContactDetail RestaurantContactDetail { get; set; }

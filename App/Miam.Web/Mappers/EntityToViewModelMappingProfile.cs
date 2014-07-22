@@ -3,9 +3,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using AutoMapper;
 using Miam.Domain.Entities;
-using Miam.Web.ViewModels.AdminViewModels;
 using Miam.Web.ViewModels.HomeViewModels;
 using Miam.Web.ViewModels.RestaurantViewModel;
+using Miam.Web.ViewModels.ReviewViewModels;
 
 namespace Miam.Web.Mappers
 {
@@ -19,31 +19,36 @@ namespace Miam.Web.Mappers
         protected override void Configure()
         {
             ToHomeViewModels();
-            ToUSerRestaurantViewModels();
-            ToAdminRestaurantViewModels();
+            ToReviewViewModels();
+            ToRestaurantViewModels();
         }
 
-        private void ToAdminRestaurantViewModels()
+        private void ToRestaurantViewModels()
         {
             //Edit viewModel mapping
-            Mapper.CreateMap<ICollection<Review>, IList<ReviewViewModel>>();
-            Mapper.CreateMap<Review, ReviewViewModel>();
-            Mapper.CreateMap<RestaurantContactDetail, RestaurantConactDetailViewModel>();
-            Mapper.CreateMap<Restaurant, AdminRestaurantEditViewModel>();
+            Mapper.CreateMap<ICollection<Review>, IList<ReviewIndexViewModel>>();
+            Mapper.CreateMap<Review, ReviewIndexViewModel>();
+            Mapper.CreateMap<RestaurantContactDetail, RestaurantContactDetailViewModel>();
+            Mapper.CreateMap<Restaurant, RestaurantEditViewModel>();
 
             //Index viewModel mapping
-            Mapper.CreateMap<Restaurant, AdminRestaurantIndexViewModel>()
+            Mapper.CreateMap<Restaurant, RestaurantIndexViewModel>()
                 .ForMember(dest => dest.RatingReviewsAverage, opt => opt.MapFrom(src => src.CalculateReviewsRatingAverage()))
                 .ForMember(dest => dest.CountOfReviews, opt => opt.MapFrom(src => src.Reviews.Count));
 
             //Delete viewModel mapping
-            Mapper.CreateMap<Restaurant, AdminRestaurantDeleteViewModel>();
+            Mapper.CreateMap<Restaurant, RestaurantDeleteViewModel>();
+
+            //Create viewModel mapping
+            Mapper.CreateMap<Restaurant, RestaurantCreateViewModel>()
+              .ForMember(dest => dest.RestaurantId, opt => opt.MapFrom(src => src.Id));
         }
 
-        private static void ToUSerRestaurantViewModels()
+        private static void ToReviewViewModels()
         {
-            Mapper.CreateMap<Restaurant, RestaurantCreateViewModel>()
-                .ForMember(dest => dest.RestaurantId, opt => opt.MapFrom(src => src.Id));
+            //Create viewModel mapping
+            Mapper.CreateMap<Review, ReviewCreateViewModel>()
+               .ForMember(dest => dest.Restaurants, opt => opt.Ignore());
         }
         
         private static void ToHomeViewModels()

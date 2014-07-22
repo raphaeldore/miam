@@ -10,13 +10,13 @@ namespace Miam.TestUtility.Database
         private int _writerID2;
         private IEntityRepository<Restaurant> _restaurantRepository;
         private IEntityRepository<Writer> _writerRepository;
-        private EfEntityRepository<User> _userRepository;
+        private EfEntityRepository<ApplicationUser> _userRepository;
 
         public DataBaseTestHelper()
         {
             _restaurantRepository = new EfEntityRepository<Restaurant>();
             _writerRepository = new EfEntityRepository<Writer>();
-            _userRepository = new EfEntityRepository<User>();
+            _userRepository = new EfEntityRepository<ApplicationUser>();
         }
 
         public void SeedTables()
@@ -28,7 +28,7 @@ namespace Miam.TestUtility.Database
 
         private void AddAdmin()
         {
-            var admin = TestData.UserAdmin;
+            var admin = TestData.ApplicationUserAdmin;
             _userRepository.Add(admin);
         }
 

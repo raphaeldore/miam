@@ -78,13 +78,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Controllers\Account\AccountControllerLoginTests.cs" />
-    <Compile Include="Controllers\Admin\AdminControllerBaseTestsClass.cs" />
+    <Compile Include="Controllers\AccountTests\AccountControllerLoginTests.cs" />
     <Compile Include="Controllers\ControllerBaseTestsClass.cs" />
-    <Compile Include="Controllers\Restaurant\RestaurantControllerCreateTests.cs" />
-    <Compile Include="Controllers\Admin\AdminControllerDeleteTests.cs" />
-    <Compile Include="Controllers\Admin\AdminControllerEditTests.cs" />
-    <Compile Include="Controllers\Home\HomeControllerIndexTests.cs" />
+    <Compile Include="Controllers\RestaurantTests\RestaurantControllerBaseTestsClass.cs" />
+    <Compile Include="Controllers\RestaurantTests\RestaurantControllerDeleteTests.cs" />
+    <Compile Include="Controllers\RestaurantTests\RestaurantControllerEditTests.cs" />
+    <Compile Include="Controllers\RestaurantTests\RestaurantControllerCreateTests.cs" />
+    <Compile Include="Controllers\HomeTests\HomeControllerIndexTests.cs" />
+    <Compile Include="Controllers\ReviewTests\ReviewControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\RestaurantViewModelTests.cs" />
   </ItemGroup>

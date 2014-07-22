@@ -1,3 +1,4 @@
+using Miam.Web.Automation.Selenium;
 using OpenQA.Selenium;
 
 namespace Miam.Web.Automation

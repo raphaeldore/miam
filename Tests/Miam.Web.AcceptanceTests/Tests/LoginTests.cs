@@ -1,4 +1,5 @@
 ﻿using Miam.Web.Automation;
+using Miam.Web.Automation.PageObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Miam.TestUtility.Database;
 
@@ -15,7 +16,7 @@ namespace Miam.Web.AcceptanceTests
         [TestMethod]
         public void admin_can_log_in()
         {
-            LoginPage.LoginAs(TestData.UserAdmin.Email).WithPassowrd(TestData.UserAdmin.Password).Login();
+            LoginPage.LoginAs(TestData.ApplicationUserAdmin.Email).WithPassowrd(TestData.ApplicationUserAdmin.Password).Login();
             Assert.IsTrue(HomePage.IsAdminLogged, "L'administrateur n'est pas connecté.");
         }
 

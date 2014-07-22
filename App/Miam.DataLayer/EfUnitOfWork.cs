@@ -14,7 +14,7 @@ namespace Miam.DataLayer
         private EfEntityRepository<Restaurant> _restaurant = null;
         private EfEntityRepository<Review> _review = null;
         private EfEntityRepository<Tag> _tag = null;
-        private EfEntityRepository<User> _user = null;
+        private EfEntityRepository<ApplicationUser> _user = null;
 
         public EfUnitOfWork()
         {
@@ -69,13 +69,13 @@ namespace Miam.DataLayer
             }
         }
 
-        public IEntityRepository<User> UserRepository
+        public IEntityRepository<ApplicationUser> UserRepository
         {
             get
             {
                 if (_user == null)
                 {
-                    //_user = new EfEntityRepository<User>(_dbContext);
+                    //_user = new EfEntityRepository<ApplicationUser>(_dbContext);
                 }
                 return _user;
             }

@@ -24,7 +24,7 @@ namespace Miam.Web.Controllers
                 DeleteDb();
                 SeedDb();
             }
-             catch (Exception ex)
+            catch (Exception ex)
             {
                 return Content(ex.Message);
             }
@@ -46,8 +46,8 @@ namespace Miam.Web.Controllers
 
         private void DeleteDb()
         {
-                SqlConnection.ClearAllPools();
-                _dbInit.DeleteAll();
+            SqlConnection.ClearAllPools();
+            _dbInit.DeleteAll();
         }
 
         private void SeedDb()

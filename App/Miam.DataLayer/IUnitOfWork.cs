@@ -11,7 +11,7 @@ namespace Miam.DataLayer
         IEntityRepository<Review> ReviewRepository { get; }
         IEntityRepository<Restaurant> RestaurantRepository { get; }
         IEntityRepository<Tag> TagRepository { get; }
-        IEntityRepository<User> UserRepository { get; }
+        IEntityRepository<ApplicationUser> UserRepository { get; }
 
         void Commit();
     }

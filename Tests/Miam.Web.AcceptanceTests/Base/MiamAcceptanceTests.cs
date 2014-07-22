@@ -1,4 +1,5 @@
 ﻿using Miam.Web.Automation;
+using Miam.Web.Automation.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Miam.Web.AcceptanceTests

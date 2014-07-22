@@ -11,15 +11,22 @@
                     MenuSelector.Select("admin-menu", "manage-restaurant-menu-item");
                 }
             }
+            public class CreateRestaurant
+            {
+                public static void Select()
+                {
+                    MenuSelector.Select("admin-menu", "add-restaurant-menu-item");
+                }
+            }
         }
 
         public class Writer
         {
-            public class AddRestaurant
+            public class CreateReview
             {
                 public static void Select()
                 {
-                    MenuSelector.Select("writer-menu", "add-restaurant-menu-item");
+                    MenuSelector.Select("writer-menu", "add-review-menu-item");
                 }
             }
         }

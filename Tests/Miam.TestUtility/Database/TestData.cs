@@ -210,12 +210,12 @@ namespace Miam.TestUtility.Database
         }
         #endregion
 
-        #region user - admin
-        static public User UserAdmin
+        #region Admin (writer with roles admin + writer)
+        static public ApplicationUser ApplicationUserAdmin
         {
             get
             {
-                var user = new User()
+                var user = new Writer()
 
                 {
                     Roles = new List<UserRole>()

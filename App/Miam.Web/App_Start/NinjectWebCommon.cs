@@ -1,5 +1,6 @@
 using Miam.DataLayer;
 using Miam.Domain.Entities;
+using Miam.Web.Services;
 
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Miam.Web.MVC5.App_Start.NinjectWebCommon), "Start")]
@@ -68,8 +69,10 @@ namespace Miam.Web.MVC5.App_Start
             
             kernel.Bind<IEntityRepository<Restaurant>>().To<EfEntityRepository<Restaurant>>().InRequestScope();
             kernel.Bind<IEntityRepository<Writer>>().To<EfEntityRepository<Writer>>().InRequestScope();
-            kernel.Bind<IEntityRepository<User>>().To<EfEntityRepository<User>>().InRequestScope();
+            kernel.Bind<IEntityRepository<ApplicationUser>>().To<EfEntityRepository<ApplicationUser>>().InRequestScope();
             kernel.Bind<IEntityRepository<Review>>().To<EfEntityRepository<Review>>().InRequestScope();
+
+            kernel.Bind<IHttpContextService>().To<HttpContextService>().InRequestScope();
 
             kernel.Bind<IDatabaseHelper>().To<EfDatabaseHelper>().InRequestScope();
         }        

@@ -1,0 +1,51 @@
+﻿@model Miam.Web.ViewModels.RestaurantViewModel.RestaurantEditViewModel
+
+<h2>Modifier un restaurant</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Restaurant</h3>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Adresse</h3>
+
+                            @Html.EditorFor(model => model)
+
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Contacts</h3>
+
+                            @Html.EditorFor(model => model.RestaurantContactDetail)
+
+                        </div>
+
+                    </div>
+                    <input class="btn btn-sm btn-success" id="submit_button" type="submit" value="Confirmer" />
+                    @Html.ActionLink("Annuler", MVC.Restaurant.Index(), new { @class = "btn btn-sm btn-danger" })
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Critiques</h3>
+            </div>
+            <div class="panel-body">
+                @foreach (var review in Model.Reviews)
+                {
+                    <div>
+                        @review.Body (<i>@review.WriterName</i>) @review.Rating / 5
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

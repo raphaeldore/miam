@@ -945,7 +945,7 @@ function isArraylike( obj ) {
 		typeof length === "number" && length > 0 && ( length - 1 ) in obj );
 }
 
-// All jQuery objects should point back to these
+// Index jQuery objects should point back to these
 rootjQuery = jQuery(document);
 // String to Object options format cache
 var optionsCache = {};
@@ -1227,7 +1227,7 @@ jQuery.extend({
 			func.call( deferred, deferred );
 		}
 
-		// All done!
+		// Index done!
 		return deferred;
 	},
 
@@ -2309,7 +2309,7 @@ jQuery.extend({
 
 		notxml = nType !== 1 || !jQuery.isXMLDoc( elem );
 
-		// All attributes are lowercase
+		// Index attributes are lowercase
 		// Grab necessary hook if one is defined
 		if ( notxml ) {
 			name = name.toLowerCase();
@@ -3980,7 +3980,7 @@ function Sizzle( selector, context, results, seed ) {
 		}
 	}
 
-	// All others
+	// Index others
 	return select( selector.replace( rtrim, "$1" ), context, results, seed );
 }
 

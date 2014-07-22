@@ -1,0 +1,32 @@
+﻿@model Miam.Web.ViewModels.ReviewViewModels.ReviewCreateViewModel
+
+<h2>Ajouter une critique</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Critique</legend>
+
+        @Html.ValidationSummary(true)
+
+
+
+        <div class="label_field"> @Html.LabelFor(model => model.RestaurantId, "Restaurant") </div>
+        <div class="editor_field" id="restaurant_id"> @Html.DropDownListFor(model => model.RestaurantId, Model.Restaurants, "Choisir un restaurant") </div>
+        <div class="validation_field">@Html.ValidationMessageFor(model => model.RestaurantId)</div>
+
+        <div class="label_field"> @Html.LabelFor(model => model.Body, "Critique") </div>
+        <div class="editor_field" id="review_body"> @Html.EditorFor(model => model.Body) </div>
+        <div class="validation_field">@Html.ValidationMessageFor(model => model.Body)</div>
+
+        <div class="label_field">@Html.LabelFor(model => model.Rating, "Évaluation (1 à 5)") </div>
+        <div class="editor_field" id="review_rating"> @Html.EditorFor(model => model.Rating) </div>
+        <div class="validation_field">@Html.ValidationMessageFor(model => model.Rating)</div>
+
+        <input class="btn btn-sm btn-success" id="create_button" type="submit" value="Ajouter" />
+        @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
+
+
+    </fieldset>
+}
+
