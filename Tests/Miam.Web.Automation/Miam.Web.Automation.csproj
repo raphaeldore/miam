@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PageObjects\RestaurantPages\CreateRestaurantPage.cs" />
-    <Compile Include="PageObjects\RestaurantPages\ManageRestaurantPage.cs" />
+    <Compile Include="PageObjects\RestaurantPages\EditRestaurantPage.cs" />
     <Compile Include="Selenium\Driver.cs" />
     <Compile Include="PageObjects\HomePage.cs" />
     <Compile Include="PageObjects\LoginPage.cs" />

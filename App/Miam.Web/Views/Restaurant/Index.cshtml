@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<Miam.Web.ViewModels.RestaurantViewModel.RestaurantIndexViewModel>
 
-<h2>Sélectionner le restaurant à modifier</h2>
+<h2 id="index-restaurant-page">Sélectionner le restaurant à modifier</h2>
+
+<div class="text-right" id="restaurants-count">@Model.Count() restaurants</div>
 
 <ul class="list-group">
     @foreach (var item in Model)
@@ -8,16 +10,17 @@
         <li class="list-group-item">
             <h4>
                 @item.Name
-            <a class="fa fa-pencil-square-o" id="edit_button@(item.Id)" href="@Url.Action(MVC.Restaurant.EditRestaurant())?restaurantId=@item.Id"></a>
-            <a class="fa fa-trash-o" id="delete_button@(item.Id)" href="@Url.Action(MVC.Restaurant.DeleteRestaurant())?restaurantId=@item.Id"></a>
-        </h4>
+                <a class="fa fa-pencil-square-o" id="edit_button@(item.Id)" href="@Url.Action(MVC.Restaurant.EditRestaurant())?restaurantId=@item.Id"></a>
+                <a class="fa fa-trash-o" id="delete_button@(item.Id)" href="@Url.Action(MVC.Restaurant.DeleteRestaurant())?restaurantId=@item.Id"></a>
+            </h4>
 
-        <div>@item.City</div>
-        <div>@item.Country</div>
-        <div>Nombre de critiques: @item.CountOfReviews</div>
-        <div>Moyenne des critiques: @item.RatingReviewsAverage /5</div>
-    </li>
+            <div>@item.City</div>
+            <div>@item.Country</div>
+            <div>Nombre de critiques: @item.CountOfReviews</div>
+            <div>Moyenne des critiques: @item.RatingReviewsAverage /5</div>
+        </li>
     }
 </ul>
+
 
 

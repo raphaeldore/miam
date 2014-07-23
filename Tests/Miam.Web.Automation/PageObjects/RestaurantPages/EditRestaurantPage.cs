@@ -1,19 +1,17 @@
-﻿using Miam.Domain.Entities;
+﻿using System;
+using Miam.Domain.Entities;
 using Miam.Web.Automation.Selenium;
 using OpenQA.Selenium;
 
 namespace Miam.Web.Automation.PageObjects.RestaurantPages
 {
-    public class ManageRestaurantPage
+    public class EditRestaurantPage
     {
-        public static string FirstRestaurantName
+        
+
+        public static bool IsDisplayed
         {
-            get
-            {
-                var restaurants = Driver.Instance.FindElement(By.ClassName("list-group"));
-                var firstRestaurant = restaurants.FindElement(By.CssSelector("H4")).Text;
-                return firstRestaurant;
-            }
+            get{ return Driver.Instance.FindElement(By.Id("edit-restaurant-page")) != null; }
         }
 
         public static Restaurant FirstRestaurant
@@ -21,15 +19,14 @@ namespace Miam.Web.Automation.PageObjects.RestaurantPages
             get
             {
                 Driver.Instance.FindElement(By.Id("edit_button1")).Click();
-                return createRestaurantFromRestaurantField();;
+                return createRestaurantFromRestaurantField(); ;
             }
         }
 
         public static void GoTo()
         {
-            Navigation.Admin.ManageRestaurant.Select();
+            Navigation.Admin.EditRestaurant.Select();
         }
-
 
         public static void DeleteFirstRestaurant()
         {
@@ -39,6 +36,7 @@ namespace Miam.Web.Automation.PageObjects.RestaurantPages
             var confirmButton = Driver.Instance.FindElement(By.TagName("input"));
             confirmButton.Click();
         }
+
 
         public static void ModifytFirstRestaurantWith(Restaurant newRestaurant)
         {
@@ -92,6 +90,7 @@ namespace Miam.Web.Automation.PageObjects.RestaurantPages
             };
         }
 
+        
     }
 
     

@@ -3,6 +3,7 @@ using Miam.TestUtility.Database;
 using Miam.Web.Automation;
 using Miam.Web.Automation.PageObjects;
 using Miam.Web.Automation.PageObjects.RestaurantPages;
+using Miam.Web.Automation.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Miam.Web.AcceptanceTests
@@ -20,34 +21,40 @@ namespace Miam.Web.AcceptanceTests
         [TestMethod]
         public void admin_can_delete_restaurant()
         {
-            ManageRestaurantPage.GoTo();
-            var restaurantNameToDelete = ManageRestaurantPage.FirstRestaurantName;
-            ManageRestaurantPage.DeleteFirstRestaurant();
+            HomePage.StoreRestaurtantCount();
 
-            Assert.AreNotEqual(ManageRestaurantPage.FirstRestaurantName, restaurantNameToDelete);
+            EditRestaurantPage.GoTo();
+            EditRestaurantPage.DeleteFirstRestaurant();
+
+            HomePage.GoTo();
+            Assert.AreNotEqual(HomePage.PreviousRestaurantCount, HomePage.CurrentRestaurantCount);
         }
 
          [TestMethod]
         public void admin_can_edit_restaurant()
         {
-            
-             ManageRestaurantPage.GoTo();
-             ManageRestaurantPage.ModifytFirstRestaurantWith(TestData.Restaurant3);
-             ManageRestaurantPage.FirstRestaurant.ShouldBeEquivalentTo(TestData.Restaurant3);
+             EditRestaurantPage.GoTo();
+             EditRestaurantPage.ModifytFirstRestaurantWith(TestData.Restaurant3);
+             
+             //assert
+             EditRestaurantPage.FirstRestaurant.ShouldBeEquivalentTo(TestData.Restaurant3);
         }
 
          [TestMethod]
          public void admin_can_add_a_restaurant()
          {
-             const string RESATURANT_NAME = "Lulu la patate";
+             const string RESTAURANT_NAME = "Lulu la patate";
+             
+             HomePage.StoreRestaurtantCount();
 
              CreateRestaurantPage.GoTo();
-             CreateRestaurantPage.CreateRestaurant(RESATURANT_NAME)
+             CreateRestaurantPage.CreateRestaurant(RESTAURANT_NAME)
                                  .WithCity("Québec")
                                  .WithCountry("Canada")
                                  .Create();
-
-             Assert.IsTrue(HomePage.Contain(RESATURANT_NAME), "Le nom du restaurant ne se trouve pas dans la page.");
+             //Assert
+             Assert.AreEqual(HomePage.PreviousRestaurantCount + 1, HomePage.CurrentRestaurantCount);
+             Assert.IsTrue(HomePage.DoesRestaurantNameExist(RESTAURANT_NAME), "Le nom du restaurant ne se trouve pas dans la page.");
          }
     }
 }

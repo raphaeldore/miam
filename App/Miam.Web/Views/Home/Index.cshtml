@@ -17,8 +17,9 @@
 
 
 <div>
-    <h2>La MIAM Liste</h2>
+    <h2 id="home-page">La MIAM Liste</h2>
 
+    <div class="text-right" id="restaurants-count">@Model.Count() restaurants</div>
 
     <ul class="list-group">
         @foreach (var restaurant in Model)

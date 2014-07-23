@@ -61,6 +61,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Tests\AdminTests.cs" />
+    <Compile Include="Tests\HomeTests.cs" />
     <Compile Include="Tests\LoginTests.cs" />
     <Compile Include="Base\MiamAcceptanceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,18 +1,36 @@
-﻿using Miam.Web.Automation.Selenium;
+﻿using System;
+using Miam.Web.Automation.Selenium;
 using OpenQA.Selenium;
 
 namespace Miam.Web.Automation.PageObjects
 {
     public class LoginPage
     {
-        public static void GoTo()
+        public static bool IsDisplayed
         {
-            Driver.Instance.Navigate().GoToUrl(Driver.BaseAddress + "/Account/Login");
+            get
+            {
+                try
+                {
+                    Driver.Instance.FindElement(By.Id("login-page"));
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
         }
 
         public static LoginCommand LoginAs(string email)
         {
             return new LoginCommand(email);
+        }
+
+      
+        public static void GoTo()
+        {
+            Driver.Instance.Navigate().GoToUrl(Driver.BaseAddress + "/Account/Login");
         }
     }
 
@@ -45,5 +63,7 @@ namespace Miam.Web.Automation.PageObjects
             loginButton.Click();
 
         }
+
+
     }
 }

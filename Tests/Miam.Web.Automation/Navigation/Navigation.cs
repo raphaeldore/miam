@@ -4,7 +4,7 @@
     {
         public class Admin
         {
-            public class ManageRestaurant
+            public class EditRestaurant
             {
                 public static void Select()
                 {
@@ -28,6 +28,14 @@
                 {
                     MenuSelector.Select("writer-menu", "add-review-menu-item");
                 }
+            }
+        }
+
+        public class Home
+        {
+            public static void Select()
+            {
+                MenuSelector.Select("home-menu");
             }
         }
     }

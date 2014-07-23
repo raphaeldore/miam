@@ -22,7 +22,7 @@ namespace Miam.Web.AcceptanceTests
                             .WithRating(3)
                             .Create();
 
-            //Todo: test à compléter: Vérifier si la critiques a été joutée. Une fois compléter, enlever l'attribut ignore
+            //Todo: À compléter: Vérifier si la critiques a été joutée. Une fois le test complété, enlever l'attribut ignore
             
         }
     }
