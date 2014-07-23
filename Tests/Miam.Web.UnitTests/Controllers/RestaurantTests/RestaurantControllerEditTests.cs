@@ -1,6 +1,7 @@
 using System.Web.Mvc;
 using AutoMapper;
 using FluentAssertions;
+using Miam.Domain.Entities;
 using Miam.Web.ViewModels.RestaurantViewModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
@@ -15,7 +16,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void edit_should_return_view_with_restaurantViewModel_when_restaurantId_is_valid()
         {
             //Arrange 
-            var restaurant = _fixture.Create<Domain.Entities.Restaurant>();
+            var restaurant = _fixture.Create<Restaurant>();
             _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
             var viewModelExpected = Mapper.Map<RestaurantEditViewModel>(restaurant);
 
@@ -48,7 +49,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void edit_post_should_update_restaurant_when_restaurantId_is_valid()
         {
             //Arrange
-            var restaurant = _fixture.Create<Domain.Entities.Restaurant>();
+            var restaurant = _fixture.Create<Restaurant>();
             _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
             var restaurantViewModel = Mapper.Map<RestaurantEditViewModel>(restaurant);
 
@@ -56,7 +57,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             var actionResult = _adminController.EditRestaurant(restaurantViewModel);
 
             // Assert
-            _restaurantRepository.Received().Update(Arg.Is<Domain.Entities.Restaurant>(x => x.Id == restaurant.Id));
+            _restaurantRepository.Received().Update(Arg.Is<Restaurant>(x => x.Id == restaurant.Id));
 
         }
 
@@ -64,12 +65,12 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void edit_post_should_redirect_to_index_on_success()
         {
             //Arrange
-            var restaurant = _fixture.Create<Domain.Entities.Restaurant>();
+            var restaurant = _fixture.Create<Restaurant>();
             _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
-            var restaurantViewModel = Mapper.Map<Domain.Entities.Restaurant, RestaurantEditViewModel>(restaurant);
+            var restaurantEditPageViewModel = Mapper.Map<Restaurant, RestaurantEditViewModel>(restaurant);
 
             //Act
-            var routeResult = _adminController.EditRestaurant(restaurantViewModel) as RedirectToRouteResult;
+            var routeResult = _adminController.EditRestaurant(restaurantEditPageViewModel) as RedirectToRouteResult;
             var routeAction = routeResult.RouteValues["Action"];
 
             //Assert
@@ -81,11 +82,15 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void edit_post_should_return_view_with_errors_when_modelState_is_not_valid()
         {
             //Arrange
-            var restaurantViewModel = _fixture.Create<RestaurantEditViewModel>();
+            var restaurant = _fixture.Create<Restaurant>();
+            var restaurantEditPageViewModel = _fixture.Build<RestaurantEditViewModel>()
+                                                      .With(x=>x.Id, restaurant.Id)
+                                                      .Create();
+            _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
             _adminController.ModelState.AddModelError("Error", "Error");
 
             //Act
-            var result = _adminController.EditRestaurant(restaurantViewModel) as ViewResult;
+            var result = _adminController.EditRestaurant(restaurantEditPageViewModel) as ViewResult;
             var viewName = result.ViewName;
 
             //Assert

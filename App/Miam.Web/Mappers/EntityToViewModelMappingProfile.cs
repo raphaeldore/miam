@@ -26,10 +26,11 @@ namespace Miam.Web.Mappers
         private void ToRestaurantViewModels()
         {
             //Edit viewModel mapping
-            Mapper.CreateMap<ICollection<Review>, IList<ReviewIndexViewModel>>();
-            Mapper.CreateMap<Review, ReviewIndexViewModel>();
+            
             Mapper.CreateMap<RestaurantContactDetail, RestaurantContactDetailViewModel>();
+
             Mapper.CreateMap<Restaurant, RestaurantEditViewModel>();
+                
 
             //Index viewModel mapping
             Mapper.CreateMap<Restaurant, RestaurantIndexViewModel>()
@@ -49,6 +50,9 @@ namespace Miam.Web.Mappers
             //Create viewModel mapping
             Mapper.CreateMap<Review, ReviewCreateViewModel>()
                .ForMember(dest => dest.Restaurants, opt => opt.Ignore());
+
+            Mapper.CreateMap<Review, ReviewIndexViewModel>();
+
         }
         
         private static void ToHomeViewModels()

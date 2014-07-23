@@ -15,11 +15,11 @@
 
         @Html.ValidationMessage("loginError")
 
-        @Html.ValidationMessageFor(model => model.Email, "Le champ courriel est requis")
+        @Html.ValidationMessageFor(model => model.Email)
         @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Courriel", type = "email" })
 
 
-        @Html.ValidationMessageFor(model => model.Password, "Le champ mot de passe est requis")
+        @Html.ValidationMessageFor(model => model.Password)
         @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Mot de passe", type = "password" })
 
 

@@ -258,8 +258,8 @@
     <Compile Include="ViewModels\RestaurantViewModel\RestaurantDeleteViewModel.cs" />
     <Compile Include="ViewModels\RestaurantViewModel\RestaurantContactDetailViewModel.cs" />
     <Compile Include="ViewModels\RestaurantViewModel\RestaurantCreateViewModel.cs" />
-    <Compile Include="ViewModels\RestaurantViewModel\RestaurantEditViewModel.cs" />
     <Compile Include="ViewModels\RestaurantViewModel\RestaurantIndexViewModel.cs" />
+    <Compile Include="ViewModels\RestaurantViewModel\RestaurantEditViewModel.cs" />
     <Compile Include="ViewModels\ReviewViewModels\ReviewIndexViewModel.cs" />
     <Compile Include="ViewModels\ReviewViewModels\ReviewCreateViewModel.cs" />
   </ItemGroup>

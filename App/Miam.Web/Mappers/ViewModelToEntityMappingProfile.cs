@@ -37,7 +37,7 @@ namespace Miam.Web.Mappers
             Mapper.CreateMap<RestaurantContactDetailViewModel, RestaurantContactDetail>()
                 .ForMember(dest => dest.RestaurantId, opt => opt.Ignore())
                 .ForMember(dest => dest.Restaurant, opt => opt.Ignore());
-            
+
             Mapper.CreateMap<RestaurantEditViewModel, Restaurant>()
                 .ForMember(dest => dest.Reviews, opt => opt.Ignore())
                 .ForMember(dest => dest.Tags, opt => opt.Ignore());

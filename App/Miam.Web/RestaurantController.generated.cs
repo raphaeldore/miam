@@ -121,7 +121,7 @@ namespace Miam.Web.Controllers
         public class ActionParamsClass_EditRestaurant
         {
             public readonly string restaurantID = "restaurantID";
-            public readonly string restaurantEditViewModel = "RestaurantEditViewModel";
+            public readonly string restaurantManageViewModel = "RestaurantEditViewModel";
         }
         static readonly ActionParamsClass_DeleteRestaurant s_params_DeleteRestaurant = new ActionParamsClass_DeleteRestaurant();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
