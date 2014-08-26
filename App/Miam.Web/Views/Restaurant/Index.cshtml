@@ -24,3 +24,19 @@
 
 
 
+@section SectionCss{
+    <link href="@Url.Content("~/Content/Toastr/toastr.css")" rel="stylesheet" type="text/css" />
+}
+
+@section SectionJavascript{
+    <script src="~/Scripts/jquery-1.9.0.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+    <script>
+                $(document).ready(function () {
+                    // show when page load
+                    toastr.info('Page Loaded!');
+                });
+    </script>
+}
+
+
