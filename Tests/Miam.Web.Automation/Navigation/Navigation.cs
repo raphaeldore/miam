@@ -31,12 +31,42 @@
             }
         }
 
-        public class Home
+        public class AllUsers
         {
-            public static void Select()
+            public class Home
             {
-                MenuSelector.Select("home-menu");
+
+                public static void Select()
+                {
+                    MenuSelector.Select("home-link");
+                }
+            }
+
+
+            public class Login
+            {
+                public static void Select()
+                {
+                    MenuSelector.Select("login-link");
+                }
+            }
+            public class Logout
+            {
+                public static void Select()
+                {
+                    MenuSelector.Select("logout-link");
+                }
+
+
             }
         }
     }
 }
+
+
+
+
+
+
+
+

@@ -2,12 +2,12 @@
 {
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink(@User.Identity.Name, MVC.Home.Index())</li>
-        <li>@Html.ActionLink("Se déconnecter", MVC.Account.Logout())</li>
+        <li>@Html.ActionLink("Se déconnecter", MVC.Account.Logout(), new { id = "logout" })</li>
     </ul>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Se connecter", MVC.Account.Login())</li>
+        <li>@Html.ActionLink("Se connecter", MVC.Account.Login(), new { id = "login" })</li>
     </ul>
 }
