@@ -15,7 +15,9 @@ namespace Miam.DataLayer
     }
 }
 
-// Pour l'explication concernant DbConfiguration voir:
+// La chaine de connection est définie dans web.config de Miam.Web
+//
+// Pour l'explication concernant l'héritage avec DbConfiguration voir:
 // http://msdn.microsoft.com/en-us/library/system.data.entity.dbconfiguration(v=vs.113).aspx 
 // http://msdn.microsoft.com/en-US/data/jj680699
 //
