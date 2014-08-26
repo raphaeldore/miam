@@ -17,10 +17,10 @@ namespace Miam.Web.Automation.Selenium
         {
             Instance = new FirefoxDriver();
             
-            //Selenium doir attendre 5 seconde avant d'indiquer qu'un objet n'est pas sur une page.
+            //Selenium doit attendre 5 seconde avant d'indiquer qu'un objet n'est pas sur une page.
             Instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
 
-            //Efface et peuple la BD avec des données
+            //Efface et peuple la BD avec des données pour les tests
             Instance.Navigate().GoToUrl(BaseAddress + "/Ci");
             Instance.FindElement(By.Id("go_home")).Click();
         }
