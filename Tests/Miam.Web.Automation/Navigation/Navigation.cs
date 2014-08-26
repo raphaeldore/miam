@@ -1,4 +1,5 @@
-﻿namespace Miam.Web.Automation
+﻿
+namespace Miam.Web.Automation
 {
     public class Navigation
     {
@@ -31,12 +32,33 @@
             }
         }
 
-        public class Home
+        public class AllUsers
         {
-            public static void Select()
+            public class Home
             {
-                MenuSelector.Select("home-menu");
+
+                public static void Select()
+                {
+                    MenuSelector.SelectTopLevel("home-link");
+                }
+            }
+
+
+            public class Login
+            {
+                public static void Select()
+                {
+                    MenuSelector.SelectTopLevel("login-link");
+                }
             }
         }
     }
 }
+
+
+
+
+
+
+
+

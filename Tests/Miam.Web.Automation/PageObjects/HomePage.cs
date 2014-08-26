@@ -62,7 +62,7 @@ namespace Miam.Web.Automation.PageObjects
 
         public static void GoTo()
         {
-            Driver.Instance.Navigate().GoToUrl(Driver.BaseAddress);
+            Navigation.AllUsers.Home.Select();
         }
     }
 }

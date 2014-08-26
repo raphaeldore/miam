@@ -1,6 +1,7 @@
 ﻿using System;
 using Miam.Web.Automation.Selenium;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace Miam.Web.Automation.PageObjects
 {
@@ -30,7 +31,11 @@ namespace Miam.Web.Automation.PageObjects
       
         public static void GoTo()
         {
-            Driver.Instance.Navigate().GoToUrl(Driver.BaseAddress + "/Account/Login");
+            var wait = new WebDriverWait(Driver.Instance, TimeSpan.FromSeconds(10));
+            wait.Until(d => d.FindElement(By.Id("login-link")));
+            Navigation.AllUsers.Login.Select();
+
+            //Driver.Instance.Navigate().GoToUrl(Driver.BaseAddress + "/Account/Login");
         }
     }
 

@@ -5,14 +5,14 @@ namespace Miam.Web.Automation
 {
     public class MenuSelector
     {
-        public static void Select(string topLevelMenuId)
+        public static void SelectTopLevel(string topLevelMenuId)
         {
-            var adminMenu = Driver.Instance.FindElement(By.Id(topLevelMenuId));
-            adminMenu.Click();
+            var menuElement = Driver.Instance.FindElement(By.Id(topLevelMenuId));
+            menuElement.Click();
         }
         public static void Select(string topLevelMenuId, string subLevelMenuId)
         {
-            Select(topLevelMenuId);
+            SelectTopLevel(topLevelMenuId);
 
             var editRestaurantMenuItem = Driver.Instance.FindElement(By.Id(subLevelMenuId));
             editRestaurantMenuItem.Click();
