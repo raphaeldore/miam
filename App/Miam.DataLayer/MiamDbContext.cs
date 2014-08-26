@@ -5,7 +5,6 @@ namespace Miam.DataLayer
 {
     public class MiamDbContext : DbContext
     {
-    
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<RestaurantContactDetail> RestaurantContactDetails { get; set; }
         public DbSet<Review> Reviews { get; set; }
