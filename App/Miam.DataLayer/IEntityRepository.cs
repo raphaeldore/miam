@@ -8,8 +8,6 @@ namespace Miam.DataLayer
 
         IQueryable<T> GetAll(); 
         T GetById(int id);
-        void DeleteById(int id);
-
 
         void Delete(T entity);
         void Add(T entity);

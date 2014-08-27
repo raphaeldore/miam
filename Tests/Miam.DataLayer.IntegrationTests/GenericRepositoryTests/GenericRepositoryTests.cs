@@ -53,14 +53,16 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         }
 
         [TestMethod]
-        public void deleteById_and_commit_restaurant_using_generic_repository()
+        public void delete_and_commit_restaurant_using_generic_repository()
         {
             //Arrange
             int restaurantCount = _miamDbContextBefore.Restaurants.Count();
-            var restaurantToDelete = _miamDbContextBefore.Restaurants.First();
+            var restaurantBefore = _miamDbContextBefore.Restaurants.First();
+            
 
             //Action
-            _restaurantRepository.DeleteById(restaurantToDelete.Id);
+            var restaurantToDelete = _restaurantRepository.GetById(restaurantBefore.Id);
+            _restaurantRepository.Delete(restaurantToDelete);
 
             //Assert 
             var restaurantCountAfter = _miamDbContextAfter.Restaurants.Count();
@@ -171,9 +173,11 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         {
             //Arrange
             var restaurantBefore = _miamDbContextBefore.Restaurants.First();
+           
 
             //Action
-            _restaurantRepository.DeleteById(restaurantBefore.Id);
+            var restaurantToDelete = _restaurantRepository.GetById(restaurantBefore.Id);
+            _restaurantRepository.Delete(restaurantToDelete);
 
             //Assert 
             int reviewsCountAfter = _miamDbContextAfter.Reviews
@@ -190,7 +194,8 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
                 .Count(r => r.RestaurantId == restaurantBefore.Id);
 
             //Action
-            _restaurantRepository.DeleteById(restaurantBefore.Id);
+            var restaurantToDelete = _restaurantRepository.GetById(restaurantBefore.Id);
+            _restaurantRepository.Delete(restaurantToDelete);
 
             //Assert
             int restaurantContactDetailsCountAfter = _miamDbContextAfter.RestaurantContactDetails
@@ -206,7 +211,8 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             int tagsCountBefore = _miamDbContextBefore.RestaurantTags.Count();
 
             //Action
-            _restaurantRepository.DeleteById(restaurantBefore.Id);
+            var restaurantToDelete = _restaurantRepository.GetById(restaurantBefore.Id);
+            _restaurantRepository.Delete(restaurantToDelete);
 
             //Assert 
             int tagsCountAfter = _miamDbContextAfter.RestaurantTags.Count();
@@ -221,7 +227,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
 
             //Action
             var writer = writerRepository.GetById(writerBefore.Id);
-            writerRepository.DeleteById(writer.Id);
+            writerRepository.Delete(writer);
 
             //Assert 
             int reviewsCountAfter = _miamDbContextAfter.Reviews.Count(r => r.WriterId == writer.Id);

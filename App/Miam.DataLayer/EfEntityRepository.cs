@@ -24,13 +24,6 @@ namespace Miam.DataLayer
             return _context.Set<T>().FirstOrDefault(x => x.Id == id);
         }
 
-        public void DeleteById(int id)
-        {
-            var entity = GetById(id);
-            Delete(entity);
-            _context.SaveChanges();
-        }
-
         public void Delete(T entity)
         {
             _context.Set<T>().Attach(entity);
