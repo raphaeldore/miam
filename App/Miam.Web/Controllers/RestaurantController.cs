@@ -84,8 +84,16 @@ namespace Miam.Web.Controllers
         [HttpPost, ActionName("DeleteRestaurant")]
         public virtual ActionResult DeleteRestaurantConfirmed(int restaurantId)
         {
-            _restaurantRepository.DeleteById(restaurantId);
-            return RedirectToAction(MVC.Restaurant.Index());
+            var restaurant = _restaurantRepository.GetById(restaurantId);
+
+            if (restaurant != null)
+            {
+                _restaurantRepository.Delete(restaurant);
+                return RedirectToAction(MVC.Restaurant.Index());
+            }
+
+            return HttpNotFound();
+            
         }
 
         public virtual ViewResult Create()
@@ -104,14 +112,5 @@ namespace Miam.Web.Controllers
             }
             return View("");
         }
-
-        [HttpGet]
-        public virtual ActionResult DeleteReview(int reviewId)
-        {
-            //var review = _reviewRepository.GetById(reviewId);
-            //_reviewRepository.Delete(review);
-            return RedirectToAction(MVC.Restaurant.Index());
-        }
-
     }
 }

@@ -91,9 +91,6 @@ namespace Links
         public static readonly string jquery_1_9_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.9.0.min.js") ? Url("jquery-1.9.0.min.js") : Url("jquery-1.9.0.js");
         public static readonly string jquery_1_9_0_min_js = Url("jquery-1.9.0.min.js");
         public static readonly string jquery_1_9_0_min_map = Url("jquery-1.9.0.min.map");
-        public static readonly string toastr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/toastr.min.js") ? Url("toastr.min.js") : Url("toastr.js");
-        public static readonly string toastr_min_js = Url("toastr.min.js");
-        public static readonly string toastr_min_js_map = Url("toastr.min.js.map");
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

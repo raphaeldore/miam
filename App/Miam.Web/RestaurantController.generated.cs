@@ -72,12 +72,6 @@ namespace Miam.Web.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteRestaurantConfirmed);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult DeleteReview()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteReview);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public RestaurantController Actions { get { return MVC.Restaurant; } }
@@ -99,7 +93,6 @@ namespace Miam.Web.Controllers
             public readonly string DeleteRestaurant = "DeleteRestaurant";
             public readonly string DeleteRestaurantConfirmed = "DeleteRestaurant";
             public readonly string Create = "Create";
-            public readonly string DeleteReview = "DeleteReview";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -110,7 +103,6 @@ namespace Miam.Web.Controllers
             public const string DeleteRestaurant = "DeleteRestaurant";
             public const string DeleteRestaurantConfirmed = "DeleteRestaurant";
             public const string Create = "Create";
-            public const string DeleteReview = "DeleteReview";
         }
 
 
@@ -121,7 +113,7 @@ namespace Miam.Web.Controllers
         public class ActionParamsClass_EditRestaurant
         {
             public readonly string restaurantID = "restaurantID";
-            public readonly string restaurantManageViewModel = "RestaurantEditViewModel";
+            public readonly string restaurantEditViewModel = "restaurantEditViewModel";
         }
         static readonly ActionParamsClass_DeleteRestaurant s_params_DeleteRestaurant = new ActionParamsClass_DeleteRestaurant();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -146,14 +138,6 @@ namespace Miam.Web.Controllers
         public class ActionParamsClass_Create
         {
             public readonly string restaurantCreateViewModel = "restaurantCreateViewModel";
-        }
-        static readonly ActionParamsClass_DeleteReview s_params_DeleteReview = new ActionParamsClass_DeleteReview();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_DeleteReview DeleteReviewParams { get { return s_params_DeleteReview; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_DeleteReview
-        {
-            public readonly string reviewId = "reviewId";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -212,7 +196,7 @@ namespace Miam.Web.Controllers
         public override System.Web.Mvc.ActionResult EditRestaurant(Miam.Web.ViewModels.RestaurantViewModel.RestaurantEditViewModel restaurantEditViewModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditRestaurant);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "RestaurantEditViewModel", restaurantEditViewModel);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantEditViewModel", restaurantEditViewModel);
             EditRestaurantOverride(callInfo, restaurantEditViewModel);
             return callInfo;
         }
@@ -261,18 +245,6 @@ namespace Miam.Web.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantCreateViewModel", restaurantCreateViewModel);
             CreateOverride(callInfo, restaurantCreateViewModel);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void DeleteReviewOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int reviewId);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult DeleteReview(int reviewId)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteReview);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "reviewId", reviewId);
-            DeleteReviewOverride(callInfo, reviewId);
             return callInfo;
         }
 

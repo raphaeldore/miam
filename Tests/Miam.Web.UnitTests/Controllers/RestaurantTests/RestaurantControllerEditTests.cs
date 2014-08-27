@@ -21,7 +21,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             var viewModelExpected = Mapper.Map<RestaurantEditViewModel>(restaurant);
 
             //Action
-            var viewResult = _adminController.EditRestaurant(restaurant.Id) as ViewResult;
+            var viewResult = _restaurantController.EditRestaurant(restaurant.Id) as ViewResult;
             var viewModelObtained = viewResult.ViewData.Model as RestaurantEditViewModel;
 
             //Assert 
@@ -34,7 +34,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             //Arrange 
 
             //Act
-            var result = _adminController.EditRestaurant(999999999);
+            var result = _restaurantController.EditRestaurant(999999999);
             
             //Assert
             result.Should().BeOfType<HttpNotFoundResult>();
@@ -54,7 +54,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             var restaurantViewModel = Mapper.Map<RestaurantEditViewModel>(restaurant);
 
             //Action
-            var actionResult = _adminController.EditRestaurant(restaurantViewModel);
+            var actionResult = _restaurantController.EditRestaurant(restaurantViewModel);
 
             // Assert
             _restaurantRepository.Received().Update(Arg.Is<Restaurant>(x => x.Id == restaurant.Id));
@@ -70,7 +70,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             var restaurantEditPageViewModel = Mapper.Map<Restaurant, RestaurantEditViewModel>(restaurant);
 
             //Act
-            var routeResult = _adminController.EditRestaurant(restaurantEditPageViewModel) as RedirectToRouteResult;
+            var routeResult = _restaurantController.EditRestaurant(restaurantEditPageViewModel) as RedirectToRouteResult;
             var routeAction = routeResult.RouteValues["Action"];
 
             //Assert
@@ -87,10 +87,10 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
                                                       .With(x=>x.Id, restaurant.Id)
                                                       .Create();
             _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
-            _adminController.ModelState.AddModelError("Error", "Error");
+            _restaurantController.ModelState.AddModelError("Error", "Error");
 
             //Act
-            var result = _adminController.EditRestaurant(restaurantEditPageViewModel) as ViewResult;
+            var result = _restaurantController.EditRestaurant(restaurantEditPageViewModel) as ViewResult;
             var viewName = result.ViewName;
 
             //Assert
