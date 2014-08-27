@@ -91,12 +91,24 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 
             //Act
             var result = _restaurantController.EditRestaurant(restaurantEditPageViewModel) as ViewResult;
-            var viewName = result.ViewName;
+            var errorCount = result.ViewData.ModelState.Count;
 
             //Assert
+            errorCount.Should().BeGreaterThan(0);
             
-            viewName.Should().Be("");
-            
+        }
+        [TestMethod]
+        public void edit_post_should_return_http_not_found_when_restaurantID_is_not_valid()
+        {
+            //Arrange 
+            var restaurant = _fixture.Create<RestaurantEditViewModel>();
+            _restaurantRepository.GetById(Arg.Any<int>()).Returns(a => null);
+
+            //Act
+            var result = _restaurantController.EditRestaurant(restaurant);
+
+            //Assert
+            result.Should().BeOfType<HttpNotFoundResult>();
         }
     }
 }

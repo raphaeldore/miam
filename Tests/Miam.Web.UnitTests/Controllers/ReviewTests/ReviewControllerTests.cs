@@ -41,7 +41,7 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         }
 
         [TestMethod]
-        public void post_create_should_add_writer_review_to_repository()
+        public void create_post_should_add_writer_review_to_repository()
         {
             // Arrange   
             var review = _fixture.Create<Review>();
@@ -56,7 +56,7 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         }
 
         [TestMethod]
-        public void post_create_should_return_view_with_errors_when_modelState_is_not_valid()
+        public void create_post_should_return_view_with_errors_when_modelState_is_not_valid()
         {
             //Arrange
             var reviewCreateViewModel = _fixture.Build<ReviewCreateViewModel>()
@@ -73,7 +73,7 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         }
 
         [TestMethod]
-        public void post_create_should_redirect_to_home_index_on_success()
+        public void create_post_should_redirect_to_home_index_on_success()
         {
             //Arrange
             var reviewCreateViewModel = _fixture.Build<ReviewCreateViewModel>()

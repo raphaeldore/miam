@@ -32,22 +32,5 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
             //Assert
             viewName.Should().Be("");
         }
-
-         //[TestMethod]
-         //public void post_create_should_add_user_to_repository_with_encrypted_password()
-         //{
-         //    // Arrange   
-         //    var accountLoginViewModel = _fixture.Create<AccountLoginViewModel>();
-         //    accountLoginViewModel.Password = "admin";
-
-         //    // Action
-         //    AuthenticationController.Create(accountLoginViewModel);
-
-         //    // Assert (avec NSubstitute)
-         //    //_repositoryMock.Received().Add(Arg.Is<Writer>(x => x.Id == us.Id));
-         //    //_UnitOfWorkMock.Received().Commit();
-         //}
-
-    //todo: test page en https
     }
 }

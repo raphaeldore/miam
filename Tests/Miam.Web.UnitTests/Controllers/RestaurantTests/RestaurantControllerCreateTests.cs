@@ -33,7 +33,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         }
 
         [TestMethod]
-        public void post_create_should_add_restaurant_to_repository()
+        public void create_post_should_add_restaurant_to_repository()
         {
             // Arrange   
             var restaurant = _fixture.Create<Restaurant>();
@@ -48,7 +48,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         }
 
         [TestMethod]
-        public void post_create_should_return_view_with_errors_when_modelState_is_not_valid()
+        public void create_post_should_return_view_with_errors_when_modelState_is_not_valid()
         {
             //Arrange
             var restaurantViewModel = _fixture.Create<RestaurantCreateViewModel>();
@@ -56,15 +56,14 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 
             //Act
             var result = _restaurantController.Create(restaurantViewModel) as ViewResult;
-            var viewName = result.ViewName;
+            var errorCount = result.ViewData.ModelState.Count;
 
             //Assert
-
-            viewName.Should().Be("");
+            errorCount.Should().BeGreaterThan(0);
         }
 
         [TestMethod]
-        public void post_create_should_redirect_to_home_index_on_success()
+        public void create_post_should_redirect_to_home_index_on_success()
         {
             //Arrange
             var restaurantViewModel = _fixture.Create<RestaurantCreateViewModel>();
