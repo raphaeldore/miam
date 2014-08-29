@@ -6,7 +6,7 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers
 {
 
-    public class ControllerBaseTestsClass
+    public class AllControllersBaseClassTests
     {
         protected Fixture _fixture;
 

@@ -9,7 +9,7 @@ using Miam.Domain.Entities;
 namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 {
     [TestClass]
-    public class RestaurantControllerDeleteTests : RestaurantControllerBaseTestsClass
+    public class RestaurantControllerDeleteTests : RestaurantControllerBaseClassTests
     {
         [TestMethod]
         public void delete_restaurant_should_return_view_when_restaurantID_is_valid()

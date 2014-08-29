@@ -9,7 +9,7 @@ using NSubstitute;
 namespace Miam.Web.UnitTests.Controllers.AccountTests
 {
     [TestClass]
-    public class AccountControllerLoginTests : ControllerBaseTestsClass
+    public class AccountControllerLoginTests : AllControllersBaseClassTests
     {
         private IEntityRepository<ApplicationUser> _userRepository;
         private AccountController _accountController;

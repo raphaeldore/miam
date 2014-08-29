@@ -79,8 +79,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Controllers\AccountTests\AccountControllerLoginTests.cs" />
-    <Compile Include="Controllers\ControllerBaseTestsClass.cs" />
-    <Compile Include="Controllers\RestaurantTests\RestaurantControllerBaseTestsClass.cs" />
+    <Compile Include="Controllers\AllControllersBaseClassTests.cs" />
+    <Compile Include="Controllers\RestaurantTests\RestaurantControllerBaseClassTests.cs" />
     <Compile Include="Controllers\RestaurantTests\RestaurantControllerDeleteTests.cs" />
     <Compile Include="Controllers\RestaurantTests\RestaurantControllerEditTests.cs" />
     <Compile Include="Controllers\RestaurantTests\RestaurantControllerCreateTests.cs" />

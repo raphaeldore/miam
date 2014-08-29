@@ -16,7 +16,7 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.ReviewTests
 {
     [TestClass]
-    public class ReviewControllerTests : ControllerBaseTestsClass
+    public class ReviewControllerTests : AllControllersBaseClassTests
     {
         private ReviewController _reviewController;
         private IEntityRepository<Review> _reviewRepository;

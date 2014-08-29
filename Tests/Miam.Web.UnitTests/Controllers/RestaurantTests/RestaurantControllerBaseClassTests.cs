@@ -7,7 +7,7 @@ using NSubstitute;
 namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 {
 
-    public class RestaurantControllerBaseTestsClass : ControllerBaseTestsClass
+    public class RestaurantControllerBaseClassTests : AllControllersBaseClassTests
     {
         protected IEntityRepository<Restaurant> _restaurantRepository;
         protected IEntityRepository<Review> _reviewRepository;

@@ -10,7 +10,7 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 {
     [TestClass]
-    public class RestaurantControllerEditTests : RestaurantControllerBaseTestsClass
+    public class RestaurantControllerEditTests : RestaurantControllerBaseClassTests
     {
         [TestMethod]
         public void edit_should_return_view_with_restaurantViewModel_when_restaurantId_is_valid()

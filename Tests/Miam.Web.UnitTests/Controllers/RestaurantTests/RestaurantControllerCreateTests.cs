@@ -12,18 +12,8 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 {
     [TestClass]
-    public class RestaurantControllerCreateTests : ControllerBaseTestsClass
+    public class RestaurantControllerCreateTests : RestaurantControllerBaseClassTests
     {
-        private IEntityRepository<Restaurant> _restaurantRepository;
-        private RestaurantController _restaurantController;
-
-        [TestInitialize]
-        public void RestaurantControllerTestInit()
-        {
-            _restaurantRepository = Substitute.For<IEntityRepository<Restaurant>>();
-            _restaurantController = new RestaurantController(_restaurantRepository);
-        }
-
         [TestMethod]
         public void create_action_should_render_default_view()
         {
