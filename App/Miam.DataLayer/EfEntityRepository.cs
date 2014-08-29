@@ -26,8 +26,7 @@ namespace Miam.DataLayer
 
         public void Delete(T entity)
         {
-            _context.Set<T>().Attach(entity);
-            _context.Entry(entity).State = EntityState.Deleted;
+            _context.Set<T>().Remove(entity);
             _context.SaveChanges();
         }
 
