@@ -21,13 +21,7 @@ namespace Miam.Web.Automation.PageObjects
                 return Driver.Instance.FindElement(By.Id("writer-menu")) != null; 
             }
         }
-        public static bool IsDisplayed
-        {
-            get
-            {
-                return Driver.Instance.FindElement(By.Id("home-page")) != null; 
-            }
-        }
+        
         public static bool HasRestaurant
         {
             get
