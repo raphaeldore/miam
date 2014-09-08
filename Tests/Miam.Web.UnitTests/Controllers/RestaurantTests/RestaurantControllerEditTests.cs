@@ -79,7 +79,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         }
 
         [TestMethod]
-        public void edit_post_should_return_view_with_errors_when_modelState_is_not_valid()
+        public void edit_post_should_return_default_view_when_modelState_is_not_valid()
         {
             //Arrange
             var restaurant = _fixture.Create<Restaurant>();
@@ -91,10 +91,9 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 
             //Act
             var result = _restaurantController.EditRestaurant(restaurantEditPageViewModel) as ViewResult;
-            var errorCount = result.ViewData.ModelState.Count;
 
             //Assert
-            errorCount.Should().BeGreaterThan(0);
+            Assert.AreEqual(result.ViewName, "");
             
         }
         [TestMethod]
