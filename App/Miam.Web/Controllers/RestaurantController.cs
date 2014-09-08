@@ -30,7 +30,7 @@ namespace Miam.Web.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult EditRestaurant(int restaurantID)
+        public virtual ActionResult Edit(int restaurantID)
         {
             var restaurant = _restaurantRepository.GetById(restaurantID);
 
@@ -45,7 +45,7 @@ namespace Miam.Web.Controllers
 
 
         [HttpPost]
-        public virtual ActionResult EditRestaurant(RestaurantEditViewModel restaurantEditViewModel)
+        public virtual ActionResult Edit(RestaurantEditViewModel restaurantEditViewModel)
         {
             var restaurant = _restaurantRepository.GetById(restaurantEditViewModel.Id);
             if (restaurant == null)
@@ -68,7 +68,7 @@ namespace Miam.Web.Controllers
 
 
         [HttpGet]
-        public virtual ActionResult DeleteRestaurant(int restaurantId)
+        public virtual ActionResult Delete(int restaurantId)
         {
             var restaurant = _restaurantRepository.GetById(restaurantId);
 
@@ -81,8 +81,8 @@ namespace Miam.Web.Controllers
         }
 
 
-        [HttpPost, ActionName("DeleteRestaurant")]
-        public virtual ActionResult DeleteRestaurantConfirmed(int restaurantId)
+        [HttpPost, ActionName("Delete")]
+        public virtual ActionResult DeleteConfirmed(int restaurantId)
         {
             var restaurant = _restaurantRepository.GetById(restaurantId);
 

@@ -19,7 +19,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
 
             //Action
-            var result = _restaurantController.DeleteRestaurant(restaurant.Id) as ViewResult;
+            var result = _restaurantController.Delete(restaurant.Id) as ViewResult;
             var restaurantViewModel = result.ViewData.Model as RestaurantDeleteViewModel;
 
             //Assert 
@@ -32,7 +32,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             //Arrange 
 
             //Act
-            var result = _restaurantController.DeleteRestaurant(999999999);
+            var result = _restaurantController.Delete(999999999);
 
             //Assert
             result.Should().BeOfType<HttpNotFoundResult>();
@@ -50,7 +50,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 
 
             //Action
-            _restaurantController.DeleteRestaurantConfirmed(restaurant.Id);
+            _restaurantController.DeleteConfirmed(restaurant.Id);
 
             // Assert
             _restaurantRepository.Received().Delete(restaurant);
@@ -64,7 +64,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
 
             //Act
-            var routeResult = _restaurantController.DeleteRestaurantConfirmed(restaurant.Id) as RedirectToRouteResult;
+            var routeResult = _restaurantController.DeleteConfirmed(restaurant.Id) as RedirectToRouteResult;
             var routeAction = routeResult.RouteValues["Action"];
 
             //Assert
@@ -77,7 +77,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             //Arrange 
 
             //Act
-            var result = _restaurantController.DeleteRestaurantConfirmed(999999999);
+            var result = _restaurantController.DeleteConfirmed(999999999);
 
             //Assert
             result.Should().BeOfType<HttpNotFoundResult>();

@@ -181,7 +181,7 @@ namespace Miam.Web.Controllers
         partial void EditRestaurantOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int restaurantID);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult EditRestaurant(int restaurantID)
+        public override System.Web.Mvc.ActionResult Edit(int restaurantID)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditRestaurant);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantID", restaurantID);
@@ -193,7 +193,7 @@ namespace Miam.Web.Controllers
         partial void EditRestaurantOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.RestaurantViewModel.RestaurantEditViewModel restaurantEditViewModel);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult EditRestaurant(Miam.Web.ViewModels.RestaurantViewModel.RestaurantEditViewModel restaurantEditViewModel)
+        public override System.Web.Mvc.ActionResult Edit(Miam.Web.ViewModels.RestaurantViewModel.RestaurantEditViewModel restaurantEditViewModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditRestaurant);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantEditViewModel", restaurantEditViewModel);
@@ -205,7 +205,7 @@ namespace Miam.Web.Controllers
         partial void DeleteRestaurantOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int restaurantId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult DeleteRestaurant(int restaurantId)
+        public override System.Web.Mvc.ActionResult Delete(int restaurantId)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteRestaurant);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantId", restaurantId);
@@ -217,7 +217,7 @@ namespace Miam.Web.Controllers
         partial void DeleteRestaurantConfirmedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int restaurantId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult DeleteRestaurantConfirmed(int restaurantId)
+        public override System.Web.Mvc.ActionResult DeleteConfirmed(int restaurantId)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteRestaurantConfirmed);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantId", restaurantId);

@@ -154,8 +154,8 @@
     <Content Include="Content\Bootstrap\bootstrap-theme.css.map" />
     <Content Include="Content\Bootstrap\bootstrap.css.map" />
     <Content Include="Content\Toastr\toastr.scss" />
-    <Content Include="Views\Restaurant\DeleteRestaurant.cshtml" />
-    <Content Include="Views\Restaurant\EditRestaurant.cshtml" />
+    <Content Include="Views\Restaurant\Delete.cshtml" />
+    <Content Include="Views\Restaurant\Edit.cshtml" />
     <Content Include="Views\Restaurant\Index.cshtml" />
     <Content Include="Views\Review\Create.cshtml" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
