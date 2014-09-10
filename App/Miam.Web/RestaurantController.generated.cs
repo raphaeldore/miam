@@ -113,7 +113,7 @@ namespace Miam.Web.Controllers
         public class ActionParamsClass_Edit
         {
             public readonly string restaurantID = "restaurantID";
-            public readonly string edit = "edit";
+            public readonly string edit = "editRestaurantViewModel";
         }
         static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -137,7 +137,7 @@ namespace Miam.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
-            public readonly string create = "create";
+            public readonly string create = "CreateRestaurantViewModel";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -193,11 +193,11 @@ namespace Miam.Web.Controllers
         partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.Restaurant.Edit edit);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(Miam.Web.ViewModels.Restaurant.Edit edit)
+        public override System.Web.Mvc.ActionResult Edit(Miam.Web.ViewModels.Restaurant.Edit editRestaurantViewModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "edit", edit);
-            EditOverride(callInfo, edit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "editRestaurantViewModel", editRestaurantViewModel);
+            EditOverride(callInfo, editRestaurantViewModel);
             return callInfo;
         }
 
@@ -240,11 +240,11 @@ namespace Miam.Web.Controllers
         partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.Restaurant.Create create);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(Miam.Web.ViewModels.Restaurant.Create create)
+        public override System.Web.Mvc.ActionResult Create(Miam.Web.ViewModels.Restaurant.Create restaurantViewModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "create", create);
-            CreateOverride(callInfo, create);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "CreateRestaurantViewModel", restaurantViewModel);
+            CreateOverride(callInfo, restaurantViewModel);
             return callInfo;
         }
 

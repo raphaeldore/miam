@@ -4,7 +4,6 @@ using FluentAssertions;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 using Miam.Web.Controllers;
-using Miam.Web.ViewModels.Restaurant;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Ploeh.AutoFixture;
@@ -27,7 +26,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         {
             // Arrange   
             var restaurant = _fixture.Create<Restaurant>();
-            var restaurantViewModel = Mapper.Map<Create>(restaurant);
+            var restaurantViewModel = Mapper.Map<ViewModels.Restaurant.Create>(restaurant);
 
             // Action
             _restaurantController.Create(restaurantViewModel);
@@ -41,7 +40,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void create_post_should_return_default_view_when_modelState_is_not_valid()
         {
             //Arrange
-            var restaurantViewModel = _fixture.Create<Create>();
+            var restaurantViewModel = _fixture.Create<ViewModels.Restaurant.Create>();
             _restaurantController.ModelState.AddModelError("Error", "Error");
 
             //Act
@@ -55,7 +54,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void create_post_should_redirect_to_home_index_on_success()
         {
             //Arrange
-            var restaurantViewModel = _fixture.Create<Create>();
+            var restaurantViewModel = _fixture.Create<ViewModels.Restaurant.Create>();
 
             //Act
             var result = _restaurantController.Create(restaurantViewModel) as RedirectToRouteResult;

@@ -5,9 +5,7 @@ using AutoMapper;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 using Miam.Domain.RoleName;
-using Miam.Web.ViewModels.Restaurant;
-using Miam.Web.ViewModels.Review;
-using Create = Miam.Web.ViewModels.Restaurant.Create;
+
 using Index = Miam.Web.ViewModels.Review.Index;
 
 namespace Miam.Web.Controllers
@@ -39,7 +37,7 @@ namespace Miam.Web.Controllers
 
             if (restaurant != null)
             {
-                var restaurantEditPageViewModel = Mapper.Map<Edit>(restaurant);
+                var restaurantEditPageViewModel = Mapper.Map<ViewModels.Restaurant.Edit>(restaurant);
                
                 return View(restaurantEditPageViewModel);
             }
@@ -48,9 +46,9 @@ namespace Miam.Web.Controllers
 
 
         [HttpPost]
-        public virtual ActionResult Edit(Edit edit)
+        public virtual ActionResult Edit(ViewModels.Restaurant.Edit editRestaurantViewModel)
         {
-            var restaurant = _restaurantRepository.GetById(edit.Id);
+            var restaurant = _restaurantRepository.GetById(editRestaurantViewModel.Id);
             if (restaurant == null)
             {
                 return HttpNotFound();
@@ -58,11 +56,11 @@ namespace Miam.Web.Controllers
 
             if (!ModelState.IsValid)
             {
-                edit.Reviews = Mapper.Map<List<Index>>(restaurant.Reviews);
-                return View(edit);
+                editRestaurantViewModel.Reviews = Mapper.Map<List<Index>>(restaurant.Reviews);
+                return View(editRestaurantViewModel);
             }
 
-            Mapper.Map(edit, restaurant);
+            Mapper.Map(editRestaurantViewModel, restaurant);
 
             _restaurantRepository.Update(restaurant);
 
@@ -77,7 +75,7 @@ namespace Miam.Web.Controllers
 
             if (restaurant != null)
             {
-                var restaurantViewModel = Mapper.Map<Delete>(restaurant);
+                var restaurantViewModel = Mapper.Map<ViewModels.Restaurant.Delete>(restaurant);
                 return View(restaurantViewModel);
             }
             return HttpNotFound();
@@ -105,11 +103,11 @@ namespace Miam.Web.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Create(Create create)
+        public virtual ActionResult Create(ViewModels.Restaurant.Create restaurantViewModel)
         {
             if (ModelState.IsValid)
             {
-                var restaurant = Mapper.Map<Restaurant>(create);
+                var restaurant = Mapper.Map<Restaurant>(restaurantViewModel);
                 _restaurantRepository.Add(restaurant);
                 return RedirectToAction(Views.ViewNames.Index);
             }

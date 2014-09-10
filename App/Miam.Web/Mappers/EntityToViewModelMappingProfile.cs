@@ -2,7 +2,6 @@
 using AutoMapper;
 using Miam.Domain.Entities;
 
-
 using Create = Miam.Web.ViewModels;
 
 

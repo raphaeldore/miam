@@ -7,7 +7,6 @@ using Miam.DataLayer;
 using Miam.Domain.Entities;
 using Miam.Web.Controllers;
 using Miam.Web.Services;
-using Miam.Web.ViewModels.Review;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Ploeh.AutoFixture;
@@ -44,7 +43,7 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         {
             // Arrange   
             var review = _fixture.Create<Review>();
-            var reviewViewModel = Mapper.Map<Create>(review);
+            var reviewViewModel = Mapper.Map<ViewModels.Review.Create>(review);
             _httpContextService.GetUserId().Returns(review.WriterId);
 
             // Action
@@ -58,7 +57,7 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         public void create_post_should_return_view_with_errors_when_modelState_is_not_valid()
         {
             //Arrange
-            var reviewCreateViewModel = _fixture.Build<Create>()
+            var reviewCreateViewModel = _fixture.Build<ViewModels.Review.Create>()
                                                 .Without(x => x.Restaurants)
                                                 .Create();
             _reviewController.ModelState.AddModelError("Error", "Error");
@@ -75,7 +74,7 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         public void create_post_should_redirect_to_home_index_on_success()
         {
             //Arrange
-            var reviewCreateViewModel = _fixture.Build<Create>()
+            var reviewCreateViewModel = _fixture.Build<ViewModels.Review.Create>()
                                                 .Without(x => x.Restaurants)
                                                 .Create();
 

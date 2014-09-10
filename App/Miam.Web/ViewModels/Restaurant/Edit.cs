@@ -22,7 +22,7 @@ namespace Miam.Web.ViewModels.Restaurant
         [DisplayName("Pays")]
         [Required(ErrorMessage = "Requis")]
         public string Country { get; set; }
-        public ContactDetail RestaurantContactDetail { get; set; }
+        public ViewModels.Restaurant.ContactDetail  RestaurantContactDetail { get; set; }
         public List<Review.Index> Reviews { get; set; }
 
     }

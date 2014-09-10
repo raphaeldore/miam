@@ -5,7 +5,6 @@ using FluentAssertions;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 using Miam.Web.Controllers;
-using Miam.Web.ViewModels.Home;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Ploeh.AutoFixture;
@@ -37,7 +36,7 @@ namespace Miam.Web.UnitTests.Controllers.HomeTests
 
             // Action
             var result = _homeController.Index() as ViewResult;
-            var  model = result.Model as IEnumerable<Index>;
+            var model = result.Model as IEnumerable<ViewModels.Home.Index>;
             
             // Assert avec fluent assertion
             //model.Count().Should().Be(RESTAURANT_COUNT);

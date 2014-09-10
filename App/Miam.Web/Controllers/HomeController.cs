@@ -5,7 +5,6 @@ using AutoMapper;
 using Miam.DataLayer;
 using Miam.Domain;
 using Miam.Domain.Entities;
-using Miam.Web.ViewModels.Home;
 
 namespace Miam.Web.Controllers
 {
@@ -24,7 +23,7 @@ namespace Miam.Web.Controllers
         {
             var restaurants = _restaurantRepository.GetAll().ToList();
 
-            var homeIndexViewModels = Mapper.Map<IEnumerable<Index>>(restaurants);
+            var homeIndexViewModels = Mapper.Map<IEnumerable<ViewModels.Home.Index>>(restaurants);
             
             return View(homeIndexViewModels);
         }

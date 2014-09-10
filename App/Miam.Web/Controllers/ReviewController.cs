@@ -28,7 +28,7 @@ namespace Miam.Web.Controllers
         [Authorize(Roles = RoleName.Writer)]
         public virtual ActionResult Create()
         {
-            var model = new Create();
+            var model = new ViewModels.Review.Create();
             PopulateRestaurantSelectList(model);
 
             return View(model);
@@ -36,7 +36,7 @@ namespace Miam.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = RoleName.Writer)]
-        public virtual ActionResult Create(Create create)
+        public virtual ActionResult Create(ViewModels.Review.Create create)
         {
             if (ModelState.IsValid)
             {
@@ -52,7 +52,7 @@ namespace Miam.Web.Controllers
             return View(create);
         }
 
-        private void PopulateRestaurantSelectList(Create model)
+        private void PopulateRestaurantSelectList(ViewModels.Review.Create model)
         {
             model.Restaurants = new SelectList(_restaurantRepository.GetAll(), "Id", "Name");
         }
