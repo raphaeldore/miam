@@ -1,6 +1,6 @@
-﻿namespace Miam.Web.ViewModels.RestaurantViewModel
+﻿namespace Miam.Web.ViewModels.Restaurant
 {
-    public class RestaurantDeleteViewModel
+    public class Delete
     {
         public int Id { get; set; }
         public string Name { get; set; }

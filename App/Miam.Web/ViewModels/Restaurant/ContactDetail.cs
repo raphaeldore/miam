@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace Miam.Web.ViewModels.RestaurantViewModel
+namespace Miam.Web.ViewModels.Restaurant
 {
-    public class RestaurantContactDetailViewModel
+    public class ContactDetail
     {
         [DisplayName("Fax")]
         public string FaxPhone { get; set; }

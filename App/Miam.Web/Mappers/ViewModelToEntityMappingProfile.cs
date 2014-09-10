@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+
 using AutoMapper;
 using Miam.Domain.Entities;
-using Miam.Web.ViewModels.Account;
-using Miam.Web.ViewModels.RestaurantViewModel;
-using Miam.Web.ViewModels.ReviewViewModels;
+
+
+
+using Create = Miam.Web.ViewModels;
+
 
 namespace Miam.Web.Mappers
 {
@@ -19,26 +21,26 @@ namespace Miam.Web.Mappers
         protected override void Configure()
         {
             // Create ViewModel mapping
-            Mapper.CreateMap<RestaurantCreateViewModel, Restaurant>()
+            Mapper.CreateMap<ViewModels.Restaurant.Create, Restaurant>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(x => x.RestaurantId))
                 .ForMember(dest => dest.Reviews, opt => opt.Ignore())
                 .ForMember(dest => dest.Tags, opt => opt.Ignore());
 
-            Mapper.CreateMap<ReviewCreateViewModel, Review>()
+            Mapper.CreateMap<ViewModels.Review.Create, Review>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Restaurant, opt => opt.Ignore())
                 .ForMember(dest => dest.Writer, opt => opt.Ignore())
                 .ForMember(dest => dest.WriterId, opt => opt.Ignore());
 
             // Edit ViewModel mapping
-            Mapper.CreateMap<List<ReviewIndexViewModel>, ICollection<Review>>();
-            Mapper.CreateMap<ReviewIndexViewModel, Review>().IgnoreAllUnmapped();
+            Mapper.CreateMap<List<ViewModels.Review.Index>, ICollection<Review>>();
+            Mapper.CreateMap<ViewModels.Review.Index, Review>().IgnoreAllUnmapped();
             
-            Mapper.CreateMap<RestaurantContactDetailViewModel, RestaurantContactDetail>()
+            Mapper.CreateMap<ViewModels.Restaurant.ContactDetail, RestaurantContactDetail>()
                 .ForMember(dest => dest.RestaurantId, opt => opt.Ignore())
                 .ForMember(dest => dest.Restaurant, opt => opt.Ignore());
 
-            Mapper.CreateMap<RestaurantEditViewModel, Restaurant>()
+            Mapper.CreateMap<ViewModels.Restaurant.Edit, Restaurant>()
                 .ForMember(dest => dest.Reviews, opt => opt.Ignore())
                 .ForMember(dest => dest.Tags, opt => opt.Ignore());
 

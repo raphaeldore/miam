@@ -5,7 +5,7 @@ using Miam.DataLayer;
 using Miam.Domain.Entities;
 using Miam.Domain.RoleName;
 using Miam.Web.Services;
-using Miam.Web.ViewModels.ReviewViewModels;
+using Miam.Web.ViewModels.Review;
 using Microsoft.AspNet.Identity;
 
 namespace Miam.Web.Controllers
@@ -28,7 +28,7 @@ namespace Miam.Web.Controllers
         [Authorize(Roles = RoleName.Writer)]
         public virtual ActionResult Create()
         {
-            var model = new ReviewCreateViewModel();
+            var model = new Create();
             PopulateRestaurantSelectList(model);
 
             return View(model);
@@ -36,11 +36,11 @@ namespace Miam.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = RoleName.Writer)]
-        public virtual ActionResult Create(ReviewCreateViewModel reviewCreateViewModel)
+        public virtual ActionResult Create(Create create)
         {
             if (ModelState.IsValid)
             {
-                var review = Mapper.Map<Review>(reviewCreateViewModel);
+                var review = Mapper.Map<Review>(create);
                 review.WriterId = _httpContextService.GetUserId();
 
                 _reviewRepository.Add(review);
@@ -48,11 +48,11 @@ namespace Miam.Web.Controllers
                 return RedirectToAction(MVC.Home.Index());
             }
 
-            PopulateRestaurantSelectList(reviewCreateViewModel);
-            return View(reviewCreateViewModel);
+            PopulateRestaurantSelectList(create);
+            return View(create);
         }
 
-        private void PopulateRestaurantSelectList(ReviewCreateViewModel model)
+        private void PopulateRestaurantSelectList(Create model)
         {
             model.Restaurants = new SelectList(_restaurantRepository.GetAll(), "Id", "Name");
         }

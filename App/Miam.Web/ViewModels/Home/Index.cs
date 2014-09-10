@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using Miam.Web.ViewModels.RestaurantViewModel;
-
-namespace Miam.Web.ViewModels.HomeViewModels
+﻿namespace Miam.Web.ViewModels.Home
 {
-    public class HomeIndexViewModel
+    public class Index
     {
         public string Name { get; set; }
         public string City { get; set; }

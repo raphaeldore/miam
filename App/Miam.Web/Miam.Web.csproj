@@ -216,15 +216,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\AccountViewModels\AccountLoginViewModel.cs" />
-    <Compile Include="ViewModels\HomeViewModels\HomeIndexViewModel.cs" />
-    <Compile Include="ViewModels\RestaurantViewModel\RestaurantDeleteViewModel.cs" />
-    <Compile Include="ViewModels\RestaurantViewModel\RestaurantContactDetailViewModel.cs" />
-    <Compile Include="ViewModels\RestaurantViewModel\RestaurantCreateViewModel.cs" />
-    <Compile Include="ViewModels\RestaurantViewModel\RestaurantIndexViewModel.cs" />
-    <Compile Include="ViewModels\RestaurantViewModel\RestaurantEditViewModel.cs" />
-    <Compile Include="ViewModels\ReviewViewModels\ReviewIndexViewModel.cs" />
-    <Compile Include="ViewModels\ReviewViewModels\ReviewCreateViewModel.cs" />
+    <Compile Include="ViewModels\Account\Login.cs" />
+    <Compile Include="ViewModels\Home\Index.cs" />
+    <Compile Include="ViewModels\Restaurant\Delete.cs" />
+    <Compile Include="ViewModels\Restaurant\ContactDetail.cs" />
+    <Compile Include="ViewModels\Restaurant\Create.cs" />
+    <Compile Include="ViewModels\Restaurant\Index.cs" />
+    <Compile Include="ViewModels\Restaurant\Edit.cs" />
+    <Compile Include="ViewModels\Review\Index.cs" />
+    <Compile Include="ViewModels\Review\Create.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

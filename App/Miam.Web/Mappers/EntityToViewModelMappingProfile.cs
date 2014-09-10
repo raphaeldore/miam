@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿
 using AutoMapper;
 using Miam.Domain.Entities;
-using Miam.Web.ViewModels.HomeViewModels;
-using Miam.Web.ViewModels.RestaurantViewModel;
-using Miam.Web.ViewModels.ReviewViewModels;
+
+
+using Create = Miam.Web.ViewModels;
+
 
 namespace Miam.Web.Mappers
 {
@@ -26,38 +25,38 @@ namespace Miam.Web.Mappers
         private void ToRestaurantViewModels()
         {
             //Edit viewModel mapping
-            
-            Mapper.CreateMap<RestaurantContactDetail, RestaurantContactDetailViewModel>();
 
-            Mapper.CreateMap<Restaurant, RestaurantEditViewModel>();
+            Mapper.CreateMap<RestaurantContactDetail, ViewModels.Restaurant.ContactDetail>();
+
+            Mapper.CreateMap<Restaurant, ViewModels.Restaurant.Edit>();
                 
 
             //Index viewModel mapping
-            Mapper.CreateMap<Restaurant, RestaurantIndexViewModel>()
+            Mapper.CreateMap<Restaurant, ViewModels.Restaurant.Index>()
                 .ForMember(dest => dest.RatingReviewsAverage, opt => opt.MapFrom(src => src.CalculateReviewsRatingAverage()))
                 .ForMember(dest => dest.CountOfReviews, opt => opt.MapFrom(src => src.Reviews.Count));
 
             //Delete viewModel mapping
-            Mapper.CreateMap<Restaurant, RestaurantDeleteViewModel>();
+            Mapper.CreateMap<Restaurant, ViewModels.Restaurant.Delete>();
 
             //Create viewModel mapping
-            Mapper.CreateMap<Restaurant, RestaurantCreateViewModel>()
+            Mapper.CreateMap<Restaurant, ViewModels.Restaurant.Create>()
               .ForMember(dest => dest.RestaurantId, opt => opt.MapFrom(src => src.Id));
         }
 
         private static void ToReviewViewModels()
         {
             //Create viewModel mapping
-            Mapper.CreateMap<Review, ReviewCreateViewModel>()
+            Mapper.CreateMap<Review, ViewModels.Review.Create>()
                .ForMember(dest => dest.Restaurants, opt => opt.Ignore());
 
-            Mapper.CreateMap<Review, ReviewIndexViewModel>();
+            Mapper.CreateMap<Review, ViewModels.Review.Index>();
 
         }
         
         private static void ToHomeViewModels()
         {
-            Mapper.CreateMap<Restaurant, HomeIndexViewModel>()
+            Mapper.CreateMap<Restaurant, ViewModels.Home.Index>()
                 .ForMember(dest => dest.RatingReviewsAverage, opt => opt.MapFrom(src => src.CalculateReviewsRatingAverage()));
         }
 

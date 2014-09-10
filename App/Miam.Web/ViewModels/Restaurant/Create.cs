@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Miam.Domain.Entities;
 
-namespace Miam.Web.ViewModels.RestaurantViewModel
+namespace Miam.Web.ViewModels.Restaurant
 {
-    public class RestaurantCreateViewModel
+    public class Create
     {
 
         [HiddenInput]

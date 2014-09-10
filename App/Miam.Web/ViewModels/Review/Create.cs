@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using Miam.Domain.Entities;
 
-namespace Miam.Web.ViewModels.ReviewViewModels
+namespace Miam.Web.ViewModels.Review
 {
-    public class ReviewCreateViewModel
+    public class Create
     {
         [DisplayName("Évaluation (1 à 5)")]
         [Required(ErrorMessage = "Le champ évaluation est requis")]

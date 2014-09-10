@@ -4,6 +4,8 @@
 // to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 
 // Make sure the compiler doesn't complain about missing Xml comments
+
+using Miam.Web.ViewModels.Restaurant;
 #pragma warning disable 1591
 #region T4MVC
 
@@ -113,7 +115,7 @@ namespace Miam.Web.Controllers
         public class ActionParamsClass_EditRestaurant
         {
             public readonly string restaurantID = "restaurantID";
-            public readonly string restaurantEditViewModel = "restaurantEditViewModel";
+            public readonly string restaurantEditViewModel = "Edit";
         }
         static readonly ActionParamsClass_DeleteRestaurant s_params_DeleteRestaurant = new ActionParamsClass_DeleteRestaurant();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -137,7 +139,7 @@ namespace Miam.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
-            public readonly string restaurantCreateViewModel = "restaurantCreateViewModel";
+            public readonly string restaurantCreateViewModel = "Create";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -190,14 +192,14 @@ namespace Miam.Web.Controllers
         }
 
         [NonAction]
-        partial void EditRestaurantOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.RestaurantViewModel.RestaurantEditViewModel restaurantEditViewModel);
+        partial void EditRestaurantOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Edit edit);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(Miam.Web.ViewModels.RestaurantViewModel.RestaurantEditViewModel restaurantEditViewModel)
+        public override System.Web.Mvc.ActionResult Edit(Edit edit)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.EditRestaurant);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantEditViewModel", restaurantEditViewModel);
-            EditRestaurantOverride(callInfo, restaurantEditViewModel);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "Edit", edit);
+            EditRestaurantOverride(callInfo, edit);
             return callInfo;
         }
 
@@ -237,14 +239,14 @@ namespace Miam.Web.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.RestaurantViewModel.RestaurantCreateViewModel restaurantCreateViewModel);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Create create);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(Miam.Web.ViewModels.RestaurantViewModel.RestaurantCreateViewModel restaurantCreateViewModel)
+        public override System.Web.Mvc.ActionResult Create(Create create)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "restaurantCreateViewModel", restaurantCreateViewModel);
-            CreateOverride(callInfo, restaurantCreateViewModel);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "Create", create);
+            CreateOverride(callInfo, create);
             return callInfo;
         }
 

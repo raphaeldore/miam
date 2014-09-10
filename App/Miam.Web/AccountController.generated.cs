@@ -123,10 +123,10 @@ namespace Miam.Web.Controllers
         }
 
         [NonAction]
-        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.Account.AccountLoginViewModel accountLoginViewModel);
+        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.Account.Login accountLoginViewModel);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Login(Miam.Web.ViewModels.Account.AccountLoginViewModel accountLoginViewModel)
+        public override System.Web.Mvc.ActionResult Login(Miam.Web.ViewModels.Account.Login accountLoginViewModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "accountLoginViewModel", accountLoginViewModel);

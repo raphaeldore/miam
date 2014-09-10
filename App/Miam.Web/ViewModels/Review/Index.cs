@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 
-namespace Miam.Web.ViewModels.RestaurantViewModel
+namespace Miam.Web.ViewModels.Review
 {
-    public class ReviewIndexViewModel
+    public class Index
     {
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
