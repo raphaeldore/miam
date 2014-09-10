@@ -10,8 +10,9 @@
         <li class="list-group-item">
             <h4>
                 @item.Name
-                @Html.ActionLink(" ", "Edit", new { restaurantId = item.Id }, new { id = "edit_button" + item.Id, @class="fa fa-pencil-square-o" })
-                @Html.ActionLink(" ", "Delete", new { restaurantId = item.Id }, new { id = "delete_button" + item.Id, @class = "fa fa-trash-o" })
+                
+                @Html.ActionLink(" ", MVC.Restaurant.Edit().AddRouteValues(new { restaurantId = item.Id }), new { id = "edit_button" + item.Id, @class = "fa fa-pencil-square-o" })
+                @Html.ActionLink(" ", MVC.Restaurant.Delete().AddRouteValues(new { restaurantId = item.Id }), new { id = "delete_button" + item.Id, @class = "fa fa-trash-o" })
             </h4>
 
             <div>@item.City</div>

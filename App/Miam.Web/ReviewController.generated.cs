@@ -4,8 +4,6 @@
 // to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 
 // Make sure the compiler doesn't complain about missing Xml comments
-
-using Miam.Web.ViewModels.Review;
 #pragma warning disable 1591
 #region T4MVC
 
@@ -88,7 +86,7 @@ namespace Miam.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
-            public readonly string reviewCreateViewModel = "Create";
+            public readonly string create = "create";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -123,13 +121,13 @@ namespace Miam.Web.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Create create);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.Review.Create create);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(Create create)
+        public override System.Web.Mvc.ActionResult Create(Miam.Web.ViewModels.Review.Create create)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "Create", create);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "create", create);
             CreateOverride(callInfo, create);
             return callInfo;
         }

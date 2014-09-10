@@ -57,7 +57,7 @@ namespace Miam.Web.Controllers
         public virtual ActionResult Logout()
         {
             AuthenticationOwinContext.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction(MVC.Account.Login());
+            return RedirectToAction(Views.ViewNames.Login);
         }
         private void AuthentificateUser(ApplicationUser applicationUser)
         {

@@ -66,7 +66,7 @@ namespace Miam.Web.Controllers
 
             _restaurantRepository.Update(restaurant);
 
-            return RedirectToAction(MVC.Restaurant.Index());
+            return RedirectToAction(Views.ViewNames.Index);
         }
 
 
@@ -92,7 +92,7 @@ namespace Miam.Web.Controllers
             if (restaurant != null)
             {
                 _restaurantRepository.Delete(restaurant);
-                return RedirectToAction(MVC.Restaurant.Index());
+                return RedirectToAction(Views.ViewNames.Index);
             }
 
             return HttpNotFound();
@@ -111,7 +111,7 @@ namespace Miam.Web.Controllers
             {
                 var restaurant = Mapper.Map<Restaurant>(create);
                 _restaurantRepository.Add(restaurant);
-                return RedirectToAction(MVC.Home.Index());
+                return RedirectToAction(Views.ViewNames.Index);
             }
             return View("");
         }
