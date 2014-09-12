@@ -1,4 +1,5 @@
-﻿using Miam.Web.Automation.Selenium;
+﻿using System;
+using Miam.Web.Automation.Selenium;
 using OpenQA.Selenium;
 
 namespace Miam.Web.Automation.PageObjects
@@ -18,7 +19,15 @@ namespace Miam.Web.Automation.PageObjects
         {
             get
             {
-                return Driver.Instance.FindElement(By.Id("writer-menu")) != null; 
+                try
+                {
+                    Driver.Instance.FindElement(By.Id("writer-menu"));
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
         }
         
