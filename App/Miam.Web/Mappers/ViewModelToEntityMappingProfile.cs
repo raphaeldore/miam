@@ -34,7 +34,6 @@ namespace Miam.Web.Mappers
 
             // Edit ViewModel mapping
             Mapper.CreateMap<List<ViewModels.Review.Index>, ICollection<Review>>();
-            Mapper.CreateMap<ViewModels.Review.Index, Review>().IgnoreAllUnmapped();
             
             Mapper.CreateMap<ViewModels.Restaurant.ContactDetail, RestaurantContactDetail>()
                 .ForMember(dest => dest.RestaurantId, opt => opt.Ignore())
