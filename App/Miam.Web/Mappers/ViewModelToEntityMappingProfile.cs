@@ -1,13 +1,7 @@
 ﻿
 using System.Collections.Generic;
-
 using AutoMapper;
 using Miam.Domain.Entities;
-
-
-
-using Create = Miam.Web.ViewModels;
-
 
 namespace Miam.Web.Mappers
 {
@@ -15,34 +9,48 @@ namespace Miam.Web.Mappers
     {
         public override string ProfileName
         {
-            get { return "ViewModelToModelMappings"; }
+            get { return "ViewModelToEntityMappings"; }
         }
 
         protected override void Configure()
         {
-            // Create ViewModel mapping
+            ToRestaurant();
+            ToReview();
+            ToRestaurantContact();
+        }
+        private void ToRestaurant()
+        {
+            //Mapper.CreateMap<ViewModels.Restaurant.Create, Restaurant>()
+            //    .ForMember(dest => dest.Id, opt => opt.MapFrom(x => x.RestaurantId))
+            //    .ForMember(dest => dest.Reviews, opt => opt.Ignore())
+            //    .ForMember(dest => dest.Tags, opt => opt.Ignore());
+
+            // même résultat que la ligne ci-dessus. IgnoreAllNonExisting fait partie de la classe MappingExpressionExtensions
             Mapper.CreateMap<ViewModels.Restaurant.Create, Restaurant>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(x => x.RestaurantId))
-                .ForMember(dest => dest.Reviews, opt => opt.Ignore())
-                .ForMember(dest => dest.Tags, opt => opt.Ignore());
+                .IgnoreAllNonExisting();
 
-            Mapper.CreateMap<ViewModels.Review.Create, Review>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.Restaurant, opt => opt.Ignore())
-                .ForMember(dest => dest.Writer, opt => opt.Ignore())
-                .ForMember(dest => dest.WriterId, opt => opt.Ignore());
-
-            // Edit ViewModel mapping
-            Mapper.CreateMap<List<ViewModels.Review.Index>, ICollection<Review>>();
-            
-            Mapper.CreateMap<ViewModels.Restaurant.ContactDetail, RestaurantContactDetail>()
-                .ForMember(dest => dest.RestaurantId, opt => opt.Ignore())
-                .ForMember(dest => dest.Restaurant, opt => opt.Ignore());
 
             Mapper.CreateMap<ViewModels.Restaurant.Edit, Restaurant>()
                 .ForMember(dest => dest.Reviews, opt => opt.Ignore())
                 .ForMember(dest => dest.Tags, opt => opt.Ignore());
-
         }
+        private void ToRestaurantContact()
+        {
+            Mapper.CreateMap<ViewModels.Restaurant.ContactDetail, RestaurantContactDetail>()
+                .ForMember(dest => dest.RestaurantId, opt => opt.Ignore())
+                .ForMember(dest => dest.Restaurant, opt => opt.Ignore());
+        }
+
+        private void ToReview()
+        {
+            Mapper.CreateMap<ViewModels.Review.Create, Review>()
+               .ForMember(dest => dest.Id, opt => opt.Ignore())
+               .ForMember(dest => dest.Restaurant, opt => opt.Ignore())
+               .ForMember(dest => dest.Writer, opt => opt.Ignore())
+               .ForMember(dest => dest.WriterId, opt => opt.Ignore());
+        }
+
+      
     }
 }

@@ -186,6 +186,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Mappers\MappingExpressionExtensions.cs" />
     <Compile Include="Services\HttpContextService.cs" />
     <Compile Include="Services\IHttpContextService.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
