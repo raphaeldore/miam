@@ -2,10 +2,9 @@
 // N'est pas utilisé dans cette application
 
 
-using Miam.Domain;
 using Miam.Domain.Entities;
 
-namespace Miam.DataLayer
+namespace Miam.DataLayer.EntityFramework
 {
     public class EfUnitOfWork : IUnitOfWork
     {

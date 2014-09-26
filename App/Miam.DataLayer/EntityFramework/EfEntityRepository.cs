@@ -1,9 +1,8 @@
 ﻿using System.Data.Entity;
 using System.Linq;
-using Miam.Domain;
 using Miam.Domain.Entities;
 
-namespace Miam.DataLayer
+namespace Miam.DataLayer.EntityFramework
 {
     public class EfEntityRepository<T>: IEntityRepository<T> where T : Entity
     {

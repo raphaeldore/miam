@@ -1,8 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Data.SqlClient;
-using Miam.Domain;
 
-namespace Miam.DataLayer
+namespace Miam.DataLayer.EntityFramework
 {
     public class EfDatabaseHelper : IDatabaseHelper
     {

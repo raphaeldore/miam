@@ -63,16 +63,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EfDatabaseConfiguration.cs" />
-    <Compile Include="EfDropCreateDatabaseAlwaysSeeder.cs" />
-    <Compile Include="EfDatabaseHelper.cs" />
-    <Compile Include="EfUnitOfWork.cs" />
+    <Compile Include="EntityFramework\EfDatabaseConfiguration.cs" />
+    <Compile Include="EntityFramework\EfDropCreateDatabaseAlwaysSeeder.cs" />
+    <Compile Include="EntityFramework\EfDatabaseHelper.cs" />
+    <Compile Include="EntityFramework\EfUnitOfWork.cs" />
     <Compile Include="IDatabaseHelper.cs" />
     <Compile Include="IEntityRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="MiamDbContext.cs" />
-    <Compile Include="EfEntityRepository.cs" />
-    <Compile Include="EfDropCreateIfModelChangesSeeder.cs" />
+    <Compile Include="EntityFramework\EfEntityRepository.cs" />
+    <Compile Include="EntityFramework\EfDropCreateIfModelChangesSeeder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

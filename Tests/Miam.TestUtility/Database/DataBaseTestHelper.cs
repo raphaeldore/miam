@@ -1,4 +1,5 @@
 ﻿using Miam.DataLayer;
+using Miam.DataLayer.EntityFramework;
 using Miam.Domain;
 using Miam.Domain.Entities;
 

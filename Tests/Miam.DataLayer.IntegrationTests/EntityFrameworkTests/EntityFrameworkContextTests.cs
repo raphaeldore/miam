@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
+using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
 using Miam.TestUtility.Database;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

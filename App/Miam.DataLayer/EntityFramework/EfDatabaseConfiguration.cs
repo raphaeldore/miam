@@ -1,8 +1,7 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.SqlServerCompact;
 
-namespace Miam.DataLayer
+namespace Miam.DataLayer.EntityFramework
 {
     public class EfDatabaseConfiguration : DbConfiguration
     {

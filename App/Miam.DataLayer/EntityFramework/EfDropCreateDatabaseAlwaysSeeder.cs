@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace Miam.DataLayer
+namespace Miam.DataLayer.EntityFramework
 {
     public class EfDropCreateDatabaseAlwaysSeeder : DropCreateDatabaseAlways<MiamDbContext>
     {

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
 using Miam.TestUtility.AutoFixture;
 using Miam.TestUtility.Database;
