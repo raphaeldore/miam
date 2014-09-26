@@ -15,7 +15,9 @@ namespace Miam.Web.AcceptanceTests
         public void initialize()
         {
             LoginPage.GoTo();
-            LoginPage.LoginAs(TestData.ApplicationUserAdmin.Email).WithPassowrd(TestData.ApplicationUserAdmin.Password).Login();
+            LoginPage.LoginAs(TestData.ApplicationUserAdmin.Email)
+                     .WithPassowrd(TestData.ApplicationUserAdmin.Password)
+                     .Login();
         }
 
         [TestMethod]
