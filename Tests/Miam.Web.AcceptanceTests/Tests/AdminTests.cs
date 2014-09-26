@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
+using Miam.Domain.Entities;
 using Miam.TestUtility.Database;
-using Miam.Web.Automation;
 using Miam.Web.Automation.PageObjects;
 using Miam.Web.Automation.PageObjects.RestaurantPages;
-using Miam.Web.Automation.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ploeh.AutoFixture;
 
 namespace Miam.Web.AcceptanceTests
 {
@@ -15,9 +15,7 @@ namespace Miam.Web.AcceptanceTests
         public void initialize()
         {
             LoginPage.GoTo();
-            LoginPage.LoginAs(TestData.ApplicationUserAdmin.Email)
-                     .WithPassowrd(TestData.ApplicationUserAdmin.Password)
-                     .Login();
+            LoginPage.LoginAs(TestData.ApplicationUserAdmin);
         }
 
         [TestMethod]
@@ -45,18 +43,17 @@ namespace Miam.Web.AcceptanceTests
          [TestMethod]
          public void admin_can_add_a_restaurant()
          {
-             const string RESTAURANT_NAME = "Lulu la patate";
-             
+             //arrange
+             var restaurant = _fixture.Create<Restaurant>();
+            
+             //action
              HomePage.StoreRestaurtantCount();
-
              CreateRestaurantPage.GoTo();
-             CreateRestaurantPage.CreateRestaurant(RESTAURANT_NAME)
-                                 .WithCity("Québec")
-                                 .WithCountry("Canada")
-                                 .Create();
+             CreateRestaurantPage.CreateRestaurant(restaurant);
+           
              //Assert
              Assert.AreEqual(HomePage.PreviousRestaurantCount + 1, HomePage.CurrentRestaurantCount);
-             Assert.IsTrue(HomePage.DoesRestaurantNameExist(RESTAURANT_NAME), "Le nom du restaurant ne se trouve pas dans la page.");
+             Assert.IsTrue(HomePage.DoesRestaurantNameExist(restaurant.Name), "Le nom du restaurant ne se trouve pas dans la page.");
          }
     }
 }
