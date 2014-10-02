@@ -16,7 +16,7 @@ namespace Miam.Web.UnitTests.Services
 {
     
     [TestClass]
-    public class ValidationServiceTests : AllControllersBaseClassTests
+    public class ValidationUserServiceTests : AllControllersBaseClassTests
     {
         private IEntityRepository<ApplicationUser> _userRepository;
         private ValidationUserService _validationUserService;
