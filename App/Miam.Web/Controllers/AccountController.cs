@@ -1,12 +1,10 @@
 ﻿using System.Linq;
 using System.Security.Claims;
-using System.Web;
 using System.Web.Mvc;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
-
+using Miam.Web.Services;
 using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
 
 
 namespace Miam.Web.Controllers
@@ -14,15 +12,13 @@ namespace Miam.Web.Controllers
     public partial class AccountController : Controller
     {
         private IEntityRepository<ApplicationUser> _userRepository;
+        private IHttpContextService _httpContext;
 
-        private IAuthenticationManager AuthenticationOwinContext
-        {
-            get { return HttpContext.GetOwinContext().Authentication; }
-        }
-
-        public AccountController(IEntityRepository<ApplicationUser> userRepository)
+        public AccountController(IEntityRepository<ApplicationUser> userRepository,
+                                 IHttpContextService httpContext)
         {
             _userRepository = userRepository;
+            _httpContext = httpContext;
         }
 
         public virtual ActionResult Login()
@@ -56,7 +52,7 @@ namespace Miam.Web.Controllers
         }
         public virtual ActionResult Logout()
         {
-            AuthenticationOwinContext.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            _httpContext.AuthenticationSignOut();
             return RedirectToAction(Views.ViewNames.Login);
         }
         private void AuthentificateUser(ApplicationUser applicationUser)
@@ -73,7 +69,7 @@ namespace Miam.Web.Controllers
                 identity.AddClaim(new Claim(ClaimTypes.Role, role.RoleName));
             }
 
-            AuthenticationOwinContext.SignIn(new AuthenticationProperties(), identity);
+            _httpContext.AuthenticationSignIn(identity);
         }
     }
 }
