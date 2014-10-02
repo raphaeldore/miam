@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 using Miam.Web.Services;
+using Miam.Web.ViewModels.Account;
 using Microsoft.AspNet.Identity;
 
 
@@ -11,14 +12,14 @@ namespace Miam.Web.Controllers
 {
     public partial class AccountController : Controller
     {
-        private IEntityRepository<ApplicationUser> _userRepository;
         private IHttpContextService _httpContext;
+        private IValidationUserService _validationUserService;
 
-        public AccountController(IEntityRepository<ApplicationUser> userRepository,
-                                 IHttpContextService httpContext)
+        public AccountController(IHttpContextService httpContext,
+                                 IValidationUserService validationUserService)
         {
-            _userRepository = userRepository;
             _httpContext = httpContext;
+            _validationUserService = validationUserService;
         }
 
         public virtual ActionResult Login()
@@ -34,27 +35,26 @@ namespace Miam.Web.Controllers
             {
                 return View("");
             }
-            var user = _userRepository.GetAll().FirstOrDefault(x => x.Email == accountLoginViewModel.Email);
-            if (user == null)
-            {
-                ModelState.AddModelError("loginError", "Utilisateur inexistant");
-                return View("");
-            }
-            if (user.Password != accountLoginViewModel.Password)
-            {
-                ModelState.AddModelError("loginError", "Le mot de passe est invalide");
-                return View("");
-            }
 
-            AuthentificateUser(user);
+            var user = _validationUserService.Validate(accountLoginViewModel.Email, accountLoginViewModel.Password);
+
+            if (!user.Any())
+            {
+                ModelState.AddModelError("loginError", "Utilisateur ou mot de passe inexistant");
+                return View("");
+            }
+            
+            AuthentificateUser(user.First());
 
             return RedirectToAction(MVC.Home.Index());
         }
+
         public virtual ActionResult Logout()
         {
             _httpContext.AuthenticationSignOut();
             return RedirectToAction(Views.ViewNames.Login);
         }
+
         private void AuthentificateUser(ApplicationUser applicationUser)
         {
             var identity = new ClaimsIdentity(new[]

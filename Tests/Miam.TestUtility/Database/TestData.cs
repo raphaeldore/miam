@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Miam.Domain.Application;
 using Miam.Domain.Entities;
-using Miam.Domain.RoleName;
 
 namespace Miam.TestUtility.Database
 {

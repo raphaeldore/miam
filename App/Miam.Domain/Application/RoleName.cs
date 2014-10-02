@@ -1,4 +1,4 @@
-﻿namespace Miam.Domain.RoleName
+﻿namespace Miam.Domain.Application
 {
     public static class RoleName
     {

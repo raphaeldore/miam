@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using FluentAssertions;
 using Miam.DataLayer;
+using Miam.Domain.Application;
 using Miam.Domain.Entities;
 using Miam.Web.Controllers;
 using Miam.Web.Services;
@@ -16,17 +17,16 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
     [TestClass]
     public class AccountControllerLoginTests : AllControllersBaseClassTests
     {
-        private IEntityRepository<ApplicationUser> _userRepository;
         private AccountController _accountController;
         private IHttpContextService _httpContext;
+        private IValidationUserService _validationUserService;
 
         [TestInitialize]
         public void AccountControllerTestInit()
         {
-
-            _userRepository = Substitute.For<IEntityRepository<ApplicationUser>>();
             _httpContext = Substitute.For<IHttpContextService>();
-            _accountController = new AccountController(_userRepository, _httpContext);
+            _validationUserService = Substitute.For<IValidationUserService>();
+            _accountController = new AccountController(_httpContext, _validationUserService);
         }
 
          [TestMethod]
@@ -41,16 +41,13 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         }
 
         [TestMethod]
-        public void login_post_should_render_default_view_when_user_email_does_not_exist()
+        public void login_post_should_render_default_view_when_user_is_not_valid()
          {
              //Arrange
-             var users = _fixture.CreateMany<ApplicationUser>();
-             _userRepository.GetAll().Returns(users.AsQueryable());
+             var loginViewModel = _fixture.Create<ViewModels.Account.Login>();
+             var invalidUser = new MayBe<ApplicationUser>();
+             _validationUserService.Validate(loginViewModel.Email, loginViewModel.Password).Returns(invalidUser);
 
-             var loginViewModel = _fixture.Build<ViewModels.Account.Login>()
-                                          .With(x => x.Email, "EMAIL DOES NOT EXIST")
-                                          .Create();
-             
              //Action    
              var result = _accountController.Login(loginViewModel) as ViewResult;
              var viewName = result.ViewName;
@@ -58,39 +55,22 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
              //Assert
              viewName.Should().Be("");
          }
-         
-        [TestMethod]
-         public void login_should_render_default_view_when_user_password_is_not_valid()
-         {
-             //Arrange
-             var users = _fixture.CreateMany<ApplicationUser>();
-             _userRepository.GetAll().Returns(users.AsQueryable());
 
-             var loginViewModel = _fixture.Build<ViewModels.Account.Login>()
-                                          .With(x => x.Email, users.ElementAt(0).Email)
-                                          .With(x => x.Password, "INVALID PASSWORD")
-                                          .Create();
 
-             //Action    
-             var result = _accountController.Login(loginViewModel) as ViewResult;
-             var viewName = result.ViewName;
-
-             //Assert
-             viewName.Should().Be("");
-
-         }
         [TestMethod]
         public void login_should_redirect_to_home_index_when_user_is_valid()
         {
             //Arrange
-            var users = _fixture.CreateMany<ApplicationUser>();
-            _userRepository.GetAll().Returns(users.AsQueryable());
-
+            var user = _fixture.Create<ApplicationUser>();
             var loginViewModel = new ViewModels.Account.Login()
             {
-                Email = users.ElementAt(0).Email,
-                Password = users.ElementAt(0).Password
+                Email = user.Email,
+                Password = user.Password
             };
+
+            var valideUser = new MayBe<ApplicationUser>(user);
+            _validationUserService.Validate(loginViewModel.Email, loginViewModel.Password).Returns(valideUser);
+
             //Action    
             var routeResult = _accountController.Login(loginViewModel) as RedirectToRouteResult;
             var routeAction = routeResult.RouteValues["Action"];
@@ -103,14 +83,16 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         public void login_should_authentificate_user_when_user_is_valid()
         {      
             //Arrange
-            var users = _fixture.CreateMany<ApplicationUser>();
-            _userRepository.GetAll().Returns(users.AsQueryable());
-
+            var user = _fixture.Create<ApplicationUser>();
             var loginViewModel = new ViewModels.Account.Login()
-            {
-                Email = users.ElementAt(0).Email,
-                Password = users.ElementAt(0).Password
-            };
+                                 {
+                                    Email = user.Email,
+                                    Password = user.Password
+                                 };
+            
+            var valideUser = new MayBe<ApplicationUser>(user);
+            _validationUserService.Validate(loginViewModel.Email, loginViewModel.Password).Returns(valideUser);
+
             //Action    
             _accountController.Login(loginViewModel);
             

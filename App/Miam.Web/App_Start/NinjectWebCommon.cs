@@ -1,6 +1,7 @@
 using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
+using Miam.Web.Controllers;
 using Miam.Web.Services;
 
 
@@ -67,14 +68,17 @@ namespace Miam.Web.MVC5.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            
+            //repositories
             kernel.Bind<IEntityRepository<Restaurant>>().To<EfEntityRepository<Restaurant>>().InRequestScope();
             kernel.Bind<IEntityRepository<Writer>>().To<EfEntityRepository<Writer>>().InRequestScope();
             kernel.Bind<IEntityRepository<ApplicationUser>>().To<EfEntityRepository<ApplicationUser>>().InRequestScope();
             kernel.Bind<IEntityRepository<Review>>().To<EfEntityRepository<Review>>().InRequestScope();
 
+            //services
             kernel.Bind<IHttpContextService>().To<HttpContextService>().InRequestScope();
+            kernel.Bind<IValidationUserService>().To<ValidationUserService>().InRequestScope();
 
+            //database
             kernel.Bind<IDatabaseHelper>().To<EfDatabaseHelper>().InRequestScope();
         }        
     }

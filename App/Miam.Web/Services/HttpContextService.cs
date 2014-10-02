@@ -1,10 +1,5 @@
-using System.Linq;
 using System.Security.Claims;
 using System.Web;
-using System.Web.Mvc;
-using Miam.DataLayer;
-using Miam.Domain.Entities;
-using Miam.Web.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 

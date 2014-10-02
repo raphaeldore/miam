@@ -3,9 +3,8 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Miam.DataLayer;
+using Miam.Domain.Application;
 using Miam.Domain.Entities;
-using Miam.Domain.RoleName;
-
 using Index = Miam.Web.ViewModels.Review.Index;
 
 namespace Miam.Web.Controllers
