@@ -76,7 +76,7 @@ namespace Miam.Web.MVC5.App_Start
 
             //services
             kernel.Bind<IHttpContextService>().To<HttpContextService>().InRequestScope();
-            kernel.Bind<IValidationUserService>().To<ValidationUserService>().InRequestScope();
+            kernel.Bind<ILoginService>().To<LoginService>().InRequestScope();
 
             //database
             kernel.Bind<IDatabaseHelper>().To<EfDatabaseHelper>().InRequestScope();

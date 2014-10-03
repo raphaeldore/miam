@@ -7,15 +7,15 @@ using Miam.Web.Controllers;
 
 namespace Miam.Web.Services
 {
-    public class ValidationUserService : IValidationUserService
+    public class LoginService : ILoginService
     {
         private IEntityRepository<ApplicationUser> _userRepository;
 
-        public ValidationUserService(IEntityRepository<ApplicationUser> userRepository)
+        public LoginService(IEntityRepository<ApplicationUser> userRepository)
         {
             _userRepository = userRepository;
         }
-        public MayBe<ApplicationUser> Validate(string email, string password)
+        public MayBe<ApplicationUser> ValidateUser(string email, string password)
         {
             var user = _userRepository.GetAll().FirstOrDefault(x => x.Email == email);
 
@@ -29,6 +29,16 @@ namespace Miam.Web.Services
             }
 
             return new MayBe<ApplicationUser>(user);
+        }
+
+        public string HashPassword(string password)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool UserEmailExist(string email)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
