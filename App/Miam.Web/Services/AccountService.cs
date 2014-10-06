@@ -7,11 +7,11 @@ using Miam.Web.Controllers;
 
 namespace Miam.Web.Services
 {
-    public class LoginService : ILoginService
+    public class AccountService : IAccountService
     {
         private IEntityRepository<ApplicationUser> _userRepository;
 
-        public LoginService(IEntityRepository<ApplicationUser> userRepository)
+        public AccountService(IEntityRepository<ApplicationUser> userRepository)
         {
             _userRepository = userRepository;
         }

@@ -19,14 +19,14 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
     {
         private AccountController _accountController;
         private IHttpContextService _httpContext;
-        private ILoginService _loginService;
+        private IAccountService _accountService;
 
         [TestInitialize]
         public void AccountControllerTestInit()
         {
             _httpContext = Substitute.For<IHttpContextService>();
-            _loginService = Substitute.For<ILoginService>();
-            _accountController = new AccountController(_httpContext, _loginService);
+            _accountService = Substitute.For<IAccountService>();
+            _accountController = new AccountController(_httpContext, _accountService);
         }
 
          [TestMethod]
@@ -46,7 +46,7 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
              //Arrange
              var loginViewModel = _fixture.Create<ViewModels.Account.Login>();
              var invalidUser = new MayBe<ApplicationUser>();
-             _loginService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(invalidUser);
+             _accountService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(invalidUser);
 
              //Action    
              var result = _accountController.Login(loginViewModel) as ViewResult;
@@ -69,7 +69,7 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
             };
 
             var valideUser = new MayBe<ApplicationUser>(user);
-            _loginService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(valideUser);
+            _accountService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(valideUser);
 
             //Action    
             var routeResult = _accountController.Login(loginViewModel) as RedirectToRouteResult;
@@ -91,7 +91,7 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
                                  };
             
             var valideUser = new MayBe<ApplicationUser>(user);
-            _loginService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(valideUser);
+            _accountService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(valideUser);
 
             //Action    
             _accountController.Login(loginViewModel);

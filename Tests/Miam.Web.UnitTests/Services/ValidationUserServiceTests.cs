@@ -19,13 +19,13 @@ namespace Miam.Web.UnitTests.Services
     public class ValidationUserServiceTests : AllControllersBaseClassTests
     {
         private IEntityRepository<ApplicationUser> _userRepository;
-        private LoginService _loginService;
+        private AccountService _accountService;
 
         [TestInitialize]
         public void test_initialize()
         {
             _userRepository = Substitute.For<IEntityRepository<ApplicationUser>>();
-            _loginService = new LoginService(_userRepository);
+            _accountService = new AccountService(_userRepository);
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace Miam.Web.UnitTests.Services
             var users = _fixture.CreateMany<ApplicationUser>(3).AsQueryable();
             _userRepository.GetAll().Returns(users);
 
-            var user = _loginService.ValidateUser(users.First().Email, users.First().Password);
+            var user = _accountService.ValidateUser(users.First().Email, users.First().Password);
 
             user.First().ShouldBeEquivalentTo(users.First());
         }
@@ -45,7 +45,7 @@ namespace Miam.Web.UnitTests.Services
             var users = _fixture.CreateMany<ApplicationUser>(3).AsQueryable();
             _userRepository.GetAll().Returns(users);
 
-            var user = _loginService.ValidateUser(users.First().Email, "INVALID PASSWORD");
+            var user = _accountService.ValidateUser(users.First().Email, "INVALID PASSWORD");
 
             user.Should().BeEmpty();
         }
@@ -56,7 +56,7 @@ namespace Miam.Web.UnitTests.Services
             var users = _fixture.CreateMany<ApplicationUser>(3).AsQueryable();
             _userRepository.GetAll().Returns(users);
 
-            var user = _loginService.ValidateUser("INVALID EMAIL", users.First().Password );
+            var user = _accountService.ValidateUser("INVALID EMAIL", users.First().Password );
 
             user.Should().BeEmpty();
         }

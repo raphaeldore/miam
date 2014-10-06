@@ -13,13 +13,13 @@ namespace Miam.Web.Controllers
     public partial class AccountController : Controller
     {
         private IHttpContextService _httpContext;
-        private ILoginService _loginService;
+        private IAccountService _accountService;
 
         public AccountController(IHttpContextService httpContext,
-                                 ILoginService loginService)
+                                 IAccountService accountService)
         {
             _httpContext = httpContext;
-            _loginService = loginService;
+            _accountService = accountService;
         }
 
         public virtual ActionResult Login()
@@ -36,7 +36,7 @@ namespace Miam.Web.Controllers
                 return View("");
             }
 
-            var user = _loginService.ValidateUser(accountLoginViewModel.Email, accountLoginViewModel.Password);
+            var user = _accountService.ValidateUser(accountLoginViewModel.Email, accountLoginViewModel.Password);
 
             if (!user.Any())
             {

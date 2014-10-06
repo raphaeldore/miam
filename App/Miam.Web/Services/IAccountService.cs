@@ -3,7 +3,7 @@ using Miam.Domain.Entities;
 
 namespace Miam.Web.Services
 {
-    public interface ILoginService
+    public interface IAccountService
     {
         MayBe<ApplicationUser> ValidateUser(string email, string password);
 
