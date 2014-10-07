@@ -14,10 +14,7 @@ namespace Miam.Web
         {
             ConfigureAuthentication(app);
         }
-    }
 
-    public partial class Startup
-    {
         public void ConfigureAuthentication(IAppBuilder app)
         {
             app.UseCookieAuthentication(new CookieAuthenticationOptions
