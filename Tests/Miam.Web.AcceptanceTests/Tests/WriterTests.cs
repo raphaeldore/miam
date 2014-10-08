@@ -9,7 +9,7 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.AcceptanceTests
 {
     [TestClass]
-    public class WriterTests : MiamAcceptanceTests
+    public class WriterTests : MiamAcceptanceBaseClassTests
     {
         [Ignore]
         [TestMethod]

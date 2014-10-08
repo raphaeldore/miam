@@ -9,7 +9,7 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.AcceptanceTests
 {
     [TestClass]
-    public class AdminTests : MiamAcceptanceTests
+    public class AdminTests : MiamAcceptanceBaseClassTests
     {
         [TestInitialize]
         public void initialize()

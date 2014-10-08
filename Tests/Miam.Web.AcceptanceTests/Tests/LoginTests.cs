@@ -6,7 +6,7 @@ using Miam.TestUtility.Database;
 namespace Miam.Web.AcceptanceTests
 {
     [TestClass]
-    public class LoginTests : MiamAcceptanceTests
+    public class LoginTests : MiamAcceptanceBaseClassTests
     {
         [TestInitialize]
         public void initialize()

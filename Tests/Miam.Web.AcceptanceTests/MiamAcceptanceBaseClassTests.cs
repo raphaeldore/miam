@@ -1,12 +1,12 @@
 ﻿using Miam.TestUtility.AutoFixture;
-using Miam.Web.Automation;
 using Miam.Web.Automation.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ploeh.AutoFixture;
 
 namespace Miam.Web.AcceptanceTests
 {
-    public class MiamAcceptanceTests
+    [TestClass]
+    public class MiamAcceptanceBaseClassTests
     {
         protected Fixture _fixture;
 

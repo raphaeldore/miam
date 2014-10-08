@@ -9,7 +9,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Miam.Web.AcceptanceTests.Tests
 {
-    public class HomeTests:MiamAcceptanceTests
+    [TestClass]
+    public class HomeTests:MiamAcceptanceBaseClassTests
     {
         [TestMethod]
         public void home_page_should_display_restaurants()
