@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\EfDatabaseConfiguration.cs" />
     <Compile Include="EntityFramework\EfDropCreateDatabaseAlwaysSeeder.cs" />
     <Compile Include="EntityFramework\EfDatabaseHelper.cs" />
     <Compile Include="EntityFramework\EfUnitOfWork.cs" />
