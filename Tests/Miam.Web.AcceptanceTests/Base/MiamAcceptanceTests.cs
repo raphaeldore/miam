@@ -6,6 +6,7 @@ using Ploeh.AutoFixture;
 
 namespace Miam.Web.AcceptanceTests
 {
+     [TestClass]
     public class MiamAcceptanceTests
     {
         protected Fixture _fixture;

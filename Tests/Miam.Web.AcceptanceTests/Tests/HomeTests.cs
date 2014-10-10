@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Miam.Web.AcceptanceTests.Tests
 {
+    [TestClass]
     public class HomeTests:MiamAcceptanceTests
     {
         [TestMethod]
