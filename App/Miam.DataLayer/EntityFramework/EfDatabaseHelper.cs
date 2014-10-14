@@ -34,9 +34,12 @@ namespace Miam.DataLayer.EntityFramework
 
         public void DeleteAll()
         {
+
+
+            
             var context = new MiamDbContext();
 
-            //context.Database.ExecuteSqlCommand("set net_write_timeout=99999; set net_read_timeout=99999");
+            SqlConnection.ClearAllPools();
 
             context.Database.Initialize(false);
             context.Database.Delete();

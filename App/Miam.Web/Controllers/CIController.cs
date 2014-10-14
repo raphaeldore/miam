@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Web.Mvc;
 using Miam.DataLayer;
-using Miam.Domain;
 using Miam.TestUtility.Database;
 
 
@@ -46,7 +44,6 @@ namespace Miam.Web.Controllers
 
         private void DeleteDb()
         {
-            SqlConnection.ClearAllPools();
             _dbInit.DeleteAll();
         }
 
