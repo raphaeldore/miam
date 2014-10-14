@@ -36,7 +36,7 @@ namespace Miam.DataLayer.EntityFramework
         {
             var context = new MiamDbContext();
 
-            context.Database.ExecuteSqlCommand("set net_write_timeout=99999; set net_read_timeout=99999");
+            //context.Database.ExecuteSqlCommand("set net_write_timeout=99999; set net_read_timeout=99999");
 
             context.Database.Initialize(false);
             context.Database.Delete();
