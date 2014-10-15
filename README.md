@@ -9,7 +9,7 @@ Application utilisée dans le cadre de la formation du projet synthèse A2014 du
 <li>Entityframework 6 </li>
 <li>MSTest </li>
 <li>Authentification avec Asp.Net Identity et OWIN</li>
-<li>SQL Server Compact </li>
+<li>SQL Server Express 2012 </li>
 <li>Ninject</li>
 <li>Bootstrap</li>
 <li>Fluent Assertion</li>
@@ -18,8 +18,9 @@ Application utilisée dans le cadre de la formation du projet synthèse A2014 du
 <li>Autofixture</li>
 <li>Automapper</li>
 </ul>
-
-
-
-
-
+<h2> Connexion à la BD </h2>
+<ul>
+<li>BD: MiamDemo</li>
+<li>Utilisateur: MiamUser</li>
+<li>Mot de passe: miam</li>
+</ul>
