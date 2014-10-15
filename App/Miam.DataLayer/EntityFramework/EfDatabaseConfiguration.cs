@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.SqlServerCompact;
+
 
 namespace Miam.DataLayer.EntityFramework
 {
@@ -7,9 +7,8 @@ namespace Miam.DataLayer.EntityFramework
     {
         public EfDatabaseConfiguration()
         {
-            SetProviderServices(SqlCeProviderServices.ProviderInvariantName,
-                                SqlCeProviderServices.Instance);
-            
+            SetProviderServices("System.Data.SqlClient",
+                    System.Data.Entity.SqlServer.SqlProviderServices.Instance);
         }
     }
 }

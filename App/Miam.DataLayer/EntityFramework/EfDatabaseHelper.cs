@@ -34,7 +34,13 @@ namespace Miam.DataLayer.EntityFramework
 
         public void DeleteAll()
         {
+
+
+            
             var context = new MiamDbContext();
+
+            SqlConnection.ClearAllPools();
+
             context.Database.Initialize(false);
             context.Database.Delete();
             context.Database.CreateIfNotExists();
