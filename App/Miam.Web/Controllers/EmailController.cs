@@ -17,7 +17,7 @@ namespace Miam.Web.Controllers
         //
         //Pour télécharger smpt4dev: https://smtp4dev.codeplex.com/
         //
-        //Ne pas oublier d'ajouter sur votre poste la ligne ci-dessous dans C:\Windows\System32\drivers\etc\hosts
+        //Ne pas oublier d'ajouter la ligne ci-dessous dans C:\Windows\System32\drivers\etc\hosts
         //127.0.0.1 jenkins.cegep-ste-foy.qc.ca
 
         [HttpGet]
