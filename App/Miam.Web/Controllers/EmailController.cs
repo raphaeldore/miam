@@ -11,14 +11,16 @@ namespace Miam.Web.Controllers
     public partial class EmailController : Controller
     {
         //Code incomplet, qui a pour but de montrer l'utilisation de smtp4dev.
-        // - smtp4dev permet d'envoyer et recevoir des courriels sur son poste de travail sans avoir à configurer un serveur SMTP
-        // - Les tests d'acceptation exécutés en local utilisent smtp4dev.
-        // - Les tests d'acceptation exécutés sur le serveur d'intégration (Jenkins) utilisent un vrai serveur SMTP.
+        // - smtp4dev permet d'envoyer et recevoir des courriels en local (évite d'envoyer pour vrai les courriels lors du développement).
+        // - Les tests d'acceptation exécutés en local utilisent smtp4dev. Aucun courriel ne sera envoyé.
+        // - Les tests d'acceptation exécutés sur le serveur d'intégration (Jenkins) utilisent un vrai serveur SMTP. Les courriels sont réellement envoyés.
         //
         //Pour télécharger smpt4dev: https://smtp4dev.codeplex.com/
         //
-        //Ne pas oublier d'ajouter la ligne ci-dessous dans C:\Windows\System32\drivers\etc\hosts
-        //127.0.0.1 jenkins.cegep-ste-foy.qc.ca
+        //Configuration en local: 
+        //  Installer et exécuter smtp4dev
+        //  Ajouter la ligne ci-dessous dans le fichier hosts  (C:\Windows\System32\drivers\etc\hosts):
+        //  127.0.0.1 jenkinssmtp.cegep-ste-foy.qc.ca
 
         [HttpGet]
         public virtual ActionResult Send()
