@@ -35,7 +35,7 @@ namespace Miam.Web.Controllers
             client.Port = 25;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            client.Host = "jenkins.cegep-ste-foy.qc.ca";
+            client.Host = "jenkinssmtp.cegep-ste-foy.qc.ca";
             mail.Subject = sendEmailViewModel.Subject;
             mail.Body = sendEmailViewModel.Body;
             client.Send(mail);
