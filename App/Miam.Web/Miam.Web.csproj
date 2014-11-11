@@ -185,6 +185,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CIController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Services\IAccountService.cs" />
     <Compile Include="Services\AccountService.cs" />
@@ -219,6 +220,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Account\Login.cs" />
+    <Compile Include="ViewModels\Email\SendEmail.cs" />
     <Compile Include="ViewModels\Home\Index.cs" />
     <Compile Include="ViewModels\Restaurant\Delete.cs" />
     <Compile Include="ViewModels\Restaurant\ContactDetail.cs" />
@@ -238,6 +240,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_menuPartial.cshtml" />
+    <Content Include="Views\Email\Send.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

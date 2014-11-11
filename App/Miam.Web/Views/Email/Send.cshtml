@@ -1,0 +1,10 @@
+﻿@model Miam.Web.ViewModels.Email.SendEmail
+
+@using (Html.BeginForm())
+{
+
+    @Html.EditorFor(model => model)
+    
+    <input class="btn btn-sm btn-success" id="submit_button" type="submit" value="Envoyer" />
+    @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
+}
