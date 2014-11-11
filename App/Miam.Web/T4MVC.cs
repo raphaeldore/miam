@@ -3,8 +3,8 @@
 // Don't change it directly as your change would get overwritten.  Instead, make changes
 // to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
+// Make sure the compiler doesn't complain about missing Xml comments and CLS compliance
+#pragma warning disable 1591, 3008, 3009
 #region T4MVC
 
 using System;
@@ -27,6 +27,8 @@ public static partial class MVC
 {
     public static Miam.Web.Controllers.AccountController Account = new Miam.Web.Controllers.T4MVC_AccountController();
     public static Miam.Web.Controllers.CIController CI = new Miam.Web.Controllers.T4MVC_CIController();
+    public static Miam.Web.Controllers.EmailController Email = new Miam.Web.Controllers.T4MVC_EmailController();
+    public static Miam.Web.Controllers.FileController File = new Miam.Web.Controllers.T4MVC_FileController();
     public static Miam.Web.Controllers.HomeController Home = new Miam.Web.Controllers.T4MVC_HomeController();
     public static Miam.Web.Controllers.RestaurantController Restaurant = new Miam.Web.Controllers.T4MVC_RestaurantController();
     public static Miam.Web.Controllers.ReviewController Review = new Miam.Web.Controllers.T4MVC_ReviewController();
@@ -171,6 +173,6 @@ internal static class T4MVCHelpers {
 
 
 #endregion T4MVC
-#pragma warning restore 1591
+#pragma warning restore 1591, 3008, 3009
 
 
