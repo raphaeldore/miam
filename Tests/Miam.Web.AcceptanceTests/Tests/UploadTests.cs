@@ -16,7 +16,7 @@ namespace Miam.Web.AcceptanceTests.Tests
         [TestMethod]
         public void user_can_upload_file()
         {
-            // Les fichier de tests se trouvent dans le dossier TestFiles du projet Miam.Web.AcceptanceTests
+            // Les fichiers de tests se trouvent dans le dossier TestFiles du projet Miam.Web.AcceptanceTests
             // Les fichiers sont téléchargés dans le dossier Uploads du projet Miam.Web  (voir méthode Upload du contrôleur File)
 
             UploadPage.Goto();

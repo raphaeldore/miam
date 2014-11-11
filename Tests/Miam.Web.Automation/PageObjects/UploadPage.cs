@@ -37,7 +37,7 @@ namespace Miam.Web.Automation.PageObjects
 
             //SOLUTION: 
             //  - Rechercher le dossier TestFiles dans l'arborescence.
-            //  - Pour cette solution, un seul dossier TestFile doit exister dans la solution.
+            //  - Un seul dossier TestFile doit exister dans la solution.
  
             var folderTestFilesPath = Directory.GetDirectories(Path.GetFullPath("../../"), "TestFiles", SearchOption.AllDirectories)
                                                .FirstOrDefault();
