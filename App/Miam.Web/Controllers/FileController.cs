@@ -37,7 +37,7 @@ namespace Miam.Web.Controllers
             var fileName = Path.GetFileName(file.FileName);
             var path = Path.Combine(Server.MapPath("~/uploads"), fileName);
             file.SaveAs(path);
-            return RedirectToRoute(MVC.Home.Index());
+            return RedirectToAction(MVC.Home.Index());
             
         }
 
