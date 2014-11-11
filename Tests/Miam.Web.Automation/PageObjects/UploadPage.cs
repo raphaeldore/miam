@@ -35,13 +35,16 @@ namespace Miam.Web.Automation.PageObjects
             //  - Pour Jenkins, il faut remonter de deux dossiers ("../..") et ensuite aller dans Tests\Miam.Web.AcceptanceTests\TestFiles
             //  - En local, il faut remonter de deux dossiers ("../..") et ensuite aller dans TestFiles.
 
-            //SOLUTION: 
+            //SOLUTION TEMPORAIRE: 
+            //  - Remonter de deux dossiers
             //  - Rechercher le dossier TestFiles dans l'arborescence.
-            //  - Un seul dossier TestFile doit exister dans la solution.
- 
-            var folderTestFilesPath = Directory.GetDirectories(Path.GetFullPath("../../"), "TestFiles", SearchOption.AllDirectories)
+            //  - Spécification: un seul dossier TestFiles doit exister dans la solution.
+            //Todo: Voir s'il est possible de configurer Jenkins autrement pour pouvoir utiliser le même chemin relatif.
+
+            var towFoldersUp = Path.GetFullPath("../../");
+            var testFilesPath = Directory.GetDirectories(towFoldersUp, "TestFiles", SearchOption.AllDirectories)
                                                .FirstOrDefault();
-            var fullPath = Path.Combine(folderTestFilesPath, filename);
+            var fullPath = Path.Combine(testFilesPath, filename);
 
 
             Driver.Instance.FindElement(By.Id("filename")).SendKeys(fullPath);

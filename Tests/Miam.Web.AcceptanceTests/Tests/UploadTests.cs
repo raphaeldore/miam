@@ -21,7 +21,7 @@ namespace Miam.Web.AcceptanceTests.Tests
 
             UploadPage.Goto();
  
-            // Voir explication dans la méthode UploadTestFile ci-dessous
+            // Voir les explications dans la méthode UploadTestFile ci-dessous
             UploadPage.UploadTestFile("exemple.docx");
             
             //Todo: Réécrie l'assertion du test lorsqu'il sera possible d'afficher la liste des fichiers téléchargés
