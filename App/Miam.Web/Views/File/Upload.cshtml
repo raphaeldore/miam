@@ -1,0 +1,10 @@
+﻿﻿<h2>Upload</h2>
+
+@using (Html.BeginForm(MVC.File.Upload(), FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationMessage("fileError")
+
+    <input type="file" name="file" id="filename" />
+
+    <input type="submit" id="submit_button" />
+}

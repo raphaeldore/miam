@@ -43,7 +43,7 @@ namespace Miam.Web.Controllers
             mail.Body = sendEmailViewModel.Body;
             client.Send(mail);
 
-            return RedirectToRoute(MVC.Home.Index());
+            return RedirectToAction(MVC.Home.Index());
         }
     }
 }

@@ -23,10 +23,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace Miam.Web.Controllers
 {
-    public partial class CIController
+    public partial class EmailController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected CIController(Dummy d) { }
+        public EmailController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected EmailController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -56,13 +59,13 @@ namespace Miam.Web.Controllers
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public CIController Actions { get { return MVC.CI; } }
+        public EmailController Actions { get { return MVC.Email; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "CI";
+        public readonly string Name = "Email";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "CI";
+        public const string NameConst = "Email";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -70,18 +73,24 @@ namespace Miam.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = "Index";
-            public readonly string ClearDB = "ClearDB";
+            public readonly string Send = "Send";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Index = "Index";
-            public const string ClearDB = "ClearDB";
+            public const string Send = "Send";
         }
 
 
+        static readonly ActionParamsClass_Send s_params_Send = new ActionParamsClass_Send();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Send SendParams { get { return s_params_Send; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Send
+        {
+            public readonly string sendEmailViewModel = "sendEmailViewModel";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -92,34 +101,37 @@ namespace Miam.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string Send = "Send";
             }
+            public readonly string Send = "~/Views/Email/Send.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_CIController : Miam.Web.Controllers.CIController
+    public partial class T4MVC_EmailController : Miam.Web.Controllers.EmailController
     {
-        public T4MVC_CIController() : base(Dummy.Instance) { }
+        public T4MVC_EmailController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void SendOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Index()
+        public override System.Web.Mvc.ActionResult Send()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            IndexOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Send);
+            SendOverride(callInfo);
             return callInfo;
         }
 
         [NonAction]
-        partial void ClearDBOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void SendOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.Email.SendEmail sendEmailViewModel);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult ClearDB()
+        public override System.Web.Mvc.ActionResult Send(Miam.Web.ViewModels.Email.SendEmail sendEmailViewModel)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ClearDB);
-            ClearDBOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Send);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "sendEmailViewModel", sendEmailViewModel);
+            SendOverride(callInfo, sendEmailViewModel);
             return callInfo;
         }
 
