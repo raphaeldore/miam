@@ -40,6 +40,9 @@ namespace Miam.Web.AcceptanceTests.Tests
             //Action
             DownloadIndexPage.Goto();
             DownloadIndexPage.ClickFile(TestData.WordFileName);
+            //Ce test ne peut fonctionner que si FireFox n'ouvre pas de boite de dialogue.
+            //Voir le code de la méthode Initialize et CreateSeleniumPorfile de la classe Driver (dossier Selenium du projet Web.Automation)
+            //afin de voir comment indiquer à FireFox de ne pas ouvrir de boite de dialogue.
 
             //Assert
             Assert.IsTrue(DownloadIndexPage.IsDisplayed); //En cas d'erreur c'est une autre page qui est affichée

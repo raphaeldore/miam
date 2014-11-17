@@ -17,7 +17,7 @@ namespace Miam.Web.Automation.Selenium
 
         public static void Initialize()
         {
-            var fireFoxSeleniumProfile = CreateSeleniumPorfile();
+            var fireFoxSeleniumProfile = CreateSeleniumPorfile(); 
             Instance = new FirefoxDriver(fireFoxSeleniumProfile);
             Instance.Manage().Window.Maximize();
             
@@ -47,6 +47,8 @@ namespace Miam.Web.Automation.Selenium
 
         public static FirefoxProfile CreateSeleniumPorfile()
         {
+            // Creation d'un profile afin d'indiquer à FireFox de ne pas ouvrir de boite de dialogue
+            // lors d'un téléchargement vers le client. 
             var profile = new FirefoxProfile();
 
             profile.SetPreference("browser.download.dir", ".");

@@ -55,14 +55,16 @@ namespace Miam.Web.Controllers
         public virtual ActionResult Download(string fullPathFileName)
         {
             // Exemple pour démontrer le téléchargement d'un fichier du serveur au poste client
-            // Code à améliorer.
+            // Dans cette exemple le chemin est utilisé comme paramètre.. à éviter.
 
             if (!System.IO.File.Exists(fullPathFileName))
             {
                 return HttpNotFound();
             }
 
-            return File(fullPathFileName, System.Net.Mime.MediaTypeNames.Application.Octet); 
+            byte[] fileBytes = System.IO.File.ReadAllBytes(fullPathFileName);
+            string fileName = Path.GetFileName(fullPathFileName);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
     }
 }
