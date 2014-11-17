@@ -24,7 +24,7 @@ namespace Miam.Web.AcceptanceTests.Tests
             // Voir les explications dans la méthode UploadTestFile ci-dessous
             UploadPage.UploadTestFile("exemple.docx");
             
-            //Todo: Réécrie l'assertion du test lorsqu'il sera possible d'afficher la liste des fichiers téléchargés
+            //Todo: Réécrire l'assertion du test lorsqu'il sera possible d'afficher la liste des fichiers téléchargés
             // Pour l'instant ne test que le retour à la page d'accueil.
             Assert.IsTrue(HomePage.HasRestaurant);
 
