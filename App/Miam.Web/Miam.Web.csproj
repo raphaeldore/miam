@@ -250,6 +250,7 @@
     <Content Include="Views\Shared\_menuPartial.cshtml" />
     <Content Include="Views\Email\Send.cshtml" />
     <Content Include="Views\File\Upload.cshtml" />
+    <Content Include="Views\File\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

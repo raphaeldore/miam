@@ -69,7 +69,7 @@
     <Compile Include="Tests\LoginTests.cs" />
     <Compile Include="MiamAcceptanceBaseClassTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\UploadTests.cs" />
+    <Compile Include="Tests\FileTests.cs" />
     <Compile Include="Tests\WriterTests.cs" />
   </ItemGroup>
   <ItemGroup>

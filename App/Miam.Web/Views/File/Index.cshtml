@@ -1,0 +1,13 @@
+﻿@model string[]
+
+<h2 id="download-index-page">Les fichiers docx du dossier "uploads"</h2>
+
+<div id="files">
+    <li>
+        @foreach (var fullpathFileName in Model)
+        {
+            <ol>@Html.ActionLink(fullpathFileName, MVC.File.Download().AddRouteValues(new { fullpathFileName = fullpathFileName }))</ol>
+        }
+    </li>
+</div>
+

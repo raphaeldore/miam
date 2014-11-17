@@ -4,9 +4,9 @@ using System.Linq;
 using Miam.Web.Automation.Selenium;
 using OpenQA.Selenium;
 
-namespace Miam.Web.Automation.PageObjects
+namespace Miam.Web.Automation.PageObjects.FilePages
 {
-    public class UploadPage
+    public class UploadPage :FileBasePage
     {
         public static void Goto()
         {
@@ -41,11 +41,7 @@ namespace Miam.Web.Automation.PageObjects
             //  - Spécification: un seul dossier TestFiles doit exister dans la solution.
             //Todo: Voir s'il est possible de configurer Jenkins autrement pour pouvoir utiliser le même chemin relatif.
 
-            var towFoldersUp = Path.GetFullPath("../../");
-            var testFilesPath = Directory.GetDirectories(towFoldersUp, "TestFiles", SearchOption.AllDirectories)
-                                               .FirstOrDefault();
-            var fullPath = Path.Combine(testFilesPath, filename);
-
+            var fullPath = GetFullPath(filename);
 
             Driver.Instance.FindElement(By.Id("filename")).SendKeys(fullPath);
             Driver.Instance.FindElement(By.Id("submit_button")).Click();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing.Imaging;
+using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 
@@ -16,7 +17,8 @@ namespace Miam.Web.Automation.Selenium
 
         public static void Initialize()
         {
-            Instance = new FirefoxDriver();
+            var fireFoxSeleniumProfile = CreateSeleniumPorfile();
+            Instance = new FirefoxDriver(fireFoxSeleniumProfile);
             Instance.Manage().Window.Maximize();
             
             //Selenium doit attendre 5 secondes avant d'indiquer qu'un objet n'est pas sur une page.
@@ -41,6 +43,18 @@ namespace Miam.Web.Automation.Selenium
                                    DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + 
                                    ".png", 
                                    ImageFormat.Png);
+        }
+
+        public static FirefoxProfile CreateSeleniumPorfile()
+        {
+            var profile = new FirefoxProfile();
+
+            profile.SetPreference("browser.download.dir", ".");
+            profile.SetPreference("browser.download.folderList", 2);
+            profile.SetPreference("browser.helperApps.alwaysAsk.force", false);
+            profile.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/zip, application/x-zip, application/x-zip-compressed, application/download, application/octet-stream"); 
+            
+            return profile;
         }
     }
 }
