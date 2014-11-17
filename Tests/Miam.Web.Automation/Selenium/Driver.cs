@@ -24,6 +24,7 @@ namespace Miam.Web.Automation.Selenium
 
             //Efface et peuple la BD avec des données pour les tests
             Instance.Navigate().GoToUrl(BaseAddress + "/Ci");
+            GetScreenShoot("ApresCI");
             
             Instance.FindElement(By.Id("go_home")).Click();
         }
