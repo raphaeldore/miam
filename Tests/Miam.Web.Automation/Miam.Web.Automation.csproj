@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PageObjects\FilePages\DownloadIndexPage.cs" />
-    <Compile Include="PageObjects\FilePages\FileBasePage.cs" />
     <Compile Include="PageObjects\FilePages\UploadPage.cs" />
     <Compile Include="PageObjects\RestaurantPages\CreateRestaurantPage.cs" />
     <Compile Include="PageObjects\RestaurantPages\EditRestaurantPage.cs" />

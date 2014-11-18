@@ -8,7 +8,7 @@ using OpenQA.Selenium;
 
 namespace Miam.Web.Automation.PageObjects.FilePages
 {
-    public class DownloadIndexPage:FileBasePage
+    public class DownloadIndexPage
     {
         public static bool IsDisplayed
         {
