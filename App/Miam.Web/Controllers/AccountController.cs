@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Web.Mvc;
 using Miam.DataLayer;
@@ -18,6 +19,9 @@ namespace Miam.Web.Controllers
         public AccountController(IHttpContextService httpContext,
                                  IAccountService accountService)
         {
+            if (httpContext == null) throw new NullReferenceException();
+            if (accountService == null) throw new NullReferenceException();
+
             _httpContext = httpContext;
             _accountService = accountService;
         }

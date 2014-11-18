@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
@@ -16,6 +17,8 @@ namespace Miam.Web.Controllers
 
         public HomeController(IEntityRepository<Restaurant> restaurantRepository)
         {
+            if (restaurantRepository == null) throw new NullReferenceException();
+
             _restaurantRepository = restaurantRepository;
         }
 

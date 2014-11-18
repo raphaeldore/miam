@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
@@ -20,6 +21,11 @@ namespace Miam.Web.Controllers
                                 IEntityRepository<Restaurant> restaurantRepository,
                                 IHttpContextService httpContextService)
         {
+
+            if (reviewRepository == null) throw new NullReferenceException();
+            if (restaurantRepository == null) throw new NullReferenceException();
+            if (httpContextService == null) throw new NullReferenceException();
+
             _reviewRepository = reviewRepository;
             _restaurantRepository = restaurantRepository;
             _httpContextService = httpContextService;

@@ -12,6 +12,8 @@ namespace Miam.Web.Controllers
 
         public CIController(IDatabaseHelper dbInit)
         {
+            if (dbInit == null) throw new NullReferenceException();
+            
             _dbInit = dbInit;
         }
 
