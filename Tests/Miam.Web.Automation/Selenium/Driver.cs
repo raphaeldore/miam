@@ -26,7 +26,7 @@ namespace Miam.Web.Automation.Selenium
 
             //Efface et peuple la BD avec des données pour les tests
             Instance.Navigate().GoToUrl(BaseAddress + "/Ci");
-            GetScreenShoot("ApresCI");
+            //GetScreenShoot("ApresCI");
             
             Instance.FindElement(By.Id("go_home")).Click();
         }
@@ -47,11 +47,10 @@ namespace Miam.Web.Automation.Selenium
 
         public static FirefoxProfile CreateSeleniumPorfile()
         {
-            // Creation d'un profile afin d'indiquer à FireFox de ne pas ouvrir de boite de dialogue
-            // lors d'un téléchargement vers le client. 
+            // Configurer FireFox pour ne pas ouvrir de boite de dialogue si un utilisateur demande de télécharger un fichier.
             var profile = new FirefoxProfile();
-
-            profile.SetPreference("browser.download.dir", ".");
+            var applicationDirectory = Directory.GetCurrentDirectory();
+            profile.SetPreference("browser.download.dir", applicationDirectory);
             profile.SetPreference("browser.download.folderList", 2);
             profile.SetPreference("browser.helperApps.alwaysAsk.force", false);
             profile.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/zip, application/x-zip, application/x-zip-compressed, application/download, application/octet-stream"); 

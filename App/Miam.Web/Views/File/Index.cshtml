@@ -3,11 +3,11 @@
 <h2 id="download-index-page">Les fichiers docx du dossier "uploads"</h2>
 
 <div id="files">
-    <li>
+    <ul class ="list-group">
         @foreach (var fullpathFileName in Model)
         {
-            <ol>@Html.ActionLink(fullpathFileName, MVC.File.Download().AddRouteValues(new { fullpathFileName = fullpathFileName }))</ol>
+            <li class="list-group-item">@Html.ActionLink(fullpathFileName, MVC.File.Download().AddRouteValues(new { fullpathFileName = fullpathFileName }))</li>
         }
-    </li>
+    </ul>
 </div>
 
