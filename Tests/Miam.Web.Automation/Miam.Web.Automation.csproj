@@ -50,9 +50,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageObjects\FilePages\DownloadIndexPage.cs" />
+    <Compile Include="PageObjects\FilePages\UploadPage.cs" />
     <Compile Include="PageObjects\RestaurantPages\CreateRestaurantPage.cs" />
     <Compile Include="PageObjects\RestaurantPages\EditRestaurantPage.cs" />
-    <Compile Include="PageObjects\UploadPage.cs" />
     <Compile Include="Selenium\Driver.cs" />
     <Compile Include="PageObjects\HomePage.cs" />
     <Compile Include="PageObjects\LoginPage.cs" />
@@ -74,6 +75,7 @@
       <Name>Miam.TestUtility</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

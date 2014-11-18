@@ -232,5 +232,12 @@ namespace Miam.TestUtility.Database
             }
         }
         #endregion
+
+       public static string WordFileName
+       {
+           //Le fichier se trouve dans la dossier TestFiles du projet Miam.Web.AcceptanceTests
+           get { return "exemple.docx"; }
+       }
+        
     }
 }

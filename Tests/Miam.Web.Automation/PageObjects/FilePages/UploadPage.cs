@@ -4,7 +4,7 @@ using System.Linq;
 using Miam.Web.Automation.Selenium;
 using OpenQA.Selenium;
 
-namespace Miam.Web.Automation.PageObjects
+namespace Miam.Web.Automation.PageObjects.FilePages
 {
     public class UploadPage
     {
@@ -35,20 +35,29 @@ namespace Miam.Web.Automation.PageObjects
             //  - Pour Jenkins, il faut remonter de deux dossiers ("../..") et ensuite aller dans Tests\Miam.Web.AcceptanceTests\TestFiles
             //  - En local, il faut remonter de deux dossiers ("../..") et ensuite aller dans TestFiles.
 
-            //SOLUTION TEMPORAIRE: 
-            //  - Remonter de deux dossiers
-            //  - Rechercher le dossier TestFiles dans l'arborescence.
-            //  - Spécification: un seul dossier TestFiles doit exister dans la solution.
+            //SOLUTION: voir méthode GetTestFilesFolderFullPath
+            
             //Todo: Voir s'il est possible de configurer Jenkins autrement pour pouvoir utiliser le même chemin relatif.
 
-            var towFoldersUp = Path.GetFullPath("../../");
-            var testFilesPath = Directory.GetDirectories(towFoldersUp, "TestFiles", SearchOption.AllDirectories)
-                                               .FirstOrDefault();
-            var fullPath = Path.Combine(testFilesPath, filename);
-
+            var fullPath = GetTestFilesFolderFullPath(filename);
 
             Driver.Instance.FindElement(By.Id("filename")).SendKeys(fullPath);
             Driver.Instance.FindElement(By.Id("submit_button")).Click();
+        }
+
+        private static string GetTestFilesFolderFullPath(string filename)
+        {
+            //Remonter de deux dossiers 
+            var towFoldersUp = Path.GetFullPath("../../");
+
+            //Rechercher le dossier TestFiles dans l'arborescence.
+            //Attention, un seul dossier TestFiles doit exister dans la solution.
+            var testFilesPath = Directory.GetDirectories(towFoldersUp, "TestFiles", SearchOption.AllDirectories)
+                                         .FirstOrDefault();
+
+            var fullPath = Path.Combine(testFilesPath, filename);
+
+            return fullPath;
         }
     }
 }

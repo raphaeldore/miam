@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,12 +16,21 @@ namespace Miam.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public virtual ActionResult Index()
+        {
+            var uploadDirectory = Server.MapPath("~/uploads");
+            var filesFullPath = Directory.GetFiles(uploadDirectory, "*.docx");
+
+            return View(filesFullPath);
+
+        }
 
         [HttpPost]
         public virtual ActionResult Upload(HttpPostedFileBase file)
         {
-            // Exemple pour télécharger un fichier.
-            // Voir le test d'acceptation user_can_upload_file de la classe UploadTests.
+            // Exemple pour télécharger un fichier sur le serveur
+            // Voir le test d'acceptation user_can_upload_file de la classe FileTests.
             // Voir fichier README.txt dans le dossier uplaods du projet miam.web
             if (file == null)
             {
@@ -41,5 +51,21 @@ namespace Miam.Web.Controllers
             
         }
 
+        [HttpGet]
+        public virtual ActionResult Download(string fullPathFileName)
+        {
+            // Exemple pour démontrer le téléchargement d'un fichier du serveur au poste client
+            // Dans cet exemple le chemin complet est utilisé comme paramètre. Devrait être un id unique. 
+
+            // Voir le test d'acceptation user_can_download_file de la classe FileTests.
+            if (!System.IO.File.Exists(fullPathFileName))
+            {
+                return HttpNotFound();
+            }
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(fullPathFileName);
+            string fileName = Path.GetFileName(fullPathFileName);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
     }
 }

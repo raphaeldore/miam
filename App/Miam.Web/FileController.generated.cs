@@ -57,6 +57,12 @@ namespace Miam.Web.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Download()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Download);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public FileController Actions { get { return MVC.File; } }
@@ -74,12 +80,16 @@ namespace Miam.Web.Controllers
         public class ActionNamesClass
         {
             public readonly string Upload = "Upload";
+            public readonly string Index = "Index";
+            public readonly string Download = "Download";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Upload = "Upload";
+            public const string Index = "Index";
+            public const string Download = "Download";
         }
 
 
@@ -91,6 +101,14 @@ namespace Miam.Web.Controllers
         {
             public readonly string file = "file";
         }
+        static readonly ActionParamsClass_Download s_params_Download = new ActionParamsClass_Download();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Download DownloadParams { get { return s_params_Download; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Download
+        {
+            public readonly string fullPathFileName = "fullPathFileName";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -101,8 +119,12 @@ namespace Miam.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string Download = "Download";
+                public readonly string Index = "Index";
                 public readonly string Upload = "Upload";
             }
+            public readonly string Download = "~/Views/File/Download.cshtml";
+            public readonly string Index = "~/Views/File/Index.cshtml";
             public readonly string Upload = "~/Views/File/Upload.cshtml";
         }
     }
@@ -124,6 +146,17 @@ namespace Miam.Web.Controllers
         }
 
         [NonAction]
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Index()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
         partial void UploadOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Web.HttpPostedFileBase file);
 
         [NonAction]
@@ -132,6 +165,18 @@ namespace Miam.Web.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Upload);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "file", file);
             UploadOverride(callInfo, file);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DownloadOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string fullPathFileName);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Download(string fullPathFileName)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Download);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "fullPathFileName", fullPathFileName);
+            DownloadOverride(callInfo, fullPathFileName);
             return callInfo;
         }
 
