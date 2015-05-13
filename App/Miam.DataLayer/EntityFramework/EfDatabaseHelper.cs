@@ -14,7 +14,7 @@ namespace Miam.DataLayer.EntityFramework
             var initializer = new DropCreateDatabaseIfModelChanges<MiamDbContext>();
 
             // Pour mettre des données dans la BD, utiliser 
-            //var initializer = new EfDatabaseDropCreateIfModelChangesSeeder();
+            //var initializer = new EfDropCreateIfModelChangesSeeder();
             Database.SetInitializer(initializer); 
             
         }
@@ -26,7 +26,7 @@ namespace Miam.DataLayer.EntityFramework
             var initializer = new DropCreateDatabaseAlways<MiamDbContext>();
 
             // Pour mettre des données dans la BD, utiliser 
-            //var initializer = new EfDatabaseDropCreateIfModelChangesSeeder();
+            //var initializer = new EfDropCreateDatabaseAlwaysSeeder();
             Database.SetInitializer(initializer); 
             
         }
