@@ -159,9 +159,13 @@
     <Content Include="Views\Restaurant\Edit.cshtml" />
     <Content Include="Views\Restaurant\Index.cshtml" />
     <Content Include="Views\Review\Create.cshtml" />
-    <Content Include="ConnectionStrings.config">
+    <Content Include="ConnectionStringsProd.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ConnectionStringsDev.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\PublishProfiles\Publier en local.pubxml" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
