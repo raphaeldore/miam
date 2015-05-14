@@ -31,6 +31,20 @@ namespace Miam.DataLayer.EntityFramework
             
         }
 
+        public void MigrateDatabaseToLatestVersion()
+        {
+            //var initializer = new MigrateDatabaseToLatestVersion<MiamDbContext,MigrationMiamDbContext>;
+        }
+
+        public void CreatedatabaseIfNotExists()
+        {
+            SqlConnection.ClearAllPools();
+
+            var initializer = new CreateDatabaseIfNotExists<MiamDbContext>();
+
+            Database.SetInitializer(initializer); 
+        }
+
 
         public void DeleteAll()
         {

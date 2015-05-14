@@ -61,6 +61,11 @@
     <Compile Include="MiamDbContext.cs" />
     <Compile Include="EntityFramework\EfEntityRepository.cs" />
     <Compile Include="EntityFramework\EfDropCreateIfModelChangesSeeder.cs" />
+    <Compile Include="Migrations\201505141910399_InitialCreate.cs" />
+    <Compile Include="Migrations\201505141910399_InitialCreate.Designer.cs">
+      <DependentUpon>201505141910399_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +79,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505141910399_InitialCreate.resx">
+      <DependentUpon>201505141910399_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
