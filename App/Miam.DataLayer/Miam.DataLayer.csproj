@@ -58,7 +58,7 @@
     <Compile Include="IDatabaseHelper.cs" />
     <Compile Include="IEntityRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="MiamDbContext.cs" />
+    <Compile Include="EntityFramework\MiamDbContext.cs" />
     <Compile Include="EntityFramework\EfEntityRepository.cs" />
     <Compile Include="EntityFramework\EfDropCreateIfModelChangesSeeder.cs" />
     <Compile Include="Migrations\201505141910399_InitialCreate.cs" />
