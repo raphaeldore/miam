@@ -7,7 +7,6 @@ namespace Miam.Domain.Entities
     {
         [StringLength(100)]
         public string Title { get; set; }
-        public string TestMigration { get; set; }
 
         //Navigation properties
         public virtual ICollection<Restaurant> Restaurants { get; set; }
