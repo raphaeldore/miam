@@ -86,7 +86,7 @@ Créer un package
       <DeployParametersFile>%(BuildArtifacts.FullPath)parameters.xml</DeployParametersFile>
     </PropertyGroup>
     <MakeDir Directories="$(PackageDir)"/>
-    <Exec Command='@(MsDeployExe) -verb:sync -source:iisApp=$(Source) -dest:package=$(Destination) -declareParamFile=$(DeployParametersFile)'/>
+    <Exec Command='%(MsDeployExe.FullPath) -verb:sync -source:iisApp=$(Source) -dest:package=$(Destination) -declareParamFile=$(DeployParametersFile)'/>
   </Target>
 
   <Target Name='Deploy' DependsOnTargets=''>
