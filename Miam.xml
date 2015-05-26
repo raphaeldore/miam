@@ -29,7 +29,6 @@ Créer un package
 
     <!-- Configuration de l'application -->
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <ConnectionStringFile Condition=" '$(ConnectionStringFile)' == '' ">ConnectionStringsTest.config</ConnectionStringFile>
 
     <!-- Outils -->
     <!--<MsTestExe Condition=" '$(MsTestExe)' == '' ">"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\mstest.exe"</MsTestExe>-->
