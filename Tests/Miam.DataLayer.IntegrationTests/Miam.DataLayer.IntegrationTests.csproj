@@ -57,6 +57,24 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
     <OutputPath>bin\Staging\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CI|AnyCPU'">
+    <OutputPath>bin\Release-CI\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CI-Release|AnyCPU'">
+    <OutputPath>bin\CI-Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -114,8 +132,32 @@
       <Link>Miam.ConnectionStrings.Local.config</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="..\..\App\Miam.Web\Miam.ConnectionStrings.Test.config">
+      <Link>Miam.ConnectionStrings.Test.config</Link>
+    </None>
+    <None Include="App.CI-Release.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="App.Development.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="App.Release-CI.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="App.Staging.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="App.Test.config">
+      <DependentUpon>App.config</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
