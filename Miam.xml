@@ -93,6 +93,6 @@ Créer un package
     <PropertyGroup>
       <Source>%(PackageFile.FullPath)</Source>
     </PropertyGroup>
-    <Exec Command='@(MsDeployExe) -verb:sync -source:package=$(Source) -dest:iisApp=$(DeployIisAppPath),computerName="$(WebDeployServiceURL)",authtype=basic,username="$(WebDeployUserName)",password="$(WebDeployPassword)" -setParam:name=ConnectionStringFile,value="$(ConnectionStringFile)"'/>
+    <Exec Command='%(MsDeployExe.FullPath) -verb:sync -source:package="$(Source)" -dest:iisApp="$(DeployIisAppPath)",computerName="$(WebDeployServiceURL)",authtype=basic,username="$(WebDeployUserName)",password="$(WebDeployPassword)" -setParam:name=ConnectionStringFile,value="$(ConnectionStringFile)"'/>
   </Target>
 </Project>
