@@ -110,10 +110,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\App\Miam.Web\ConnectionStrings.config">
-      <Link>ConnectionStrings.config</Link>
+    <Content Include="..\..\App\Miam.Web\Miam.ConnectionStrings.Local.config">
+      <Link>Miam.ConnectionStrings.Local.config</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>

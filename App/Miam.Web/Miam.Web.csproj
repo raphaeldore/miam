@@ -155,7 +155,9 @@
     <Content Include="Content\Bootstrap\bootstrap-theme.css.map" />
     <Content Include="Content\Bootstrap\bootstrap.css.map" />
     <Content Include="Content\Toastr\toastr.scss" />
-    <Content Include="ConnectionStrings.config" />
+    <Content Include="Miam.ConnectionStrings.Local.config" />
+    <Content Include="Miam.ConnectionStrings.Test.config" />
+    <Content Include="Miam.ConnectionStrings.Production.config" />
     <None Include="parameters.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
