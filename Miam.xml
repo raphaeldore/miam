@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Exemples de ligne de commandes: 
+
+Par défaut: configuration RELEASE et environment DEVELOPMENT
+
+Compiler en debug (équivalent):  
+  msbuild miam.build /p:Configuration=Debug   ou  msbuild miam.build /property:Configuration=Debug
+  
+Compiler en Release:
+  msbuild miam.build                          ou  msbuild miam.build /p:Configuration=Release
+
+Execution des tests en release:
+  msbuild miam.build /t:UnitTests             ou  msbuild miam.build /target:UnitTests 
+ 
+Créer un package
+  msbuild miam.build /t:package
+
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         ToosVersion="4.0"
+         DefaultTargets="Compile">
+
+  <PropertyGroup>
+    <!-- Option de connexion du service web deploy-->
+    <DeployIisAppPath Condition=" '$(DeployIisAppPath)' == '' "></DeployIisAppPath>
+    <WebDeployUserName Condition=" '$(WebDeployUserName)' == '' "></WebDeployUserName>
+    <WebDeployPassword Condition=" '$(WebDeployPassword)' == '' "></WebDeployPassword>
+    <WebDeployServiceURL Condition=" '$(WebDeployServiceURL)' == '' "></WebDeployServiceURL>
+
+    <!-- Configuration de l'application -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <ConnectionStringFile Condition=" '$(ConnectionStringFile)' == '' ">ConnectionStringsTest.config</ConnectionStringFile>
+
+    <!-- Outils -->
+    <MsTestExe Condition=" '$(MsTestExe)' == '' ">"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\mstest.exe"</MsTestExe>
+    <MsDeployExe Condition=" '$(MsDeployExe)' == '' ">"C:\Program Files (x86)\IIS\Microsoft Web Deploy V3\msdeploy.exe"</MsDeployExe>
+  
+</PropertyGroup>
+
+  <ItemGroup>
+    <!-- genral -->
+    <SolutionFile Include=".\Miam.sln"/>
+    <BuildArtifacts Include=".\buildartifacts\"/>
+
+    <!-- unit tests -->
+    <UnitTestsAssembly Include=".\buildartifacts\Miam.Web.UnitTests.dll"/>
+    <UnitTestsResults Include=".\buildartifacts\UnitTestsResults.trx"/>
+
+    <!-- deploiement -->
+    <WebsitePublishDir Include=".\buildartifacts\_PublishedWebsites\Miam.Web"/>
+    <PackageFile Include=".\buildartifacts\package\miam.zip"/>
+  </ItemGroup>
+
+  <Target Name="VerifyProperties">
+    <!-- Verify that we have values for all required properties -->
+    <Error Condition=" '$(ProjectName)' == '' " Text="ProjectName is required." />
+  </Target>
+
+  <!-- Compilation -->
+  <Target Name="Clean">
+    <RemoveDir Directories="@(BuildArtifacts)"/>
+  </Target>
+
+  <Target Name="Init" DependsOnTargets="Clean">
+    <MakeDir Directories="@(BuildArtifacts)"/>
+  </Target>
+
+  <Target Name="Compile" DependsOnTargets="Init">
+    <MSBuild Projects="@(SolutionFile)"
+             Targets="Rebuild"
+             Properties="OutDir=%(BuildArtifacts.FullPath);
+             Configuration=$(Configuration);"/>
+  </Target>
+
+  <Target Name="UnitTests" DependsOnTargets="Compile">
+    <Exec Command="$(MsTestExe) /testcontainer:@(UnitTestsAssembly) /resultsfile:@(UnitTestsResults)"/>
+  </Target>
+
+  <Target Name="Package"  DependsOnTargets="">
+    <PropertyGroup>
+      <PackageDir>%(PackageFile.RootDir)%(PackageFile.Directory)</PackageDir>
+      <Source>%(WebsitePublishDir.FullPath)</Source>
+      <Destination>%(PackageFile.FullPath)</Destination>
+      <DeployParametersFile>%(BuildArtifacts.FullPath)parameters.xml</DeployParametersFile>
+    </PropertyGroup>
+    <MakeDir Directories="$(PackageDir)"/>
+    <Exec Command='$(MsDeployExe) -verb:sync -source:iisApp=$(Source) -dest:package=$(Destination) -declareParamFile=$(DeployParametersFile)'/>
+  </Target>
+
+  <Target Name='Deploy' DependsOnTargets=''>
+    <PropertyGroup>
+      <Source>%(PackageFile.FullPath)</Source>
+    </PropertyGroup>
+    <Exec Command='$(MsDeployExe) -verb:sync -source:package=$(Source) -dest:iisApp=$(DeployIisAppPath),computerName="$(WebDeployServiceURL)",authtype=basic,username="$(WebDeployUserName)",password="$(WebDeployPassword)" -setParam:name=ConnectionStringFile,value="$(ConnectionStringFile)"'/>
+  </Target>
+</Project>
