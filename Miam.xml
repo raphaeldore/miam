@@ -71,7 +71,7 @@ Créer un package
     <MSBuild Projects="@(SolutionFile)"
              Targets="Rebuild"
              Properties="OutDir=%(BuildArtifacts.FullPath);
-             Configuration=$(Configuration);"/>
+                         Configuration=$(Configuration);"/>
   </Target>
 
   <Target Name="UnitTests" DependsOnTargets="Compile">
