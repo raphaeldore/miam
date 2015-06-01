@@ -1,6 +1,7 @@
 ﻿using Miam.Domain.Entities;
 using Miam.TestUtility.Database;
 using Miam.Web.Automation.AcceptanceTestApi;
+using Miam.Web.Automation.PageObjects;
 using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
@@ -63,13 +64,19 @@ namespace Miam.Web.AcceptanceTests
 
         private void QuandLAdministrateurEntreSonCourrielEtMotDePasseValide()
         {
-            // Se loguer via l'interface 
-            Host.Instance.Application.Initialize();
+            var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
+            var loginPage = homePage.clickLogin();
+            loginPage.SelenoLoginAs(TestData.ApplicationUserAdmin);
+
+
         }
 
         private void AlorsLAdministrateurDevraitÊtreAuthentifié()
         {
-            // Vérification
+            var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
+            var islogged = homePage.SelenoIsLogged(TestData.ApplicationUserAdmin);
+
+            Assert.IsTrue(islogged);
         }
     }
 }

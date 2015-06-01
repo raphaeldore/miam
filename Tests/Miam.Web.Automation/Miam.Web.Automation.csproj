@@ -81,6 +81,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -150,6 +151,10 @@
     <ProjectReference Include="..\..\App\Miam.Domain\Miam.Domain.csproj">
       <Project>{E810FD87-1E7A-4BFB-A16E-950281DC6F9E}</Project>
       <Name>Miam.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\App\Miam.Web\Miam.Web.csproj">
+      <Project>{4EF73B74-EB13-468A-83DA-C68FD743DCC4}</Project>
+      <Name>Miam.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\Miam.TestUtility\Miam.TestUtility.csproj">
       <Project>{F267E2C1-675B-4CDB-BC6A-4307A609053E}</Project>

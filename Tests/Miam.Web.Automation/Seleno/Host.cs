@@ -1,5 +1,7 @@
 ﻿using TestStack.Seleno.Configuration;
 using TestStack.Seleno.Configuration.WebServers;
+using WebApplication1;
+
 
 namespace Miam.Web.Automation.Seleno
 {
@@ -10,7 +12,10 @@ namespace Miam.Web.Automation.Seleno
         static Host()
         {
 
-            Instance.Run(configure => configure.WithWebServer(new InternetWebServer("http://miamtest.gear.host")));
+            Instance.Run(configure => configure
+                .WithWebServer(new InternetWebServer("http://miam.local"))
+                .WithRouteConfig(RouteConfig.RegisterRoutes)
+            );
 
             //Instance.Run("Miam.Web", 12346);
             ////, c => c
