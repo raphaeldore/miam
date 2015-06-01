@@ -26,11 +26,6 @@ namespace Miam.Web.Automation.PageObjects
         public void LogOut()
         {
             Host.Instance.NavigateToInitialPage<AccountController, LoginPage>(x => x.Logout());
-            //var navigationMenu = Find.Element(By.ClassName("navbar"));
-            //if (navigationMenu.Text.Contains("logout-link"))
-            //    return Navigate.To<LoginPage>(By.Id("logout-link"));
-
-            //return Navigate.To<LoginPage>();
         }
 
         public bool IsAUserConnected()
