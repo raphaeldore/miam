@@ -89,6 +89,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcceptanceTestApi\DatabaseHelperAcceptanceTestApi.cs" />
+    <Compile Include="AcceptanceTestApi\UserAcceptanceTestsAPI.cs" />
     <Compile Include="PageObjects\FilePages\DownloadIndexPage.cs" />
     <Compile Include="PageObjects\FilePages\UploadPage.cs" />
     <Compile Include="PageObjects\RestaurantPages\CreateRestaurantPage.cs" />
@@ -105,6 +107,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\App\Miam.DataLayer\Miam.DataLayer.csproj">
+      <Project>{45063f47-819b-4c94-a017-ce2fbe20e277}</Project>
+      <Name>Miam.DataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\App\Miam.Domain\Miam.Domain.csproj">
       <Project>{E810FD87-1E7A-4BFB-A16E-950281DC6F9E}</Project>
       <Name>Miam.Domain</Name>
