@@ -1,6 +1,7 @@
 ﻿using Miam.Domain.Entities;
 using Miam.TestUtility.Database;
 using Miam.Web.Automation.AcceptanceTestApi;
+using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
@@ -15,15 +16,15 @@ namespace Miam.Web.AcceptanceTests
     public class AdminAuthentification
     {
         //private ApplicationUser _userAdmin;
-        private UserAcceptanceTestsAPI _userAcceptanceTestApi;
+        private UserAcceptanceTestsApi _userAcceptanceTestApi;
         private DatabaseHelperAcceptanceTestApi _databaseHelperAcceptanceTestApi;
 
         [TestInitialize]
         public void initialize()
         {
-            _userAcceptanceTestApi = new UserAcceptanceTestsAPI();
+            _userAcceptanceTestApi = new UserAcceptanceTestsApi();
             _databaseHelperAcceptanceTestApi = new DatabaseHelperAcceptanceTestApi();
-            _databaseHelperAcceptanceTestApi.ClearDataBaseForAcceptanceTests();
+            _databaseHelperAcceptanceTestApi.ClearDataBaseTables();
         }
 
         [TestMethod]
@@ -63,7 +64,7 @@ namespace Miam.Web.AcceptanceTests
         private void QuandLAdministrateurEntreSonCourrielEtMotDePasseValide()
         {
             // Se loguer via l'interface 
-            //Host.Instance.Application.Initialize();
+            Host.Instance.Application.Initialize();
         }
 
         private void AlorsLAdministrateurDevraitÊtreAuthentifié()

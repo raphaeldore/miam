@@ -4,12 +4,12 @@ using Miam.Domain.Entities;
 
 namespace Miam.Web.Automation.AcceptanceTestApi
 {
-    public class UserAcceptanceTestsAPI
+    public class UserAcceptanceTestsApi
     {
         private static EfDatabaseHelper _dataBaseHelper;
         private IEntityRepository<ApplicationUser> _userRepository;
 
-        public UserAcceptanceTestsAPI()
+        public UserAcceptanceTestsApi()
         {
             _userRepository = new EfEntityRepository<ApplicationUser>();
         }

@@ -10,7 +10,7 @@ namespace Miam.Web.Automation.AcceptanceTestApi
         {
             _dataBaseHelper = new EfDatabaseHelper();
         }
-        public void ClearDataBaseForAcceptanceTests()
+        public void ClearDataBaseTables()
         {
             _dataBaseHelper = new EfDatabaseHelper();
             _dataBaseHelper.MigrateDatabaseToLatestVersion();
