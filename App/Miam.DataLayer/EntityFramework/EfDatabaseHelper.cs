@@ -48,19 +48,26 @@ namespace Miam.DataLayer.EntityFramework
         }
 
 
-        public void DeleteAll()
+        public void ClearAllTables()
         {
 
-
-            
             var context = new MiamDbContext();
 
-            SqlConnection.ClearAllPools();
-
-            context.Database.Initialize(false);
-            context.Database.Delete();
-            context.Database.CreateIfNotExists();
+            context.Writers.RemoveRange(context.Writers);
+            context.Restaurants.RemoveRange(context.Restaurants);
+            context.Reviews.RemoveRange(context.Reviews);
+            context.RestaurantTags.RemoveRange(context.RestaurantTags);
+            context.Users.RemoveRange(context.Users);
+            context.Roles.RemoveRange(context.Roles);
             context.SaveChanges();
+
+
+             //Autre méthode pour tout effacer: supprimer la BD et la recréer, mais est plus lent.
+            //SqlConnection.ClearAllPools();
+            //context.Database.Initialize(false);
+            //context.Database.Delete();
+            //context.Database.CreateIfNotExists();
+            //context.SaveChanges();
         }
     }
 }

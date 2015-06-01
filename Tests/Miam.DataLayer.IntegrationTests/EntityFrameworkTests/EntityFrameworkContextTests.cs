@@ -18,8 +18,9 @@ namespace Miam.DataLayer.IntegrationTests.EntityFrameworkTests
         public void TestInitialize()
         {
             _dataBaseHelper = new EfDatabaseHelper();
-            _dataBaseHelper.DropCreateDatabaseIfModelChanges();
-            _dataBaseHelper.DeleteAll();
+            
+            _dataBaseHelper.MigrateDatabaseToLatestVersion();
+            _dataBaseHelper.ClearAllTables();
 
             _dataBaseTestHelper = new DataBaseTestHelper();
             _dataBaseTestHelper.SeedTables();

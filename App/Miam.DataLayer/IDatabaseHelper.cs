@@ -9,7 +9,7 @@ namespace Miam.DataLayer
 
         void CreatedatabaseIfNotExists();
 
-        void DeleteAll();
+        void ClearAllTables();
 
 
     }

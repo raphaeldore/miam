@@ -46,7 +46,7 @@ namespace Miam.Web.Controllers
 
         private void DeleteDb()
         {
-            _dbInit.DeleteAll();
+            _dbInit.ClearAllTables();
         }
 
         private void SeedDb()
