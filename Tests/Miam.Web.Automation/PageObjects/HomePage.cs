@@ -1,6 +1,8 @@
 ﻿using System;
 using Miam.Domain.Entities;
 using Miam.Web.Automation.Selenium;
+using Miam.Web.Automation.Seleno;
+using Miam.Web.Controllers;
 using OpenQA.Selenium;
 using TestStack.Seleno.PageObjects;
 
@@ -9,19 +11,34 @@ namespace Miam.Web.Automation.PageObjects
     public class HomePage : Page
     {
         // Seleno
-        public LoginPage clickLogin()
+        public LoginPage GoToLoginPage()
         {
             return Navigate.To<LoginPage>(By.Id("login-link"))
 ;       }
 
-        public bool SelenoIsLogged(ApplicationUser applicationUserAdmin)
+        public bool SelenoIsLogged(string email)
         {
 
             var navigationMenu = Find.Element(By.ClassName("navbar"));
-            return navigationMenu.Text.Contains(applicationUserAdmin.Email);
+            return navigationMenu.Text.Contains(email);
+        }
+
+        public void LogOut()
+        {
+            Host.Instance.NavigateToInitialPage<AccountController, LoginPage>(x => x.Logout());
+            //var navigationMenu = Find.Element(By.ClassName("navbar"));
+            //if (navigationMenu.Text.Contains("logout-link"))
+            //    return Navigate.To<LoginPage>(By.Id("logout-link"));
+
+            //return Navigate.To<LoginPage>();
+        }
+
+        public bool IsAUserConnected()
+        {
+            throw new NotImplementedException();
         }
         
-        // Avanat 
+        // Avant 
         private static int _lastCount;
         public static bool IsAdminLogged
         {
@@ -83,6 +100,7 @@ namespace Miam.Web.Automation.PageObjects
         {
             Navigation.AllUsers.Home.Select();
         }
+
 
         
     }

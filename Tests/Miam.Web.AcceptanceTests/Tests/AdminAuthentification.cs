@@ -5,6 +5,7 @@ using Miam.Web.Automation.PageObjects;
 using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
+using TestStack.Seleno.Extensions;
 
 namespace Miam.Web.AcceptanceTests
 {
@@ -19,6 +20,7 @@ namespace Miam.Web.AcceptanceTests
         //private ApplicationUser _userAdmin;
         private UserAcceptanceTestsApi _userAcceptanceTestApi;
         private DatabaseHelperAcceptanceTestApi _databaseHelperAcceptanceTestApi;
+        private HomePage _homePage;
 
         [TestInitialize]
         public void initialize()
@@ -26,6 +28,16 @@ namespace Miam.Web.AcceptanceTests
             _userAcceptanceTestApi = new UserAcceptanceTestsApi();
             _databaseHelperAcceptanceTestApi = new DatabaseHelperAcceptanceTestApi();
             _databaseHelperAcceptanceTestApi.ClearDataBaseTables();
+
+            _homePage = Host.Instance.NavigateToInitialPage<HomePage>();
+        }
+
+        [TestCleanup]
+        public void cleanup()
+        {
+
+            _homePage.LogOut();
+
         }
 
         [TestMethod]
@@ -41,40 +53,39 @@ namespace Miam.Web.AcceptanceTests
         public void SAuthentifierAvecCourrielInvalide()
         {
             this.Given(x => EtantDonnéUnAdministrateurExistantNonAuthentifé(), "Étant donné un administrateur non authentifié")
-                .When(x => QuandLAdministrateurEntreSonMotDePasseValideEtCourrielInvalide())
+                .When(x => QuandLAdministrateurEntreUnMotDePasseInvalide())
                 .Then(x => AlorsLAdministrateurNeDevraitPasÊtreAuthentifié())
                 .BDDfy();
-        }
-
-        private void AlorsLAdministrateurNeDevraitPasÊtreAuthentifié()
-        {
-            //throw new System.NotImplementedException();
-        }
-
-        private void QuandLAdministrateurEntreSonMotDePasseValideEtCourrielInvalide()
-        {
-            //throw new System.NotImplementedException();
         }
 
         private void EtantDonnéUnAdministrateurExistantNonAuthentifé()
         {
             _userAcceptanceTestApi.createUser(TestData.ApplicationUserAdmin);
-
         }
-
         private void QuandLAdministrateurEntreSonCourrielEtMotDePasseValide()
         {
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-            var loginPage = homePage.clickLogin();
-            loginPage.SelenoLoginAs(TestData.ApplicationUserAdmin);
+            var loginPage = homePage.GoToLoginPage();
+            loginPage.SelenoLoginAs(TestData.ApplicationUserAdmin.Email, TestData.ApplicationUserAdmin.Password);
+        }
+        private void QuandLAdministrateurEntreUnMotDePasseInvalide()
+        {
+            var loginPage = _homePage.GoToLoginPage();
+            loginPage.SelenoLoginAs(TestData.ApplicationUserAdmin.Email, "invalid_password");
+        }
 
+        private void AlorsLAdministrateurNeDevraitPasÊtreAuthentifié()
+        {
+            var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
+            var islogged = homePage.SelenoIsLogged(TestData.ApplicationUserAdmin.Email);
 
+            Assert.IsFalse(islogged);
         }
 
         private void AlorsLAdministrateurDevraitÊtreAuthentifié()
         {
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-            var islogged = homePage.SelenoIsLogged(TestData.ApplicationUserAdmin);
+            var islogged = homePage.SelenoIsLogged(TestData.ApplicationUserAdmin.Email);
 
             Assert.IsTrue(islogged);
         }
