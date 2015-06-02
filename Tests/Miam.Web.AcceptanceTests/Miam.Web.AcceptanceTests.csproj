@@ -150,8 +150,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Tests\AdminAuthentification.cs" />
-    <Compile Include="Tests\AdminRestaurants.cs" />
+    <Compile Include="Admin\AdminBaseClass.cs" />
+    <Compile Include="Admin\AdminAuthentification.cs" />
+    <Compile Include="Admin\AdminDeleteRestaurant.cs" />
     <Compile Include="Tests\AdminTests.cs" />
     <Compile Include="Tests\HomeTests.cs" />
     <Compile Include="Tests\LoginTests.cs" />

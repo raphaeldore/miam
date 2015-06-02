@@ -2,12 +2,24 @@
 using Miam.Domain.Entities;
 using Miam.Web.Automation.Selenium;
 using OpenQA.Selenium;
+using TestStack.Seleno.PageObjects;
 
 namespace Miam.Web.Automation.PageObjects.RestaurantPages
 {
-    public class EditRestaurantPage
+    public class EditRestaurantPage : Page
     {
-        
+        //Seleno
+        public void DeleteFisrtRestaurant()
+        {
+            var deleteButton = Find.Element(By.CssSelector("a[id*='delete_button']"));
+            deleteButton.Click();
+
+            var confirmButton = Find.Element(By.TagName("input"));
+            confirmButton.Click();
+        }
+
+        //Avant 
+
 
         public static bool IsDisplayed
         {
@@ -89,6 +101,7 @@ namespace Miam.Web.Automation.PageObjects.RestaurantPages
                 }
             };
         }
+
 
         
     }

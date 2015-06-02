@@ -10,7 +10,7 @@ namespace Miam.Web.Automation.PageObjects
     {
 
         //avec seleno
-        public LoginPage SelenoLoginAs(string email, string password)
+        public HomePage SelenoLoginAs(string email, string password)
         {
             Find.Element(By.Id("Email"))
                 .SendKeys(email);
@@ -18,10 +18,7 @@ namespace Miam.Web.Automation.PageObjects
             Find.Element(By.Id("Password"))
                 .SendKeys(password);
 
-            Find.Element(By.Id("login-submit"))
-                .Click();
-
-            return this;
+            return Navigate.To<HomePage>(By.Id("login-submit"));
         }
 
 

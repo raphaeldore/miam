@@ -6,7 +6,6 @@ namespace Miam.Web.Automation.AcceptanceTestApi
 {
     public class UserAcceptanceTestsApi
     {
-        private static EfDatabaseHelper _dataBaseHelper;
         private IEntityRepository<ApplicationUser> _userRepository;
 
         public UserAcceptanceTestsApi()
@@ -16,13 +15,6 @@ namespace Miam.Web.Automation.AcceptanceTestApi
         public void createUser(ApplicationUser applicationUserAdmin)
         {
             _userRepository.Add(applicationUserAdmin);
-        }
-
-        public void ClearDataBaseForAcceptanceTests()
-        {
-            _dataBaseHelper = new EfDatabaseHelper();
-            _dataBaseHelper.MigrateDatabaseToLatestVersion();
-            _dataBaseHelper.ClearAllTables();
         }
     }
 }

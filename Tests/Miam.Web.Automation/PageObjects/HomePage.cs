@@ -1,5 +1,6 @@
 ﻿using System;
 using Miam.Domain.Entities;
+using Miam.Web.Automation.PageObjects.RestaurantPages;
 using Miam.Web.Automation.Selenium;
 using Miam.Web.Automation.Seleno;
 using Miam.Web.Controllers;
@@ -13,8 +14,15 @@ namespace Miam.Web.Automation.PageObjects
         // Seleno
         public LoginPage GoToLoginPage()
         {
-            return Navigate.To<LoginPage>(By.Id("login-link"))
+            return Navigate.To<LoginPage>(By.Id("login-link"));
 ;       }
+
+        public EditRestaurantPage GoToEditRestaurantPage()
+        {
+            Find.Element(By.Id("admin-menu"))
+                .Click();
+            return Navigate.To<EditRestaurantPage>(By.Id("manage-restaurant-menu-item"));
+        }
 
         public bool SelenoIsLogged(string email)
         {
@@ -23,16 +31,19 @@ namespace Miam.Web.Automation.PageObjects
             return navigationMenu.Text.Contains(email);
         }
 
+        public int RestaurantCount()
+        {
+            var countText = Find.Element(By.Id("restaurants-count"))
+                                .Text;
+            return int.Parse(countText.Split(' ')[0]);
+        }
+
         public void LogOut()
         {
             Host.Instance.NavigateToInitialPage<AccountController, LoginPage>(x => x.Logout());
         }
-
-        public bool IsAUserConnected()
-        {
-            throw new NotImplementedException();
-        }
         
+       
         // Avant 
         private static int _lastCount;
         public static bool IsAdminLogged
