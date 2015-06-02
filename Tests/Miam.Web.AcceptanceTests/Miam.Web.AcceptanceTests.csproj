@@ -152,6 +152,8 @@
   <ItemGroup>
     <Compile Include="Admin\AdminBaseClass.cs" />
     <Compile Include="Admin\AdminAuthentification.cs" />
+    <Compile Include="Admin\AdminAddRestaurant.cs" />
+    <Compile Include="Admin\AdminEditRestaurant.cs" />
     <Compile Include="Admin\AdminDeleteRestaurant.cs" />
     <Compile Include="Tests\AdminTests.cs" />
     <Compile Include="Tests\HomeTests.cs" />

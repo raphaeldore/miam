@@ -17,10 +17,15 @@ namespace Miam.Web.Automation.AcceptanceTestApi
         {
             _restaurantRepository = new EfEntityRepository<Restaurant>();
         }
-        public void createRestaurant(Restaurant restaurant)
+        public void CreateRestaurant(Restaurant restaurant)
         {
             _restaurantRepository.Add(restaurant);
         }
 
+        public Restaurant GetFirstRestaurant()
+        {
+            _restaurantRepository = new EfEntityRepository<Restaurant>(); // nécessaire pour avoir le dernier context.
+            return _restaurantRepository.GetAll().First();
+        }
     }
 }

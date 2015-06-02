@@ -24,6 +24,13 @@ namespace Miam.Web.Automation.PageObjects
             return Navigate.To<EditRestaurantPage>(By.Id("manage-restaurant-menu-item"));
         }
 
+        public CreateRestaurantPage GoToCreateRestaurantPage()
+        {
+            Find.Element(By.Id("admin-menu"))
+                .Click();
+            return Navigate.To<CreateRestaurantPage>(By.Id("add-restaurant-menu-item"));
+        }
+
         public bool SelenoIsLogged(string email)
         {
 
