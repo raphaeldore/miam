@@ -37,7 +37,7 @@ namespace Miam.Web.AcceptanceTests.Admin
         {
             _userAcceptanceTestApi.createUser(TestData.ApplicationUserAdmin);
             var loginPage = _homePage.GoToLoginPage();
-            loginPage.SelenoLoginAs(TestData.ApplicationUserAdmin.Email, TestData.ApplicationUserAdmin.Password);
+            loginPage.LoginAs(TestData.ApplicationUserAdmin.Email, TestData.ApplicationUserAdmin.Password);
         }
         protected void un_restaurant_existe_dans_le_système()
         {

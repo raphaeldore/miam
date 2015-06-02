@@ -1,29 +1,28 @@
-﻿using Miam.TestUtility.AutoFixture;
-using Miam.Web.Automation.Selenium;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Ploeh.AutoFixture;
+﻿//using Miam.TestUtility.AutoFixture;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Ploeh.AutoFixture;
 
-namespace Miam.Web.AcceptanceTests
-{
-    [TestClass]
-    public class MiamAcceptanceBaseClassTests
-    {
-        protected Fixture _fixture;
+//namespace Miam.Web.AcceptanceTests
+//{
+//    [TestClass]
+//    public class MiamAcceptanceBaseClassTests
+//    {
+//        protected Fixture _fixture;
 
-        [TestInitialize]
-        public void Init()
-        {
+//        [TestInitialize]
+//        public void Init()
+//        {
 
-            _fixture = new Fixture();
-            _fixture.Customizations.Add(new VirtualMembersOmitter());
+//            _fixture = new Fixture();
+//            _fixture.Customizations.Add(new VirtualMembersOmitter());
 
-            Driver.Initialize();
-        }
+//            Driver.Initialize();
+//        }
 
-        [TestCleanup]
-        public void Cleanup()
-        {
-            Driver.Close();
-        }
-    }
-}
+//        [TestCleanup]
+//        public void Cleanup()
+//        {
+//            Driver.Close();
+//        }
+//    }
+//}

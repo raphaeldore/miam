@@ -34,7 +34,7 @@ namespace Miam.Web.AcceptanceTests.Admin
         {
             var restaurant = _restaurantAcceptanceTestApi.GetFirstRestaurant();
             AssertRestaurantsShouldBeEquivalent(TestData.Restaurant3, restaurant);
-            AssertContactDetailsShouldBeEquivalent(TestData.Restaurant3.RestaurantContactDetail, restaurant.RestaurantContactDetail)
+            AssertContactDetailsShouldBeEquivalent(TestData.Restaurant3.RestaurantContactDetail, restaurant.RestaurantContactDetail);
         }
     }
 }

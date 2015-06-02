@@ -1,5 +1,4 @@
 ﻿using Miam.TestUtility.Database;
-using Miam.Web.Automation.AcceptanceTestApi;
 using Miam.Web.Automation.PageObjects;
 using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -41,18 +40,18 @@ namespace Miam.Web.AcceptanceTests.Admin
         {
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
             var loginPage = homePage.GoToLoginPage();
-            loginPage.SelenoLoginAs(TestData.ApplicationUserAdmin.Email, TestData.ApplicationUserAdmin.Password);
+            loginPage.LoginAs(TestData.ApplicationUserAdmin.Email, TestData.ApplicationUserAdmin.Password);
         }
         private void l_administrateur_entre_un_mot_de_passe_invalide()
         {
             var loginPage = _homePage.GoToLoginPage();
-            loginPage.SelenoLoginAs(TestData.ApplicationUserAdmin.Email, "invalid_password");
+            loginPage.LoginAs(TestData.ApplicationUserAdmin.Email, "invalid_password");
         }
 
         private void l_administrateur_ne_devrait_pas_être_authentifié()
         {
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-            var islogged = homePage.SelenoIsLogged(TestData.ApplicationUserAdmin.Email);
+            var islogged = homePage.IsLogged(TestData.ApplicationUserAdmin.Email);
 
             Assert.IsFalse(islogged);
         }
@@ -60,7 +59,7 @@ namespace Miam.Web.AcceptanceTests.Admin
         private void l_administrateur_devrait_être_authentifié()
         {
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-            var islogged = homePage.SelenoIsLogged(TestData.ApplicationUserAdmin.Email);
+            var islogged = homePage.IsLogged(TestData.ApplicationUserAdmin.Email);
 
             Assert.IsTrue(islogged);
         }

@@ -150,18 +150,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Writer\WriterAuthentification.cs" />
     <Compile Include="Admin\AdminBaseClass.cs" />
     <Compile Include="Admin\AdminAuthentification.cs" />
     <Compile Include="Admin\AdminAddRestaurant.cs" />
     <Compile Include="Admin\AdminEditRestaurant.cs" />
     <Compile Include="Admin\AdminDeleteRestaurant.cs" />
-    <Compile Include="Tests\AdminTests.cs" />
-    <Compile Include="Tests\HomeTests.cs" />
-    <Compile Include="Tests\LoginTests.cs" />
+    <Compile Include="QuelquesExemples\HomeTests.cs" />
     <Compile Include="MiamAcceptanceBaseClassTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\FileTests.cs" />
-    <Compile Include="Tests\WriterTests.cs" />
+    <Compile Include="QuelquesExemples\FileTests.cs" />
+    <Compile Include="QuelquesExemples\WriterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\App\Miam.Domain\Miam.Domain.csproj">
