@@ -151,6 +151,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Tests\AdminAuthentification.cs" />
+    <Compile Include="Tests\AdminRestaurants.cs" />
     <Compile Include="Tests\AdminTests.cs" />
     <Compile Include="Tests\HomeTests.cs" />
     <Compile Include="Tests\LoginTests.cs" />

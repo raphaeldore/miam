@@ -1,11 +1,9 @@
-﻿using Miam.Domain.Entities;
-using Miam.TestUtility.Database;
+﻿using Miam.TestUtility.Database;
 using Miam.Web.Automation.AcceptanceTestApi;
 using Miam.Web.Automation.PageObjects;
 using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
-using TestStack.Seleno.Extensions;
 
 namespace Miam.Web.AcceptanceTests
 {
@@ -35,46 +33,44 @@ namespace Miam.Web.AcceptanceTests
         [TestCleanup]
         public void cleanup()
         {
-
             _homePage.LogOut();
-
         }
 
         [TestMethod]
-        public void SauthentifierAvecCourrielEtMotDePasseValide()
+        public void s_authentifier_avec_courriel_et_mot_de_passe_valide()
         {
-            this.Given(x => EtantDonnéUnAdministrateurExistantNonAuthentifé())
-                .When(x => QuandLAdministrateurEntreSonCourrielEtMotDePasseValide())
-                .Then(x => AlorsLAdministrateurDevraitÊtreAuthentifié())
+            this.Given(x => un_administrateur_existant_non_authentifé())
+                .When(x => l_administrateur_entre_son_courriel_et_mot_de_passe_valide())
+                .Then(x => l_administrateur_devrait_être_authentifié())
                 .BDDfy();
         }
 
         [TestMethod]
-        public void SAuthentifierAvecCourrielInvalide()
+        public void s_authentifier_avec_courriel_invalide()
         {
-            this.Given(x => EtantDonnéUnAdministrateurExistantNonAuthentifé(), "Étant donné un administrateur non authentifié")
-                .When(x => QuandLAdministrateurEntreUnMotDePasseInvalide())
-                .Then(x => AlorsLAdministrateurNeDevraitPasÊtreAuthentifié())
+            this.Given(x => un_administrateur_existant_non_authentifé())
+                .When(x => l_administrateur_entre_un_mot_de_passe_invalide())
+                .Then(x => l_administrateur_ne_devrait_pas_être_authentifié())
                 .BDDfy();
         }
 
-        private void EtantDonnéUnAdministrateurExistantNonAuthentifé()
+        private void un_administrateur_existant_non_authentifé()
         {
             _userAcceptanceTestApi.createUser(TestData.ApplicationUserAdmin);
         }
-        private void QuandLAdministrateurEntreSonCourrielEtMotDePasseValide()
+        private void l_administrateur_entre_son_courriel_et_mot_de_passe_valide()
         {
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
             var loginPage = homePage.GoToLoginPage();
             loginPage.SelenoLoginAs(TestData.ApplicationUserAdmin.Email, TestData.ApplicationUserAdmin.Password);
         }
-        private void QuandLAdministrateurEntreUnMotDePasseInvalide()
+        private void l_administrateur_entre_un_mot_de_passe_invalide()
         {
             var loginPage = _homePage.GoToLoginPage();
             loginPage.SelenoLoginAs(TestData.ApplicationUserAdmin.Email, "invalid_password");
         }
 
-        private void AlorsLAdministrateurNeDevraitPasÊtreAuthentifié()
+        private void l_administrateur_ne_devrait_pas_être_authentifié()
         {
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
             var islogged = homePage.SelenoIsLogged(TestData.ApplicationUserAdmin.Email);
@@ -82,7 +78,7 @@ namespace Miam.Web.AcceptanceTests
             Assert.IsFalse(islogged);
         }
 
-        private void AlorsLAdministrateurDevraitÊtreAuthentifié()
+        private void l_administrateur_devrait_être_authentifié()
         {
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
             var islogged = homePage.SelenoIsLogged(TestData.ApplicationUserAdmin.Email);
@@ -91,52 +87,3 @@ namespace Miam.Web.AcceptanceTests
         }
     }
 }
-
-//    public class AdminTests : MiamAcceptanceBaseClassTests
-//    {
-//        [TestInitialize]
-//        public void initialize()
-//        {
-//            LoginPage.GoTo();
-//            LoginPage.LoginAs(TestData.ApplicationUserAdmin);
-//        }
-
-//        [TestMethod]
-//        public void admin_can_delete_restaurant()
-//        {
-//            HomePage.StoreRestaurtantCount();
-
-//            EditRestaurantPage.GoTo();
-//            EditRestaurantPage.DeleteFirstRestaurant();
-
-//            HomePage.GoTo();
-//            Assert.AreNotEqual(HomePage.PreviousRestaurantCount, HomePage.CurrentRestaurantCount);
-//        }
-
-//        [TestMethod]
-//        public void admin_can_edit_restaurant()
-//        {
-//            EditRestaurantPage.GoTo();
-//            EditRestaurantPage.ModifytFirstRestaurantWith(TestData.Restaurant3);
-
-//            //assert
-//            EditRestaurantPage.FirstRestaurant.ShouldBeEquivalentTo(TestData.Restaurant3);
-//        }
-
-//        [TestMethod]
-//        public void admin_can_add_a_restaurant()
-//        {
-//            //arrange
-//            var restaurant = _fixture.Create<Restaurant>();
-
-//            //action
-//            HomePage.StoreRestaurtantCount();
-//            CreateRestaurantPage.GoTo();
-//            CreateRestaurantPage.CreateRestaurant(restaurant);
-
-//            //Assert
-//            Assert.AreEqual(HomePage.PreviousRestaurantCount + 1, HomePage.CurrentRestaurantCount);
-//            Assert.IsTrue(HomePage.DoesRestaurantNameExist(restaurant.Name), "Le nom du restaurant ne se trouve pas dans la page.");
-//        }
-//    }
-//}
