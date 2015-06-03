@@ -14,8 +14,10 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
             _userAdmin = TestData.ApplicationUserAdmin;
             _userAcceptanceTestApi.createUser(_userAdmin);
 
-            var loginPage = _homePage.GoToLoginPage();
-            loginPage.LoginAs(_userAdmin.Email, _userAdmin.Password);
+            _homePage
+                .Menu
+                .GotoLoginPage()
+                .LoginAs(_userAdmin.Email, _userAdmin.Password);
         }
         protected void un_restaurant_existe_dans_le_système()
         {

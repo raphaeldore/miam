@@ -9,13 +9,13 @@ namespace Miam.Web.Controllers
     public partial class EmailController : Controller
     {
         [HttpGet]
-        public virtual ActionResult Send()
+        public virtual ActionResult Index()
         {
             return View();
         }
 
-        [HttpPost, ActionName("Send")]
-        public virtual ActionResult SendPost()
+        [HttpPost]
+        public virtual ActionResult Send()
         {
             // Envoi de courriel avec l'api de Sendgrid) 
             var accountSendGrid = ConfigurationManager.AppSettings["mailAccountSendGrid"];

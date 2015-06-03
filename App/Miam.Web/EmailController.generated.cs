@@ -75,15 +75,15 @@ namespace Miam.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Send = "Send";
-            public readonly string SendPost = "Send";
+            public readonly string Send = "Index";
+            public readonly string SendPost = "Index";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Send = "Send";
-            public const string SendPost = "Send";
+            public const string Send = "Index";
+            public const string SendPost = "Index";
         }
 
 
@@ -97,9 +97,9 @@ namespace Miam.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Send = "Send";
+                public readonly string Send = "Index";
             }
-            public readonly string Send = "~/Views/Email/Send.cshtml";
+            public readonly string Send = "~/Views/Email/Index.cshtml";
         }
     }
 
@@ -112,7 +112,7 @@ namespace Miam.Web.Controllers
         partial void SendOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Send()
+        public override System.Web.Mvc.ActionResult Index()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Send);
             SendOverride(callInfo);
@@ -123,7 +123,7 @@ namespace Miam.Web.Controllers
         partial void SendPostOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult SendPost()
+        public override System.Web.Mvc.ActionResult Send()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SendPost);
             SendPostOverride(callInfo);

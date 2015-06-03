@@ -1,0 +1,39 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TestStack.BDDfy;
+
+namespace Miam.Web.AcceptanceTests.ExemplesDivers
+{
+    // Exemple pour montrer un test d'acceptation pour l'envoi d'un courriel (story et scénario à revoir). 
+     [Story(
+        Title = "Un utilisateur peut envoyer un courriel",
+        AsA = "En tant qu'utilisateur",
+        IWant = "Je veux pouvoir envoyer un courriel",
+        SoThat = "Afin de ...")]
+    class SendEmail : AcceptanceTestsBaseClass
+    {
+         [TestMethod]
+         public void ajouter_un_restaurant()
+         {
+             this.When(x => l_utilisateur_envoie_un_courriel())
+                 .Then(x => le_courriel_est_ajouté())
+                 .BDDfy();
+         }
+
+         //private void un_utilisateur_non_authentifié()
+         //{
+         //    // pas besoin 
+         //}
+
+         private void l_utilisateur_envoie_un_courriel()
+         {
+             _homePage
+                 .Menu
+                 .GoToEmailPage();
+         }
+
+         private void le_courriel_est_ajouté()
+         {
+             throw new System.NotImplementedException();
+         }
+    }
+}

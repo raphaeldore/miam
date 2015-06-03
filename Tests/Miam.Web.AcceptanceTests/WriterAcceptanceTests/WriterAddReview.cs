@@ -33,8 +33,10 @@ namespace Miam.Web.AcceptanceTests.WriterAcceptanceTests
             _writer = TestData.Writer1;
             _userAcceptanceTestApi.createUser(_writer);
 
-            var loginPage = _homePage.GoToLoginPage();
-            loginPage.LoginAs(_writer.Email, _writer.Password);
+            _homePage
+                .Menu
+                .GotoLoginPage()
+                .LoginAs(_writer.Email, _writer.Password);
         }
 
         private void un_restaurant()

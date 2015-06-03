@@ -31,7 +31,9 @@ namespace Miam.Web.AcceptanceTests
         [TestCleanup]
         public void cleanup()
         {
-            _homePage.LogOut();
+            _homePage
+                .Menu
+                .GoToLogout();
         }
     }
 }

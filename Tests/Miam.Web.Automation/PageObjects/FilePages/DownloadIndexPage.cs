@@ -12,7 +12,7 @@
 //    {
 //        public static bool IsDisplayed
 //        {
-//            get { return Driver.Instance.FindElement(By.Id("download-index-page")) != null; }
+//            get { return Driver.Instance.FindElement(By.Id("download-Index-page")) != null; }
 //        }
 //        public static void Goto()
 //        {

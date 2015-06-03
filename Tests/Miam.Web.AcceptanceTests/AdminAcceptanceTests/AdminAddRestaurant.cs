@@ -23,8 +23,10 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 
         private void l_administrateur_ajoute_un_restaurant()
         {
-            var createRestaurantPage = _homePage.GoToCreateRestaurantPage();
-            createRestaurantPage.AddRestaurant(TestData.Restaurant2);
+            _homePage
+                .Menu
+                .ClickCreateRestaurantPage()
+                .AddRestaurant(TestData.Restaurant2);
         }
 
         private void le_restaurant_est_ajouté()

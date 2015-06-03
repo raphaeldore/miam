@@ -1,6 +1,7 @@
 ﻿using Miam.TestUtility.Database;
 using Miam.Web.Automation.PageObjects;
 using Miam.Web.Automation.Seleno;
+using Miam.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
@@ -39,13 +40,18 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         private void l_administrateur_entre_son_courriel_et_mot_de_passe_valide()
         {
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-            var loginPage = homePage.GoToLoginPage();
-            loginPage.LoginAs(TestData.ApplicationUserAdmin.Email, TestData.ApplicationUserAdmin.Password);
+
+            homePage
+                .Menu
+                .GotoLoginPage()
+                .LoginAs(TestData.ApplicationUserAdmin.Email, TestData.ApplicationUserAdmin.Password);
         }
         private void l_administrateur_entre_un_mot_de_passe_invalide()
         {
-            var loginPage = _homePage.GoToLoginPage();
-            loginPage.LoginAs(TestData.ApplicationUserAdmin.Email, "invalid_password");
+            _homePage
+                .Menu
+                .GotoLoginPage()
+                .LoginAs(TestData.ApplicationUserAdmin.Email, "invalid_password");
         }
 
         private void l_administrateur_ne_devrait_pas_être_authentifié()

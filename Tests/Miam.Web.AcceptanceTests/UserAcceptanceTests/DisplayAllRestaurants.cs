@@ -6,11 +6,11 @@ namespace Miam.Web.AcceptanceTests.UserAcceptanceTests
 {
     [TestClass]
     [Story(
-        Title = "Un utilisateur peut voir la liste des restaurants",
+        Title = "Un utilisateur non authentifié peut voir la liste des restaurants",
         AsA = "En tant qu'utilisateur",
         IWant = "Je veux voir la liste des restaurants avec la moyenne des critiques",
         SoThat = "Afin de choisir un restaurant")]
-    public class AdminAuthentification : AdminBaseClass
+    public class DisplayAllRestaurants : AdminBaseClass
     {
         [TestMethod]
         public void voir_la_liste_des_restaurants()

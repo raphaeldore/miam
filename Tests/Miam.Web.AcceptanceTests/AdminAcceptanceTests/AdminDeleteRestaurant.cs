@@ -24,8 +24,10 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 
         private void l_administrateur_supprime_un_restaurant()
         {
-            var editRestaurantPage = _homePage.GoToEditRestaurantPage();
-            editRestaurantPage.DeleteFisrtRestaurant();
+            _homePage
+                .Menu
+                .ClickEditRestaurantPage()
+                .DeleteFisrtRestaurant();
 
         }
         private void le_restaurant_est_supprimé()

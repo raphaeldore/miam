@@ -24,8 +24,10 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 
         private void l_administrateur_edit_un_restaurant()
         {
-            var editRestaurantPage = _homePage.GoToEditRestaurantPage();
-            editRestaurantPage.EditFisrtRestaurantWith(TestData.Restaurant3);
+            _homePage
+                .Menu
+                .ClickEditRestaurantPage()
+                .EditFisrtRestaurantWith(TestData.Restaurant3);
         }
 
         private void le_restaurant_est_mis_à_jour()
