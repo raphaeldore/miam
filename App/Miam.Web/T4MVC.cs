@@ -4,7 +4,9 @@
 // to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 
 // Make sure the compiler doesn't complain about missing Xml comments and CLS compliance
-#pragma warning disable 1591, 3008, 3009
+// 0108: suppress "Foo hides inherited member Foo. Use the new keyword if hiding was intended." when a controller and its abstract parent are both processed
+// 0114: suppress "Foo.BarController.Baz()' hides inherited member 'Qux.BarController.Baz()'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword." when an action (with an argument) overrides an action in a parent controller
+#pragma warning disable 1591, 3008, 3009, 0108, 0114
 #region T4MVC
 
 using System;
@@ -133,13 +135,47 @@ namespace Links
     
     }
 
+    
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public static partial class Bundles
     {
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static partial class Scripts {}
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static partial class Styles {}
+        public static partial class Scripts 
+        {
+            public static class Assets
+            {
+                public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
+                public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js"; 
+                public const string jquery_1_9_0_intellisense_js = "~/Scripts/jquery-1.9.0.intellisense.js"; 
+                public const string jquery_1_9_0_js = "~/Scripts/jquery-1.9.0.js"; 
+                public const string jquery_1_9_0_min_js = "~/Scripts/jquery-1.9.0.min.js"; 
+            }
+        }
+        public static partial class Content 
+        {
+            public static partial class Bootstrap 
+            {
+                public static class Assets
+                {
+                    public const string bootstrap_theme_css = "~/Content/Bootstrap/bootstrap-theme.css";
+                    public const string bootstrap_theme_min_css = "~/Content/Bootstrap/bootstrap-theme.min.css";
+                    public const string bootstrap_css = "~/Content/Bootstrap/bootstrap.css";
+                    public const string bootstrap_min_css = "~/Content/Bootstrap/bootstrap.min.css";
+                }
+            }
+            public static partial class Toastr 
+            {
+                public static class Assets
+                {
+                    public const string toastr_css = "~/Content/Toastr/toastr.css";
+                    public const string toastr_min_css = "~/Content/Toastr/toastr.min.css";
+                }
+            }
+            public static class Assets
+            {
+                public const string miam_css = "~/Content/miam.css";
+                public const string signin_css = "~/Content/signin.css";
+            }
+        }
     }
 }
 
@@ -173,6 +209,6 @@ internal static class T4MVCHelpers {
 
 
 #endregion T4MVC
-#pragma warning restore 1591, 3008, 3009
+#pragma warning restore 1591, 3008, 3009, 0108, 0114
 
 
