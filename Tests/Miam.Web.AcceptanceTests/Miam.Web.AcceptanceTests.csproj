@@ -156,7 +156,7 @@
     <Compile Include="Admin\AdminAddRestaurant.cs" />
     <Compile Include="Admin\AdminEditRestaurant.cs" />
     <Compile Include="Admin\AdminDeleteRestaurant.cs" />
-    <Compile Include="QuelquesExemples\HomeTests.cs" />
+    <Compile Include="User\HomeTests.cs" />
     <Compile Include="MiamAcceptanceBaseClassTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuelquesExemples\FileTests.cs" />

@@ -24,7 +24,7 @@ namespace Miam.Web.Automation.AcceptanceTestApi
 
         public Restaurant GetFirstRestaurant()
         {
-            _restaurantRepository = new EfEntityRepository<Restaurant>(); // nécessaire pour avoir le dernier context.
+            _restaurantRepository = new EfEntityRepository<Restaurant>(); // nécessaire pour avoir le dernier "context".
             return _restaurantRepository.GetAll().First();
         }
     }

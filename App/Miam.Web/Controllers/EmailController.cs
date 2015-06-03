@@ -17,7 +17,7 @@ namespace Miam.Web.Controllers
         [HttpPost, ActionName("Send")]
         public virtual ActionResult SendPost()
         {
-            // Envoie de courriel avec l'api de Sendgrid) 
+            // Envoi de courriel avec l'api de Sendgrid) 
             var accountSendGrid = ConfigurationManager.AppSettings["mailAccountSendGrid"];
             var passwordSendGrid = ConfigurationManager.AppSettings["mailPasswordSenGrid"];
             var credentials = new NetworkCredential(accountSendGrid, passwordSendGrid);
