@@ -4,7 +4,7 @@ using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
-namespace Miam.Web.AcceptanceTests.Admin
+namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 {
     [TestClass]
     [Story(

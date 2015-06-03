@@ -1,13 +1,8 @@
 ﻿using FluentAssertions;
-using Miam.TestUtility.Database;
-using Miam.Web.Automation.AcceptanceTestApi;
-using Miam.Web.Automation.PageObjects;
-using Miam.Web.Automation.PageObjects.RestaurantPages;
-using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
-namespace Miam.Web.AcceptanceTests.Admin
+namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 {
     [TestClass]
     [Story(

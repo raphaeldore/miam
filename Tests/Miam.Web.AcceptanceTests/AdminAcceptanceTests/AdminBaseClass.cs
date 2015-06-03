@@ -1,47 +1,26 @@
 ﻿using FluentAssertions;
 using Miam.Domain.Entities;
 using Miam.TestUtility.Database;
-using Miam.Web.Automation.AcceptanceTestApi;
-using Miam.Web.Automation.PageObjects;
-using Miam.Web.Automation.Seleno;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Miam.Web.AcceptanceTests.Admin
+namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 {
-    public class AdminBaseClass
+    public class AdminBaseClass : AcceptanceTestsBaseClass
     {
-        protected UserAcceptanceTestsApi _userAcceptanceTestApi;
-        protected RestaurantAcceptanceTestApi _restaurantAcceptanceTestApi;
-        protected DatabaseHelperAcceptanceTestApi _databaseHelperAcceptanceTestApi;
-        protected HomePage _homePage;
-
-        [TestInitialize]
-        public void initialize()
-        {
-            _userAcceptanceTestApi = new UserAcceptanceTestsApi();
-            _restaurantAcceptanceTestApi = new RestaurantAcceptanceTestApi();
-
-            _databaseHelperAcceptanceTestApi = new DatabaseHelperAcceptanceTestApi();
-            _databaseHelperAcceptanceTestApi.ClearDataBaseTables();
-
-            _homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-        }
-
-        [TestCleanup]
-        public void cleanup()
-        {
-            _homePage.LogOut();
-        }
+        protected ApplicationUser _userAdmin;
+        protected Restaurant _restaurant1;
 
         protected void un_administrateur_authentifé()
         {
-            _userAcceptanceTestApi.createUser(TestData.ApplicationUserAdmin);
+            _userAdmin = TestData.ApplicationUserAdmin;
+            _userAcceptanceTestApi.createUser(_userAdmin);
+
             var loginPage = _homePage.GoToLoginPage();
-            loginPage.LoginAs(TestData.ApplicationUserAdmin.Email, TestData.ApplicationUserAdmin.Password);
+            loginPage.LoginAs(_userAdmin.Email, _userAdmin.Password);
         }
         protected void un_restaurant_existe_dans_le_système()
         {
-            _restaurantAcceptanceTestApi.CreateRestaurant(TestData.Restaurant1);
+            _restaurant1 = TestData.Restaurant1;
+            _restaurantAcceptanceTestApi.CreateRestaurant(_restaurant1);
         }
 
         protected void AssertRestaurantsShouldBeEquivalent(Restaurant expectedRestaurant, Restaurant obtainedRestaurant)

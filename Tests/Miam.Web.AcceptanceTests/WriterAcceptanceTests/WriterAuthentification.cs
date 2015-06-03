@@ -1,11 +1,11 @@
 ﻿using Miam.TestUtility.Database;
-using Miam.Web.AcceptanceTests.Admin;
+using Miam.Web.AcceptanceTests.AdminAcceptanceTests;
 using Miam.Web.Automation.PageObjects;
 using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
-namespace Miam.Web.AcceptanceTests.Writer
+namespace Miam.Web.AcceptanceTests.WriterAcceptanceTests
 {
     [TestClass]
     [Story(
@@ -13,7 +13,7 @@ namespace Miam.Web.AcceptanceTests.Writer
         AsA = "En tant que chroniqueur",
         IWant = "Je veux  m'authentifier",
         SoThat = "Afin d'avoir écrire des commetaires")]
-    public class WriterAuthentification : AdminBaseClass
+    public class WriterAuthentification : AcceptanceTestsBaseClass
     {
         [TestMethod]
         public void s_authentifier_avec_courriel_et_mot_de_passe_valide()

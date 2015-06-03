@@ -150,17 +150,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Writer\WriterAuthentification.cs" />
-    <Compile Include="Admin\AdminBaseClass.cs" />
-    <Compile Include="Admin\AdminAuthentification.cs" />
-    <Compile Include="Admin\AdminAddRestaurant.cs" />
-    <Compile Include="Admin\AdminEditRestaurant.cs" />
-    <Compile Include="Admin\AdminDeleteRestaurant.cs" />
-    <Compile Include="User\HomeTests.cs" />
-    <Compile Include="MiamAcceptanceBaseClassTests.cs" />
+    <Compile Include="WriterAcceptanceTests\WriterAuthentification.cs" />
+    <Compile Include="AdminAcceptanceTests\AdminBaseClass.cs" />
+    <Compile Include="AdminAcceptanceTests\AdminAuthentification.cs" />
+    <Compile Include="AdminAcceptanceTests\AdminAddRestaurant.cs" />
+    <Compile Include="AdminAcceptanceTests\AdminEditRestaurant.cs" />
+    <Compile Include="AdminAcceptanceTests\AdminDeleteRestaurant.cs" />
+    <Compile Include="UserAcceptanceTests\HomeTests.cs" />
+    <Compile Include="AcceptanceTestsBaseClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuelquesExemples\FileTests.cs" />
-    <Compile Include="QuelquesExemples\WriterTests.cs" />
+    <Compile Include="WriterAcceptanceTests\WriterAddReview.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\App\Miam.Domain\Miam.Domain.csproj">

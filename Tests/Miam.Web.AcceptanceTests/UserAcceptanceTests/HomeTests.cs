@@ -1,8 +1,8 @@
-﻿using Miam.Web.AcceptanceTests.Admin;
+﻿using Miam.Web.AcceptanceTests.AdminAcceptanceTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
-namespace Miam.Web.AcceptanceTests.User
+namespace Miam.Web.AcceptanceTests.UserAcceptanceTests
 {
     [TestClass]
     [Story(
