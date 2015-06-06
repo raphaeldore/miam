@@ -75,15 +75,15 @@ namespace Miam.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Send = "Index";
-            public readonly string SendPost = "Index";
+            public readonly string Send = "Send";
+            public readonly string SendConfirmed = "Send";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Send = "Index";
-            public const string SendPost = "Index";
+            public const string Send = "Send";
+            public const string SendConfirmed = "Send";
         }
 
 
@@ -97,9 +97,9 @@ namespace Miam.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Send = "Index";
+                public readonly string index = "index";
             }
-            public readonly string Send = "~/Views/Email/Index.cshtml";
+            public readonly string index = "~/Views/Email/index.cshtml";
         }
     }
 
@@ -112,7 +112,7 @@ namespace Miam.Web.Controllers
         partial void SendOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Index()
+        public override System.Web.Mvc.ActionResult Send()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Send);
             SendOverride(callInfo);
@@ -120,13 +120,13 @@ namespace Miam.Web.Controllers
         }
 
         [NonAction]
-        partial void SendPostOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void SendConfirmedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Send()
+        public override System.Web.Mvc.ActionResult SendConfirmed()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SendPost);
-            SendPostOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SendConfirmed);
+            SendConfirmedOverride(callInfo);
             return callInfo;
         }
 

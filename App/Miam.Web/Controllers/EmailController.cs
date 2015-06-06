@@ -9,15 +9,15 @@ namespace Miam.Web.Controllers
     public partial class EmailController : Controller
     {
         [HttpGet]
-        public virtual ActionResult Index()
+        public virtual ActionResult Send()
         {
             return View();
         }
 
-        [HttpPost]
-        public virtual ActionResult Send()
+        [HttpPost, ActionName("Send")]
+        public virtual ActionResult SendConfirmed()
         {
-            // Envoi de courriel avec l'api de Sendgrid) 
+            // Envoi de courriel avec l'api de Sendgrid
             var accountSendGrid = ConfigurationManager.AppSettings["mailAccountSendGrid"];
             var passwordSendGrid = ConfigurationManager.AppSettings["mailPasswordSenGrid"];
             var credentials = new NetworkCredential(accountSendGrid, passwordSendGrid);
@@ -30,8 +30,8 @@ namespace Miam.Web.Controllers
             myMessage.Text = "le message";
 
             transportWeb.Deliver(myMessage);
-
-            return RedirectToAction(MVC.Home.Index());
+            
+            return RedirectToAction("Send");
         }
     }
 }

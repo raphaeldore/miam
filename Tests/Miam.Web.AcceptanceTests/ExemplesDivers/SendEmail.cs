@@ -5,7 +5,7 @@ using TestStack.BDDfy;
 
 namespace Miam.Web.AcceptanceTests.ExemplesDivers
 {
-    // Exemple pour montrer un test d'acceptation pour l'envoi d'un courriel (story et scénario à revoir). 
+    // Scénarios et user story INCOMPLETS. Exemple pour montrer un test d'acceptation pour l'envoi d'un courriel. 
      [Story(
         Title = "Un utilisateur peut envoyer un courriel",
         AsA = "En tant qu'utilisateur",
@@ -20,11 +20,6 @@ namespace Miam.Web.AcceptanceTests.ExemplesDivers
                  .Then(x => le_courriel_est_ajouté())
                  .BDDfy();
          }
-
-         //private void un_utilisateur_non_authentifié()
-         //{
-         //    // pas besoin 
-         //}
 
          private void l_utilisateur_envoie_un_courriel()
          {

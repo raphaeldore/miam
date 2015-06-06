@@ -30,7 +30,7 @@ namespace Miam.Web.Automation.PageObjects
         public EmailPage GoToEmailPage()
         {
             // Il n'ya pas de menu donc on utilise le lien URL et non un click dans un menu)
-            return Host.Instance.NavigateToInitialPage<EmailController, EmailPage>(x => x.Index());
+            return Host.Instance.NavigateToInitialPage<EmailController, EmailPage>(x => x.Send());
         }
     }
 }
