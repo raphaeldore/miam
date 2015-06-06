@@ -16,20 +16,27 @@ namespace Miam.Web.AcceptanceTests.ExemplesDivers
          [TestMethod]
          public void ajouter_un_restaurant()
          {
-             this.When(x => l_utilisateur_envoie_un_courriel())
-                 .Then(x => le_courriel_est_ajouté())
+             this.Given(x => un_utilisateur_anonyme())
+                 .When(x => l_utilisateur_envoie_un_courriel())
+                 .Then(x => le_courriel_est_envoyé())
                  .BDDfy();
+         }
+
+         private void un_utilisateur_anonyme()
+         {
          }
 
          private void l_utilisateur_envoie_un_courriel()
          {
              Host.Instance.NavigateToInitialPage<HomePage>()
                  .NavigationMenu
-                 .GoToEmailPage();
+                 .GoToEmailPage()
+                 .SendEamil();
          }
 
-         private void le_courriel_est_ajouté()
+         private void le_courriel_est_envoyé()
          {
+             //Todo: Vérifier le message de confirmation
              throw new System.NotImplementedException();
          }
     }
