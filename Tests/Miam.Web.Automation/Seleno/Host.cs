@@ -19,12 +19,6 @@ namespace Miam.Web.Automation.Seleno
                 .WithRouteConfig(RouteConfig.RegisterRoutes)
                 .WithMinimumWaitTimeoutOf(TimeSpan.FromSeconds(5))
             );
-
-            //Instance.Run("Miam.Web", 12346);
-            ////, c => c
-            ////    .UsingLoggerFactory(new ConsoleFactory())
-            ////    .WithRouteConfig(RouteConfig.RegisterRoutes)
-            ////);
-        }
+       }
     }
 }
