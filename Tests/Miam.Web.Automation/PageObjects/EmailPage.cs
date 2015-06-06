@@ -12,7 +12,7 @@ namespace Miam.Web.Automation.PageObjects
     {
         public EmailPage SendEamil()
         {
-            return Navigate.To<EmailPage>(By.Id("submit-button"));
+            return Navigate.To<EmailPage>(By.Id("submit_button"));
         }
 
     }

@@ -29,6 +29,8 @@ namespace Miam.Web.Controllers
         [HttpPost]
         public virtual ActionResult Upload(HttpPostedFileBase file)
         {
+            //Todo: un service devrait être créé pour l'envoi de fichier
+
             // Exemple pour télécharger un fichier sur le serveur
             // Voir le test d'acceptation user_can_upload_file de la classe FileTests.
             // Voir fichier README.txt dans le dossier uplaods du projet miam.web
@@ -54,6 +56,8 @@ namespace Miam.Web.Controllers
         [HttpGet]
         public virtual ActionResult Download(string fullPathFileName)
         {
+            //Todo: un service devrait être utlisé
+
             // Exemple pour démontrer le téléchargement d'un fichier du serveur au poste client
             // Dans cet exemple le chemin complet est utilisé comme paramètre. Devrait être un id unique. 
 

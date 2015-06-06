@@ -17,6 +17,9 @@ namespace Miam.Web.Controllers
         [HttpPost, ActionName("Send")]
         public virtual ActionResult SendConfirmed()
         {
+            //Todo: un service devrait être créé pour l'envoi de courriel
+            //Todo: gérer les exceptions
+
             // Envoi de courriel avec l'api de Sendgrid
             var accountSendGrid = ConfigurationManager.AppSettings["mailAccountSendGrid"];
             var passwordSendGrid = ConfigurationManager.AppSettings["mailPasswordSenGrid"];
@@ -31,6 +34,8 @@ namespace Miam.Web.Controllers
 
             transportWeb.Deliver(myMessage);
             
+            //Todo: une confirmation que le message a été envoyé devrait être ajouté
+
             return RedirectToAction("Send");
         }
     }

@@ -261,7 +261,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_menuPartial.cshtml" />
-    <Content Include="Views\Email\index.cshtml" />
+    <Content Include="Views\Email\send.cshtml" />
     <Content Include="Views\File\Upload.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
     <None Include="Web.Debug.config">

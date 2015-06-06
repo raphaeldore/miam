@@ -150,6 +150,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ExemplesDivers\FileTestsDownload.cs" />
     <Compile Include="ExemplesDivers\SendEmail.cs" />
     <Compile Include="WriterAcceptanceTests\WriterAuthentification.cs" />
     <Compile Include="AdminAcceptanceTests\AdminBaseClass.cs" />
@@ -160,7 +161,7 @@
     <Compile Include="UserAcceptanceTests\DisplayAllRestaurants.cs" />
     <Compile Include="AcceptanceTestsBaseClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ExemplesDivers\FileTests.cs" />
+    <Compile Include="ExemplesDivers\FileTestsUpload.cs" />
     <Compile Include="WriterAcceptanceTests\WriterAddReview.cs" />
   </ItemGroup>
   <ItemGroup>
