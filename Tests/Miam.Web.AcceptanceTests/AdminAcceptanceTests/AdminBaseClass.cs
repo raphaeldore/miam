@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
 using Miam.Domain.Entities;
 using Miam.TestUtility.Database;
+using Miam.Web.Automation.PageObjects;
+using Miam.Web.Automation.Seleno;
 
 namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 {
@@ -14,8 +16,8 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
             _userAdmin = TestData.ApplicationUserAdmin;
             _userAcceptanceTestApi.createUser(_userAdmin);
 
-            _homePage
-                .Menu
+            Host.Instance.NavigateToInitialPage<HomePage>()
+                .NavigationMenu
                 .GotoLoginPage()
                 .LoginAs(_userAdmin.Email, _userAdmin.Password);
         }

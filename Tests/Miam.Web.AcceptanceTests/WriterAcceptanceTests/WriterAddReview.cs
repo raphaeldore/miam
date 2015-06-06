@@ -33,8 +33,8 @@ namespace Miam.Web.AcceptanceTests.WriterAcceptanceTests
             _writer = TestData.Writer1;
             _userAcceptanceTestApi.createUser(_writer);
 
-            _homePage
-                .Menu
+            Host.Instance.NavigateToInitialPage<HomePage>()
+                .NavigationMenu
                 .GotoLoginPage()
                 .LoginAs(_writer.Email, _writer.Password);
         }

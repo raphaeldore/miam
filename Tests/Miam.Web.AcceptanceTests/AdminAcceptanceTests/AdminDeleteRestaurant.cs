@@ -1,4 +1,6 @@
 ﻿using FluentAssertions;
+using Miam.Web.Automation.PageObjects;
+using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
@@ -24,15 +26,17 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 
         private void l_administrateur_supprime_un_restaurant()
         {
-            _homePage
-                .Menu
+            Host.Instance.NavigateToInitialPage<HomePage>()
+                .NavigationMenu
                 .ClickEditRestaurantPage()
                 .DeleteFisrtRestaurant();
 
         }
         private void le_restaurant_est_supprimé()
         {
-            var countRestaurant = _homePage.RestaurantCount();
+            //todo
+            var countRestaurant = Host.Instance.NavigateToInitialPage<HomePage>()
+                                    .RestaurantCount();
             countRestaurant.ShouldBeEquivalentTo(0);
         }
 

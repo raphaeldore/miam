@@ -1,4 +1,5 @@
-﻿using Miam.TestUtility.Database;
+﻿using FluentAssertions;
+using Miam.TestUtility.Database;
 using Miam.Web.Automation.PageObjects;
 using Miam.Web.Automation.Seleno;
 using Miam.Web.Controllers;
@@ -35,39 +36,41 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 
         private void un_administrateur_existant_non_authentifé()
         {
-            _userAcceptanceTestApi.createUser(TestData.ApplicationUserAdmin);
+            _userAdmin = TestData.ApplicationUserAdmin;
+            _userAcceptanceTestApi.createUser(_userAdmin);
         }
         private void l_administrateur_entre_son_courriel_et_mot_de_passe_valide()
         {
-            var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-
-            homePage
-                .Menu
+            Host.Instance.NavigateToInitialPage<HomePage>()
+                .NavigationMenu
                 .GotoLoginPage()
-                .LoginAs(TestData.ApplicationUserAdmin.Email, TestData.ApplicationUserAdmin.Password);
+                .LoginAs(_userAdmin.Email, _userAdmin.Password);
         }
         private void l_administrateur_entre_un_mot_de_passe_invalide()
         {
-            _homePage
-                .Menu
+            Host.Instance.NavigateToInitialPage<HomePage>()
+                .NavigationMenu
                 .GotoLoginPage()
-                .LoginAs(TestData.ApplicationUserAdmin.Email, "invalid_password");
+                .LoginAs(_userAdmin.Email, _userAdmin.Password + "invalid_password");
         }
 
         private void l_administrateur_ne_devrait_pas_être_authentifié()
         {
-            var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-            var islogged = homePage.IsLogged(TestData.ApplicationUserAdmin.Email);
+            var isLoggedIn = Host.Instance.NavigateToInitialPage<HomePage>()
+                .LoginPanel
+                .IsLoggedIn(_userAdmin.Email);
 
-            Assert.IsFalse(islogged);
+            Assert.IsFalse(isLoggedIn);
         }
 
         private void l_administrateur_devrait_être_authentifié()
         {
-            var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-            var islogged = homePage.IsLogged(TestData.ApplicationUserAdmin.Email);
+            var loggedInUserName = Host.Instance.NavigateToInitialPage<HomePage>()
+                .LoginPanel
+                .LoggedInUserName;
 
-            Assert.IsTrue(islogged);
+            loggedInUserName.ShouldBeEquivalentTo(_userAdmin.Email);
+            
         }
     }
 }

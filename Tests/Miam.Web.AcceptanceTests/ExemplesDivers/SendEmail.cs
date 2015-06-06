@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Miam.Web.Automation.PageObjects;
+using Miam.Web.Automation.Seleno;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
 namespace Miam.Web.AcceptanceTests.ExemplesDivers
@@ -26,8 +28,8 @@ namespace Miam.Web.AcceptanceTests.ExemplesDivers
 
          private void l_utilisateur_envoie_un_courriel()
          {
-             _homePage
-                 .Menu
+             Host.Instance.NavigateToInitialPage<HomePage>()
+                 .NavigationMenu
                  .GoToEmailPage();
          }
 

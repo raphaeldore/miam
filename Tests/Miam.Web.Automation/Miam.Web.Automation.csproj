@@ -130,7 +130,8 @@
     <Compile Include="PageObjects\EmailPage.cs" />
     <Compile Include="PageObjects\FilePages\DownloadIndexPage.cs" />
     <Compile Include="PageObjects\FilePages\UploadPage.cs" />
-    <Compile Include="PageObjects\NavigationMenu.cs" />
+    <Compile Include="UiComponents\LoginPanel.cs" />
+    <Compile Include="UiComponents\NavigationMenu.cs" />
     <Compile Include="PageObjects\RestaurantPages\CreateRestaurantPage.cs" />
     <Compile Include="PageObjects\RestaurantPages\EditRestaurantPage.cs" />
     <Compile Include="Selenium\Driver.cs" />

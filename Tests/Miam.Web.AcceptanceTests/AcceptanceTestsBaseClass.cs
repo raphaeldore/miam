@@ -14,7 +14,7 @@ namespace Miam.Web.AcceptanceTests
         protected UserAcceptanceTestsApi _userAcceptanceTestApi;
         protected RestaurantAcceptanceTestApi _restaurantAcceptanceTestApi;
         protected DatabaseHelperAcceptanceTestApi _databaseHelperAcceptanceTestApi;
-        protected HomePage _homePage;
+      
 
         [TestInitialize]
         public void initialize()
@@ -24,16 +24,14 @@ namespace Miam.Web.AcceptanceTests
 
             _databaseHelperAcceptanceTestApi = new DatabaseHelperAcceptanceTestApi();
             _databaseHelperAcceptanceTestApi.ClearDataBaseTables();
-
-            _homePage = Host.Instance.NavigateToInitialPage<HomePage>();
         }
 
         [TestCleanup]
         public void cleanup()
         {
-            _homePage
-                .Menu
-                .GoToLogout();
+            Host.Instance.NavigateToInitialPage<HomePage>()
+                .LoginPanel
+                .ForceLogout();
         }
     }
 }

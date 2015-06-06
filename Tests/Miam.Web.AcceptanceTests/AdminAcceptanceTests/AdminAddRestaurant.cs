@@ -1,4 +1,6 @@
 ﻿using Miam.TestUtility.Database;
+using Miam.Web.Automation.PageObjects;
+using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
@@ -23,8 +25,8 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 
         private void l_administrateur_ajoute_un_restaurant()
         {
-            _homePage
-                .Menu
+            Host.Instance.NavigateToInitialPage<HomePage>()
+                .NavigationMenu
                 .ClickCreateRestaurantPage()
                 .AddRestaurant(TestData.Restaurant2);
         }

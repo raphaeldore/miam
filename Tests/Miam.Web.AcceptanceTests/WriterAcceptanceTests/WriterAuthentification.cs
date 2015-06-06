@@ -1,4 +1,5 @@
-﻿using Miam.Domain.Entities;
+﻿using FluentAssertions;
+using Miam.Domain.Entities;
 using Miam.TestUtility.Database;
 using Miam.Web.AcceptanceTests.AdminAcceptanceTests;
 using Miam.Web.Automation.PageObjects;
@@ -46,30 +47,33 @@ namespace Miam.Web.AcceptanceTests.WriterAcceptanceTests
         {
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
             homePage
-                .Menu
+                .NavigationMenu
                 .GotoLoginPage()
                 .LoginAs(_writer.Email, _writer.Password);
         }
         private void le_chroniqueur_devrait_être_authentifié()
         {
-            var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-            var islogged = homePage.IsLogged(_writer.Email);
+            var loggedInUserName = Host.Instance.NavigateToInitialPage<HomePage>()
+                .LoginPanel
+                .LoggedInUserName;
 
-            Assert.IsTrue(islogged);
+            loggedInUserName.ShouldBeEquivalentTo(_writer.Email);
         }
 
         private void le_chroniqueur_entre_un_mot_de_passe_invalide()
         {
-            _homePage.Menu
+            Host.Instance.NavigateToInitialPage<HomePage>()
+                .NavigationMenu
                 .GotoLoginPage()
                 .LoginAs(_writer.Email, _writer.Password + "invalid_password");
         }
 
         private void le_chroniqueur_ne_devrait_pas_être_authentifié()
         {
-            var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
-            var islogged = homePage.IsLogged(_writer.Email);
-
+            var islogged= Host.Instance.NavigateToInitialPage<HomePage>()
+                .LoginPanel
+                .IsLoggedIn(_writer.Email);
+            
             Assert.IsFalse(islogged);
         }
     }

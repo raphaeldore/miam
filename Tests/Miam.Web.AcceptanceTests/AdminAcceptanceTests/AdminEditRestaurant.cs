@@ -1,4 +1,6 @@
 ﻿using Miam.TestUtility.Database;
+using Miam.Web.Automation.PageObjects;
+using Miam.Web.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
@@ -24,8 +26,8 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 
         private void l_administrateur_edit_un_restaurant()
         {
-            _homePage
-                .Menu
+            Host.Instance.NavigateToInitialPage<HomePage>()
+                .NavigationMenu
                 .ClickEditRestaurantPage()
                 .EditFisrtRestaurantWith(TestData.Restaurant3);
         }

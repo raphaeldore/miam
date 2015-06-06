@@ -32,11 +32,5 @@ namespace Miam.Web.Automation.PageObjects
             // Il n'ya pas de menu donc on utilise le lien URL et non un click dans un menu)
             return Host.Instance.NavigateToInitialPage<EmailController, EmailPage>(x => x.Index());
         }
-        public void GoToLogout()
-        {
-            //Todo : Utiliser le click et non l'URL
-            Host.Instance.NavigateToInitialPage<AccountController, LoginPage>(x => x.Logout());
-        }
-        
     }
 }
