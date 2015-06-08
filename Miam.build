@@ -44,7 +44,7 @@ Créer un package
 
     <!-- unit tests -->
     <UnitTestsAssembly Include=".\buildartifacts\Miam.Web.UnitTests.dll"/>
-    <ApplicationServicesUnitTestsAssembly Include=".\buildartifacts\Miam.AcceptanceTests.dll"/>
+    <ApplicationServicesUnitTestsAssembly Include=".\buildartifacts\Miam.ApplicationServices.UnitTests.dll"/>
     <UnitTestsResults Include=".\buildartifacts\UnitTestsResults.trx"/>
     <MsTestExe Include=".\tools\MsTest\mstest.exe"/>
 
@@ -75,8 +75,8 @@ Créer un package
                          Configuration=$(Configuration);"/>
   </Target>
 
-  <Target Name="UnitTests" DependsOnTargets="Compile">
-    <Exec Command="@(MsTestExe) /testcontainer:@(UnitTestsAssembly) /resultsfile:@(UnitTestsResults)"/>
+  <Target Name="UnitTests" DependsOnTargets="compile">
+    <Exec Command="@(MsTestExe)  /testcontainer:@(ApplicationServicesUnitTestsAssembly) /testcontainer:@(UnitTestsAssembly) /resultsfile:@(UnitTestsResults)"/>
   </Target>
 
   <Target Name="Package"  DependsOnTargets="">
