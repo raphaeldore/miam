@@ -3,6 +3,7 @@ using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+
 namespace Miam.AcceptanceTests
 {
     [TestClass]

@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5022FD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{46E02432-AFD3-4E1A-A2A5-E975335D3CA0}"
 	ProjectSection(SolutionItems) = preProject
-		Miam.xml = Miam.xml
+		Miam.build = Miam.build
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miam.DataLayer", "Miam.DataLayer\Miam.DataLayer.csproj", "{45063F47-819B-4C94-A017-CE2FBE20E277}"

@@ -1,6 +1,6 @@
 ﻿using Miam.Domain.Entities;
-using OpenQA.Selenium;
 using TestStack.Seleno.PageObjects;
+using TestStack.Seleno.PageObjects.Locators;
 
 namespace Miam.AcceptanceTests.Automation.PageObjects.RestaurantPages
 {

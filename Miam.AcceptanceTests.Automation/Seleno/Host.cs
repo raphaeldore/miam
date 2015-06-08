@@ -30,7 +30,7 @@ namespace Miam.AcceptanceTests.Automation.Seleno
             var fireFoxSeleniumProfile = CreateSeleniumPorfile();
             return new FirefoxDriver(fireFoxSeleniumProfile);
         };
-    
+
         public static FirefoxProfile CreateSeleniumPorfile()
         {
             // Configurer FireFox pour ne pas ouvrir de boite de dialogue si un utilisateur demande de télécharger un fichier.

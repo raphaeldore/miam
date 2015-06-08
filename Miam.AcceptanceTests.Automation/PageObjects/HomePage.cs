@@ -1,6 +1,6 @@
 ﻿using Miam.AcceptanceTests.Automation.UiComponents;
-using OpenQA.Selenium;
 using TestStack.Seleno.PageObjects;
+using TestStack.Seleno.PageObjects.Locators;
 
 namespace Miam.AcceptanceTests.Automation.PageObjects
 {

@@ -1,8 +1,9 @@
 ﻿using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
 using Miam.Web.Controllers;
-using OpenQA.Selenium;
+
 using TestStack.Seleno.PageObjects;
+using TestStack.Seleno.PageObjects.Locators;
 
 namespace Miam.AcceptanceTests.Automation.UiComponents
 {

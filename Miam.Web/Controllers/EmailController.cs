@@ -32,7 +32,7 @@ namespace Miam.Web.Controllers
             myMessage.Subject = "le texte";
             myMessage.Text = "le message";
 
-            transportWeb.Deliver(myMessage);
+            //transportWeb.Deliver(myMessage);
             
             //Todo: une confirmation que le message a été envoyé devrait être ajouté
 

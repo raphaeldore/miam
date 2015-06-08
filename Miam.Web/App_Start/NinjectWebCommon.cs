@@ -1,22 +1,23 @@
-using System;
-using System.Web;
 using Miam.ApplicationsServices.Account;
 using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
 using Miam.Web.HttpServices;
-using Miam.Web.MVC5.App_Start;
 using Miam.Web.Services;
-using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-using Ninject;
-using Ninject.Web.Common;
-using WebActivatorEx;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
-[assembly: ApplicationShutdownMethod(typeof(NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Miam.Web.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Miam.Web.App_Start.NinjectWebCommon), "Stop")]
 
-namespace Miam.Web.MVC5.App_Start
+namespace Miam.Web.App_Start
 {
+    using System;
+    using System.Web;
+
+    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+
+    using Ninject;
+    using Ninject.Web.Common;
+
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();

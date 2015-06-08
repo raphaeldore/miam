@@ -97,9 +97,9 @@ namespace Miam.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string index = "index";
+                public readonly string send = "send";
             }
-            public readonly string index = "~/Views/Email/index.cshtml";
+            public readonly string send = "~/Views/Email/send.cshtml";
         }
     }
 
