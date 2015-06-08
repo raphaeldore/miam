@@ -17,7 +17,6 @@ namespace Miam.ApplicationServices.UnitTests
     {
         private IEntityRepository<ApplicationUser> _userRepository;
         private UserUserAccountService _accountService;
-        private Fixture _fixture;
 
         [TestInitialize]
         public void test_initialize()

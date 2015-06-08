@@ -42,7 +42,7 @@ namespace Miam.Web.UnitTests.Controllers.HomeTests
             //model.Count().Should().Be(RESTAURANT_COUNT);
             
             // Mieux, on compare tout le contenu 
-            model.ShouldBeEquivalentTo(restaurants, options => options.ExcludingMissingProperties());
+            model.ShouldBeEquivalentTo(restaurants, options => options.ExcludingMissingMembers());
             
             // Assert sans fluent assertion
             //Assert.AreEqual(RESTAURANT_COUNT, model.Count());

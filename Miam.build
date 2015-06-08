@@ -44,6 +44,7 @@ Créer un package
 
     <!-- unit tests -->
     <UnitTestsAssembly Include=".\buildartifacts\Miam.Web.UnitTests.dll"/>
+    <ApplicationServicesUnitTestsAssembly Include=".\buildartifacts\Miam.AcceptanceTests.dll"/>
     <UnitTestsResults Include=".\buildartifacts\UnitTestsResults.trx"/>
     <MsTestExe Include=".\tools\MsTest\mstest.exe"/>
 
