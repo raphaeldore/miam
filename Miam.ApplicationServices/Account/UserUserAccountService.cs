@@ -6,11 +6,11 @@ using Miam.Domain.Entities;
 
 namespace Miam.ApplicationsServices.Account
 {
-    public class AccountService : IAccountService
+    public class UserUserAccountService : IUserAccountService
     {
         private IEntityRepository<ApplicationUser> _userRepository;
 
-        public AccountService(IEntityRepository<ApplicationUser> userRepository)
+        public UserUserAccountService(IEntityRepository<ApplicationUser> userRepository)
         {
             _userRepository = userRepository;
         }

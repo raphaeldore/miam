@@ -75,7 +75,7 @@ namespace Miam.Web.MVC5.App_Start
 
             //services
             kernel.Bind<IHttpContextService>().To<HttpContextService>().InRequestScope();
-            kernel.Bind<IAccountService>().To<AccountService>().InRequestScope();
+            kernel.Bind<IUserAccountService>().To<UserUserAccountService>().InRequestScope();
 
             //database
             kernel.Bind<IDatabaseHelper>().To<EfDatabaseHelper>().InRequestScope();

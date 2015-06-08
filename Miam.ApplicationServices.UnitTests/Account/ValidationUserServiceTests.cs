@@ -3,25 +3,30 @@ using FluentAssertions;
 using Miam.ApplicationsServices.Account;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
-using Miam.Web.UnitTests.Controllers;
+using Miam.TestUtility;
+using Miam.TestUtility.AutoFixture;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Ploeh.AutoFixture;
 
-namespace Miam.Web.UnitTests.Services
+namespace Miam.ApplicationServices.UnitTests
 {
     
     [TestClass]
-    public class ValidationUserServiceTests : AllControllersBaseClassTests
+    public class ValidationUserServiceTests : TestUtilities
     {
         private IEntityRepository<ApplicationUser> _userRepository;
-        private AccountService _accountService;
+        private UserUserAccountService _accountService;
+        private Fixture _fixture;
 
         [TestInitialize]
         public void test_initialize()
         {
+            _fixture = new Fixture();
+            _fixture.Customizations.Add(new VirtualMembersOmitter());
+
             _userRepository = Substitute.For<IEntityRepository<ApplicationUser>>();
-            _accountService = new AccountService(_userRepository);
+            _accountService = new UserUserAccountService(_userRepository);
         }
 
         [TestMethod]

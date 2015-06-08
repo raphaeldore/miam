@@ -150,7 +150,6 @@
     <Compile Include="Controllers\HomeTests\HomeControllerIndexTests.cs" />
     <Compile Include="Controllers\ReviewTests\ReviewControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ValidationUserServiceTests.cs" />
     <Compile Include="ViewModelsTests\RestaurantViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,7 +178,9 @@
       <Name>Miam.TestUtility</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
