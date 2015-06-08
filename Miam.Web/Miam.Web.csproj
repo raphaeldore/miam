@@ -283,7 +283,7 @@
       <Project>{e810fd87-1e7a-4bfb-a16e-950281dc6f9e}</Project>
       <Name>Miam.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Tests\Miam.TestUtility\Miam.TestUtility.csproj">
+    <ProjectReference Include="..\Miam.TestUtility\Miam.TestUtility.csproj">
       <Project>{f267e2c1-675b-4cdb-bc6a-4307a609053e}</Project>
       <Name>Miam.TestUtility</Name>
     </ProjectReference>

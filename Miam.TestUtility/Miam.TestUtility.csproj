@@ -92,11 +92,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\App\Miam.DataLayer\Miam.DataLayer.csproj">
+    <ProjectReference Include="..\Miam.DataLayer\Miam.DataLayer.csproj">
       <Project>{45063F47-819B-4C94-A017-CE2FBE20E277}</Project>
       <Name>Miam.DataLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\App\Miam.Domain\Miam.Domain.csproj">
+    <ProjectReference Include="..\Miam.Domain\Miam.Domain.csproj">
       <Project>{E810FD87-1E7A-4BFB-A16E-950281DC6F9E}</Project>
       <Name>Miam.Domain</Name>
     </ProjectReference>
