@@ -218,11 +218,9 @@
     <Compile Include="ReviewController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Services\IAccountService.cs" />
-    <Compile Include="Services\AccountService.cs" />
     <Compile Include="Mappers\MappingExpressionExtensions.cs" />
-    <Compile Include="Services\HttpContextService.cs" />
-    <Compile Include="Services\IHttpContextService.cs" />
+    <Compile Include="HttpServices\HttpContextService.cs" />
+    <Compile Include="HttpServices\IHttpContextService.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Global.asax.cs">
@@ -275,6 +273,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Miam.ApplicationServices\Miam.ApplicationServices.csproj">
+      <Project>{70287143-42ab-4f50-bb1a-cd61c1d0bc31}</Project>
+      <Name>Miam.ApplicationServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Miam.DataLayer\Miam.DataLayer.csproj">
       <Project>{45063f47-819b-4c94-a017-ce2fbe20e277}</Project>
       <Name>Miam.DataLayer</Name>

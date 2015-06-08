@@ -1,10 +1,10 @@
 using System.Security.Claims;
 using System.Web;
+using Miam.Web.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-
-namespace Miam.Web.Services
+namespace Miam.Web.HttpServices
 {
     public class HttpContextService : IHttpContextService
     {

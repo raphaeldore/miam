@@ -158,6 +158,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Miam.ApplicationServices\Miam.ApplicationServices.csproj">
+      <Project>{70287143-42AB-4F50-BB1A-CD61C1D0BC31}</Project>
+      <Name>Miam.ApplicationServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Miam.DataLayer\Miam.DataLayer.csproj">
       <Project>{45063f47-819b-4c94-a017-ce2fbe20e277}</Project>
       <Name>Miam.DataLayer</Name>

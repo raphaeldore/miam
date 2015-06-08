@@ -1,14 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Collections.Generic;
-using System.Web.ModelBinding;
+﻿using System.Linq;
 using FluentAssertions;
+using Miam.ApplicationsServices.Account;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 using Miam.Web.UnitTests.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Miam.Web.Services;
 using NSubstitute;
 using Ploeh.AutoFixture;
 

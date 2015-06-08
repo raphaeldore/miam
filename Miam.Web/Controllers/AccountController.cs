@@ -2,12 +2,11 @@
 using System.Linq;
 using System.Security.Claims;
 using System.Web.Mvc;
-using Miam.DataLayer;
+using Miam.ApplicationsServices.Account;
 using Miam.Domain.Entities;
 using Miam.Web.Services;
 using Miam.Web.ViewModels.Account;
 using Microsoft.AspNet.Identity;
-
 
 namespace Miam.Web.Controllers
 {
@@ -33,7 +32,7 @@ namespace Miam.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Login(ViewModels.Account.Login accountLoginViewModel)
+        public virtual ActionResult Login(Login accountLoginViewModel)
         {
             if (!ModelState.IsValid)
             {
