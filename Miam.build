@@ -61,12 +61,12 @@ Créer un package
     <!-- Verify that we have values for all required properties -->
     <Error Condition=" '$(ProjectName)' == '' " Text="ProjectName is required." />
   </Target>
-  
+
   <!-- Compilation -->
   <Target Name="Clean">
     <RemoveDir Directories="@(BuildArtifacts)"/>
   </Target>
-
+  
   <Target Name="Init" DependsOnTargets="Clean">
     <MakeDir Directories="@(BuildArtifacts)"/>
   </Target>
@@ -82,6 +82,7 @@ Créer un package
     <Exec Command="@(MsTestExe)  /testcontainer:@(ApplicationServicesUnitTestsAssembly) /testcontainer:@(WebUnitTestsAssembly) /resultsfile:@(UnitTestsResults)"/>
   </Target>
   
+  <Target Name="acceptanceTests" DependsOnTargets="">
     <Exec Command="@(MsTestExe)  /testcontainer:@(AcceptanceTestsAssembly) /resultsfile:@(AcceptanceTestsResults)"/>
   </Target>
 
