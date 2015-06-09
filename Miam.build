@@ -42,11 +42,14 @@ Créer un package
     <SolutionFile Include=".\Miam.sln"/>
     <BuildArtifacts Include=".\buildartifacts\"/>
 
-    <!-- unit tests -->
+    <!-- tests -->
     <WebUnitTestsAssembly Include=".\buildartifacts\Miam.Web.UnitTests.dll"/>
     <ApplicationServicesUnitTestsAssembly Include=".\buildartifacts\Miam.ApplicationServices.UnitTests.dll"/>
     <UnitTestsResults Include=".\buildartifacts\UnitTestsResults.trx"/>
     <MsTestExe Include=".\tools\MsTest\mstest.exe"/>
+    
+    <AcceptanceTestsAssembly Include=".\buildartifacts\Miam.AcceptanceTests.dll"/>
+    <AcceptanceTestsResults Include=".\buildartifacts\AcceptanceTests.trx"/>
 
     <!-- deploiement -->
     <WebsitePublishDir Include=".\buildartifacts\_PublishedWebsites\Miam.Web"/>
@@ -58,7 +61,7 @@ Créer un package
     <!-- Verify that we have values for all required properties -->
     <Error Condition=" '$(ProjectName)' == '' " Text="ProjectName is required." />
   </Target>
-
+  
   <!-- Compilation -->
   <Target Name="Clean">
     <RemoveDir Directories="@(BuildArtifacts)"/>
@@ -77,6 +80,9 @@ Créer un package
 
   <Target Name="UnitTests" DependsOnTargets="compile">
     <Exec Command="@(MsTestExe)  /testcontainer:@(ApplicationServicesUnitTestsAssembly) /testcontainer:@(WebUnitTestsAssembly) /resultsfile:@(UnitTestsResults)"/>
+  </Target>
+  
+    <Exec Command="@(MsTestExe)  /testcontainer:@(AcceptanceTestsAssembly) /resultsfile:@(AcceptanceTestsResults)"/>
   </Target>
 
   <Target Name="Package"  DependsOnTargets="">
