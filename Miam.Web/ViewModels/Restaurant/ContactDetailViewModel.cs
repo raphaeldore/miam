@@ -2,7 +2,7 @@
 
 namespace Miam.Web.ViewModels.Restaurant
 {
-    public class ContactDetail
+    public class ContactDetailViewModel
     {
         [DisplayName("Fax")]
         public string FaxPhone { get; set; }

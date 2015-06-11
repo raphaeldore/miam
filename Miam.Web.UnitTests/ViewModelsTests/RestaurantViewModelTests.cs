@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Miam.TestUtility.AutoFixture;
+using Miam.Web.ViewModels.Restaurant;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ploeh.AutoFixture;
 
@@ -12,7 +13,7 @@ namespace Miam.Web.UnitTests.ViewModelsTests
     public class RestaurantViewModelTests
     {
         private Fixture _fixture;
-        private ViewModels.Restaurant.Create _RestaurantViewModel;
+        private RestaurantCreateViewModel _RestaurantViewModel;
         private ValidationContext _validationContext;
         private List<ValidationResult> _validationResults;
 
@@ -22,7 +23,7 @@ namespace Miam.Web.UnitTests.ViewModelsTests
             _fixture = new Fixture();
             _fixture.Customizations.Add(new VirtualMembersOmitter());
 
-            _RestaurantViewModel = _fixture.Create<ViewModels.Restaurant.Create>();
+            _RestaurantViewModel = _fixture.Create<RestaurantCreateViewModel>();
             _validationContext = new ValidationContext(_RestaurantViewModel, null, null);
             _validationResults = new List<ValidationResult>();
         }

@@ -32,7 +32,7 @@ namespace Miam.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Login(Login accountLoginViewModel)
+        public virtual ActionResult Login(LoginViewModel accountLoginViewModel)
         {
             if (!ModelState.IsValid)
             {

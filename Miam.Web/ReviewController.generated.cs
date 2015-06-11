@@ -88,7 +88,7 @@ namespace Miam.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
-            public readonly string create = "create";
+            public readonly string createViewModel = "createViewModel";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -123,14 +123,14 @@ namespace Miam.Web.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.Review.Create create);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Miam.Web.ViewModels.Review.ReviewCreateViewModel reviewCreateViewModel);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(Miam.Web.ViewModels.Review.Create create)
+        public override System.Web.Mvc.ActionResult Create(Miam.Web.ViewModels.Review.ReviewCreateViewModel reviewCreateViewModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "create", create);
-            CreateOverride(callInfo, create);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "createViewModel", reviewCreateViewModel);
+            CreateOverride(callInfo, reviewCreateViewModel);
             return callInfo;
         }
 

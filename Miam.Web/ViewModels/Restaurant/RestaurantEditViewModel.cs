@@ -2,11 +2,13 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Miam.Domain.Entities;
+using Miam.Web.ViewModels.Review;
 
 
 namespace Miam.Web.ViewModels.Restaurant
 {
-    public class Edit
+    public class RestaurantEditViewModel
     {
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
@@ -22,8 +24,8 @@ namespace Miam.Web.ViewModels.Restaurant
         [DisplayName("Pays")]
         [Required(ErrorMessage = "Requis")]
         public string Country { get; set; }
-        public ViewModels.Restaurant.ContactDetail  RestaurantContactDetail { get; set; }
-        public List<Review.Index> Reviews { get; set; }
+        public ContactDetailViewModel RestaurantContactDetailViewModel { get; set; }
+        public List<ReviewIndexViewModel> ReviewsViewModel { get; set; }
 
     }
 }

@@ -4,6 +4,7 @@ using FluentAssertions;
 using Miam.ApplicationsServices.Account;
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
+using Miam.TestUtility;
 using Miam.Web.Controllers;
 using Miam.Web.Services;
 using Miam.Web.ViewModels.Account;
@@ -14,7 +15,7 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.AccountTests
 {
     [TestClass]
-    public class AccountControllerLoginTests : AllControllersBaseClassTests
+    public class AccountControllerLoginTests : TestUtilities
     {
         private AccountController _accountController;
         private IHttpContextService _httpContext;
@@ -43,7 +44,7 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         public void login_post_should_render_default_view_when_user_is_not_valid()
          {
              //Arrange
-             var loginViewModel = _fixture.Create<Login>();
+             var loginViewModel = _fixture.Create<LoginViewModel>();
              var invalidUser = new MayBe<ApplicationUser>();
              _userAccountService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(invalidUser);
 
@@ -61,7 +62,7 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         {
             //Arrange
             var user = _fixture.Create<ApplicationUser>();
-            var loginViewModel = new Login()
+            var loginViewModel = new LoginViewModel()
             {
                 Email = user.Email,
                 Password = user.Password
@@ -83,7 +84,7 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         {      
             //Arrange
             var user = _fixture.Create<ApplicationUser>();
-            var loginViewModel = new Login()
+            var loginViewModel = new LoginViewModel()
                                  {
                                     Email = user.Email,
                                     Password = user.Password

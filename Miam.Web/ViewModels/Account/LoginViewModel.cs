@@ -2,7 +2,7 @@
 
 namespace Miam.Web.ViewModels.Account
 {
-    public class Login
+    public class LoginViewModel
     {
         
         [Required(ErrorMessage = "Le champ courriel est requis")]

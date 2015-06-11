@@ -5,7 +5,7 @@ using Miam.Domain.Entities;
 
 namespace Miam.Web.ViewModels.Restaurant
 {
-    public class Create
+    public class RestaurantCreateViewModel
     {
 
         [HiddenInput]

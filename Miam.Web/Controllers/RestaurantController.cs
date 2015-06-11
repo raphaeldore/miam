@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using AutoMapper;
 using Miam.DataLayer;
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
-using Index = Miam.Web.ViewModels.Review.Index;
+using Miam.Web.ViewModels.Restaurant;
+using Miam.Web.ViewModels.Review;
 
 namespace Miam.Web.Controllers
 {
@@ -27,10 +27,12 @@ namespace Miam.Web.Controllers
         {
             var restaurants = _restaurantRepository.GetAll().ToList();
 
-            var restaurantIndexViewModels = Mapper.Map<IEnumerable<ViewModels.Restaurant.Index>>(restaurants);
+            var restaurantIndexViewModels = Mappers.createRestaurantIndexViewModelFrom(restaurants);
 
             return View(restaurantIndexViewModels);
         }
+
+        
 
         [HttpGet]
         public virtual ActionResult Edit(int restaurantID)
@@ -39,18 +41,20 @@ namespace Miam.Web.Controllers
 
             if (restaurant != null)
             {
-                var restaurantEditPageViewModel = Mapper.Map<ViewModels.Restaurant.Edit>(restaurant);
-               
+                var restaurantEditPageViewModel = Mappers.createRestaurantEditViewModelFrom(restaurant);
+
                 return View(restaurantEditPageViewModel);
             }
             return HttpNotFound();
         }
 
+        
+
 
         [HttpPost]
-        public virtual ActionResult Edit(ViewModels.Restaurant.Edit editRestaurantViewModel)
+        public virtual ActionResult Edit(RestaurantEditViewModel restaurantEditViewModel)
         {
-            var restaurant = _restaurantRepository.GetById(editRestaurantViewModel.Id);
+            var restaurant = _restaurantRepository.GetById(restaurantEditViewModel.Id);
             if (restaurant == null)
             {
                 return HttpNotFound();
@@ -58,15 +62,28 @@ namespace Miam.Web.Controllers
 
             if (!ModelState.IsValid)
             {
-                editRestaurantViewModel.Reviews = Mapper.Map<List<Index>>(restaurant.Reviews);
-                return View(editRestaurantViewModel);
+                restaurantEditViewModel.ReviewsViewModel = createReviewsFrom(restaurant.Reviews);
+                return View(restaurantEditViewModel);
             }
 
-            Mapper.Map(editRestaurantViewModel, restaurant);
+            Mappers.updateRestaurantFromViewModel(restaurantEditViewModel, restaurant);
 
             _restaurantRepository.Update(restaurant);
 
             return RedirectToAction(Views.ViewNames.Index);
+        }
+
+        private List<ReviewIndexViewModel> createReviewsFrom(ICollection<Review> reviews)
+        {
+            var reviewsIndexViewModel = reviews
+                .Select(x => new ReviewIndexViewModel
+                {
+                    Body = x.Body,
+                    Rating = x.Rating,
+                    WriterName = x.Writer.Name
+                }).ToList();
+
+            return reviewsIndexViewModel;
         }
 
 
@@ -77,11 +94,13 @@ namespace Miam.Web.Controllers
 
             if (restaurant != null)
             {
-                var restaurantViewModel = Mapper.Map<ViewModels.Restaurant.Delete>(restaurant);
+                var restaurantViewModel = Mappers.createRestaurantDeleteViewModelFrom(restaurant);
                 return View(restaurantViewModel);
             }
             return HttpNotFound();
         }
+
+ 
 
 
         [HttpPost, ActionName("Delete")]
@@ -96,7 +115,7 @@ namespace Miam.Web.Controllers
             }
 
             return HttpNotFound();
-            
+
         }
 
         public virtual ViewResult Create()
@@ -105,15 +124,17 @@ namespace Miam.Web.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Create(ViewModels.Restaurant.Create restaurantViewModel)
+        public virtual ActionResult Create(RestaurantCreateViewModel restaurantViewModel)
         {
             if (ModelState.IsValid)
             {
-                var restaurant = Mapper.Map<Restaurant>(restaurantViewModel);
+                var restaurant = Mappers.createRestaurantFrom(restaurantViewModel);
                 _restaurantRepository.Add(restaurant);
                 return RedirectToAction(Views.ViewNames.Index);
             }
             return View("");
         }
+
+       
     }
 }

@@ -22,9 +22,10 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
                 .GotoLoginPage()
                 .LoginAs(_userAdmin.Email, _userAdmin.Password);
         }
-        protected void un_restaurant_existe_dans_le_système()
+        protected void un_restaurant()
         {
             _restaurant1 = TestData.Restaurant1;
+            _restaurant1.RestaurantContactDetail = TestData.RestaurantContactDetail1;
             _restaurantAcceptanceTestApi.CreateRestaurant(_restaurant1);
         }
 

@@ -1,5 +1,6 @@
 using Miam.DataLayer;
 using Miam.Domain.Entities;
+using Miam.TestUtility;
 using Miam.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
@@ -7,7 +8,7 @@ using NSubstitute;
 namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 {
 
-    public class RestaurantControllerBaseClassTests : AllControllersBaseClassTests
+    public class RestaurantControllerBaseClassTests : TestUtilities
     {
         protected IEntityRepository<Restaurant> _restaurantRepository;
         protected IEntityRepository<Review> _reviewRepository;

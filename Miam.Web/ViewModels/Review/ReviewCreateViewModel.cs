@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace Miam.Web.ViewModels.Review
 {
-    public class Create
+    public class ReviewCreateViewModel
     {
         [DisplayName("Évaluation (1 à 5)")]
         [Required(ErrorMessage = "Le champ évaluation est requis")]

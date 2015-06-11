@@ -18,7 +18,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         public void editer_un_restaurant()
         {
             this.Given(x => un_administrateur_authentifé())
-                .Given(x => un_restaurant_existe_dans_le_système())
+                .Given(x => un_restaurant())
                 .When(x => l_administrateur_edit_un_restaurant())
                 .Then(x => le_restaurant_est_mis_à_jour())
                 .BDDfy();
