@@ -45,7 +45,7 @@ namespace Miam.ApplicationsServices.Account
 
         public bool UserEmailExist(string email)
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 }

@@ -73,6 +73,17 @@ namespace Miam.ApplicationServices.UnitTests
 
             pwdHash.Should().Be(plainTextPwdSha256Hash);
         }
+
+        [TestMethod]
+        public void UserEmailExist_should_return_false_when_email_does_not_exist()
+        {
+            var users = _fixture.CreateMany<ApplicationUser>(3).AsQueryable();
+            _userRepository.GetAll().Returns(users);
+
+            var userExists = _accountService.UserEmailExist("this_example_does_not_exist_in_the_database@example.nl");
+
+            userExists.Should().BeFalse();
+        }
         
 
         
