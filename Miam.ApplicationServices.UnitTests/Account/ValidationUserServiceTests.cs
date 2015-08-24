@@ -61,6 +61,18 @@ namespace Miam.ApplicationServices.UnitTests
             user.Should().BeEmpty();
         }
 
+        [TestMethod]
+        public void hash_password_should_return_the_sha256_hash_of_the_password()
+        {
+            var plainTextPwd = "123Soleil";
+            var plainTextPwdSha256Hash = "bccc3f25b4b70a9e4704cab21dc772e932ff62af32aa475f15c4903044dec995";
+
+            var pwdHash = _accountService.HashPassword(plainTextPwd);
+
+            pwdHash.Should().Be(plainTextPwdSha256Hash);
+        }
+        
+
         
     }
 }
