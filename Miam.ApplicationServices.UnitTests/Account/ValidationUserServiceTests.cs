@@ -84,8 +84,17 @@ namespace Miam.ApplicationServices.UnitTests
 
             userExists.Should().BeFalse();
         }
-        
 
+        [TestMethod]
+        public void UserEmailExist_should_return_true_when_email_exists()
+        {
+            var users = _fixture.CreateMany<ApplicationUser>(3).AsQueryable();
+            _userRepository.GetAll().Returns(users);
+
+            var userExists = _accountService.UserEmailExist(users.First().Email);
+
+            userExists.Should().BeTrue();
+        }
         
     }
 }
