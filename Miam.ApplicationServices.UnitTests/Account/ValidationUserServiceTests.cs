@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Text;
 using FluentAssertions;
 using Miam.ApplicationsServices.Account;
 using Miam.DataLayer;
@@ -65,7 +67,7 @@ namespace Miam.ApplicationServices.UnitTests
         public void hash_password_should_return_the_sha256_hash_of_the_password()
         {
             var plainTextPwd = "123Soleil";
-            var plainTextPwdSha256Hash = "bccc3f25b4b70a9e4704cab21dc772e932ff62af32aa475f15c4903044dec995";
+            var plainTextPwdSha256Hash = "BCCC3F25B4B70A9E4704CAB21DC772E932FF62AF32AA475F15C4903044DEC995";
 
             var pwdHash = _accountService.HashPassword(plainTextPwd);
 

@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using Miam.DataLayer;
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
@@ -32,7 +34,13 @@ namespace Miam.ApplicationsServices.Account
 
         public string HashPassword(string password)
         {
-            throw new NotImplementedException();
+            SHA256 sha256 = SHA256.Create();
+
+            // On calcule le hash
+            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password)); 
+
+            // Finalement on convertit le tout en hexadecimal
+            return BitConverter.ToString(bytes).Replace("-", "");
         }
 
         public bool UserEmailExist(string email)
