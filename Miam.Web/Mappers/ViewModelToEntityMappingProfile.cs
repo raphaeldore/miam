@@ -17,7 +17,18 @@ namespace Miam.Web.Mappers
             ToRestaurant();
             ToReview();
             ToRestaurantContact();
+            ToApplicationUser();
         }
+
+        private void ToApplicationUser()
+        {
+            Mapper.CreateMap<ViewModels.Account.Edit, ApplicationUser>()
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(x => x.Email))
+                .ForMember(dest => dest.Password, opt => opt.MapFrom(x => x.NewPassword))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(x => x.Name))
+                .IgnoreAllNonExisting();
+        }
+
         private void ToRestaurant()
         {
             //Mapper.CreateMap<ViewModels.Restaurant.Create, Restaurant>()

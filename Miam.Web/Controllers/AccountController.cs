@@ -17,6 +17,8 @@ namespace Miam.Web.Controllers
     {
         private IHttpContextService _httpContext;
         private IUserAccountService _userAccountService;
+   
+        private IEntityRepository<ApplicationUser> _applicationUserRepository = new EfEntityRepository<ApplicationUser>();
 
         public AccountController(IHttpContextService httpContext,
                                  IUserAccountService userAccountService)
@@ -58,9 +60,9 @@ namespace Miam.Web.Controllers
         [HttpGet]
         public ActionResult Edit()
         {
-            IEntityRepository<ApplicationUser> applicationUserRepository = new EfEntityRepository<ApplicationUser>();
+            _applicationUserRepository = new EfEntityRepository<ApplicationUser>();
 
-            ApplicationUser applicationUser = applicationUserRepository.GetById(_httpContext.GetUserId());
+            ApplicationUser applicationUser = _applicationUserRepository.GetById(_httpContext.GetUserId());
 
             if (applicationUser != null)
             {
@@ -70,6 +72,29 @@ namespace Miam.Web.Controllers
             }
 
             return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ViewModels.Account.Edit editAccountViewModel)
+        {
+            _applicationUserRepository = new EfEntityRepository<ApplicationUser>();
+            var applicationUser = _applicationUserRepository.GetById(editAccountViewModel.Id);
+
+            if (applicationUser == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(editAccountViewModel);
+            }
+
+            Mapper.Map(editAccountViewModel, applicationUser);
+
+            _applicationUserRepository.Update(applicationUser);
+
+            return RedirectToAction(MVC.Home.Index());
         }
 
         public virtual ActionResult Logout()
