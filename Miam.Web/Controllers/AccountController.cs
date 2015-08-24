@@ -2,7 +2,10 @@
 using System.Linq;
 using System.Security.Claims;
 using System.Web.Mvc;
+using AutoMapper;
 using Miam.ApplicationsServices.Account;
+using Miam.DataLayer;
+using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
 using Miam.Web.Services;
 using Miam.Web.ViewModels.Account;
@@ -18,8 +21,8 @@ namespace Miam.Web.Controllers
         public AccountController(IHttpContextService httpContext,
                                  IUserAccountService userAccountService)
         {
-            if (httpContext == null) throw new NullReferenceException();
-            if (userAccountService == null) throw new NullReferenceException();
+            if (httpContext == null ||
+                userAccountService == null ) throw new NullReferenceException();
 
             _httpContext = httpContext;
             _userAccountService = userAccountService;
@@ -50,6 +53,23 @@ namespace Miam.Web.Controllers
             AuthentificateUser(user.First());
 
             return RedirectToAction(MVC.Home.Index());
+        }
+
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            IEntityRepository<ApplicationUser> applicationUserRepository = new EfEntityRepository<ApplicationUser>();
+
+            ApplicationUser applicationUser = applicationUserRepository.GetById(_httpContext.GetUserId());
+
+            if (applicationUser != null)
+            {
+                var accountEditPageViewModel = Mapper.Map<ViewModels.Account.Edit>(applicationUser);
+
+                return View(accountEditPageViewModel);
+            }
+
+            return HttpNotFound();
         }
 
         public virtual ActionResult Logout()

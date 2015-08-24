@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using FluentAssertions;
 using Miam.ApplicationsServices.Account;
+using Miam.DataLayer;
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
 using Miam.Web.Controllers;
@@ -19,12 +20,14 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         private AccountController _accountController;
         private IHttpContextService _httpContext;
         private IUserAccountService _userAccountService;
+        // private IEntityRepository<ApplicationUser> _applicationUserRepository;
 
         [TestInitialize]
         public void AccountControllerTestInit()
         {
             _httpContext = Substitute.For<IHttpContextService>();
             _userAccountService = Substitute.For<IUserAccountService>();
+            // _applicationUserRepository = Substitute.For<Appl>()
             _accountController = new AccountController(_httpContext, _userAccountService);
         }
 

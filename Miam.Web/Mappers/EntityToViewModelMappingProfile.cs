@@ -1,5 +1,7 @@
 ﻿
+using System;
 using AutoMapper;
+using AutoMapper.Internal;
 using Miam.Domain.Entities;
 
 
@@ -19,6 +21,17 @@ namespace Miam.Web.Mappers
             ToReviewViewModels();
             ToRestaurantViewModels();
             ToRestaurantContactDetailViewModel();
+            ToApplicationViewModels();
+        }
+
+        private void ToApplicationViewModels()
+        {
+            Mapper.CreateMap<ApplicationUser, ViewModels.Account.Edit>()
+                .ForMember(dest => dest.Id, opts => opts.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Email))
+                .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Name))
+                .ForMember(dest => dest.NewPassword, opts => opts.MapFrom(src => String.Empty))
+                .ForMember(dest => dest.RepeatPassword, opts => opts.MapFrom(src => String.Empty));
         }
 
         private void ToRestaurantViewModels()

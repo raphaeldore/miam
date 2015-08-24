@@ -11,7 +11,6 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
     {
         protected IEntityRepository<Restaurant> _restaurantRepository;
         protected IEntityRepository<Review> _reviewRepository;
-        
         protected RestaurantController _restaurantController;
        
 
@@ -20,7 +19,6 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         {
             _restaurantRepository = Substitute.For<IEntityRepository<Restaurant>>();
             _reviewRepository = Substitute.For<IEntityRepository<Review>>();
-
             _restaurantController = new RestaurantController(_restaurantRepository);
         }
     }
