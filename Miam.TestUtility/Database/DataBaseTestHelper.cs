@@ -7,8 +7,10 @@ namespace Miam.TestUtility.Database
 {
     public class DataBaseTestHelper
     {
-        private int _writerID1;
-        private int _writerID2;
+        //private int _writerID1;
+        private Writer _writer1;
+        private Writer _writer2;
+        //private int _writerID2;
         private IEntityRepository<Restaurant> _restaurantRepository;
         private IEntityRepository<Writer> _writerRepository;
         private EfEntityRepository<ApplicationUser> _userRepository;
@@ -35,14 +37,14 @@ namespace Miam.TestUtility.Database
 
         private void AddWriter()
         {
-            var writer1 = TestData.Writer1;
+            _writer1 = TestData.Writer1;
 
-            _writerRepository.Add(writer1);
-            _writerID1 = writer1.Id;
+            _writerRepository.Add(_writer1);
+            //_writerID1 = writer1.Id;
 
-            var writer2 = TestData.Writer2;
-            _writerRepository.Add(writer2);
-            _writerID2 = writer2.Id;
+            _writer2 = TestData.Writer2;
+            _writerRepository.Add(_writer2);
+            //_writerID2 = writer2.Id;
         }
 
         private void AddRestaurants()
@@ -65,11 +67,11 @@ namespace Miam.TestUtility.Database
 
             //Add reviews to _restaurant
             var review1 = TestData.Review1;
-            review1.WriterId = _writerID1;
+            review1.Writer = _writer1;
             restaurant.Reviews.Add(review1);
 
             var review2 = TestData.Review2;
-            review2.WriterId = _writerID2;
+            review2.Writer = _writer2;
             restaurant.Reviews.Add(review2);
 
 
@@ -91,11 +93,11 @@ namespace Miam.TestUtility.Database
 
             //Add reviews to _restaurant
             var review1 = TestData.Review3;
-            review1.WriterId = _writerID1;
+            review1.Writer = _writer1;
             restaurant.Reviews.Add(review1);
 
             var review2 = TestData.Review1;
-            review2.WriterId = _writerID2;
+            review2.Writer = _writer2;
             restaurant.Reviews.Add(review2);
 
 

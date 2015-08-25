@@ -110,6 +110,10 @@
     <Compile Include="Migrations\201505151841044_suppressionDeTestMigration.Designer.cs">
       <DependentUpon>201505151841044_suppressionDeTestMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508251854225_suppression-cle-etrangere.cs" />
+    <Compile Include="Migrations\201508251854225_suppression-cle-etrangere.Designer.cs">
+      <DependentUpon>201508251854225_suppression-cle-etrangere.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -134,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505151841044_suppressionDeTestMigration.resx">
       <DependentUpon>201505151841044_suppressionDeTestMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508251854225_suppression-cle-etrangere.resx">
+      <DependentUpon>201508251854225_suppression-cle-etrangere.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

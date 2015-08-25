@@ -127,7 +127,7 @@ namespace Miam.DataLayer.IntegrationTests.EntityFrameworkTests
                             {
                                 Body = "Ambiance décontractée. Service trop familier.",
                                 Rating = 3,
-                                WriterId = writerID
+                                //ICI WriterId = writerID
                             };
 
             //Action

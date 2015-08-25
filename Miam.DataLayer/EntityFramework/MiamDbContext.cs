@@ -16,11 +16,20 @@ namespace Miam.DataLayer
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<RestaurantContactDetail>().HasKey(c => c.RestaurantId);
-            
             modelBuilder.Entity<RestaurantContactDetail>()
                 .HasRequired(c => c.Restaurant)
                 .WithOptional(r => r.RestaurantContactDetail)
                 .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Review>()
+                .HasOptional(r => r.Restaurant)
+                .WithMany()
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Review>()
+            .HasOptional(r => r.Writer)
+            .WithMany()
+            .WillCascadeOnDelete(true);
 
             base.OnModelCreating(modelBuilder);
         }

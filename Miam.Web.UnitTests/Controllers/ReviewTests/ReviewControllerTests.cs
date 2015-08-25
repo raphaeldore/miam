@@ -43,7 +43,7 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
             // Arrange   
             var review = _fixture.Create<Review>();
             var reviewViewModel = Mapper.Map<Create>(review);
-            _httpContextService.GetUserId().Returns(review.WriterId);
+            _httpContextService.GetUserId().Returns(review.Writer.Id);
 
             // Action
             _reviewController.Create(reviewViewModel);
@@ -87,8 +87,8 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         }
         private void ReviewRepositoryAddMethodShouldHaveReceived(Review review)
         {
-            _reviewRepository.Received().Add(Arg.Is<Review>(x => x.WriterId == review.WriterId));
-            _reviewRepository.Received().Add(Arg.Is<Review>(x => x.RestaurantId == review.RestaurantId));
+            _reviewRepository.Received().Add(Arg.Is<Review>(x => x.Writer.Id== review.Writer.Id));
+            _reviewRepository.Received().Add(Arg.Is<Review>(x => x.Restaurant.Id == review.Restaurant.Id));
             _reviewRepository.Received().Add(Arg.Is<Review>(x => x.Rating == review.Rating));
             _reviewRepository.Received().Add(Arg.Is<Review>(x => x.Body == review.Body));
         }

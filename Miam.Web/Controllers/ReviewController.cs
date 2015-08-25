@@ -45,7 +45,7 @@ namespace Miam.Web.Controllers
             if (ModelState.IsValid)
             {
                 var review = Mapper.Map<Review>(create);
-                review.WriterId = _httpContextService.GetUserId();
+                review.Writer.Id = _httpContextService.GetUserId();
 
                 _reviewRepository.Add(review);
 

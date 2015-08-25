@@ -11,8 +11,8 @@ namespace Miam.Domain.Entities
         public string Body { get; set; }
 
         // Foreign key
-        public int RestaurantId { get; set; }
-        public int WriterId { get; set; }
+        //public int RestaurantId { get; set; }
+        //public int WriterId { get; set; }
 
         //Navigation properties
         public virtual Writer Writer { get; set; }

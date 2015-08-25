@@ -99,7 +99,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             int restaurantReviewsCountBefore = restaurantBefore.Reviews.Count();
 
             var newReview = _fixture.Build<Review>()
-                .With(r => r.WriterId, writer.Id)
+                .With(r => r.Writer.Id, writer.Id)
                 .With(r => r.Id, restaurantBefore.Id)
                 .Create();
 
@@ -110,7 +110,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
 
             //Assert 
             int restaurantReviewsCountAfter = _miamDbContextAfter.Reviews
-             .Count(r => r.RestaurantId == restaurantBefore.Id);
+             .Count(r => r.Restaurant.Id == restaurantBefore.Id);
             Assert.AreEqual(restaurantReviewsCountBefore + 1, restaurantReviewsCountAfter);
         }
 
@@ -182,7 +182,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
 
             //Assert 
             int reviewsCountAfter = _miamDbContextAfter.Reviews
-                .Count(r => r.RestaurantId == restaurantBefore.Id);
+                .Count(r => r.Restaurant.Id == restaurantBefore.Id);
             Assert.AreEqual(0, reviewsCountAfter);
         }
 
@@ -231,7 +231,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             writerRepository.Delete(writer);
 
             //Assert 
-            int reviewsCountAfter = _miamDbContextAfter.Reviews.Count(r => r.WriterId == writer.Id);
+            int reviewsCountAfter = _miamDbContextAfter.Reviews.Count(r => r.Writer.Id == writer.Id);
             Assert.AreEqual(0, reviewsCountAfter);
         }
     }

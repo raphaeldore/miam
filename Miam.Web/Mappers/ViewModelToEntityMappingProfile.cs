@@ -48,7 +48,7 @@ namespace Miam.Web.Mappers
                .ForMember(dest => dest.Id, opt => opt.Ignore())
                .ForMember(dest => dest.Restaurant, opt => opt.Ignore())
                .ForMember(dest => dest.Writer, opt => opt.Ignore())
-               .ForMember(dest => dest.WriterId, opt => opt.Ignore());
+               .ForMember(dest => dest.Writer.Id, opt => opt.Ignore());
         }
 
       
