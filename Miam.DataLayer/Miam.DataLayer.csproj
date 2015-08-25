@@ -114,6 +114,10 @@
     <Compile Include="Migrations\201508251854225_suppression-cle-etrangere.Designer.cs">
       <DependentUpon>201508251854225_suppression-cle-etrangere.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508252027082_DebutSessionA15.cs" />
+    <Compile Include="Migrations\201508252027082_DebutSessionA15.Designer.cs">
+      <DependentUpon>201508252027082_DebutSessionA15.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -141,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508251854225_suppression-cle-etrangere.resx">
       <DependentUpon>201508251854225_suppression-cle-etrangere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508252027082_DebutSessionA15.resx">
+      <DependentUpon>201508252027082_DebutSessionA15.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
