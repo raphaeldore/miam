@@ -78,7 +78,7 @@ namespace Miam.Web.Controllers
         public ActionResult Edit(ViewModels.Account.Edit editAccountViewModel)
         {
             _applicationUserRepository = new EfEntityRepository<ApplicationUser>();
-            var applicationUser = _applicationUserRepository.GetById(editAccountViewModel.Id);
+            var applicationUser = _applicationUserRepository.GetById(_httpContext.GetUserId());
 
             if (applicationUser == null)
             {

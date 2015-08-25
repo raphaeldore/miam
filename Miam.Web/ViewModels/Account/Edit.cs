@@ -16,10 +16,12 @@ namespace Miam.Web.ViewModels.Account
         
         [DisplayName("Nouveau mot de passe")]
         [Required(ErrorMessage = "Le champ nouveau mot de passe est requis")]
+        [DataType(DataType.Password)]
         public string NewPassword { get; set; }
         
         [DisplayName("Confirmation du nouveau mot de passe")]
         [Required(ErrorMessage = "Le champ confirmation du nouveau mot de passe est requis")]
+        [DataType(DataType.Password)]
         [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "Les mots de passe ne correspondent pas")]
         public string RepeatPassword { get; set; }
 
