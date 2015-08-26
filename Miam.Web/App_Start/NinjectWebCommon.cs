@@ -68,6 +68,9 @@ namespace Miam.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            //Ef context
+            kernel.Bind<MiamDbContext>().ToSelf().InRequestScope();
+
             //repositories
             kernel.Bind<IEntityRepository<Restaurant>>().To<EfEntityRepository<Restaurant>>().InRequestScope();
             kernel.Bind<IEntityRepository<Writer>>().To<EfEntityRepository<Writer>>().InRequestScope();

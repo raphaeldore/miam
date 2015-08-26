@@ -15,7 +15,9 @@ namespace Miam.Domain.Entities
         //public int WriterId { get; set; }
 
         //Navigation properties
+        [Required]
         public virtual Writer Writer { get; set; }
+        [Required]
         public virtual Restaurant Restaurant { get; set; }
     }
 }

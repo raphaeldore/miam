@@ -45,10 +45,10 @@ namespace Miam.Web.Mappers
         private void ToReview()
         {
             Mapper.CreateMap<ViewModels.Review.Create, Review>()
-               .ForMember(dest => dest.Id, opt => opt.Ignore())
-               .ForMember(dest => dest.Restaurant, opt => opt.Ignore())
-               .ForMember(dest => dest.Writer, opt => opt.Ignore())
-               .ForMember(dest => dest.Writer.Id, opt => opt.Ignore());
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Restaurant, opt => opt.Ignore())
+                .ForMember(dest => dest.Writer, opt => opt.Ignore());
+            //.ForMember(dest => dest.Writer.Id, opt => opt.Ignore());
         }
 
       

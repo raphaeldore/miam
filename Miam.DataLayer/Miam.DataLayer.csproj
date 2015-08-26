@@ -98,25 +98,13 @@
     <Compile Include="EntityFramework\MiamDbContext.cs" />
     <Compile Include="EntityFramework\EfEntityRepository.cs" />
     <Compile Include="EntityFramework\EfDropCreateIfModelChangesSeeder.cs" />
-    <Compile Include="Migrations\201505141910399_InitialCreate.cs" />
-    <Compile Include="Migrations\201505141910399_InitialCreate.Designer.cs">
-      <DependentUpon>201505141910399_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201508252101120_InitialCreate.cs" />
+    <Compile Include="Migrations\201508252101120_InitialCreate.Designer.cs">
+      <DependentUpon>201508252101120_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505141949163_test migration.cs" />
-    <Compile Include="Migrations\201505141949163_test migration.Designer.cs">
-      <DependentUpon>201505141949163_test migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505151841044_suppressionDeTestMigration.cs" />
-    <Compile Include="Migrations\201505151841044_suppressionDeTestMigration.Designer.cs">
-      <DependentUpon>201505151841044_suppressionDeTestMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508251854225_suppression-cle-etrangere.cs" />
-    <Compile Include="Migrations\201508251854225_suppression-cle-etrangere.Designer.cs">
-      <DependentUpon>201508251854225_suppression-cle-etrangere.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508252027082_DebutSessionA15.cs" />
-    <Compile Include="Migrations\201508252027082_DebutSessionA15.Designer.cs">
-      <DependentUpon>201508252027082_DebutSessionA15.cs</DependentUpon>
+    <Compile Include="Migrations\201508252127037_ajoutRequired.cs" />
+    <Compile Include="Migrations\201508252127037_ajoutRequired.Designer.cs">
+      <DependentUpon>201508252127037_ajoutRequired.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,20 +122,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505141910399_InitialCreate.resx">
-      <DependentUpon>201505141910399_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508252101120_InitialCreate.resx">
+      <DependentUpon>201508252101120_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505141949163_test migration.resx">
-      <DependentUpon>201505141949163_test migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505151841044_suppressionDeTestMigration.resx">
-      <DependentUpon>201505151841044_suppressionDeTestMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508251854225_suppression-cle-etrangere.resx">
-      <DependentUpon>201508251854225_suppression-cle-etrangere.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508252027082_DebutSessionA15.resx">
-      <DependentUpon>201508252027082_DebutSessionA15.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508252127037_ajoutRequired.resx">
+      <DependentUpon>201508252127037_ajoutRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

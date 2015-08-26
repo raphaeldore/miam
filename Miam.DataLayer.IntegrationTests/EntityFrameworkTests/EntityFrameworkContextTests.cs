@@ -13,7 +13,6 @@ namespace Miam.DataLayer.IntegrationTests.EntityFrameworkTests
         private static EfDatabaseHelper _dataBaseHelper;
         private DataBaseTestHelper _dataBaseTestHelper;
 
-
         [TestInitialize]
         public void TestInitialize()
         {
@@ -114,20 +113,20 @@ namespace Miam.DataLayer.IntegrationTests.EntityFrameworkTests
             //Arrange 
             int reviewsCountBefore;
             Restaurant restaurantToUpdate;
-            int writerID;
+            Writer writer;
+
             using (var context = new MiamDbContext())
             {
                 restaurantToUpdate = context.Restaurants.First(r => r.Name == TestData.Restaurant1.Name);
                 reviewsCountBefore = restaurantToUpdate.Reviews.Count();
-                var writer = context.Writers.First();
-                writerID = writer.Id;
-
+                writer = context.Writers.First();
             }
+
             var newReview = new Review()
                             {
                                 Body = "Ambiance décontractée. Service trop familier.",
                                 Rating = 3,
-                                //ICI WriterId = writerID
+                                Writer = writer
                             };
 
             //Action
@@ -149,6 +148,7 @@ namespace Miam.DataLayer.IntegrationTests.EntityFrameworkTests
             }
         }
 
+        
         [TestMethod]
         public void remove_restaurant_using_EFContext_should_delete_restaurantContactDetail()
         {

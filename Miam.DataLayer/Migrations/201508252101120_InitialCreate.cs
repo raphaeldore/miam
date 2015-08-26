@@ -40,14 +40,14 @@ namespace Miam.DataLayer.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Rating = c.Int(nullable: false),
                         Body = c.String(maxLength: 1024),
-                        RestaurantId = c.Int(nullable: false),
-                        WriterId = c.Int(nullable: false),
+                        Restaurant_Id = c.Int(nullable: false),
+                        Writer_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Restaurants", t => t.RestaurantId, cascadeDelete: true)
-                .ForeignKey("dbo.ApplicationUsers", t => t.WriterId, cascadeDelete: true)
-                .Index(t => t.RestaurantId)
-                .Index(t => t.WriterId);
+                .ForeignKey("dbo.Restaurants", t => t.Restaurant_Id, cascadeDelete: true)
+                .ForeignKey("dbo.ApplicationUsers", t => t.Writer_Id, cascadeDelete: true)
+                .Index(t => t.Restaurant_Id)
+                .Index(t => t.Writer_Id);
             
             CreateTable(
                 "dbo.ApplicationUsers",
@@ -67,11 +67,11 @@ namespace Miam.DataLayer.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         RoleName = c.String(),
-                        ApplicationUserId = c.Int(nullable: false),
+                        ApplicationUsers_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ApplicationUsers", t => t.ApplicationUserId, cascadeDelete: true)
-                .Index(t => t.ApplicationUserId);
+                .ForeignKey("dbo.ApplicationUsers", t => t.ApplicationUsers_Id)
+                .Index(t => t.ApplicationUsers_Id);
             
             CreateTable(
                 "dbo.Tags",
@@ -102,14 +102,14 @@ namespace Miam.DataLayer.Migrations
             DropForeignKey("dbo.RestaurantContactDetails", "RestaurantId", "dbo.Restaurants");
             DropForeignKey("dbo.TagRestaurants", "Restaurant_Id", "dbo.Restaurants");
             DropForeignKey("dbo.TagRestaurants", "Tag_Id", "dbo.Tags");
-            DropForeignKey("dbo.UserRoles", "ApplicationUserId", "dbo.ApplicationUsers");
-            DropForeignKey("dbo.Reviews", "WriterId", "dbo.ApplicationUsers");
-            DropForeignKey("dbo.Reviews", "RestaurantId", "dbo.Restaurants");
+            DropForeignKey("dbo.Reviews", "Writer_Id", "dbo.ApplicationUsers");
+            DropForeignKey("dbo.UserRoles", "ApplicationUsers_Id", "dbo.ApplicationUsers");
+            DropForeignKey("dbo.Reviews", "Restaurant_Id", "dbo.Restaurants");
             DropIndex("dbo.TagRestaurants", new[] { "Restaurant_Id" });
             DropIndex("dbo.TagRestaurants", new[] { "Tag_Id" });
-            DropIndex("dbo.UserRoles", new[] { "ApplicationUserId" });
-            DropIndex("dbo.Reviews", new[] { "WriterId" });
-            DropIndex("dbo.Reviews", new[] { "RestaurantId" });
+            DropIndex("dbo.UserRoles", new[] { "ApplicationUsers_Id" });
+            DropIndex("dbo.Reviews", new[] { "Writer_Id" });
+            DropIndex("dbo.Reviews", new[] { "Restaurant_Id" });
             DropIndex("dbo.RestaurantContactDetails", new[] { "RestaurantId" });
             DropTable("dbo.TagRestaurants");
             DropTable("dbo.Tags");

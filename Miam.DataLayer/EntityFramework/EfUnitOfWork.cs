@@ -26,7 +26,7 @@ namespace Miam.DataLayer.EntityFramework
             {
                 if (_writer == null)
                 {
-                    //_writer = new EfEntityRepository<Writer>(_dbContext);
+                    _writer = new EfEntityRepository<Writer>(_dbContext);
                 }
                 return _writer;
             }
@@ -38,7 +38,7 @@ namespace Miam.DataLayer.EntityFramework
             {
                 if (_review == null)
                 {
-                   // _review = new EfEntityRepository<Review>(_dbContext);
+                    _review = new EfEntityRepository<Review>(_dbContext);
                 }
                 return _review;
             }
@@ -50,7 +50,7 @@ namespace Miam.DataLayer.EntityFramework
             {
                 if (_restaurant == null)
                 {
-                   // _restaurant = new EfEntityRepository<Restaurant>(_dbContext);
+                    _restaurant = new EfEntityRepository<Restaurant>(_dbContext);
                 }
                 return _restaurant;
             }
@@ -62,7 +62,7 @@ namespace Miam.DataLayer.EntityFramework
             {
                 if (_tag == null)
                 {
-                   // _tag = new EfEntityRepository<Tag>(_dbContext);
+                    _tag = new EfEntityRepository<Tag>(_dbContext);
                 }
                 return _tag;
             }
@@ -74,7 +74,7 @@ namespace Miam.DataLayer.EntityFramework
             {
                 if (_user == null)
                 {
-                    //_user = new EfEntityRepository<ApplicationUser>(_dbContext);
+                    _user = new EfEntityRepository<ApplicationUser>(_dbContext);
                 }
                 return _user;
             }
