@@ -17,7 +17,12 @@ namespace Miam.Web.ViewModels.Account
         [Required(ErrorMessage = "Le champ nouveau mot de passe est requis")]
         [DataType(DataType.Password)]
         public string NewPassword { get; set; }
-        
+
+        [DisplayName("Mot de passe actuel")]
+        [Required(ErrorMessage = "Vous devez fournir votre mot de passe actuel pour effectuer des changements à votre compte")]
+        [DataType(DataType.Password)]
+        public string CurrentPassword { get; set; }
+
         [DisplayName("Confirmation du nouveau mot de passe")]
         [Required(ErrorMessage = "Le champ confirmation du nouveau mot de passe est requis")]
         [DataType(DataType.Password)]
@@ -27,5 +32,6 @@ namespace Miam.Web.ViewModels.Account
         [DisplayName("Nom")]
         [Required(ErrorMessage = "Le champ nom est requis")]
         public string Name { get; set; }
+
     }
 }

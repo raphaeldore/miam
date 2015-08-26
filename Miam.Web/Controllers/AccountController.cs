@@ -80,20 +80,28 @@ namespace Miam.Web.Controllers
         [HttpPost]
         public ActionResult Edit(Edit editAccountViewModel)
         {
-            //var applicationUser = _applicationUserRepository.GetById(_httpContext.GetUserId());
+            if (!ModelState.IsValid)
+                return View(editAccountViewModel);
+
             var applicationUser = _applicationUserRepository.GetById(editAccountViewModel.Id);
 
             if (applicationUser == null)
                 return HttpNotFound();
 
-            if (!ModelState.IsValid)
-                return View(editAccountViewModel);
+            if (applicationUser.Password == _userAccountService.HashPassword(editAccountViewModel.CurrentPassword))
+            {
+                editAccountViewModel.NewPassword = _userAccountService.HashPassword(editAccountViewModel.NewPassword);
 
-            Mapper.Map(editAccountViewModel, applicationUser);
+                Mapper.Map(editAccountViewModel, applicationUser);
 
-            _applicationUserRepository.Update(applicationUser);
+                _applicationUserRepository.Update(applicationUser);
 
-            return RedirectToAction(MVC.Home.Index());
+                return RedirectToAction(MVC.Home.Index());
+            }
+
+            ModelState.AddModelError(string.Empty, "Le mot de passe actuel que vous avez entré n'est pas valide.");
+
+            return View(editAccountViewModel);
         }
 
         public virtual ActionResult Logout()
