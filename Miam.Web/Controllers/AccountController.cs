@@ -5,8 +5,6 @@ using System.Web.Mvc;
 using AutoMapper;
 using Miam.ApplicationsServices.Account;
 using Miam.DataLayer;
-using Miam.DataLayer.EntityFramework;
-using Miam.Domain.Application;
 using Miam.Domain.Entities;
 using Miam.Web.Services;
 using Miam.Web.ViewModels.Account;
@@ -63,9 +61,7 @@ namespace Miam.Web.Controllers
         [HttpGet]
         public ActionResult Edit()
         {
-            // _applicationUserRepository = new EfEntityRepository<ApplicationUser>();
-
-            ApplicationUser applicationUser = _applicationUserRepository.GetById(_httpContext.GetUserId());
+            var applicationUser = _applicationUserRepository.GetById(int.Parse(User.Identity.GetUserId()));
 
             if (applicationUser != null)
             {
@@ -78,12 +74,13 @@ namespace Miam.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Edit editAccountViewModel)
         {
             if (!ModelState.IsValid)
                 return View(editAccountViewModel);
 
-            var applicationUser = _applicationUserRepository.GetById(editAccountViewModel.Id);
+            var applicationUser = _applicationUserRepository.GetById(int.Parse(User.Identity.GetUserId()));
 
             if (applicationUser == null)
                 return HttpNotFound();
@@ -114,7 +111,7 @@ namespace Miam.Web.Controllers
         {
             var identity = new ClaimsIdentity(new[]
             {
-                new Claim(ClaimTypes.Name, applicationUser.Email),
+                new Claim(ClaimTypes.Name, applicationUser.Name),
                 new Claim(ClaimTypes.NameIdentifier, applicationUser.Id.ToString()),
             },
                 DefaultAuthenticationTypes.ApplicationCookie);
