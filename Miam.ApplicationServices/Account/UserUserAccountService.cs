@@ -21,7 +21,7 @@ namespace Miam.ApplicationsServices.Account
         {
             var user = _userRepository.GetAll().FirstOrDefault(x => x.Email == email);
 
-            if (user == null || user.Password != password)
+            if (user == null || user.Password != HashPassword(password))
             {
                 return new MayBe<ApplicationUser>();
             }
