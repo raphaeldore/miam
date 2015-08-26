@@ -4,8 +4,7 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="account-menu">@User.Identity.Name<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                @*<li>@Html.RouteLink("Modifier le compte", new {Action = "/Account/Edit"}) </li>*@
-                <li><a href="/Account/Edit">Modifier le compte</a></li>
+                <li>@Html.ActionLink("Modifier le compte", "Edit", new { controller = "Account" }, null)</li>
                 <li>@Html.ActionLink("Se déconnecter", MVC.Account.Logout(), new {id = "logout-link"})</li>
             </ul>
         </li>
