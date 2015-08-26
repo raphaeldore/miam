@@ -1,14 +1,14 @@
-﻿using System;
-using System.Linq;
-using System.Security.Claims;
-using System.Web.Mvc;
-using AutoMapper;
+﻿using AutoMapper;
 using Miam.ApplicationsServices.Account;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 using Miam.Web.Services;
 using Miam.Web.ViewModels.Account;
 using Microsoft.AspNet.Identity;
+using System;
+using System.Linq;
+using System.Security.Claims;
+using System.Web.Mvc;
 
 namespace Miam.Web.Controllers
 {
@@ -16,11 +16,11 @@ namespace Miam.Web.Controllers
     {
         private readonly IHttpContextService _httpContext;
         private readonly IUserAccountService _userAccountService;
-        private readonly IEntityRepository<ApplicationUser> _applicationUserRepository; // = new EfEntityRepository<ApplicationUser>();
+        private readonly IEntityRepository<ApplicationUser> _applicationUserRepository;
 
         public AccountController(IHttpContextService httpContext,
                                  IUserAccountService userAccountService,
-                                 IEntityRepository<ApplicationUser> applicationUserRepository )
+                                 IEntityRepository<ApplicationUser> applicationUserRepository)
         {
             if (httpContext == null ||
                 userAccountService == null ||
@@ -52,7 +52,7 @@ namespace Miam.Web.Controllers
                 ModelState.AddModelError("loginError", "Utilisateur ou mot de passe inexistant");
                 return View();
             }
-            
+
             AuthentificateUser(user.First());
 
             return RedirectToAction(MVC.Home.Index());
@@ -125,4 +125,3 @@ namespace Miam.Web.Controllers
         }
     }
 }
-
