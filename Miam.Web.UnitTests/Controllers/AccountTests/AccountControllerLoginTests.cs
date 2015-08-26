@@ -20,15 +20,15 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         private AccountController _accountController;
         private IHttpContextService _httpContext;
         private IUserAccountService _userAccountService;
-        // private IEntityRepository<ApplicationUser> _applicationUserRepository;
+        private IEntityRepository<ApplicationUser> _applicationUserRepository;
 
         [TestInitialize]
         public void AccountControllerTestInit()
         {
             _httpContext = Substitute.For<IHttpContextService>();
             _userAccountService = Substitute.For<IUserAccountService>();
-            // _applicationUserRepository = Substitute.For<Appl>()
-            _accountController = new AccountController(_httpContext, _userAccountService);
+            _applicationUserRepository = Substitute.For<IEntityRepository<ApplicationUser>>();
+            _accountController = new AccountController(_httpContext, _userAccountService, _applicationUserRepository);
         }
 
          [TestMethod]

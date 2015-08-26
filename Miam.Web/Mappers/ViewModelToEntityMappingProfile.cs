@@ -14,19 +14,21 @@ namespace Miam.Web.Mappers
 
         protected override void Configure()
         {
+            ToApplicationUser();
             ToRestaurant();
             ToReview();
             ToRestaurantContact();
-            ToApplicationUser();
         }
 
         private void ToApplicationUser()
         {
             Mapper.CreateMap<ViewModels.Account.Edit, ApplicationUser>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(x => x.Email))
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(x => x.NewPassword))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(x => x.Name))
                 .IgnoreAllNonExisting();
+
         }
 
         private void ToRestaurant()

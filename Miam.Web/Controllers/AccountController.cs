@@ -6,6 +6,7 @@ using AutoMapper;
 using Miam.ApplicationsServices.Account;
 using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
+using Miam.Domain.Application;
 using Miam.Domain.Entities;
 using Miam.Web.Services;
 using Miam.Web.ViewModels.Account;
@@ -15,19 +16,21 @@ namespace Miam.Web.Controllers
 {
     public partial class AccountController : Controller
     {
-        private IHttpContextService _httpContext;
-        private IUserAccountService _userAccountService;
-   
-        private IEntityRepository<ApplicationUser> _applicationUserRepository = new EfEntityRepository<ApplicationUser>();
+        private readonly IHttpContextService _httpContext;
+        private readonly IUserAccountService _userAccountService;
+        private readonly IEntityRepository<ApplicationUser> _applicationUserRepository; // = new EfEntityRepository<ApplicationUser>();
 
         public AccountController(IHttpContextService httpContext,
-                                 IUserAccountService userAccountService)
+                                 IUserAccountService userAccountService,
+                                 IEntityRepository<ApplicationUser> applicationUserRepository )
         {
             if (httpContext == null ||
-                userAccountService == null ) throw new NullReferenceException();
+                userAccountService == null ||
+                applicationUserRepository == null) throw new NullReferenceException();
 
             _httpContext = httpContext;
             _userAccountService = userAccountService;
+            _applicationUserRepository = applicationUserRepository;
         }
 
         public virtual ActionResult Login()
@@ -41,7 +44,7 @@ namespace Miam.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("");
+                return View();
             }
 
             var user = _userAccountService.ValidateUser(accountLoginViewModel.Email, accountLoginViewModel.Password);
@@ -49,7 +52,7 @@ namespace Miam.Web.Controllers
             if (!user.Any())
             {
                 ModelState.AddModelError("loginError", "Utilisateur ou mot de passe inexistant");
-                return View("");
+                return View();
             }
             
             AuthentificateUser(user.First());
@@ -60,13 +63,13 @@ namespace Miam.Web.Controllers
         [HttpGet]
         public ActionResult Edit()
         {
-            _applicationUserRepository = new EfEntityRepository<ApplicationUser>();
+            // _applicationUserRepository = new EfEntityRepository<ApplicationUser>();
 
             ApplicationUser applicationUser = _applicationUserRepository.GetById(_httpContext.GetUserId());
 
             if (applicationUser != null)
             {
-                var accountEditPageViewModel = Mapper.Map<ViewModels.Account.Edit>(applicationUser);
+                var accountEditPageViewModel = Mapper.Map<Edit>(applicationUser);
 
                 return View(accountEditPageViewModel);
             }
@@ -75,20 +78,16 @@ namespace Miam.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(ViewModels.Account.Edit editAccountViewModel)
+        public ActionResult Edit(Edit editAccountViewModel)
         {
-            _applicationUserRepository = new EfEntityRepository<ApplicationUser>();
-            var applicationUser = _applicationUserRepository.GetById(_httpContext.GetUserId());
+            //var applicationUser = _applicationUserRepository.GetById(_httpContext.GetUserId());
+            var applicationUser = _applicationUserRepository.GetById(editAccountViewModel.Id);
 
             if (applicationUser == null)
-            {
                 return HttpNotFound();
-            }
 
             if (!ModelState.IsValid)
-            {
                 return View(editAccountViewModel);
-            }
 
             Mapper.Map(editAccountViewModel, applicationUser);
 

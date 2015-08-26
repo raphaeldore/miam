@@ -31,9 +31,6 @@ namespace Miam.Web.Mappers
                 .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Email))
                 .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Name))
                 .IgnoreAllNonExisting();
-
-            //.ForMember(dest => dest.NewPassword, opts => opts.MapFrom(src => String.Empty))
-            //.ForMember(dest => dest.RepeatPassword, opts => opts.MapFrom(src => String.Empty));
         }
 
         private void ToRestaurantViewModels()

@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography;
 using System.Web.Mvc;
 
 namespace Miam.Web.ViewModels.Account

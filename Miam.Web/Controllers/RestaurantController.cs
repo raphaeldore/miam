@@ -113,7 +113,7 @@ namespace Miam.Web.Controllers
                 _restaurantRepository.Add(restaurant);
                 return RedirectToAction(Views.ViewNames.Index);
             }
-            return View("");
+            return View();
         }
     }
 }

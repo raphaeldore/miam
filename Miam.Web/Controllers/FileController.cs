@@ -37,13 +37,13 @@ namespace Miam.Web.Controllers
             if (file == null)
             {
                 ModelState.AddModelError("fileError", "Fichier inexistant");
-                return View("");
+                return View();
             }
 
             if (file.ContentLength <= 0)
             {
                 ModelState.AddModelError("fileError", "Fichier vide");
-                return View("");
+                return View();
             }
 
             var fileName = Path.GetFileName(file.FileName);
