@@ -105,7 +105,8 @@ namespace Miam.TestUtility.Database
                              {
                                  new UserRole() {RoleName = RoleName.Writer}
                              },
-                             Password= "irma",
+                             // sha256
+                             Password = "AF7C880C6178C7DA849C55217816BAF4CDF37D8F6FD5C32E693AB272C7196EF9", // irma
                              Name = "Irma Larose",
                              Email = "irma@Larose.fr",
                          };
@@ -125,7 +126,8 @@ namespace Miam.TestUtility.Database
                              {
                                  new UserRole() {RoleName = RoleName.Writer}
                              },
-                    Password = "lucien", 
+                    // sha256
+                    Password = "2EC50E8DCC57D282DFDC5B901F550A5E79D8E65535A65FB40EA358C2B7FB97FD", // lucien 
                     Name = "Lucien Lafleur",
                     Email = "lucien@lafleur.com",
 
@@ -223,7 +225,7 @@ namespace Miam.TestUtility.Database
                                  new UserRole() {RoleName = RoleName.Writer},
                                  new UserRole() {RoleName = RoleName.Admin}
                              },
-                    Password = "admin",
+                    Password = "8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918", // admin
                     Name = "Super AdminLafleur",
                     Email = "admin@admin.com",
                 };
