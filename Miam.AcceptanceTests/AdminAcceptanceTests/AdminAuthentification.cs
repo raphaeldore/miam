@@ -44,7 +44,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
                 .GotoLoginPage()
-                .LoginAs(_userAdmin.Email, _userAdmin.Password);
+                .LoginAs(_userAdmin.Email, TestData.ApplicationUserAdminPlainTextPwd);
         }
         private void l_administrateur_entre_un_mot_de_passe_invalide()
         {

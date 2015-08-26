@@ -111,7 +111,7 @@ namespace Miam.Web.Controllers
         {
             var identity = new ClaimsIdentity(new[]
             {
-                new Claim(ClaimTypes.Name, applicationUser.Name),
+                new Claim(ClaimTypes.Name, applicationUser.Email),
                 new Claim(ClaimTypes.NameIdentifier, applicationUser.Id.ToString()),
             },
                 DefaultAuthenticationTypes.ApplicationCookie);

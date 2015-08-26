@@ -47,7 +47,10 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
          {
              //Arrange
              var loginViewModel = _fixture.Create<Login>();
+             loginViewModel.Password = _userAccountService.HashPassword(loginViewModel.Password);
+
              var invalidUser = new MayBe<ApplicationUser>();
+
              _userAccountService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(invalidUser);
 
              //Action    
@@ -64,6 +67,8 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         {
             //Arrange
             var user = _fixture.Create<ApplicationUser>();
+            user.Password = _userAccountService.HashPassword(user.Password);
+
             var loginViewModel = new Login()
             {
                 Email = user.Email,
@@ -86,6 +91,8 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         {      
             //Arrange
             var user = _fixture.Create<ApplicationUser>();
+            user.Password = _userAccountService.HashPassword(user.Password);
+
             var loginViewModel = new Login()
                                  {
                                     Email = user.Email,

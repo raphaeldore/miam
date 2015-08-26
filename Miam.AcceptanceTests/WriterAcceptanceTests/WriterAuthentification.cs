@@ -49,7 +49,7 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
             homePage
                 .NavigationMenu
                 .GotoLoginPage()
-                .LoginAs(_writer.Email, _writer.Password);
+                .LoginAs(_writer.Email, TestData.Writer1PlainTextPwd);
         }
         private void le_chroniqueur_devrait_être_authentifié()
         {

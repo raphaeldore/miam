@@ -20,7 +20,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
                 .GotoLoginPage()
-                .LoginAs(_userAdmin.Email, _userAdmin.Password);
+                .LoginAs(_userAdmin.Email, TestData.ApplicationUserAdminPlainTextPwd);
         }
         protected void un_restaurant_existe_dans_le_système()
         {

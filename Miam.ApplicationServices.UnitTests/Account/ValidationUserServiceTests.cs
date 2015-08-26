@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FluentAssertions;
@@ -33,12 +34,19 @@ namespace Miam.ApplicationServices.UnitTests
         [TestMethod]
         public void validate_should_return_a_user_when_email_and_password_are_valid()
         {
-            var users = _fixture.CreateMany<ApplicationUser>(3).AsQueryable();
-            _userRepository.GetAll().Returns(users);
+            List<ApplicationUser> appUsers = new List<ApplicationUser>();
+            appUsers.Add(new ApplicationUser
+            {
+                Name = "Mr. Test",
+                Email = "test@test.com",
+                Password = _accountService.HashPassword("test")
+            });
 
-            var user = _accountService.ValidateUser(users.First().Email, users.First().Password);
+            _userRepository.GetAll().Returns(appUsers.AsQueryable());
 
-            user.First().ShouldBeEquivalentTo(users.First());
+            var user = _accountService.ValidateUser(appUsers.First().Email, "test");
+
+            user.First().ShouldBeEquivalentTo(appUsers.First());
         }
 
         [TestMethod]
