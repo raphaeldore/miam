@@ -27,7 +27,6 @@ namespace Miam.Web.Mappers
         private void ToApplicationViewModels()
         {
             Mapper.CreateMap<ApplicationUser, ViewModels.Account.Edit>()
-                .ForMember(dest => dest.Id, opts => opts.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Email))
                 .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Name))
                 .IgnoreAllNonExisting();

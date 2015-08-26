@@ -6,9 +6,6 @@ namespace Miam.Web.ViewModels.Account
 {
     public class Edit
     {
-        [HiddenInput(DisplayValue = false)]
-        public int Id { get; set; }
-
         [DisplayName("Courriel")]
         [Required(ErrorMessage = "Le champ courriel est requis")]
         public string Email { get; set; }

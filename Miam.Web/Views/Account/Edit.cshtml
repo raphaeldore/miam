@@ -4,7 +4,7 @@
     ViewBag.Title = "Modifier le compte";
 }
 
-<h2>Edit</h2>
+<h2>Modification du compte</h2>
 
 
 @using (Html.BeginForm())
@@ -12,9 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Informations</h4>
         <hr/>
-        @Html.Hidden("Id", Model.Id )
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -58,7 +56,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Sauvegarder" class="btn btn-primary" />
             </div>
         </div>
     </div>
