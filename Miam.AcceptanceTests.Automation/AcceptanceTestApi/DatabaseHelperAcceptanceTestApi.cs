@@ -1,4 +1,5 @@
-﻿using Miam.DataLayer.EntityFramework;
+﻿using Miam.DataLayer;
+using Miam.DataLayer.EntityFramework;
 
 namespace Miam.AcceptanceTests.Automation.AcceptanceTestApi
 {

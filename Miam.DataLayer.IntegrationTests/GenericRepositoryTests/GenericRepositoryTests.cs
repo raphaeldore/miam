@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Data.Entity.Core.Mapping;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
@@ -24,6 +23,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
 
         private MiamDbContext _miamDbContextAfter;
         private MiamDbContext _miamDbContextBefore;
+        private IntegrationTestHelper _integrationTestsHelper;
 
         [TestInitialize]
         public void TestInitialize()
@@ -32,12 +32,14 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             _dataBaseHelper.MigrateDatabaseToLatestVersion();
             _dataBaseHelper.ClearAllTables();
 
-            _dataBaseTestHelper = new DataBaseTestHelper();
-            _dataBaseTestHelper.SeedTables();
+            //_dataBaseTestHelper = new DataBaseTestHelper();
+            //_dataBaseTestHelper.SeedTables();
 
             _miamDbContextBefore = new MiamDbContext();
             _miamDbContextAfter = new MiamDbContext();
-            _restaurantRepository = new EfEntityRepository<Restaurant>();
+            _restaurantRepository = new EfEntityRepository<Restaurant>(new ScopeContext());
+
+            _integrationTestsHelper = new IntegrationTestHelper();
 
             _fixture = new Fixture();
             _fixture.Customizations.Add(new VirtualMembersOmitter());
@@ -47,50 +49,45 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         public void add_and_commit_restaurant_using_generic_repository()
         {
             //Arrange
-            int restaurantCount = _miamDbContextBefore.Restaurants.Count();
+            int restaurantCountExpected = _integrationTestsHelper.GetRestaurantCount() + 1;
             var newRestaurant = _fixture.Create<Restaurant>();
 
             //Action
             _restaurantRepository.Add(newRestaurant);
 
             //Assert 
-            var restaurantCountAfter = _miamDbContextAfter.Restaurants.Count();
-            Assert.AreEqual(restaurantCount + 1, restaurantCountAfter);
+            var restaurantCountAfterAdd = _integrationTestsHelper.GetRestaurantCount();
+            Assert.AreEqual(restaurantCountExpected, restaurantCountAfterAdd);
         }
 
         [TestMethod]
         public void delete_and_commit_restaurant_using_generic_repository()
         {
             //Arrange
-            int restaurantCount = _miamDbContextBefore.Restaurants.Count();
-            var restaurantBefore = _miamDbContextBefore.Restaurants.First();
-
+            var restaurant = _integrationTestsHelper.CreateAndAddRestaurantToDatabase();
+            var restaurantCountExpected = _integrationTestsHelper.GetRestaurantCount() -1;
 
             //Action
-            var restaurantToDelete = _restaurantRepository.GetById(restaurantBefore.Id);
-            _restaurantRepository.Delete(restaurantToDelete);
+            _restaurantRepository.Delete(restaurant);
 
             //Assert 
-            var restaurantCountAfter = _miamDbContextAfter.Restaurants.Count();
-            Assert.AreEqual(restaurantCount - 1, restaurantCountAfter);
+            var restaurantCountAfter = _integrationTestsHelper.GetRestaurantCount();
+            Assert.AreEqual(restaurantCountExpected, restaurantCountAfter);
         }
 
         [TestMethod]
         public void update_restaurant_using_generic_reposiotry()
         {
             //Arrange 
-
             const string NEW_RESTAURANT_NAME = "Le lapin choqué";
-            var restaurantBefore = _miamDbContextBefore.Restaurants.First();
+            var restaurant = _integrationTestsHelper.CreateAndAddRestaurantToDatabase();
 
             //Action
-            var restaurantToUpdate = _restaurantRepository.GetById(restaurantBefore.Id);
-            restaurantToUpdate.Name = NEW_RESTAURANT_NAME;
-            _restaurantRepository.Update(restaurantToUpdate);
+            restaurant.Name = NEW_RESTAURANT_NAME;
+            _restaurantRepository.Update(restaurant);
 
             //Assert 
-
-            var restaurantAfter = _miamDbContextAfter.Restaurants.FirstOrDefault(x => x.Id == restaurantBefore.Id);
+            var restaurantAfter = _integrationTestsHelper.GetRestaurant(restaurant);
             Assert.AreEqual(NEW_RESTAURANT_NAME, restaurantAfter.Name);
 
         }
@@ -140,36 +137,19 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         [TestMethod]
         public void update_restaurant_review_using_generic_repository()
         {
-
+            //Arrange 
             const string NEW_BODY_REVIEW = "Service exceptionnel. Ambiance décontractée";
-            int RestaurantID ;
+            var restaurantBefore = _miamDbContextBefore.Restaurants.First();
 
-            using (var dbContext = new MiamDbContext())
-            {
-                //Arrange 
-                var restaurantBefore = dbContext.Restaurants.First();
-                RestaurantID = restaurantBefore.Id;
-                //restaurantBefore.Name = "La vache à Roger";
-                //dbContext.Restaurants.Attach(restaurantBefore);
-                //dbContext.Entry(restaurantBefore).State = EntityState.Modified;
-                //dbContext.SaveChanges();
-            }
-
-            //_restaurantRepository.Update(restaurantBefore);
-  
-                //Action
-                var restaurantToUpdate = _restaurantRepository.GetById(RestaurantID);
-                var review = restaurantToUpdate.Reviews.ElementAt(0).Body = "aaaa";
-                //restaurantToUpdate.Reviews.ElementAt(0).Writer = restaurantToUpdate.Reviews.ElementAt(0).Writer;
-                //restaurantToUpdate.Reviews.Add(_fixture.Create<Review>());
-                _restaurantRepository.Update(restaurantToUpdate);
+            //Action
+            var restaurantToUpdate = _restaurantRepository.GetById(restaurantBefore.Id);
+            restaurantToUpdate.Reviews.ElementAt(0).Body = NEW_BODY_REVIEW;
+            //restaurantToUpdate.Reviews.ElementAt(0).Writer = restaurantToUpdate.Reviews.ElementAt(0).Writer;
+            _restaurantRepository.Update(restaurantToUpdate);
 
             //Assert 
-            //var restaurantAfter = _miamDbContextAfter.Restaurants
-            //    .First(r => r.Id == _restaurantBefore.Id);
-            //Assert.AreEqual(NEW_BODY_REVIEW, restaurantAfter.Reviews.ElementAt(0).Body);
-             Assert.AreEqual(true,false);
-          
+            var restaurantAfter = _miamDbContextAfter.Restaurants.First(r => r.Id == restaurantBefore.Id);
+            Assert.AreEqual(NEW_BODY_REVIEW, restaurantAfter.Reviews.ElementAt(0).Body);
         }
 
         [TestMethod]

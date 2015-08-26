@@ -17,9 +17,11 @@ namespace Miam.TestUtility.Database
 
         public DataBaseTestHelper()
         {
-            _restaurantRepository = new EfEntityRepository<Restaurant>();
-            _writerRepository = new EfEntityRepository<Writer>();
-            _userRepository = new EfEntityRepository<ApplicationUser>();
+            var miamDBcontext = new ScopeContext();
+
+            _restaurantRepository = new EfEntityRepository<Restaurant>(miamDBcontext);
+            _writerRepository = new EfEntityRepository<Writer>(miamDBcontext);
+            _userRepository = new EfEntityRepository<ApplicationUser>(miamDBcontext);
         }
 
         public void SeedTables()

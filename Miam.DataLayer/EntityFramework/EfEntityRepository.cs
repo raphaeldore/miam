@@ -8,15 +8,15 @@ namespace Miam.DataLayer.EntityFramework
     {
         private readonly DbContext _context;
 
-        public EfEntityRepository(DbContext dbContext)
+        public EfEntityRepository(IScopeContext dbContext)
         {
-            _context = dbContext;
+            _context = dbContext.GetContext();
         }
 
-        //public EfEntityRepository()
-        //{
-        //    _context = new MiamDbContext();
-        //}
+        public EfEntityRepository()
+        {
+            //_context = new MiamDbContext();
+        }
 
         public IQueryable<T> GetAll()
         {
@@ -30,6 +30,7 @@ namespace Miam.DataLayer.EntityFramework
 
         public void Delete(T entity)
         {
+            _context.Set<T>().Attach(entity);
             _context.Set<T>().Remove(entity);
             _context.SaveChanges();
         }

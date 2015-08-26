@@ -6,7 +6,12 @@ namespace Miam.DataLayer.EntityFramework
 {
     public class EfDatabaseHelper : IDatabaseHelper
     {
+        private readonly MiamDbContext _context;
 
+        public EfDatabaseHelper()
+        {
+            _context = new MiamDbContext();
+        }
         
         public void DropCreateDatabaseIfModelChanges()
         {
@@ -51,15 +56,15 @@ namespace Miam.DataLayer.EntityFramework
         public void ClearAllTables()
         {
 
-            var context = new MiamDbContext();
+            //var context = new MiamDbContext();
 
-            context.Writers.RemoveRange(context.Writers);
-            context.Restaurants.RemoveRange(context.Restaurants);
-            context.Reviews.RemoveRange(context.Reviews);
-            context.RestaurantTags.RemoveRange(context.RestaurantTags);
-            context.Users.RemoveRange(context.Users);
-            context.Roles.RemoveRange(context.Roles);
-            context.SaveChanges();
+            _context.Writers.RemoveRange(_context.Writers);
+            _context.Restaurants.RemoveRange(_context.Restaurants);
+            _context.Reviews.RemoveRange(_context.Reviews);
+            _context.RestaurantTags.RemoveRange(_context.RestaurantTags);
+            _context.Users.RemoveRange(_context.Users);
+            _context.Roles.RemoveRange(_context.Roles);
+            _context.SaveChanges();
 
 
              //Autre méthode pour tout effacer: supprimer la BD et la recréer, mais est plus lent.
