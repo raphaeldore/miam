@@ -1,6 +1,6 @@
 namespace Miam.DataLayer
 {
-    public interface IDatabaseHelper
+    public interface IApplicationDatabaseHelper
     {
         void DropCreateDatabaseIfModelChanges();
         void DropCreateDatabaseAlways();

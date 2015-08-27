@@ -4,13 +4,13 @@ using Miam.DataLayer.Migrations;
 
 namespace Miam.DataLayer.EntityFramework
 {
-    public class EfDatabaseHelper : IDatabaseHelper
+    public class EfApplicationDatabaseHelper : IApplicationDatabaseHelper
     {
         private readonly MiamDbContext _context;
 
-        public EfDatabaseHelper()
+        public EfApplicationDatabaseHelper(ApplicationContext applicationContext)
         {
-            _context = new MiamDbContext();
+            _context = applicationContext.Context;
         }
         
         public void DropCreateDatabaseIfModelChanges()

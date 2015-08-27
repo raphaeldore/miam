@@ -2,15 +2,15 @@ using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
 
-namespace Miam.AcceptanceTests.Automation.AcceptanceTestApi
+namespace Miam.TestUtility.TestsAPI
 {
-    public class UserAcceptanceTestsApi
+    public class UserAcceptanceTestsApi : BaseTestHelper
     {
         private IEntityRepository<ApplicationUser> _userRepository;
 
-        public UserAcceptanceTestsApi()
+        public UserAcceptanceTestsApi(ApplicationContext applicationContext)
         {
-            _userRepository = new EfEntityRepository<ApplicationUser>();
+            _userRepository = new EfEntityRepository<ApplicationUser>(applicationContext);
         }
         public void createUser(ApplicationUser applicationUserAdmin)
         {

@@ -10,19 +10,19 @@ namespace Miam.DataLayer.IntegrationTests.EntityFrameworkTests
     [TestClass]
     public class EntityFrameworkContextTests
     {
-        private static EfDatabaseHelper _dataBaseHelper;
-        private DataBaseTestHelper _dataBaseTestHelper;
+        private static EfApplicationDatabaseHelper _dataBaseHelper;
+        private SeedDataBase _seedDataBase;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _dataBaseHelper = new EfDatabaseHelper();
+            _dataBaseHelper = new EfApplicationDatabaseHelper(new ApplicationContext());
             
             _dataBaseHelper.MigrateDatabaseToLatestVersion();
             _dataBaseHelper.ClearAllTables();
 
-            _dataBaseTestHelper = new DataBaseTestHelper();
-            _dataBaseTestHelper.SeedTables();
+            _seedDataBase = new SeedDataBase(new ApplicationContext());
+            _seedDataBase.SeedTables();
         }
 
         [TestMethod]

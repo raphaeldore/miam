@@ -5,7 +5,7 @@ using Miam.Domain.Entities;
 
 namespace Miam.TestUtility.Database
 {
-    public class DataBaseTestHelper
+    public class SeedDataBase
     {
         //private int _writerID1;
         private Writer _writer1;
@@ -15,9 +15,9 @@ namespace Miam.TestUtility.Database
         private IEntityRepository<Writer> _writerRepository;
         private EfEntityRepository<ApplicationUser> _userRepository;
 
-        public DataBaseTestHelper()
+        public SeedDataBase(ApplicationContext applicationContext)
         {
-            var miamDBcontext = new ScopeContext();
+            var miamDBcontext = applicationContext;
 
             _restaurantRepository = new EfEntityRepository<Restaurant>(miamDBcontext);
             _writerRepository = new EfEntityRepository<Writer>(miamDBcontext);

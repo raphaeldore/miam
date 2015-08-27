@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using Miam.Domain.Entities;
 
@@ -8,15 +9,16 @@ namespace Miam.DataLayer.EntityFramework
     {
         private readonly DbContext _context;
 
-        public EfEntityRepository(IScopeContext dbContext)
+        public EfEntityRepository(ApplicationContext applicationContext)
         {
-            _context = dbContext.GetContext();
+
+            _context = applicationContext.Context;
         }
 
-        public EfEntityRepository()
-        {
-            //_context = new MiamDbContext();
-        }
+        //public EfEntityRepository()
+        //{
+        //    //_context = new MiamDbContext();
+        //}
 
         public IQueryable<T> GetAll()
         {

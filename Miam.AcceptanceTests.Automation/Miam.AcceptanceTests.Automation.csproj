@@ -123,9 +123,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcceptanceTestApi\DatabaseHelperAcceptanceTestApi.cs" />
-    <Compile Include="AcceptanceTestApi\RestaurantAcceptanceTestApi.cs" />
-    <Compile Include="AcceptanceTestApi\UserAcceptanceTestsAPI.cs" />
     <Compile Include="PageObjects\EmailPage.cs" />
     <Compile Include="PageObjects\FilePages\DownloadIndexPage.cs" />
     <Compile Include="PageObjects\FilePages\UploadPage.cs" />

@@ -67,8 +67,8 @@ namespace Miam.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            // Gestion du context de entity framework
-            kernel.Bind<IScopeContext>().To<ScopeContext>().InRequestScope();
+            // Gestion du context. Utlisé par les repositories
+            kernel.Bind<ApplicationContext>().To<ApplicationContext>().InRequestScope();
 
             //repositories
             kernel.Bind<IEntityRepository<Restaurant>>().To<EfEntityRepository<Restaurant>>().InRequestScope();
@@ -81,7 +81,7 @@ namespace Miam.Web.App_Start
             kernel.Bind<IUserAccountService>().To<UserUserAccountService>().InRequestScope();
 
             //database
-            kernel.Bind<IDatabaseHelper>().To<EfDatabaseHelper>().InRequestScope();
+            kernel.Bind<IApplicationDatabaseHelper>().To<EfApplicationDatabaseHelper>().InRequestScope();
         }        
     }
 }

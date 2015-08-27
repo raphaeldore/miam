@@ -8,9 +8,9 @@ namespace Miam.Web.Controllers
 {
     public partial class CIController : Controller
     {
-        private IDatabaseHelper _dbInit;
+        private IApplicationDatabaseHelper _dbInit;
 
-        public CIController(IDatabaseHelper dbInit)
+        public CIController(IApplicationDatabaseHelper dbInit)
         {
             if (dbInit == null) throw new NullReferenceException();
             
@@ -51,7 +51,7 @@ namespace Miam.Web.Controllers
 
         private void SeedDb()
         {
-            var testData = new DataBaseTestHelper();
+            var testData = new SeedDataBase(new ApplicationContext());
             testData.SeedTables();
         }
     }

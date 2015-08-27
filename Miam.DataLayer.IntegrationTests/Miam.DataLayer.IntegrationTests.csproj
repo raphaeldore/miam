@@ -104,7 +104,6 @@
   <ItemGroup>
     <Compile Include="EntityFrameworkTests\EntityFrameworkContextTests.cs" />
     <Compile Include="GenericRepositoryTests\GenericRepositoryTests.cs" />
-    <Compile Include="GenericRepositoryTests\IntegrationTestHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

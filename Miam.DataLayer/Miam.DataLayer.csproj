@@ -90,10 +90,10 @@
   <ItemGroup>
     <Compile Include="EntityFramework\EfDatabaseConfiguration.cs" />
     <Compile Include="EntityFramework\EfDropCreateDatabaseAlwaysSeeder.cs" />
-    <Compile Include="EntityFramework\EfDatabaseHelper.cs" />
-    <Compile Include="IDatabaseHelper.cs" />
+    <Compile Include="EntityFramework\EfApplicationDatabaseHelper.cs" />
+    <Compile Include="IApplicationDatabaseHelper.cs" />
     <Compile Include="IEntityRepository.cs" />
-    <Compile Include="IScopeContext.cs" />
+    <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="EntityFramework\MiamDbContext.cs" />
     <Compile Include="EntityFramework\EfEntityRepository.cs" />
     <Compile Include="EntityFramework\EfDropCreateIfModelChangesSeeder.cs" />

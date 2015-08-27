@@ -167,6 +167,10 @@
       <Project>{e1316495-d453-49af-bea8-6e4395422f41}</Project>
       <Name>Miam.AcceptanceTests.Automation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Miam.DataLayer\Miam.DataLayer.csproj">
+      <Project>{45063f47-819b-4c94-a017-ce2fbe20e277}</Project>
+      <Name>Miam.DataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Miam.Domain\Miam.Domain.csproj">
       <Project>{E810FD87-1E7A-4BFB-A16E-950281DC6F9E}</Project>
       <Name>Miam.Domain</Name>
