@@ -24,6 +24,8 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         private MiamDbContext _miamDbContextAfter;
         private MiamDbContext _miamDbContextBefore;
         private IntegrationTestHelper _integrationTestsHelper;
+        private EfEntityRepository<Writer> _writerRepository;
+        private ScopeContext context;
 
         [TestInitialize]
         public void TestInitialize()
@@ -37,7 +39,9 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
 
             _miamDbContextBefore = new MiamDbContext();
             _miamDbContextAfter = new MiamDbContext();
-            _restaurantRepository = new EfEntityRepository<Restaurant>(new ScopeContext());
+            context = new ScopeContext();
+            _restaurantRepository = new EfEntityRepository<Restaurant>(context);
+            _writerRepository = new EfEntityRepository<Writer>(context);
 
             _integrationTestsHelper = new IntegrationTestHelper();
 
@@ -68,7 +72,8 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             var restaurantCountExpected = _integrationTestsHelper.GetRestaurantCount() -1;
 
             //Action
-            _restaurantRepository.Delete(restaurant);
+            var resto =  _restaurantRepository.GetById(restaurant.Id);
+            _restaurantRepository.Delete(resto);
 
             //Assert 
             var restaurantCountAfter = _integrationTestsHelper.GetRestaurantCount();
@@ -83,6 +88,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             var restaurant = _integrationTestsHelper.CreateAndAddRestaurantToDatabase();
 
             //Action
+            restaurant = _restaurantRepository.GetById(restaurant.Id);
             restaurant.Name = NEW_RESTAURANT_NAME;
             _restaurantRepository.Update(restaurant);
 
@@ -95,25 +101,33 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         [TestMethod]
         public void update_restaurant_by_adding_review_using_generic_repository()
         {
+            ///// ICI ********** self tracking ??? 
+
             //Arrange 
-            var restaurantBefore = _miamDbContextBefore.Restaurants.First();
-            var writer = _miamDbContextBefore.Writers.First();
-            //int restaurantReviewsCountBefore = restaurantBefore.Reviews.Count();
+            var restaurant = _integrationTestsHelper.CreateAndAddRestaurantToDatabase();
+            var writer = _integrationTestsHelper.CreateAndAddWriterToDatabase();
+            var restaurantReviewsCountExpected = restaurant.Reviews.Count() + 1;
 
-            //var newReview = _fixture.Create<Review>();
-            //newReview.Writer= writer;
-            //.With(r => r.Writer, writer)
-            //.Create();
+            var writer2 = _writerRepository.GetById(writer.Id);
+            var restaurant2 = _restaurantRepository.GetById(restaurant.Id);
 
-            //Action
-            //var restaurantToUpdate = _restaurantRepository.GetById(restaurantBefore.Id);
-            //restaurantBefore.Reviews.Add(newReview);
-            _restaurantRepository.Update(restaurantBefore);
+            var review = new Review()
+            {
+                Writer = writer2,
+                Restaurant = restaurant2,
+                Body = "A",
+                Rating = 1
+            };
+
+            //writer.Reviews.Add(review);
+            //_writerRepository.Update(writer);
+            //ou
+            restaurant2.Reviews.Add(review);
+            _restaurantRepository.Update(restaurant2);
 
             //Assert 
-            int restaurantReviewsCountAfter = _miamDbContextAfter.Reviews
-             .Count(r => r.Restaurant.Id == restaurantBefore.Id);
-            //Assert.AreEqual(restaurantReviewsCountBefore + 1, restaurantReviewsCountAfter);
+            var restaurantReviewsCountAfter = _integrationTestsHelper.GetReviewsCount(restaurant);
+            Assert.AreEqual(restaurantReviewsCountExpected,  restaurantReviewsCountAfter);
         }
 
 

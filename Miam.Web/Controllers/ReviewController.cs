@@ -47,7 +47,6 @@ namespace Miam.Web.Controllers
             {
                 var WriterId = _httpContextService.GetUserId();
                 var writer = _writerRepository.GetById(WriterId);
-
                 var restaurant = _restaurantRepository.GetById(createViewModel.RestaurantId);
 
                 var review = new Review()
@@ -58,9 +57,11 @@ namespace Miam.Web.Controllers
                     Rating = createViewModel.Rating
                 };
 
-                writer.Reviews.Add(review);
-
-                _writerRepository.Update(writer);
+                //writer.Reviews.Add(review);
+                //_writerRepository.Update(writer);
+                //ou
+                restaurant.Reviews.Add(review);
+                _restaurantRepository.Update(restaurant);
 
                 return RedirectToAction(MVC.Home.Index());
             }

@@ -47,5 +47,29 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
                 return miamDbContext.Restaurants.FirstOrDefault(x => x.Id == restaurant.Id);
             }
         }
+
+        public Writer CreateAndAddWriterToDatabase()
+        {
+            var writer = _fixture.Create<Writer>();
+
+            using (var miamDbContext = new MiamDbContext())
+            {
+                miamDbContext.Writers.Attach(writer);
+                miamDbContext.Writers.Add(writer);
+                miamDbContext.SaveChanges();
+
+                return writer;
+            }
+        }
+
+        public int GetReviewsCount(Restaurant restaurant)
+        {
+            using (var miamDbContext = new MiamDbContext())
+            {
+                var resto = miamDbContext.Restaurants.FirstOrDefault(x => x.Id == restaurant.Id);
+                return resto.Reviews.Count();
+                
+            }
+        }
     }
 }
