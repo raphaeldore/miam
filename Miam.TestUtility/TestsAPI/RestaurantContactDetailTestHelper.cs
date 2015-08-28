@@ -5,11 +5,11 @@ using Miam.Domain.Entities;
 
 namespace Miam.TestUtility.TestsAPI
 {
-    public class RestaurantContactDetailTestsApi
+    public class RestaurantContactDetailTestHelper
     {
         private IDbContextFactory<MiamDbContext> _dbContextFactory;
 
-        public RestaurantContactDetailTestsApi(IDbContextFactory<MiamDbContext> dbContextFactory)
+        public RestaurantContactDetailTestHelper(IDbContextFactory<MiamDbContext> dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
         }

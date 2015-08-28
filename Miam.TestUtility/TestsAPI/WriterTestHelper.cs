@@ -8,8 +8,7 @@ namespace Miam.TestUtility.TestsAPI
 {
     public class WriterTestHelper : BaseTestHelper
     {
-        private IDbContextFactory<MiamDbContext> _dbContextFactory;
-
+        private readonly IDbContextFactory<MiamDbContext> _dbContextFactory;
 
         public WriterTestHelper(IDbContextFactory<MiamDbContext> dbContextFactory)
         {
@@ -25,7 +24,7 @@ namespace Miam.TestUtility.TestsAPI
             dbContext.SaveChanges();
         }
 
-        public int GetReviewsCount(Restaurant restaurant)
+        public int GetReviewsCountFor(Restaurant restaurant)
         {
             var dbContext = _dbContextFactory.Create();
             var resto = dbContext.Restaurants.FirstOrDefault(x => x.Id == restaurant.Id);

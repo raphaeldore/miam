@@ -9,15 +9,15 @@ using Ploeh.AutoFixture;
 
 namespace Miam.TestUtility.TestsAPI
 {
-    public class RestaurantTestHelperApi : BaseTestHelper
+    public class RestaurantTestHelper : BaseTestHelper
     {
-        private IEntityRepository<Restaurant> _restaurantRepository;
         private readonly IDbContextFactory<MiamDbContext> _dbContextFactory;
 
-        public RestaurantTestHelperApi(IDbContextFactory<MiamDbContext> dbContextFactory)
+        public RestaurantTestHelper(IDbContextFactory<MiamDbContext> dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
         }
+
         public void Create(Restaurant restaurant)
         {
             var dbContext = _dbContextFactory.Create();
@@ -26,16 +26,16 @@ namespace Miam.TestUtility.TestsAPI
             dbContext.SaveChanges();
         }
 
-        public Restaurant GetFirst()
-        {
-            var dbContext = _dbContextFactory.Create();
-            return dbContext.Restaurants.First();
-        }
-
         public int Count()
         {
             var dbContext = _dbContextFactory.Create();
             return dbContext.Restaurants.Count();
+        }
+
+        public Restaurant GetFirst()
+        {
+            var dbContext = _dbContextFactory.Create();
+            return dbContext.Restaurants.First();
         }
 
         public Restaurant GetRestaurant(Restaurant restaurant)
@@ -52,13 +52,6 @@ namespace Miam.TestUtility.TestsAPI
                             .First(x => x.Id == restaurant.Id)
                             .Reviews.First();
         }
-
-        //public int CountReviewsOf(Restaurant restaurant)
-        //{
-        //    var dbContext = _dbContextFactory.Create();
-        //    var resto = dbContext.Restaurants.FirstOrDefault(x => x.Id == restaurant.Id);
-        //    return resto.Reviews.Count();
-        //}
 
         public RestaurantContactDetail GetContactDetailOf(Restaurant restaurant)
         {

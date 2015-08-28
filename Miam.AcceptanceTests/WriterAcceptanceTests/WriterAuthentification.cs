@@ -2,7 +2,7 @@
 using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
 using Miam.Domain.Entities;
-using Miam.TestUtility.Database;
+using Miam.TestUtility.Seed;
 using Miam.Web.AcceptanceTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;

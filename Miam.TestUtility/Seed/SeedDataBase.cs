@@ -1,9 +1,8 @@
 ﻿using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
-using Miam.Domain;
 using Miam.Domain.Entities;
 
-namespace Miam.TestUtility.Database
+namespace Miam.TestUtility.Seed
 {
     public class SeedDataBase
     {

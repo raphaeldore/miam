@@ -6,11 +6,11 @@ using Miam.Domain.Entities;
 
 namespace Miam.TestUtility.TestsAPI
 {
-    public class TagTestApi
+    public class TagTestHelper
     {
-        private IDbContextFactory<MiamDbContext> _dbContextFactory;
+        private readonly IDbContextFactory<MiamDbContext> _dbContextFactory;
 
-        public TagTestApi(IDbContextFactory<MiamDbContext> dbContextFactory)
+        public TagTestHelper(IDbContextFactory<MiamDbContext> dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
         }

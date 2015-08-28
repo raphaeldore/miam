@@ -2,7 +2,7 @@
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
 
-namespace Miam.TestUtility.Database
+namespace Miam.TestUtility.Seed
 {
     public class TestData
     {

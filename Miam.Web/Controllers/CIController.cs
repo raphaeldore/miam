@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using Miam.DataLayer;
-using Miam.TestUtility.Database;
+using Miam.TestUtility.Seed;
 
 
 namespace Miam.Web.Controllers

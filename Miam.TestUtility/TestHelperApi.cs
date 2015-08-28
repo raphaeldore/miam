@@ -16,9 +16,9 @@ namespace Miam.TestUtility
         {
             get { return new DatabaseHelper(new ApplicationContext()); }
         }
-        public RestaurantTestHelperApi Restaurants
+        public RestaurantTestHelper Restaurants
         {
-            get { return new RestaurantTestHelperApi(_dbContextFactory); }
+            get { return new RestaurantTestHelper(_dbContextFactory); }
         }
         public WriterTestHelper Writer
         {
@@ -28,19 +28,19 @@ namespace Miam.TestUtility
         {
             get { return new ReviewTestHelper(_dbContextFactory); }
         }
-        public UserAcceptanceTestsApi User
+        public UserTestHelper User
         {
-            get { return new UserAcceptanceTestsApi(_dbContextFactory); }
+            get { return new UserTestHelper(_dbContextFactory); }
         }
 
-        public RestaurantContactDetailTestsApi RestaurantContactDetails
+        public RestaurantContactDetailTestHelper RestaurantContactDetails
         {
-            get { return new RestaurantContactDetailTestsApi(_dbContextFactory); }
+            get { return new RestaurantContactDetailTestHelper(_dbContextFactory); }
         }
 
-        public TagTestApi Tags
+        public TagTestHelper Tags
         {
-            get { return new TagTestApi(_dbContextFactory); }
+            get { return new TagTestHelper(_dbContextFactory); }
         }
     }
 }

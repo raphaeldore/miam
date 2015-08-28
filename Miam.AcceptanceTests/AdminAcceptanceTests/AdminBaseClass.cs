@@ -3,7 +3,7 @@ using Miam.AcceptanceTests;
 using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
 using Miam.Domain.Entities;
-using Miam.TestUtility.Database;
+using Miam.TestUtility.Seed;
 
 namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 {

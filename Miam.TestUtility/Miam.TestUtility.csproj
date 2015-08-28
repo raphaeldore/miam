@@ -94,21 +94,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestsAPI\TagTestApi.cs" />
-    <Compile Include="TestsAPI\RestaurantContactDetailTestsApi.cs" />
+    <Compile Include="TestsAPI\TagTestHelper.cs" />
+    <Compile Include="TestsAPI\RestaurantContactDetailTestHelper.cs" />
     <Compile Include="TestHelperApi.cs" />
     <Compile Include="TestsAPI\BaseTestHelper.cs" />
     <Compile Include="TestsAPI\DatabaseHelper.cs" />
     <Compile Include="TestsAPI\ReviewTestHelper.cs" />
     <Compile Include="TestsAPI\WriterTestHelper.cs" />
-    <Compile Include="TestsAPI\RestaurantTestHelperApi.cs" />
+    <Compile Include="TestsAPI\RestaurantTestHelper.cs" />
     <Compile Include="TestUtilities.cs" />
     <Compile Include="AutoFixture\CollectionPropertyOmitter.cs" />
     <Compile Include="AutoFixture\VirtualMembersOmitter.cs" />
-    <Compile Include="Database\TestData.cs" />
-    <Compile Include="Database\SeedDataBase.cs" />
+    <Compile Include="Seed\TestData.cs" />
+    <Compile Include="Seed\SeedDataBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestsAPI\UserAcceptanceTestsAPI.cs" />
+    <Compile Include="TestsAPI\UserTestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Miam.DataLayer\Miam.DataLayer.csproj">

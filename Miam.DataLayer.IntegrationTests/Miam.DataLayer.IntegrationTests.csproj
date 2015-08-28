@@ -114,7 +114,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="EntityFrameworkTests\EntityFrameworkContextTests.cs" />
-    <Compile Include="GenericRepositoryTests\GenericRepositoryTests.cs" />
+    <Compile Include="GenericRepositoryTests\BaseRepositoryTests.cs" />
+    <Compile Include="GenericRepositoryTests\WriterRepositoryTests.cs" />
+    <Compile Include="GenericRepositoryTests\RestaurantRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
