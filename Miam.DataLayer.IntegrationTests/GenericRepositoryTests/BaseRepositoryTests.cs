@@ -1,5 +1,6 @@
 using Miam.TestUtility;
 using Miam.TestUtility.AutoFixture;
+using Miam.TestUtility.TestsAPI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ploeh.AutoFixture;
 

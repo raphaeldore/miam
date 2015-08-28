@@ -25,7 +25,7 @@ namespace Miam.Web.Controllers
         {
             var restaurants = _restaurantRepository.GetAll().ToList();
 
-            var homeIndexViewModels = Mappers.CreateHomeIndexViewModelFrom(restaurants);
+            var homeIndexViewModels = MappersSimple.CreateHomeIndexViewModelFrom(restaurants);
 
             return View(homeIndexViewModels);
         }

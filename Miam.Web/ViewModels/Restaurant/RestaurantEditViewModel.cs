@@ -11,7 +11,7 @@ namespace Miam.Web.ViewModels.Restaurant
     public class RestaurantEditViewModel
     {
         [HiddenInput(DisplayValue = false)]
-        public int Id { get; set; }
+        public int RestaurantId { get; set; }
 
         [DisplayName("Nom")]
         [Required(ErrorMessage = "Requis")]

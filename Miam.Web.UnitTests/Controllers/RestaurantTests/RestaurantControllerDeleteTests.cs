@@ -9,17 +9,17 @@ using Miam.Domain.Entities;
 namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 {
     [TestClass]
-    public class RestaurantControllerDeleteTests : RestaurantControllerBaseClassTests
+    public class RestaurantControllerDeleteTests : BaseRestaurantControllerTests
     {
         [TestMethod]
         public void delete_restaurant_should_return_view_when_restaurantID_is_valid()
         {
             //Arrange 
             var restaurant = _fixture.Create<Restaurant>();
-            _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
+            RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
 
             //Action
-            var result = _restaurantController.Delete(restaurant.Id) as ViewResult;
+            var result = RestaurantController.Delete(restaurant.Id) as ViewResult;
             var restaurantViewModel = result.ViewData.Model as ViewModels.Restaurant.RestaurantDeleteViewModel;
 
             //Assert 
@@ -32,7 +32,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             //Arrange 
 
             //Act
-            var result = _restaurantController.Delete(999999999);
+            var result = RestaurantController.Delete(999999999);
 
             //Assert
             result.Should().BeOfType<HttpNotFoundResult>();
@@ -46,14 +46,14 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         {
             //Arrange
             var restaurant = _fixture.Create<Restaurant>();
-            _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
+            RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
 
 
             //Action
-            _restaurantController.DeleteConfirmed(restaurant.Id);
+            RestaurantController.DeleteConfirmed(restaurant.Id);
 
             // Assert
-            _restaurantRepository.Received().Delete(restaurant);
+            RestaurantRepository.Received().Delete(restaurant);
         }
 
         [TestMethod]
@@ -61,10 +61,10 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         {
             //Arrange
             var restaurant = _fixture.Create<Restaurant>();
-            _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
+            RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
 
             //Act
-            var routeResult = _restaurantController.DeleteConfirmed(restaurant.Id) as RedirectToRouteResult;
+            var routeResult = RestaurantController.DeleteConfirmed(restaurant.Id) as RedirectToRouteResult;
             var routeAction = routeResult.RouteValues["Action"];
 
             //Assert
@@ -77,7 +77,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             //Arrange 
 
             //Act
-            var result = _restaurantController.DeleteConfirmed(999999999);
+            var result = RestaurantController.DeleteConfirmed(999999999);
 
             //Assert
             result.Should().BeOfType<HttpNotFoundResult>();

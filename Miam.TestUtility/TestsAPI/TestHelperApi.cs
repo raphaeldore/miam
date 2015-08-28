@@ -1,8 +1,7 @@
 ﻿using System.Data.Entity.Infrastructure;
 using Miam.DataLayer;
-using Miam.TestUtility.TestsAPI;
 
-namespace Miam.TestUtility
+namespace Miam.TestUtility.TestsAPI
 {
     public class TestHelperApi 
     {

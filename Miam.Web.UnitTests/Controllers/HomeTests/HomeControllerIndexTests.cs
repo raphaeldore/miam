@@ -5,6 +5,7 @@ using FluentAssertions;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 using Miam.TestUtility;
+using Miam.TestUtility.AutoFixture;
 using Miam.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
@@ -13,14 +14,18 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.HomeTests
 {
     [TestClass]
-    public class HomControllerIndexTests : TestUtilities
+    public class HomControllerIndexTests
     {
         private HomeController _homeController;
         private IEntityRepository<Restaurant> _restaurantRepository;
+        private Fixture _fixture;
 
         [TestInitialize]
         public void HomeControllerTestInit()
         {
+            _fixture = new Fixture();
+            _fixture.Customizations.Add(new VirtualMembersOmitter());
+
             _restaurantRepository = Substitute.For<IEntityRepository<Restaurant>>();
             _homeController = new HomeController(_restaurantRepository);
         }

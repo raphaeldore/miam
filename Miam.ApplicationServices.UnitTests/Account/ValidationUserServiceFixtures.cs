@@ -13,10 +13,11 @@ namespace Miam.ApplicationServices.UnitTests
 {
     
     [TestClass]
-    public class ValidationUserServiceTests : TestUtilities
+    public class ValidationUserServiceFixtures
     {
         private IEntityRepository<ApplicationUser> _userRepository;
         private UserUserAccountService _accountService;
+        private Fixture _fixture;
 
         [TestInitialize]
         public void test_initialize()

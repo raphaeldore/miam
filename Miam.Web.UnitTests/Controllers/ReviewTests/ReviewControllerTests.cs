@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using AutoMapper;
 using FluentAssertions;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
+using Miam.TestUtility;
+using Miam.TestUtility.AutoFixture;
 using Miam.Web.Controllers;
 using Miam.Web.Services;
 using Miam.Web.ViewModels.Review;
@@ -15,16 +16,20 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.ReviewTests
 {
     [TestClass]
-    public class ReviewControllerTests : AllControllersBaseClassTests
+    public class ReviewControllerTests
     {
         private ReviewController _reviewController;
         private IEntityRepository<Restaurant> _restaurantRepository;
         private IHttpContextService _httpContextService;
         private IEntityRepository<Writer> _writerRepository;
+        private Fixture _fixture;
 
         [TestInitialize]
         public void ReviewControllerTestInit()
         {
+            _fixture = new Fixture();
+            _fixture.Customizations.Add(new VirtualMembersOmitter());
+
             _writerRepository = Substitute.For<IEntityRepository<Writer>>();
             _restaurantRepository = Substitute.For<IEntityRepository<Restaurant>>();
             _httpContextService = Substitute.For<IHttpContextService>();
@@ -48,27 +53,28 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
             var writer = _fixture.Create<Writer>();
             var restaurant = _fixture.Create<Restaurant>();
             var review = _fixture.Build<Review>()
-                                 .With(x => x.Writer, writer)
-                                 .With(x => x.Restaurant, restaurant)
+                                 .With(x => x.WriterId, writer.Id)
+                                 .With(x => x.RestaurantId, restaurant.Id)
                                  .Create();
 
-            var reviewViewModel = Mapper.Map<Create>(review);
+            var reviewViewModel = MappersSimple.CreateReviewCreateViewModelFrom(review);
 
-            _writerRepository.GetById(Arg.Any<int>()).Returns(review.Writer);
-            _restaurantRepository.GetById(Arg.Any<int>()).Returns(review.Restaurant);
+            _writerRepository.GetById(Arg.Any<int>()).Returns(writer);
+            //_restaurantRepository.GetById(Arg.Any<int>()).Returns(review.Restaurant);
 
             // Action
             _reviewController.Create(reviewViewModel);
 
             // Assert
             ReviewRepositoryAddMethodShouldHaveReceived(review);
+           
         }
 
         [TestMethod]
         public void create_post_should_return_view_with_errors_when_modelState_is_not_valid()
         {
             //Arrange
-            var reviewCreateViewModel = _fixture.Build<Create>()
+            var reviewCreateViewModel = _fixture.Build<ReviewCreateViewModel>()
                                                 .Without(x => x.Restaurants)
                                                 .Create();
             _reviewController.ModelState.AddModelError("Error", "Error");
@@ -86,7 +92,7 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         {
             //Arrange
             var writer = _fixture.Create<Writer>();
-            var reviewCreateViewModel = _fixture.Build<Create>()
+            var reviewCreateViewModel = _fixture.Build<ReviewCreateViewModel>()
                                                 .Without(x => x.Restaurants)
                                                 .Create();
 

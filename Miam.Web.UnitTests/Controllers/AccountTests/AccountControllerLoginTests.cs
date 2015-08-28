@@ -5,6 +5,7 @@ using Miam.ApplicationsServices.Account;
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
 using Miam.TestUtility;
+using Miam.TestUtility.AutoFixture;
 using Miam.Web.Controllers;
 using Miam.Web.Services;
 using Miam.Web.ViewModels.Account;
@@ -15,15 +16,20 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.AccountTests
 {
     [TestClass]
-    public class AccountControllerLoginTests : TestUtilities
+    public class AccountControllerLoginTests
     {
         private AccountController _accountController;
         private IHttpContextService _httpContext;
         private IUserAccountService _userAccountService;
+        private Fixture _fixture;
 
         [TestInitialize]
         public void AccountControllerTestInit()
         {
+            _fixture = new Fixture();
+            _fixture.Customizations.Add(new VirtualMembersOmitter());
+
+
             _httpContext = Substitute.For<IHttpContextService>();
             _userAccountService = Substitute.For<IUserAccountService>();
             _accountController = new AccountController(_httpContext, _userAccountService);

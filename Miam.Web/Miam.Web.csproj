@@ -183,7 +183,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mappers.cs" />
+    <Compile Include="Mappers\IMapToExisting.cs" />
+    <Compile Include="Mappers\MappersSimple.cs" />
     <Compile Include="AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -213,6 +214,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\IMapToNew.cs" />
+    <Compile Include="Mappers\RestaurantViewModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestaurantController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -231,9 +234,10 @@
     </Compile>
     <Compile Include="ViewModels\Account\LoginViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeIndexViewModel.cs" />
+    <Compile Include="ViewModels\Restaurant\GlobalsMessages.cs" />
     <Compile Include="ViewModels\Restaurant\RestaurantDeleteViewModel.cs" />
     <Compile Include="ViewModels\Restaurant\ContactDetailViewModel.cs" />
-    <Compile Include="ViewModels\Restaurant\RestaurantCreateViewModel.cs" />
+    <Compile Include="ViewModels\Restaurant\RestaurantViewModel.cs" />
     <Compile Include="ViewModels\Restaurant\RestaurantIndexViewModel.cs" />
     <Compile Include="ViewModels\Restaurant\RestaurantEditViewModel.cs" />
     <Compile Include="ViewModels\Review\ReviewIndexViewModel.cs" />
@@ -268,6 +272,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Externalization\Externalization.csproj">
+      <Project>{902df601-7437-470a-be48-afd4b46b6a0c}</Project>
+      <Name>Externalization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Miam.ApplicationServices\Miam.ApplicationServices.csproj">
       <Project>{70287143-42ab-4f50-bb1a-cd61c1d0bc31}</Project>
       <Name>Miam.ApplicationServices</Name>

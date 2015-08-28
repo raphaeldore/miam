@@ -1,4 +1,7 @@
-﻿using Miam.Domain.Entities;
+﻿using Externalization;
+using Miam.Domain.Entities;
+using Miam.TestUtility;
+using Miam.Web.ViewModels.Restaurant;
 using TestStack.Seleno.PageObjects;
 using TestStack.Seleno.PageObjects.Locators;
 
@@ -25,32 +28,69 @@ namespace Miam.AcceptanceTests.Automation.PageObjects.RestaurantPages
 
         private void FillAllRestaurantFieldsWith(Restaurant newRestaurant)
         {
-            //Todo: éviter les "magical strings". 
-            //Solution: utiliser le texte des libellés pour aller écrire dans la zone de texte. 
-            //Implique que les libellés se retrouvent dans une fichier de constantes.
-            //Utiliser la constante pour rechercher dans la page
-            Find.Element(By.Id("Name")).SendKeys(newRestaurant.Name);
-            Find.Element(By.Id("City")).SendKeys(newRestaurant.City);
-            Find.Element(By.Id("Country")).SendKeys(newRestaurant.Country);
-            Find.Element(By.Id("RestaurantContactDetailViewModel_FaxPhone")).SendKeys(newRestaurant.RestaurantContactDetail.FaxPhone);
-            Find.Element(By.Id("RestaurantContactDetailViewModel_OfficePhone")).SendKeys(newRestaurant.RestaurantContactDetail.OfficePhone);
-            Find.Element(By.Id("RestaurantContactDetailViewModel_TwitterAlias")).SendKeys(newRestaurant.RestaurantContactDetail.TwitterAlias);
-            Find.Element(By.Id("RestaurantContactDetailViewModel_Facebook")).SendKeys(newRestaurant.RestaurantContactDetail.Facebook);
-            Find.Element(By.Id("RestaurantContactDetailViewModel_WebPage")).SendKeys(newRestaurant.RestaurantContactDetail.WebPage);
+            Find.Element(By.Id(getRestaurantNameId())).SendKeys(newRestaurant.Name);
+            Find.Element(By.Id(getRestaurantCityId())).SendKeys(newRestaurant.City);
+            Find.Element(By.Id(getRestaurantCountryId())).SendKeys(newRestaurant.Country);
+            Find.Element(By.Id(getFaxPhoneId())).SendKeys(newRestaurant.RestaurantContactDetail.FaxPhone);
+            Find.Element(By.Id(getOfficePhoneID())).SendKeys(newRestaurant.RestaurantContactDetail.OfficePhone);
+            Find.Element(By.Id(getTwitterAlliasId())).SendKeys(newRestaurant.RestaurantContactDetail.TwitterAlias);
+            Find.Element(By.Id(getFaceBookId())).SendKeys(newRestaurant.RestaurantContactDetail.Facebook);
+            Find.Element(By.Id(getWebPageId())).SendKeys(newRestaurant.RestaurantContactDetail.WebPage);
         }
 
         private void ClearAllRestaurantFields()
         {
-            //Todo: éviter les "magical strings". 
-            //voir commentaire ci-dessus
-            Find.Element(By.Id("Name")).Clear();
-            Find.Element(By.Id("City")).Clear();
-            Find.Element(By.Id("Country")).Clear();
-            Find.Element(By.Id("RestaurantContactDetailViewModel_FaxPhone")).Clear();
-            Find.Element(By.Id("RestaurantContactDetailViewModel_OfficePhone")).Clear();
-            Find.Element(By.Id("RestaurantContactDetailViewModel_TwitterAlias")).Clear();
-            Find.Element(By.Id("RestaurantContactDetailViewModel_Facebook")).Clear();
-            Find.Element(By.Id("RestaurantContactDetailViewModel_WebPage")).Clear();
+            Find.Element(By.Id(getRestaurantNameId())).Clear();
+            Find.Element(By.Id(getRestaurantCityId())).Clear();
+            Find.Element(By.Id(getRestaurantCountryId())).Clear();
+            Find.Element(By.Id(getFaxPhoneId())).Clear();
+            Find.Element(By.Id(getOfficePhoneID())).Clear();
+            Find.Element(By.Id(getTwitterAlliasId())).Clear();
+            Find.Element(By.Id(getFaceBookId())).Clear();
+            Find.Element(By.Id(getWebPageId())).Clear();
         }
+
+        private string getRestaurantCountryId()
+        {
+            return ObjectsTool<RestaurantViewModel>.GetPropertyName(x => x.Country);
+        }
+
+        private string getRestaurantCityId()
+        {
+            return ObjectsTool<RestaurantViewModel>.GetPropertyName(x => x.City);
+        }
+
+        private string getRestaurantNameId()
+        {
+            return ObjectsTool<RestaurantViewModel>.GetPropertyName(x => x.Name);
+        }
+        private string getContactDetailName()
+        {
+            return ObjectsTool<RestaurantViewModel>.GetPropertyName(x => x.ContactDetailViewModel);
+        }
+        private string getFaxPhoneId()
+        {
+            return getContactDetailName() + "_" + ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.FaxPhone);
+        }
+        private string getWebPageId()
+        {
+            return getContactDetailName() + "_" + ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.WebPage);
+        }
+
+        private string getFaceBookId()
+        {
+            return getContactDetailName() + "_" + ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.Facebook);
+        }
+
+        private string getTwitterAlliasId()
+        {
+            return getContactDetailName() + "_" + ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.TwitterAlias);
+        }
+
+        private string getOfficePhoneID()
+        {
+            return getContactDetailName() + "_" + ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.OfficePhone);
+        }
+
     }
 }

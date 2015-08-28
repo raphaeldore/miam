@@ -9,18 +9,41 @@ using Ninject.Parameters;
 
 namespace Miam.Web
 {
-    public static class Mappers
+    public static class MappersSimple
     {
-        // Restaurant
-        public static Restaurant CreateRestaurantFrom(RestaurantCreateViewModel restaurantViewModel)
+        public static RestaurantDeleteViewModel CreateRestaurantDeleteViewModelFrom(Restaurant restaurant)
+        {
+            return new RestaurantDeleteViewModel
+            {
+                Id = restaurant.Id,
+                Name = restaurant.Name,
+                City = restaurant.City,
+                Country = restaurant.Country
+            };
+        }
+        //public static RestaurantEditViewModel createRestaurantEditViewModelFrom(Restaurant restaurant)
+        //{
+
+        //    return new RestaurantEditViewModel
+        //    {
+        //        RestaurantId = restaurant.Id,
+        //        City = restaurant.City,
+        //        Country = restaurant.Country,
+        //        Name = restaurant.Name,
+        //        RestaurantContactDetailViewModel = MappersSimple.CreateRestaurantContactDetailViewModelFrom(restaurant.RestaurantContactDetail),
+        //        ReviewsViewModel = MappersSimple.CreateReviewViewModelFrom(restaurant.Reviews)
+        //    };
+        //}
+
+        public static Restaurant CreateRestaurantFrom(RestaurantViewModel restaurantViewModel)
         {
             return new Restaurant
             {
-                Id = restaurantViewModel.RestaurantId,
+                Id = restaurantViewModel.Id,
                 City = restaurantViewModel.City,
                 Name = restaurantViewModel.Name,
                 Country = restaurantViewModel.Country,
-                RestaurantContactDetail = Mappers.CreateContactDetailFromViewModel(restaurantViewModel.ContactDetailViewModel)
+                RestaurantContactDetail = MappersSimple.CreateContactDetailFromViewModel(restaurantViewModel.ContactDetailViewModel)
             };
         }
 
@@ -36,33 +59,31 @@ namespace Miam.Web
                 WebPage = contactDetailViewModel.WebPage
             };
         }
-
-        public static RestaurantDeleteViewModel CreateRestaurantDeleteViewModelFrom(Restaurant restaurant)
+        public static Review CreateReviewFrom(ReviewCreateViewModel reviewCreateViewModel)
         {
-            return new RestaurantDeleteViewModel
+            var review = new Review
             {
-                Id = restaurant.Id,
-                Name = restaurant.Name,
-                City = restaurant.City,
-                Country = restaurant.Country
+                Body = reviewCreateViewModel.Body,
+                Rating = reviewCreateViewModel.Rating,
+                RestaurantId = reviewCreateViewModel.RestaurantId,
             };
+            return review;
         }
 
-        public static RestaurantEditViewModel createRestaurantEditViewModelFrom(Restaurant restaurant)
+        public static IEnumerable<HomeIndexViewModel> CreateHomeIndexViewModelFrom(List<Restaurant> restaurants)
         {
-
-            return new RestaurantEditViewModel
-            {
-                Id = restaurant.Id,
-                City = restaurant.City,
-                Country = restaurant.Country,
-                Name = restaurant.Name,
-                RestaurantContactDetailViewModel = Mappers.CreateRestaurantContactDetailViewModelFrom(restaurant.RestaurantContactDetail),
-                ReviewsViewModel = Mappers.CreateReviewViewModelFrom(restaurant.Reviews)
-            };
+            return restaurants
+                .Select(x => new HomeIndexViewModel
+                {
+                    Name = x.Name,
+                    City = x.City,
+                    Country = x.Country,
+                    RatingReviewsAverage = x.CalculateReviewsRatingAverage()
+                }).ToList();
         }
 
-        private static List<ReviewIndexViewModel> CreateReviewViewModelFrom(ICollection<Review> reviews)
+
+        public static List<ReviewIndexViewModel> CreateReviewViewModelFrom(ICollection<Review> reviews)
         {
             if (reviews == null) return null;
             return reviews
@@ -88,31 +109,21 @@ namespace Miam.Web
 
         }
 
-        public static IEnumerable<HomeIndexViewModel> CreateHomeIndexViewModelFrom(List<Restaurant> restaurants)
-        {
-            return restaurants
-                .Select(x => new HomeIndexViewModel
-                {
-                    Name = x.Name,
-                    City = x.City,
-                    Country = x.Country,
-                    RatingReviewsAverage = x.CalculateReviewsRatingAverage()
-                }).ToList();
-        }
+        
 
-        public static RestaurantCreateViewModel CreateRestaurantCreateViewModelFrom(Restaurant restaurant)
-        {
-            return new RestaurantCreateViewModel
-            {
-                RestaurantId = restaurant.Id,
-                City = restaurant.City,
-                Country = restaurant.Country,
-                Name = restaurant.Name,
-                ContactDetailViewModel = Mappers.CreateContactDetailViewModelFrom(restaurant.RestaurantContactDetail) 
-            };
-        }
+        //public static RestaurantCreateViewModel CreateRestaurantCreateViewModelFrom(Restaurant restaurant)
+        //{
+        //    return new RestaurantCreateViewModel
+        //    {
+        //        RestaurantId = restaurant.Id,
+        //        City = restaurant.City,
+        //        Country = restaurant.Country,
+        //        Name = restaurant.Name,
+        //        ContactDetailViewModel = MappersSimple.CreateContactDetailViewModelFrom(restaurant.RestaurantContactDetail) 
+        //    };
+        //}
 
-        private static ContactDetailViewModel CreateContactDetailViewModelFrom(RestaurantContactDetail ContactDetail)
+        public static ContactDetailViewModel CreateContactDetailViewModelFrom(RestaurantContactDetail ContactDetail)
         {
             if (ContactDetail == null) return null;
             return new ContactDetailViewModel()
@@ -144,16 +155,7 @@ namespace Miam.Web
 
 
         //Review
-        public static Review CreateReviewFrom(ReviewCreateViewModel reviewCreateViewModel)
-        {
-            var review = new Review
-            {
-                Body = reviewCreateViewModel.Body,
-                Rating = reviewCreateViewModel.Rating,
-                RestaurantId = reviewCreateViewModel.RestaurantId,
-            };
-            return review;
-        }
+      
 
         public static ReviewCreateViewModel CreateReviewCreateViewModelFrom(Review review)
         {
@@ -165,7 +167,7 @@ namespace Miam.Web
             };
         }
 
-        public static void UpdateRestaurantFromViewModel(Restaurant restaurant,RestaurantEditViewModel restaurantEditViewModel)
+        public static void UpdateRestaurantFromViewModel(Restaurant restaurant,RestaurantViewModel restaurantEditViewModel)
         {
             restaurant.City = restaurantEditViewModel.City;
             restaurant.Country = restaurantEditViewModel.Country;
@@ -175,8 +177,8 @@ namespace Miam.Web
             {
                 restaurant.RestaurantContactDetail = new RestaurantContactDetail();
             }
-            Mappers.UpdateRestaurantContactDetailFromViewModel(restaurant.RestaurantContactDetail,
-                                                               restaurantEditViewModel.RestaurantContactDetailViewModel);
+            MappersSimple.UpdateRestaurantContactDetailFromViewModel(restaurant.RestaurantContactDetail,
+                                                               restaurantEditViewModel.ContactDetailViewModel);
         }
 
         private static void UpdateRestaurantContactDetailFromViewModel(RestaurantContactDetail restaurantContactDetail, ContactDetailViewModel restaurantContactDetailViewModel)

@@ -1,6 +1,6 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Mvc;
-using AutoMapper;
 using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Application;
@@ -32,7 +32,7 @@ namespace Miam.Web.Controllers
         [Authorize(Roles = RoleName.Writer)]
         public virtual ActionResult Create()
         {
-            var model = new Create();
+            var model = new ReviewCreateViewModel();
             PopulateRestaurantSelectList(model);
 
             return View(model);
@@ -40,37 +40,35 @@ namespace Miam.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = RoleName.Writer)]
-        public virtual ActionResult Create(Create createViewModel)
+        public virtual ActionResult Create(ReviewCreateViewModel reviewCreateViewModel)
         {
 
             if (ModelState.IsValid)
             {
-                var WriterId = _httpContextService.GetUserId();
-                var writer = _writerRepository.GetById(WriterId);
-                var restaurant = _restaurantRepository.GetById(createViewModel.RestaurantId);
+                var writerId = _httpContextService.GetUserId();
+                var writer = _writerRepository.GetById(writerId);
 
+                //Todo: faire la map
                 var review = new Review()
                 {
-                    Writer = writer,
-                    Restaurant = restaurant,
-                    Body = createViewModel.Body,
-                    Rating = createViewModel.Rating
+                    WriterId = writer.Id,
+                    RestaurantId = reviewCreateViewModel.RestaurantId,
+                    Body = reviewCreateViewModel.Body,
+                    Rating = reviewCreateViewModel.Rating
                 };
 
-                //writer.Reviews.Add(review);
-                //_writerRepository.Update(writer);
-                //ou
-                restaurant.Reviews.Add(review);
-                _restaurantRepository.Update(restaurant);
+                writer.Reviews.Add(review);
+                _writerRepository.Update(writer);
 
                 return RedirectToAction(MVC.Home.Index());
             }
 
-            PopulateRestaurantSelectList(createViewModel);
-            return View(createViewModel);
+            PopulateRestaurantSelectList(reviewCreateViewModel);
+            return View(reviewCreateViewModel);
         }
 
-        private void PopulateRestaurantSelectList(Create model)
+        
+        private void PopulateRestaurantSelectList(ReviewCreateViewModel model)
         {
             model.Restaurants = new SelectList(_restaurantRepository.GetAll(), "Id", "Name");
         }

@@ -13,7 +13,7 @@ namespace Miam.Web.UnitTests.ViewModelsTests
     public class RestaurantViewModelTests
     {
         private Fixture _fixture;
-        private RestaurantCreateViewModel _RestaurantViewModel;
+        private RestaurantViewModel _RestaurantViewModel;
         private ValidationContext _validationContext;
         private List<ValidationResult> _validationResults;
 
@@ -23,7 +23,7 @@ namespace Miam.Web.UnitTests.ViewModelsTests
             _fixture = new Fixture();
             _fixture.Customizations.Add(new VirtualMembersOmitter());
 
-            _RestaurantViewModel = _fixture.Create<RestaurantCreateViewModel>();
+            _RestaurantViewModel = _fixture.Create<RestaurantViewModel>();
             _validationContext = new ValidationContext(_RestaurantViewModel, null, null);
             _validationResults = new List<ValidationResult>();
         }
