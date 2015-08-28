@@ -1,16 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Miam.Domain.Entities;
 using Miam.Web.ViewModels.Home;
 using Miam.Web.ViewModels.Restaurant;
 using Miam.Web.ViewModels.Review;
+using Ninject.Parameters;
 
 namespace Miam.Web
 {
     public static class Mappers
     {
         // Restaurant
-        public static Restaurant createRestaurantFrom(RestaurantCreateViewModel restaurantViewModel)
+        public static Restaurant CreateRestaurantFrom(RestaurantCreateViewModel restaurantViewModel)
         {
             return new Restaurant
             {
@@ -18,11 +20,24 @@ namespace Miam.Web
                 City = restaurantViewModel.City,
                 Name = restaurantViewModel.Name,
                 Country = restaurantViewModel.Country,
-                RestaurantContactDetail = restaurantViewModel.RestaurantContactDetail,
+                RestaurantContactDetail = Mappers.CreateContactDetailFromViewModel(restaurantViewModel.ContactDetailViewModel)
             };
         }
 
-        public static RestaurantDeleteViewModel createRestaurantDeleteViewModelFrom(Restaurant restaurant)
+        private static RestaurantContactDetail CreateContactDetailFromViewModel(ContactDetailViewModel contactDetailViewModel)
+        {
+            if (contactDetailViewModel== null) return null;
+            return new RestaurantContactDetail()
+            {
+                Facebook = contactDetailViewModel.Facebook,
+                FaxPhone = contactDetailViewModel.FaxPhone,
+                OfficePhone = contactDetailViewModel.OfficePhone,
+                TwitterAlias = contactDetailViewModel.TwitterAlias,
+                WebPage = contactDetailViewModel.WebPage
+            };
+        }
+
+        public static RestaurantDeleteViewModel CreateRestaurantDeleteViewModelFrom(Restaurant restaurant)
         {
             return new RestaurantDeleteViewModel
             {
@@ -35,19 +50,21 @@ namespace Miam.Web
 
         public static RestaurantEditViewModel createRestaurantEditViewModelFrom(Restaurant restaurant)
         {
+
             return new RestaurantEditViewModel
             {
                 Id = restaurant.Id,
                 City = restaurant.City,
                 Country = restaurant.Country,
                 Name = restaurant.Name,
-                RestaurantContactDetailViewModel = Mappers.createRestaurantContactDetailViewModelFrom(restaurant.RestaurantContactDetail),
-                ReviewsViewModel = Mappers.createReviewViewModelFrom(restaurant.Reviews)
-            }; 
+                RestaurantContactDetailViewModel = Mappers.CreateRestaurantContactDetailViewModelFrom(restaurant.RestaurantContactDetail),
+                ReviewsViewModel = Mappers.CreateReviewViewModelFrom(restaurant.Reviews)
+            };
         }
 
-        private static List<ReviewIndexViewModel> createReviewViewModelFrom(ICollection<Review> reviews)
+        private static List<ReviewIndexViewModel> CreateReviewViewModelFrom(ICollection<Review> reviews)
         {
+            if (reviews == null) return null;
             return reviews
                 .Select(x => new ReviewIndexViewModel
                 {
@@ -57,8 +74,9 @@ namespace Miam.Web
                 }).ToList();
         }
 
-        private static ContactDetailViewModel createRestaurantContactDetailViewModelFrom(RestaurantContactDetail restaurantContactDetail)
+        private static ContactDetailViewModel CreateRestaurantContactDetailViewModelFrom(RestaurantContactDetail restaurantContactDetail)
         {
+            if (restaurantContactDetail == null) return null;
             return new ContactDetailViewModel
             {
                 Facebook = restaurantContactDetail.Facebook,
@@ -70,7 +88,7 @@ namespace Miam.Web
 
         }
 
-        public static IEnumerable<HomeIndexViewModel> createHomeIndexViewModelFrom(List<Restaurant> restaurants)
+        public static IEnumerable<HomeIndexViewModel> CreateHomeIndexViewModelFrom(List<Restaurant> restaurants)
         {
             return restaurants
                 .Select(x => new HomeIndexViewModel
@@ -82,7 +100,7 @@ namespace Miam.Web
                 }).ToList();
         }
 
-        public static RestaurantCreateViewModel createRestaurantCreateViewModelFrom(Restaurant restaurant)
+        public static RestaurantCreateViewModel CreateRestaurantCreateViewModelFrom(Restaurant restaurant)
         {
             return new RestaurantCreateViewModel
             {
@@ -90,15 +108,25 @@ namespace Miam.Web
                 City = restaurant.City,
                 Country = restaurant.Country,
                 Name = restaurant.Name,
-                RestaurantContactDetail = restaurant.RestaurantContactDetail
+                ContactDetailViewModel = Mappers.CreateContactDetailViewModelFrom(restaurant.RestaurantContactDetail) 
+            };
+        }
 
+        private static ContactDetailViewModel CreateContactDetailViewModelFrom(RestaurantContactDetail ContactDetail)
+        {
+            if (ContactDetail == null) return null;
+            return new ContactDetailViewModel()
+            {
+                Facebook = ContactDetail.Facebook,
+                FaxPhone = ContactDetail.FaxPhone,
+                OfficePhone = ContactDetail.OfficePhone,
+                TwitterAlias = ContactDetail.TwitterAlias,
+                WebPage = ContactDetail.WebPage
             };
         }
 
 
-
-
-        public static IEnumerable<RestaurantIndexViewModel> createRestaurantIndexViewModelFrom(List<Restaurant> restaurants)
+        public static IEnumerable<RestaurantIndexViewModel> CreateRestaurantIndexViewModelFrom(List<Restaurant> restaurants)
         {
             var homeIndexViewModel = restaurants
                .Select(x => new RestaurantIndexViewModel
@@ -116,7 +144,7 @@ namespace Miam.Web
 
 
         //Review
-        public static Review createReviewFrom(ReviewCreateViewModel reviewCreateViewModel)
+        public static Review CreateReviewFrom(ReviewCreateViewModel reviewCreateViewModel)
         {
             var review = new Review
             {
@@ -127,7 +155,7 @@ namespace Miam.Web
             return review;
         }
 
-        public static ReviewCreateViewModel createReviewCreateViewModelFrom(Review review)
+        public static ReviewCreateViewModel CreateReviewCreateViewModelFrom(Review review)
         {
             return new ReviewCreateViewModel
             {
@@ -137,21 +165,31 @@ namespace Miam.Web
             };
         }
 
-        public static void updateRestaurantFromViewModel(RestaurantEditViewModel restaurantEditViewModel, Restaurant restaurant)
+        public static void UpdateRestaurantFromViewModel(Restaurant restaurant,RestaurantEditViewModel restaurantEditViewModel)
         {
             restaurant.City = restaurantEditViewModel.City;
             restaurant.Country = restaurantEditViewModel.Country;
             restaurant.Name = restaurantEditViewModel.Name;
-            Mappers.updateRestaurantContactDetailFromViewModel(restaurant.RestaurantContactDetail, restaurantEditViewModel.RestaurantContactDetailViewModel);
+            //Todo: revoir la gestion du contact details
+            if (restaurant.RestaurantContactDetail == null && restaurantEditViewModel != null)
+            {
+                restaurant.RestaurantContactDetail = new RestaurantContactDetail();
+            }
+            Mappers.UpdateRestaurantContactDetailFromViewModel(restaurant.RestaurantContactDetail,
+                                                               restaurantEditViewModel.RestaurantContactDetailViewModel);
         }
 
-        private static void updateRestaurantContactDetailFromViewModel(RestaurantContactDetail restaurantContactDetail, ContactDetailViewModel restaurantContactDetailViewModel)
+        private static void UpdateRestaurantContactDetailFromViewModel(RestaurantContactDetail restaurantContactDetail, ContactDetailViewModel restaurantContactDetailViewModel)
         {
-            restaurantContactDetail.Facebook = restaurantContactDetailViewModel.Facebook;
-            restaurantContactDetail.FaxPhone = restaurantContactDetailViewModel.FaxPhone;
-            restaurantContactDetail.OfficePhone = restaurantContactDetailViewModel.OfficePhone;
-            restaurantContactDetail.TwitterAlias = restaurantContactDetailViewModel.TwitterAlias;
-            restaurantContactDetail.WebPage = restaurantContactDetailViewModel.WebPage;
+            if (restaurantContactDetailViewModel != null) 
+            {
+                restaurantContactDetail.Facebook = restaurantContactDetailViewModel.Facebook;
+                restaurantContactDetail.FaxPhone = restaurantContactDetailViewModel.FaxPhone;
+                restaurantContactDetail.OfficePhone = restaurantContactDetailViewModel.OfficePhone;
+                restaurantContactDetail.TwitterAlias = restaurantContactDetailViewModel.TwitterAlias;
+                restaurantContactDetail.WebPage = restaurantContactDetailViewModel.WebPage;
+            }
+
         }
     }
 }

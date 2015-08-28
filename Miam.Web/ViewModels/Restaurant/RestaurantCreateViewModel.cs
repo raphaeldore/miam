@@ -23,7 +23,7 @@ namespace Miam.Web.ViewModels.Restaurant
         [Required(ErrorMessage = "Le champ pays est requis")]
         public string Country { get; set; }
 
-        public RestaurantContactDetail RestaurantContactDetail { get; set; }
+        public ContactDetailViewModel ContactDetailViewModel { get; set; }
 
     }
 }

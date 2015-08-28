@@ -24,7 +24,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             var viewModelObtained = viewResult.ViewData.Model as RestaurantEditViewModel;
 
             //Assert 
-            viewModelObtained.ShouldBeEquivalentTo(viewModelExpected); 
+            viewModelObtained.ShouldBeEquivalentTo(viewModelExpected);
         }
 
         [TestMethod]
@@ -34,13 +34,13 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 
             //Act
             var result = _restaurantController.Edit(999999999);
-            
+
             //Assert
             result.Should().BeOfType<HttpNotFoundResult>();
-            
+
             // Même assertion, mais sans fluent assertion
             // Assert.IsInstanceOfType(result, typeof(HttpNotFoundResult)); 
-            
+
         }
 
 
@@ -83,7 +83,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             //Arrange
             var restaurant = _fixture.Create<Restaurant>();
             var restaurantEditPageViewModel = _fixture.Build<RestaurantEditViewModel>()
-                                                      .With(x=>x.Id, restaurant.Id)
+                                                      .With(x => x.Id, restaurant.Id)
                                                       .Create();
             _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
             _restaurantController.ModelState.AddModelError("Error", "Error");
@@ -93,7 +93,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 
             //Assert
             Assert.AreEqual(result.ViewName, "");
-            
+
         }
         [TestMethod]
         public void edit_post_should_return_http_not_found_when_restaurantID_is_not_valid()

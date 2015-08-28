@@ -24,7 +24,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         {
             // Arrange   
             var restaurant = _fixture.Create<Restaurant>();
-            var restaurantViewModel = Mappers.createRestaurantCreateViewModelFrom(restaurant);
+            var restaurantViewModel = Mappers.CreateRestaurantCreateViewModelFrom(restaurant);
 
             // Action
             _restaurantController.Create(restaurantViewModel);

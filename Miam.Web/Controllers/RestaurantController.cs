@@ -27,7 +27,7 @@ namespace Miam.Web.Controllers
         {
             var restaurants = _restaurantRepository.GetAll().ToList();
 
-            var restaurantIndexViewModels = Mappers.createRestaurantIndexViewModelFrom(restaurants);
+            var restaurantIndexViewModels = Mappers.CreateRestaurantIndexViewModelFrom(restaurants);
 
             return View(restaurantIndexViewModels);
         }
@@ -66,7 +66,7 @@ namespace Miam.Web.Controllers
                 return View(restaurantEditViewModel);
             }
 
-            Mappers.updateRestaurantFromViewModel(restaurantEditViewModel, restaurant);
+            Mappers.UpdateRestaurantFromViewModel(restaurant, restaurantEditViewModel);
 
             _restaurantRepository.Update(restaurant);
 
@@ -94,7 +94,7 @@ namespace Miam.Web.Controllers
 
             if (restaurant != null)
             {
-                var restaurantViewModel = Mappers.createRestaurantDeleteViewModelFrom(restaurant);
+                var restaurantViewModel = Mappers.CreateRestaurantDeleteViewModelFrom(restaurant);
                 return View(restaurantViewModel);
             }
             return HttpNotFound();
@@ -128,7 +128,7 @@ namespace Miam.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var restaurant = Mappers.createRestaurantFrom(restaurantViewModel);
+                var restaurant = Mappers.CreateRestaurantFrom(restaurantViewModel);
                 _restaurantRepository.Add(restaurant);
                 return RedirectToAction(Views.ViewNames.Index);
             }
