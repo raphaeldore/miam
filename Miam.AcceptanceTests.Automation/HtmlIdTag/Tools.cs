@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Miam.TestUtility;
 
-namespace Miam.TestUtility
-{
+namespace Miam.AcceptanceTests.Automation.HtmlIdTag
+{ //Todo: trouver un aute nom
     public class Tools
     {
         public static string GetPropertyName<P, T>(Expression<Func<P, T>> expression)
@@ -16,12 +11,12 @@ namespace Miam.TestUtility
             return memberExpression.Member.Name;
         }
     }
-}
 
-public class ObjectsTool<Class>
-{
-    public static string GetPropertyName<T>(Expression<Func<Class, T>> Field)
+    public class ObjectsTool<Class>
     {
-        return Tools.GetPropertyName(Field);
+        public static string GetPropertyName<T>(Expression<Func<Class, T>> Field)
+        {
+            return Tools.GetPropertyName(Field);
+        }
     }
 }

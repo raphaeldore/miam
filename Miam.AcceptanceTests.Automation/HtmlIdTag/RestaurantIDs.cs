@@ -1,70 +1,70 @@
 ﻿using Miam.Web.ViewModels.Restaurant;
 
-namespace Miam.AcceptanceTests.Automation.PageObjects.RestaurantPages
+namespace Miam.AcceptanceTests.Automation.HtmlIdTag
 {
-    public class GetRestaurantIDs
+    public class RestaurantIDs
     {
-        public static string CountryId
+        public static string Country
         {
             get {return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.Country);}
         }
 
-        public static string CityId
+        public static string City
         {
             get { return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.City);}
         }
 
-        public static string NameId
+        public static string Name
         {
             get { return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.Name); }
         }
-        public static string GetContactDetailName
+        public static string ContactDetail
         {
             get
             {
                 return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.ContactDetailViewModel);
             }
         }
-        public static string FaxPhoneId
+        public static string FaxPhone
         {
             get
             {
-                return GetRestaurantIDs.GetContactDetailName + "_" +
+                return RestaurantIDs.ContactDetail + "_" +
                        ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.FaxPhone);
             }
         }
-        public static string WebPageId
+        public static string WebPage
         {
             get
             {
-                return GetRestaurantIDs.GetContactDetailName + "_" +
+                return RestaurantIDs.ContactDetail + "_" +
                        ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.WebPage);
             }
         }
 
-        public static string FaceBookId
+        public static string FaceBook
         {
             get
             {
-                return GetRestaurantIDs.GetContactDetailName + "_" +
+                return RestaurantIDs.ContactDetail + "_" +
                        ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.Facebook);
             }
         }
 
-        public static string TwitterId
+        public static string Twitter
         {
             get
             {
-                return GetRestaurantIDs.GetContactDetailName + "_" +
+                return RestaurantIDs.ContactDetail + "_" +
                        ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.TwitterAlias);
             }
         }
 
-        public static string OfficePhoneId
+        public static string OfficePhone
         {
             get
             {
-                return GetRestaurantIDs.GetContactDetailName + "_" +
+                return RestaurantIDs.ContactDetail + "_" +
                        ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.OfficePhone);
             }
         }
