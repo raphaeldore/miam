@@ -13,6 +13,7 @@ namespace Miam.DataLayer
             _dbContext = new MiamDbContext();
         }
 
+
         public MiamDbContext Context
         {
             get { return _dbContext; }

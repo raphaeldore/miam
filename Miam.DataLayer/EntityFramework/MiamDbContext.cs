@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Text;
 using Miam.Domain.Entities;
@@ -63,6 +64,5 @@ namespace Miam.DataLayer
                     ); // Add the original exception as the innerException
             }
         }
-
     }
 }

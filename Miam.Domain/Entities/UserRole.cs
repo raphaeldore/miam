@@ -8,7 +8,7 @@ namespace Miam.Domain.Entities
         public string RoleName { get; set; }
 
         // Foreign key
-        //public int ApplicationUserId { get; set; }
+        public int ApplicationUserId { get; set; }
 
         //Navigation properties
         [Required]

@@ -1,36 +1,46 @@
-﻿using Miam.DataLayer;
+﻿using System.Data.Entity.Infrastructure;
+using Miam.DataLayer;
 using Miam.TestUtility.TestsAPI;
 
 namespace Miam.TestUtility
 {
     public class TestHelperApi 
     {
-        private ApplicationContext _applicationContext;
+        private IDbContextFactory<MiamDbContext> _dbContextFactory;
 
-        public TestHelperApi(ApplicationContext applicationContext)
+        public TestHelperApi(IDbContextFactory<MiamDbContext> dbContextFactory)
         {
-            _applicationContext = applicationContext;
-
+            _dbContextFactory = dbContextFactory;
         }
         public DatabaseHelper DataBase
         {
-            get { return new DatabaseHelper(); }
+            get { return new DatabaseHelper(new ApplicationContext()); }
         }
-        public RestaurantTestHelperApi Restaurant
+        public RestaurantTestHelperApi Restaurants
         {
-            get { return new RestaurantTestHelperApi(_applicationContext); }
+            get { return new RestaurantTestHelperApi(_dbContextFactory); }
         }
         public WriterTestHelper Writer
         {
-            get { return new WriterTestHelper(_applicationContext); }
+            get { return new WriterTestHelper(_dbContextFactory); }
         }
-        public ReviewTestHelper Review
+        public ReviewTestHelper Reviews
         {
-            get {return new ReviewTestHelper(_applicationContext);}
+            get { return new ReviewTestHelper(_dbContextFactory); }
         }
         public UserAcceptanceTestsApi User
         {
-            get { return new UserAcceptanceTestsApi(_applicationContext); }
+            get { return new UserAcceptanceTestsApi(_dbContextFactory); }
+        }
+
+        public RestaurantContactDetailTestsApi RestaurantContactDetails
+        {
+            get { return new RestaurantContactDetailTestsApi(_dbContextFactory); }
+        }
+
+        public TagTestApi Tags
+        {
+            get { return new TagTestApi(_dbContextFactory); }
         }
     }
 }

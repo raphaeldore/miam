@@ -5,15 +5,15 @@ namespace Miam.TestUtility.TestsAPI
 {
     public class DatabaseHelper
     {
-        private EfApplicationDatabaseHelper _applicationDatabaseHelper;
+        private readonly EfApplicationDatabaseHelper _applicationDatabaseHelper;
 
-        public DatabaseHelper()
+        public DatabaseHelper(ApplicationContext applicationContext)
         {
-            _applicationDatabaseHelper = new EfApplicationDatabaseHelper(new ApplicationContext());
+            _applicationDatabaseHelper = new EfApplicationDatabaseHelper(applicationContext);
+
         }
         public void ClearDataBaseTables()
         {
-            _applicationDatabaseHelper = new EfApplicationDatabaseHelper(new ApplicationContext());
             _applicationDatabaseHelper.MigrateDatabaseToLatestVersion();
             _applicationDatabaseHelper.ClearAllTables();
         }

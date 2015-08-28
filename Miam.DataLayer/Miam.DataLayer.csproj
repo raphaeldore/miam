@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbContextFactory.cs" />
     <Compile Include="EntityFramework\EfDatabaseConfiguration.cs" />
     <Compile Include="EntityFramework\EfDropCreateDatabaseAlwaysSeeder.cs" />
     <Compile Include="EntityFramework\EfApplicationDatabaseHelper.cs" />
@@ -97,13 +98,10 @@
     <Compile Include="EntityFramework\MiamDbContext.cs" />
     <Compile Include="EntityFramework\EfEntityRepository.cs" />
     <Compile Include="EntityFramework\EfDropCreateIfModelChangesSeeder.cs" />
-    <Compile Include="Migrations\201508252101120_InitialCreate.cs" />
-    <Compile Include="Migrations\201508252101120_InitialCreate.Designer.cs">
-      <DependentUpon>201508252101120_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508252127037_ajoutRequired.cs" />
-    <Compile Include="Migrations\201508252127037_ajoutRequired.Designer.cs">
-      <DependentUpon>201508252127037_ajoutRequired.cs</DependentUpon>
+    <Compile Include="IMiamDbContext .cs" />
+    <Compile Include="Migrations\201508280258329_initial.cs" />
+    <Compile Include="Migrations\201508280258329_initial.Designer.cs">
+      <DependentUpon>201508280258329_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,11 +119,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508252101120_InitialCreate.resx">
-      <DependentUpon>201508252101120_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508252127037_ajoutRequired.resx">
-      <DependentUpon>201508252127037_ajoutRequired.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508280258329_initial.resx">
+      <DependentUpon>201508280258329_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

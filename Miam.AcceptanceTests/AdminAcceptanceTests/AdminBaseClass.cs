@@ -15,7 +15,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         protected void un_administrateur_authentifé()
         {
             _userAdmin = TestData.ApplicationUserAdmin;
-            _testHelperApi.User.createUser(_userAdmin);
+            _testHelperApi.User.CreateUser(_userAdmin);
 
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
@@ -25,7 +25,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         protected void un_restaurant_existe_dans_le_système()
         {
             _restaurant1 = TestData.Restaurant1;
-            _testHelperApi.Restaurant.CreateRestaurant(_restaurant1);
+            _testHelperApi.Restaurants.Create(_restaurant1);
         }
 
         protected void AssertRestaurantsShouldBeEquivalent(Restaurant expectedRestaurant, Restaurant obtainedRestaurant)
@@ -35,13 +35,13 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
             expectedRestaurant.Country.ShouldBeEquivalentTo(obtainedRestaurant.Country);
         }
 
-        protected void AssertContactDetailsShouldBeEquivalent(RestaurantContactDetail contactDetailsExpected, RestaurantContactDetail contactDetailsObtained)
+        protected void AssertContactDetailsShouldBeEquivalent(RestaurantContactDetail contactDetailsesExpected, RestaurantContactDetail contactDetailsesObtained)
         {
-            contactDetailsExpected.FaxPhone.ShouldBeEquivalentTo(contactDetailsObtained.FaxPhone);
-            contactDetailsExpected.OfficePhone.ShouldBeEquivalentTo(contactDetailsObtained.OfficePhone);
-            contactDetailsExpected.TwitterAlias.ShouldBeEquivalentTo(contactDetailsObtained.TwitterAlias);
-            contactDetailsExpected.Facebook.ShouldBeEquivalentTo(contactDetailsObtained.Facebook);
-            contactDetailsExpected.WebPage.ShouldBeEquivalentTo(contactDetailsObtained.WebPage);
+            contactDetailsesExpected.FaxPhone.ShouldBeEquivalentTo(contactDetailsesObtained.FaxPhone);
+            contactDetailsesExpected.OfficePhone.ShouldBeEquivalentTo(contactDetailsesObtained.OfficePhone);
+            contactDetailsesExpected.TwitterAlias.ShouldBeEquivalentTo(contactDetailsesObtained.TwitterAlias);
+            contactDetailsesExpected.Facebook.ShouldBeEquivalentTo(contactDetailsesObtained.Facebook);
+            contactDetailsesExpected.WebPage.ShouldBeEquivalentTo(contactDetailsesObtained.WebPage);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Data.Entity.Infrastructure;
 using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
@@ -8,13 +9,13 @@ namespace Miam.TestUtility.TestsAPI
     {
         private IEntityRepository<ApplicationUser> _userRepository;
 
-        public UserAcceptanceTestsApi(ApplicationContext applicationContext)
+        public UserAcceptanceTestsApi(IDbContextFactory<MiamDbContext> dbContextFactory)
         {
-            _userRepository = new EfEntityRepository<ApplicationUser>(applicationContext);
+            //_userRepository = new EfEntityRepository<ApplicationUser>(applicationContext);
         }
-        public void createUser(ApplicationUser applicationUserAdmin)
+        public void CreateUser(ApplicationUser applicationUserAdmin)
         {
-            _userRepository.Add(applicationUserAdmin);
+            //_userRepository.Add(applicationUserAdmin);
         }
     }
 }

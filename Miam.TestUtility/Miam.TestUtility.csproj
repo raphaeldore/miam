@@ -94,6 +94,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestsAPI\TagTestApi.cs" />
+    <Compile Include="TestsAPI\RestaurantContactDetailTestsApi.cs" />
     <Compile Include="TestHelperApi.cs" />
     <Compile Include="TestsAPI\BaseTestHelper.cs" />
     <Compile Include="TestsAPI\DatabaseHelper.cs" />

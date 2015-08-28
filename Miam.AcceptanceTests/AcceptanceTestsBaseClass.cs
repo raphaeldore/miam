@@ -17,9 +17,9 @@ namespace Miam.AcceptanceTests
 
 
         [TestInitialize]
-        public void initialize()
+        public void Initialize()
         {
-            _testHelperApi = new TestHelperApi(new ApplicationContext());
+            _testHelperApi = new TestHelperApi(new DbContextFactory());
             _testHelperApi.DataBase.ClearDataBaseTables();
 
         }

@@ -12,7 +12,7 @@
 //                    MenuSelector.Select("admin-menu", "manage-restaurant-menu-item");
 //                }
 //            }
-//            public class CreateRestaurant
+//            public class Create
 //            {
 //                public static void Select()
 //                {

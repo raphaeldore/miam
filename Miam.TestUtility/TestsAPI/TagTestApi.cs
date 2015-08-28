@@ -1,35 +1,34 @@
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
-using Ploeh.AutoFixture;
 
 namespace Miam.TestUtility.TestsAPI
 {
-    public class WriterTestHelper : BaseTestHelper
+    public class TagTestApi
     {
         private IDbContextFactory<MiamDbContext> _dbContextFactory;
 
-
-        public WriterTestHelper(IDbContextFactory<MiamDbContext> dbContextFactory)
+        public TagTestApi(IDbContextFactory<MiamDbContext> dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
-
         }
 
-        public void Create(Writer writer)
+        public void Create(IEnumerable<Tag> restaurantTags)
         {
             var dbContext = _dbContextFactory.Create();
-            dbContext.Writers.Attach(writer);
-            dbContext.Writers.Add(writer);
+            foreach (var tag in restaurantTags)
+            {
+                dbContext.RestaurantTags.Add(tag);
+            }
             dbContext.SaveChanges();
         }
 
-        public int GetReviewsCount(Restaurant restaurant)
+        public int Count()
         {
             var dbContext = _dbContextFactory.Create();
-            var resto = dbContext.Restaurants.FirstOrDefault(x => x.Id == restaurant.Id);
-            return resto.Reviews.Count();
+            return dbContext.RestaurantTags.Count();
         }
     }
 }

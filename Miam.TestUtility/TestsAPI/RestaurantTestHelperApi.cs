@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
+using System.Linq;
 using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
@@ -10,50 +12,59 @@ namespace Miam.TestUtility.TestsAPI
     public class RestaurantTestHelperApi : BaseTestHelper
     {
         private IEntityRepository<Restaurant> _restaurantRepository;
-        
+        private readonly IDbContextFactory<MiamDbContext> _dbContextFactory;
 
-        public RestaurantTestHelperApi(ApplicationContext applicationContext)
+        public RestaurantTestHelperApi(IDbContextFactory<MiamDbContext> dbContextFactory)
         {
-            _restaurantRepository = new EfEntityRepository<Restaurant>(new ApplicationContext());
+            _dbContextFactory = dbContextFactory;
         }
-        public void CreateRestaurant(Restaurant restaurant)
+        public void Create(Restaurant restaurant)
         {
-            _restaurantRepository.Add(restaurant);
-        }
-
-        public Restaurant GetFirstRestaurant()
-        {
-            _restaurantRepository = new EfEntityRepository<Restaurant>(new ApplicationContext()); // nécessaire pour avoir le dernier "context".
-            return _restaurantRepository.GetAll().First();
+            var dbContext = _dbContextFactory.Create();
+            dbContext.Restaurants.Attach(restaurant);
+            dbContext.Restaurants.Add(restaurant);
+            dbContext.SaveChanges();
         }
 
-        public int GetRestaurantCount()
+        public Restaurant GetFirst()
         {
-            using (var miamDbContext = new MiamDbContext())
-            {
-                return miamDbContext.Restaurants.Count();
-            }
+            var dbContext = _dbContextFactory.Create();
+            return dbContext.Restaurants.First();
         }
 
-        public Restaurant Create()
+        public int Count()
         {
-            var restaurant = Fixture.Create<Restaurant>();
-            using (var miamDbContext = new MiamDbContext())
-            {
-                miamDbContext.Restaurants.Attach(restaurant);
-                miamDbContext.Restaurants.Add(restaurant);
-                miamDbContext.SaveChanges();
-
-                return restaurant;
-            }
+            var dbContext = _dbContextFactory.Create();
+            return dbContext.Restaurants.Count();
         }
 
         public Restaurant GetRestaurant(Restaurant restaurant)
         {
-            using (var miamDbContext = new MiamDbContext())
-            {
-                return miamDbContext.Restaurants.FirstOrDefault(x => x.Id == restaurant.Id);
-            }
+            var dbContext = _dbContextFactory.Create();
+            var resto = dbContext.Restaurants.FirstOrDefault(x => x.Id == restaurant.Id);
+            return resto;
+        }
+
+        public Review GetFirstReviewOf(Restaurant restaurant)
+        {
+            var dbContext = _dbContextFactory.Create();
+            return dbContext.Restaurants
+                            .First(x => x.Id == restaurant.Id)
+                            .Reviews.First();
+        }
+
+        //public int CountReviewsOf(Restaurant restaurant)
+        //{
+        //    var dbContext = _dbContextFactory.Create();
+        //    var resto = dbContext.Restaurants.FirstOrDefault(x => x.Id == restaurant.Id);
+        //    return resto.Reviews.Count();
+        //}
+
+        public RestaurantContactDetail GetContactDetailOf(Restaurant restaurant)
+        {
+            var dbContext = _dbContextFactory.Create();
+            var resto = dbContext.Restaurants.FirstOrDefault(x => x.Id == restaurant.Id);
+            return resto.RestaurantContactDetail;
         }
     }
 }

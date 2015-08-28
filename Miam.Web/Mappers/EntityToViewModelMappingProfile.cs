@@ -38,7 +38,7 @@ namespace Miam.Web.Mappers
         private static void ToReviewViewModels()
         {
             //Mapper.CreateMap<Review, ViewModels.Review.Create>()
-            //   .ForMember(dest => dest.Restaurants, opt => opt.Ignore());
+            //   .ForMember(dest => dest.Restaurant, opt => opt.Ignore());
 
             // même résultat que la ligne ci-dessus. IgnoreAllNonExisting fait partie de la classe MappingExpressionExtensions
             Mapper.CreateMap<Review, ViewModels.Review.Create>().IgnoreAllNonExisting();
