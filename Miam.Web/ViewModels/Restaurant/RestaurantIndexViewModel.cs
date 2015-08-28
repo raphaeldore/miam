@@ -2,7 +2,7 @@
 
 namespace Miam.Web.ViewModels.Restaurant
 {
-    public class Index
+    public class RestaurantIndexViewModel
     {
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }

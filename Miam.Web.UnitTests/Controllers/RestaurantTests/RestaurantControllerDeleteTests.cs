@@ -20,7 +20,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 
             //Action
             var result = _restaurantController.Delete(restaurant.Id) as ViewResult;
-            var restaurantViewModel = result.ViewData.Model as ViewModels.Restaurant.Delete;
+            var restaurantViewModel = result.ViewData.Model as ViewModels.Restaurant.RestaurantDeleteViewModel;
 
             //Assert 
             restaurantViewModel.ShouldBeEquivalentTo(restaurant); 

@@ -1,11 +1,10 @@
-﻿namespace Miam.Web.ViewModels.Home
+﻿namespace Miam.Web.ViewModels.Restaurant
 {
-    public class Index
+    public class RestaurantDeleteViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public float RatingReviewsAverage { get; set; }
-        
     }
 }

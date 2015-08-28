@@ -2,7 +2,7 @@
 
 namespace Miam.Web.ViewModels.Review
 {
-    public class Index
+    public class ReviewIndexViewModel
     {
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }

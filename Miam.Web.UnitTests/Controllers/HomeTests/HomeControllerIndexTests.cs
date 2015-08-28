@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using FluentAssertions;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
+using Miam.TestUtility;
 using Miam.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
@@ -12,7 +13,7 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.HomeTests
 {
     [TestClass]
-    public class HomControllerIndexTests : AllControllersBaseClassTests
+    public class HomControllerIndexTests : TestUtilities
     {
         private HomeController _homeController;
         private IEntityRepository<Restaurant> _restaurantRepository;
@@ -36,7 +37,7 @@ namespace Miam.Web.UnitTests.Controllers.HomeTests
 
             // Action
             var result = _homeController.Index() as ViewResult;
-            var model = result.Model as IEnumerable<ViewModels.Home.Index>;
+            var model = result.Model as IEnumerable<ViewModels.Home.HomeIndexViewModel>;
             
             // Assert avec fluent assertion
             //model.Count().Should().Be(RESTAURANT_COUNT);
