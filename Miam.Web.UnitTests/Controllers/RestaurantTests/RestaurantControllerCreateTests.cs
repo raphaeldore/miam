@@ -1,4 +1,5 @@
 using System.Web.Mvc;
+using AutoMapper;
 using FluentAssertions;
 using Miam.Domain.Entities;
 using Miam.Web.ViewModels.Restaurant;
@@ -25,7 +26,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             // Arrange   
             var restaurant = _fixture.Create<Restaurant>();
 
-            var restaurantViewModel = MappersRestaurantCreateViewModel.Map(restaurant);
+            var restaurantViewModel = Mapper.Map<RestaurantCreateViewModel>(restaurant); 
 
             // Action
             RestaurantController.Create(restaurantViewModel);

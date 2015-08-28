@@ -4,6 +4,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Miam.DataLayer;
+using Miam.Web.Mappers;
 using WebApplication1;
 
 namespace Miam.Web
@@ -18,6 +19,8 @@ namespace Miam.Web
             // C'est dans NinjectWebCommon.cs que la dépendance (sur EFDatabaseHelper) est gérée
             var dbInitializer = DependencyResolver.Current.GetService<IApplicationDatabaseHelper>();
             dbInitializer.MigrateDatabaseToLatestVersion();
+
+            AutoMapperConfiguration.Configure();
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
         }

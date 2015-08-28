@@ -1,27 +1,22 @@
 using Miam.DataLayer;
 using Miam.Domain.Entities;
-using Miam.TestUtility;
 using Miam.TestUtility.AutoFixture;
 using Miam.Web.Controllers;
-using Miam.Web.Mappers;
-using Miam.Web.Mappers.Restaurant;
 using Miam.Web.ViewModels.Restaurant;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
-using NSubstitute.Routing.Handlers;
 using Ploeh.AutoFixture;
 
 namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 {
 
-    public class BaseRestaurantControllerTests
+    public class BaseRestaurantControllerTests : AllControllersBaseClassTests
     {
         protected IEntityRepository<Restaurant> RestaurantRepository;
         protected IEntityRepository<Review> ReviewRepository;
         
         protected RestaurantController RestaurantController;
-        protected IMapToNew<Restaurant,RestaurantCreateViewModel> MappersRestaurantCreateViewModel;
-        protected IMapToNew<Restaurant, RestaurantEditViewModel> MappersRestaurantEditViewModel;
+
         protected Fixture _fixture;
 
 
@@ -35,9 +30,6 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             ReviewRepository = Substitute.For<IEntityRepository<Review>>();
 
             RestaurantController = new RestaurantController(RestaurantRepository);
-
-            MappersRestaurantCreateViewModel = new MapperRestaurantCreateViewModel();
-            MappersRestaurantEditViewModel = new MapperRestaurantEditViewModel();
         }
     }
 

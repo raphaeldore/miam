@@ -14,9 +14,9 @@ namespace Miam.AcceptanceTests.Automation.PageObjects.RestaurantPages
 
         private void FillAllRestaurantFieldsWith(Restaurant newRestaurant)
         {
-            Find.Element(By.Id("Name")).SendKeys(newRestaurant.Name);
-            Find.Element(By.Id("City")).SendKeys(newRestaurant.City);
-            Find.Element(By.Id("Country")).SendKeys(newRestaurant.Country);
+            Find.Element(By.Id(GetRestaurantIDs.NameId)).SendKeys(newRestaurant.Name);
+            Find.Element(By.Id(GetRestaurantIDs.CityId)).SendKeys(newRestaurant.City);
+            Find.Element(By.Id(GetRestaurantIDs.CountryId)).SendKeys(newRestaurant.Country);
         }
     }
 }

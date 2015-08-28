@@ -1,4 +1,5 @@
 using System.Web.Mvc;
+using AutoMapper;
 using FluentAssertions;
 using Miam.Domain.Entities;
 using Miam.Web.ViewModels.Restaurant;
@@ -17,11 +18,11 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             //Arrange 
             var restaurant = _fixture.Create<Restaurant>();
             RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
-            var viewModelExpected = MappersRestaurantCreateViewModel.Map(restaurant);
+            var viewModelExpected = Mapper.Map<RestaurantEditViewModel>(restaurant);
 
             //Action
             var viewResult = RestaurantController.Edit(restaurant.Id) as ViewResult;
-            var viewModelObtained = viewResult.ViewData.Model as RestaurantCreateViewModel;
+            var viewModelObtained = viewResult.ViewData.Model as RestaurantEditViewModel;
 
             //Assert 
             viewModelObtained.ShouldBeEquivalentTo(viewModelExpected);
@@ -50,7 +51,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             //Arrange
             var restaurant = _fixture.Create<Restaurant>();
             RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
-            var restaurantViewModel = MappersRestaurantEditViewModel.Map(restaurant);
+            var restaurantViewModel = Mapper.Map<RestaurantEditViewModel>(restaurant);
 
             //Action
             var actionResult = RestaurantController.Edit(restaurantViewModel);
@@ -66,7 +67,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             //Arrange
             var restaurant = _fixture.Create<Restaurant>();
             RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
-            var restaurantEditPageViewModel = MappersRestaurantEditViewModel.Map(restaurant);
+            var restaurantEditPageViewModel = Mapper.Map<RestaurantEditViewModel>(restaurant);
 
             //Act
             var routeResult = RestaurantController.Edit(restaurantEditPageViewModel) as RedirectToRouteResult;

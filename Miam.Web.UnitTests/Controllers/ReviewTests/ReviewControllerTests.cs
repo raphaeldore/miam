@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
 using FluentAssertions;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
@@ -57,10 +58,9 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
                                  .With(x => x.RestaurantId, restaurant.Id)
                                  .Create();
 
-            var reviewViewModel = MappersSimple.CreateReviewCreateViewModelFrom(review);
+            var reviewViewModel = Mapper.Map<ReviewCreateViewModel>(review);
 
             _writerRepository.GetById(Arg.Any<int>()).Returns(writer);
-            //_restaurantRepository.GetById(Arg.Any<int>()).Returns(review.Restaurant);
 
             // Action
             _reviewController.Create(reviewViewModel);

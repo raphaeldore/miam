@@ -123,6 +123,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HtmlIdTagFetcher\GetRestaurantIDs.cs" />
+    <Compile Include="HtmlIdTagFetcher\Tools.cs" />
     <Compile Include="PageObjects\EmailPage.cs" />
     <Compile Include="PageObjects\FilePages\DownloadIndexPage.cs" />
     <Compile Include="PageObjects\FilePages\UploadPage.cs" />

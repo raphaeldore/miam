@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Externalization
 {
-    public static class lobalsMessages
+    public static class GlobalsMessages
     {
     }
 }
