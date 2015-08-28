@@ -35,15 +35,15 @@ namespace Miam.Web
         //    };
         //}
 
-        public static Restaurant CreateRestaurantFrom(RestaurantViewModel restaurantViewModel)
+        public static Restaurant CreateRestaurantFrom(RestaurantCreateViewModel restaurantCreateViewModel)
         {
             return new Restaurant
             {
-                Id = restaurantViewModel.Id,
-                City = restaurantViewModel.City,
-                Name = restaurantViewModel.Name,
-                Country = restaurantViewModel.Country,
-                RestaurantContactDetail = MappersSimple.CreateContactDetailFromViewModel(restaurantViewModel.ContactDetailViewModel)
+                Id = restaurantCreateViewModel.Id,
+                City = restaurantCreateViewModel.City,
+                Name = restaurantCreateViewModel.Name,
+                Country = restaurantCreateViewModel.Country,
+                RestaurantContactDetail = MappersSimple.CreateContactDetailFromViewModel(restaurantCreateViewModel.ContactDetailViewModel)
             };
         }
 
@@ -167,7 +167,7 @@ namespace Miam.Web
             };
         }
 
-        public static void UpdateRestaurantFromViewModel(Restaurant restaurant,RestaurantViewModel restaurantEditViewModel)
+        public static void UpdateRestaurantFromViewModel(Restaurant restaurant,RestaurantEditViewModel restaurantEditViewModel)
         {
             restaurant.City = restaurantEditViewModel.City;
             restaurant.Country = restaurantEditViewModel.Country;

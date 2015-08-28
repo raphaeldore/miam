@@ -6,6 +6,7 @@ using Miam.DataLayer;
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
 using Miam.Web.Mappers;
+using Miam.Web.Mappers.Restaurant;
 using Miam.Web.ViewModels.Restaurant;
 using Miam.Web.ViewModels.Review;
 
@@ -15,7 +16,7 @@ namespace Miam.Web.Controllers
     public partial class RestaurantController : Controller
     {
         private readonly IEntityRepository<Restaurant> _restaurantRepository;
-        private RestaurantViewModelMapper _mappersRestaurantViewModel;
+        private MapperRestaurantCreateViewModel _mapperRestaurantCreateViewModel;
 
         public RestaurantController(IEntityRepository<Restaurant> restaurantRepository)
         {
@@ -23,7 +24,7 @@ namespace Miam.Web.Controllers
 
             _restaurantRepository = restaurantRepository;
 
-            _mappersRestaurantViewModel = new RestaurantViewModelMapper();
+            _mapperRestaurantCreateViewModel = new MapperRestaurantCreateViewModel();
         }
 
 
@@ -45,7 +46,7 @@ namespace Miam.Web.Controllers
 
             if (restaurant != null)
             {
-                var restaurantEditPageViewModel = _mappersRestaurantViewModel.Map(restaurant);
+                var restaurantEditPageViewModel = _mapperRestaurantCreateViewModel.Map(restaurant);
 
                 return View(restaurantEditPageViewModel);
             }
@@ -56,9 +57,9 @@ namespace Miam.Web.Controllers
 
 
         [HttpPost]
-        public virtual ActionResult Edit(RestaurantViewModel restaurantViewModel)
+        public virtual ActionResult Edit(RestaurantEditViewModel restaurantEditViewModel)
         {
-            var restaurant = _restaurantRepository.GetById(restaurantViewModel.Id);
+            var restaurant = _restaurantRepository.GetById(restaurantEditViewModel.Id);
             if (restaurant == null)
             {
                 return HttpNotFound();
@@ -66,11 +67,11 @@ namespace Miam.Web.Controllers
 
             if (!ModelState.IsValid)
             {
-                restaurantViewModel.ReviewsViewModel = createReviewsFrom(restaurant.Reviews);
-                return View(restaurantViewModel);
+                restaurantEditViewModel.ReviewsViewModel = createReviewsFrom(restaurant.Reviews);
+                return View(restaurantEditViewModel);
             }
 
-            MappersSimple.UpdateRestaurantFromViewModel(restaurant, restaurantViewModel);
+            MappersSimple.UpdateRestaurantFromViewModel(restaurant, restaurantEditViewModel);
 
             _restaurantRepository.Update(restaurant);
 
@@ -128,11 +129,11 @@ namespace Miam.Web.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Create(RestaurantViewModel restaurantViewModel)
+        public virtual ActionResult Create(RestaurantCreateViewModel restaurantCreateViewModel)
         {
             if (ModelState.IsValid)
             {
-                var restaurant = MappersSimple.CreateRestaurantFrom(restaurantViewModel);
+                var restaurant = MappersSimple.CreateRestaurantFrom(restaurantCreateViewModel);
                 _restaurantRepository.Add(restaurant);
                 return RedirectToAction(Views.ViewNames.Index);
             }

@@ -7,7 +7,7 @@ using Miam.Web.ViewModels.Review;
 
 namespace Miam.Web.ViewModels.Restaurant
 {
-    public class RestaurantViewModel
+    public class RestaurantCreateViewModel
     {
 
         [HiddenInput(DisplayValue = false)]
@@ -26,7 +26,6 @@ namespace Miam.Web.ViewModels.Restaurant
         public string Country { get; set; }
 
         public ContactDetailViewModel ContactDetailViewModel { get; set; }
-        public List<ReviewIndexViewModel> ReviewsViewModel { get; set; }
 
     }
 }

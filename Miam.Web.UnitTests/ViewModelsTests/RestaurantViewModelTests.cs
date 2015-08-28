@@ -13,7 +13,7 @@ namespace Miam.Web.UnitTests.ViewModelsTests
     public class RestaurantViewModelTests
     {
         private Fixture _fixture;
-        private RestaurantViewModel _RestaurantViewModel;
+        private RestaurantCreateViewModel _restaurantCreateViewModel;
         private ValidationContext _validationContext;
         private List<ValidationResult> _validationResults;
 
@@ -23,8 +23,8 @@ namespace Miam.Web.UnitTests.ViewModelsTests
             _fixture = new Fixture();
             _fixture.Customizations.Add(new VirtualMembersOmitter());
 
-            _RestaurantViewModel = _fixture.Create<RestaurantViewModel>();
-            _validationContext = new ValidationContext(_RestaurantViewModel, null, null);
+            _restaurantCreateViewModel = _fixture.Create<RestaurantCreateViewModel>();
+            _validationContext = new ValidationContext(_restaurantCreateViewModel, null, null);
             _validationResults = new List<ValidationResult>();
         }
 
@@ -32,10 +32,10 @@ namespace Miam.Web.UnitTests.ViewModelsTests
         public void restaurant_city_is_required()
         {
             // arrange
-            _RestaurantViewModel.City = "";
+            _restaurantCreateViewModel.City = "";
 
             // act
-            Validator.TryValidateObject(_RestaurantViewModel, _validationContext, _validationResults, true);
+            Validator.TryValidateObject(_restaurantCreateViewModel, _validationContext, _validationResults, true);
 
             // Assert
             Assert.IsTrue(_validationResults.Count == 1);

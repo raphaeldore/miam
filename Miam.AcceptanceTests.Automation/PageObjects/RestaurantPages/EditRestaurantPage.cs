@@ -52,21 +52,21 @@ namespace Miam.AcceptanceTests.Automation.PageObjects.RestaurantPages
 
         private string getRestaurantCountryId()
         {
-            return ObjectsTool<RestaurantViewModel>.GetPropertyName(x => x.Country);
+            return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.Country);
         }
 
         private string getRestaurantCityId()
         {
-            return ObjectsTool<RestaurantViewModel>.GetPropertyName(x => x.City);
+            return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.City);
         }
 
         private string getRestaurantNameId()
         {
-            return ObjectsTool<RestaurantViewModel>.GetPropertyName(x => x.Name);
+            return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.Name);
         }
         private string getContactDetailName()
         {
-            return ObjectsTool<RestaurantViewModel>.GetPropertyName(x => x.ContactDetailViewModel);
+            return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.ContactDetailViewModel);
         }
         private string getFaxPhoneId()
         {

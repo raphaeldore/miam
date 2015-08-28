@@ -25,7 +25,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             // Arrange   
             var restaurant = _fixture.Create<Restaurant>();
 
-            var restaurantViewModel = MappersRestaurantViewModel.Map(restaurant);
+            var restaurantViewModel = MappersRestaurantCreateViewModel.Map(restaurant);
 
             // Action
             RestaurantController.Create(restaurantViewModel);
@@ -39,7 +39,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void create_post_should_return_default_view_when_modelState_is_not_valid()
         {
             //Arrange
-            var restaurantViewModel = _fixture.Create<RestaurantViewModel>();
+            var restaurantViewModel = _fixture.Create<RestaurantCreateViewModel>();
             RestaurantController.ModelState.AddModelError("Error", "Error");
 
             //Act
@@ -53,7 +53,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void create_post_should_redirect_to_home_index_on_success()
         {
             //Arrange
-            var restaurantViewModel = _fixture.Create<RestaurantViewModel>();
+            var restaurantViewModel = _fixture.Create<RestaurantCreateViewModel>();
 
             //Act
             var result = RestaurantController.Create(restaurantViewModel) as RedirectToRouteResult;

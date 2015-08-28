@@ -1,13 +1,12 @@
-﻿using Miam.Domain.Entities;
-using Miam.Web.ViewModels.Restaurant;
+﻿using Miam.Web.ViewModels.Restaurant;
 
-namespace Miam.Web.Mappers
+namespace Miam.Web.Mappers.Restaurant
 {
-    public class RestaurantViewModelMapper : IMapToNew<Restaurant, RestaurantViewModel>
+    public class MapperRestaurantEditViewModel : IMapToNew<Domain.Entities.Restaurant, RestaurantEditViewModel>
     {
-        public RestaurantViewModel Map(Restaurant source)
+        public RestaurantEditViewModel Map(Domain.Entities.Restaurant source)
         {
-            var target = new RestaurantViewModel
+            var target = new RestaurantEditViewModel
             {
                 Id = source.Id,
                 City = source.City,
