@@ -1,13 +1,9 @@
 ﻿using System.Data.Entity.Infrastructure;
-using System.Diagnostics;
 using System.Linq;
 using Miam.DataLayer;
-using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
-using Miam.TestUtility.AutoFixture;
-using Ploeh.AutoFixture;
 
-namespace Miam.TestUtility.TestsAPI
+namespace Miam.TestUtility.DbTestsHelperAPI
 {
     public class RestaurantTestHelper : BaseTestHelper
     {
@@ -18,10 +14,9 @@ namespace Miam.TestUtility.TestsAPI
             _dbContextFactory = dbContextFactory;
         }
 
-        public void Create(Restaurant restaurant)
+        public void Add(Restaurant restaurant)
         {
             var dbContext = _dbContextFactory.Create();
-            dbContext.Restaurants.Attach(restaurant);
             dbContext.Restaurants.Add(restaurant);
             dbContext.SaveChanges();
         }

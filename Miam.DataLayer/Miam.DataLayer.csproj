@@ -77,6 +77,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -94,7 +98,6 @@
     <Compile Include="EntityFramework\EfApplicationDatabaseHelper.cs" />
     <Compile Include="IApplicationDatabaseHelper.cs" />
     <Compile Include="IEntityRepository.cs" />
-    <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="EntityFramework\MiamDbContext.cs" />
     <Compile Include="EntityFramework\EfEntityRepository.cs" />
     <Compile Include="EntityFramework\EfDropCreateIfModelChangesSeeder.cs" />
@@ -104,6 +107,7 @@
       <DependentUpon>201508280258329_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Ninject\MiamDBContextNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

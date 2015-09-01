@@ -11,6 +11,5 @@ namespace Miam.DataLayer
 
         void ClearAllTables();
 
-
     }
 }

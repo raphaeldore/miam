@@ -8,9 +8,9 @@ namespace Miam.DataLayer.EntityFramework
     {
         private readonly MiamDbContext _context;
 
-        public EfApplicationDatabaseHelper(ApplicationContext applicationContext)
+        public EfApplicationDatabaseHelper(MiamDbContext miamDbContext)
         {
-            _context = applicationContext.Context;
+            _context = miamDbContext;
         }
         
         public void DropCreateDatabaseIfModelChanges()
@@ -18,9 +18,8 @@ namespace Miam.DataLayer.EntityFramework
             SqlConnection.ClearAllPools();
 
             var initializer = new DropCreateDatabaseIfModelChanges<MiamDbContext>();
-
-            // Pour mettre des données dans la BD, utiliser 
-            //var initializer = new EfDropCreateIfModelChangesSeeder();
+            // Pour mettre des données non sensibles à la création de la BDdans la BD, utiliser 
+            //var initializer = new EfDropCreateIfModelChangesSeeder()
             Database.SetInitializer(initializer); 
             
         }
@@ -30,8 +29,7 @@ namespace Miam.DataLayer.EntityFramework
             SqlConnection.ClearAllPools();
 
             var initializer = new DropCreateDatabaseAlways<MiamDbContext>();
-
-            // Pour mettre des données dans la BD, utiliser 
+            // Pour mettre des données non sensibles à la création de la BD, utiliser 
             //var initializer = new EfDropCreateDatabaseAlwaysSeeder();
             Database.SetInitializer(initializer); 
             

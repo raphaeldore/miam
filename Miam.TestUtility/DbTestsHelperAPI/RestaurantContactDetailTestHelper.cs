@@ -3,7 +3,7 @@ using System.Linq;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 
-namespace Miam.TestUtility.TestsAPI
+namespace Miam.TestUtility.DbTestsHelperAPI
 {
     public class RestaurantContactDetailTestHelper
     {
@@ -14,7 +14,7 @@ namespace Miam.TestUtility.TestsAPI
             _dbContextFactory = dbContextFactory;
         }
 
-        public void Create(RestaurantContactDetail restaurantContactDetail)
+        public void Add(RestaurantContactDetail restaurantContactDetail)
         {
             var dbContext = _dbContextFactory.Create();
             dbContext.RestaurantContactDetails.Add(restaurantContactDetail);

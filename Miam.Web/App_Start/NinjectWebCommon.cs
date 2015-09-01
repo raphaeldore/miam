@@ -67,8 +67,8 @@ namespace Miam.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            // Gestion du context. Utlisé par les repositories
-            kernel.Bind<ApplicationContext>().To<ApplicationContext>().InRequestScope();
+            //MiamDbContext
+            kernel.Load(new MiamDBContextNinjectModule());
 
             //repositories
             kernel.Bind<IEntityRepository<Restaurant>>().To<EfEntityRepository<Restaurant>>().InRequestScope();

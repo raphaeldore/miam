@@ -2,9 +2,8 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
-using Ploeh.AutoFixture;
 
-namespace Miam.TestUtility.TestsAPI
+namespace Miam.TestUtility.DbTestsHelperAPI
 {
     public class WriterTestHelper : BaseTestHelper
     {
@@ -13,13 +12,11 @@ namespace Miam.TestUtility.TestsAPI
         public WriterTestHelper(IDbContextFactory<MiamDbContext> dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
-
         }
 
-        public void Create(Writer writer)
+        public void Add(Writer writer)
         {
             var dbContext = _dbContextFactory.Create();
-            dbContext.Writers.Attach(writer);
             dbContext.Writers.Add(writer);
             dbContext.SaveChanges();
         }

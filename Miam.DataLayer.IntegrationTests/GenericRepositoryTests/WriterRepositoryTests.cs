@@ -17,7 +17,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         [TestInitialize]
         public void TestInitialize()
         {
-            _writerRepository= new EfEntityRepository<Writer>(new ApplicationContext());
+            _writerRepository= new EfEntityRepository<Writer>(new MiamDbContext());
 
             _writer = Fixture.Create<Writer>();
             _restaurant = Fixture.Create<Restaurant>();
@@ -27,13 +27,11 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         public void remove_writer_using_generic_repository_should_cascade_delete_reviews()
         {
             //Arrange
-            DbTestHelper.Writer.Create(_writer);
-            DbTestHelper.Restaurants.Create(_restaurant);
             var review = Fixture.Build<Review>()
-                                 .With(x => x.WriterId, _writer.Id)
-                                 .With(x => x.RestaurantId, _restaurant.Id)
+                                 .With(x => x.Writer, _writer)
+                                 .With(x => x.Restaurant, _restaurant)
                                  .Create();
-            DbTestHelper.Reviews.Create(review);   
+            DbTestHelper.Reviews.Add(review);   
 
             //Action
             var writerToDelete = _writerRepository.GetById(_writer.Id);

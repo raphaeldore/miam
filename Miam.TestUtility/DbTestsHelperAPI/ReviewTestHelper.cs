@@ -1,12 +1,9 @@
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Runtime.InteropServices;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
-using Miam.TestUtility.AutoFixture;
-using Ploeh.AutoFixture;
 
-namespace Miam.TestUtility.TestsAPI
+namespace Miam.TestUtility.DbTestsHelperAPI
 {
     public class ReviewTestHelper : BaseTestHelper
     {
@@ -17,7 +14,7 @@ namespace Miam.TestUtility.TestsAPI
             _dbContextFactory = dbContextFactory;
         }
 
-        public void Create(Review review)
+        public void Add(Review review)
         {
             var dbContext = _dbContextFactory.Create();
             dbContext.Reviews.Add(review);

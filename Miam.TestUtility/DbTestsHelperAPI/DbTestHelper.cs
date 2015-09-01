@@ -1,25 +1,25 @@
 ﻿using System.Data.Entity.Infrastructure;
 using Miam.DataLayer;
 
-namespace Miam.TestUtility.TestsAPI
+namespace Miam.TestUtility.DbTestsHelperAPI
 {
-    public class TestHelperApi 
+    public class DbTestHelper 
     {
         private IDbContextFactory<MiamDbContext> _dbContextFactory;
 
-        public TestHelperApi(IDbContextFactory<MiamDbContext> dbContextFactory)
+        public DbTestHelper(IDbContextFactory<MiamDbContext> dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
         }
-        public DatabaseHelper DataBase
+        public DatabaseDataHelper DatabaseDataHelper
         {
-            get { return new DatabaseHelper(new ApplicationContext()); }
+            get { return new DatabaseDataHelper(_dbContextFactory); }
         }
         public RestaurantTestHelper Restaurants
         {
             get { return new RestaurantTestHelper(_dbContextFactory); }
         }
-        public WriterTestHelper Writer
+        public WriterTestHelper Writers
         {
             get { return new WriterTestHelper(_dbContextFactory); }
         }

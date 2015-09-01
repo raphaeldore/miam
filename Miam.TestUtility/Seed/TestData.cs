@@ -16,28 +16,26 @@ namespace Miam.TestUtility.Seed
                 {
                     Name = "Le chameau pouilleux",
                     City = "Lyon",
-                    Country = "France"
+                    Country = "France",
+                    Tags = new List<Tag>()
+                    {
+                        new Tag() {Title = "Urbain"},
+                        new Tag() {Title = "Fast food"}
+                    },
+                    RestaurantContactDetail =  new RestaurantContactDetail()
+                    {
+                        WebPage = "www.chameaupouilleux.ca"
+                    }
                 };
 
                 return restaurant;
             }
         }
-        public static RestaurantContactDetail RestaurantContactDetail1
-        {
-            get
-            {
-                var restaurantContactDetail = new RestaurantContactDetail()
-                {
-                    WebPage = "www.chameaupouilleux.ca"
-                };
-
-                return restaurantContactDetail;
-            }
-        }
+        
         #endregion
 
         #region Resto 2 - Le cochon chevelu
-        
+
         static public Restaurant Restaurant2
         {
             get
@@ -46,25 +44,20 @@ namespace Miam.TestUtility.Seed
                 {
                     Name = "Le cochon chevelu",
                     City = "Montréal",
-                    Country = "Canada"
+                    Country = "Canada",
+                    Tags = new List<Tag>()
+                    {
+                        new Tag() {Title = "Fine cuisine"}
+                    },
+                    RestaurantContactDetail = new RestaurantContactDetail()
+                    {
+                        WebPage = "www.lecochonchevelu.com"
+                    }
                 };
-
                 return restaurant;
             }
         }
 
-        public static RestaurantContactDetail RestaurantContactDetail2
-        {
-            get
-            {
-                var restaurantContactDetail = new RestaurantContactDetail()
-                {
-                    WebPage = "www.lecochonchevelu.com"
-                };
-
-                return restaurantContactDetail;
-            }
-        }
         #endregion
 
         #region Resto 3 - Bambine et Bounette
@@ -92,12 +85,11 @@ namespace Miam.TestUtility.Seed
         #endregion
 
         #region Writers
-        
+
         static public Writer Writer1
         {
             get
             {
-
                 var writer = new Writer()
 
                          {
@@ -105,11 +97,11 @@ namespace Miam.TestUtility.Seed
                              {
                                  new UserRole() {RoleName = RoleName.Writer}
                              },
-                             Password= "irma",
+                             Password = "irma",
                              Name = "Irma Larose",
                              Email = "irma@Larose.fr",
                          };
-                
+
                 return writer;
             }
         }
@@ -125,7 +117,7 @@ namespace Miam.TestUtility.Seed
                              {
                                  new UserRole() {RoleName = RoleName.Writer}
                              },
-                    Password = "lucien", 
+                    Password = "lucien",
                     Name = "Lucien Lafleur",
                     Email = "lucien@lafleur.com",
 
@@ -135,37 +127,7 @@ namespace Miam.TestUtility.Seed
             }
         }
         #endregion
-
-        #region tags
-        public static Tag Tag1
-        {
-            get
-            {
-
-                var tag = new Tag()
-                {
-                    Title = "Chinois"
-                };
-
-                return tag;
-            }
-        }
-
-        public static Tag Tag2
-        {
-            get
-            {
-
-                var tag = new Tag()
-                {
-                    Title = "Urbain"
-                };
-
-                return tag;
-            }
-        }
-        #endregion
-
+        
         #region reviews
         public static Review Review1
         {
@@ -211,7 +173,7 @@ namespace Miam.TestUtility.Seed
         #endregion
 
         #region Admin (writer with roles admin + writer)
-        static public ApplicationUser ApplicationUserAdmin
+        public static ApplicationUser ApplicationUserAdmin
         {
             get
             {
@@ -233,11 +195,12 @@ namespace Miam.TestUtility.Seed
         }
         #endregion
 
-       public static string WordFileName
-       {
-           //Le fichier se trouve dans la dossier TestFiles du projet Miam.Web.AcceptanceTests
-           get { return "exemple.docx"; }
-       }
-        
+        public static string WordFileName
+        {
+            //Le fichier se trouve dans la dossier TestFiles du projet Miam.Web.AcceptanceTests
+            get { return "exemple.docx"; }
+        }
+
+        public static UserRole UserRoles { get; set; }
     }
 }

@@ -94,20 +94,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestsHelperAPI\TagTestHelper.cs" />
-    <Compile Include="TestsHelperAPI\RestaurantContactDetailTestHelper.cs" />
-    <Compile Include="TestsHelperAPI\TestHelperApi.cs" />
-    <Compile Include="TestsHelperAPI\BaseTestHelper.cs" />
-    <Compile Include="TestsHelperAPI\DatabaseHelper.cs" />
-    <Compile Include="TestsHelperAPI\ReviewTestHelper.cs" />
-    <Compile Include="TestsHelperAPI\WriterTestHelper.cs" />
-    <Compile Include="TestsHelperAPI\RestaurantTestHelper.cs" />
+    <Compile Include="DbTestsHelperAPI\TagTestHelper.cs" />
+    <Compile Include="DbTestsHelperAPI\RestaurantContactDetailTestHelper.cs" />
+    <Compile Include="DbTestsHelperAPI\DbTestHelper.cs" />
+    <Compile Include="DbTestsHelperAPI\BaseTestHelper.cs" />
+    <Compile Include="DbTestsHelperAPI\DatabaseDataHelper.cs" />
+    <Compile Include="DbTestsHelperAPI\ReviewTestHelper.cs" />
+    <Compile Include="DbTestsHelperAPI\WriterTestHelper.cs" />
+    <Compile Include="DbTestsHelperAPI\RestaurantTestHelper.cs" />
     <Compile Include="AutoFixture\CollectionPropertyOmitter.cs" />
     <Compile Include="AutoFixture\VirtualMembersOmitter.cs" />
     <Compile Include="Seed\TestData.cs" />
-    <Compile Include="Seed\SeedDataBase.cs" />
+    <Compile Include="Seed\TestDataSeederHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestsHelperAPI\UserTestHelper.cs" />
+    <Compile Include="DbTestsHelperAPI\UserTestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Miam.DataLayer\Miam.DataLayer.csproj">

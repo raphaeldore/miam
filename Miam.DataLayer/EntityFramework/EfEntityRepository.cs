@@ -9,17 +9,11 @@ namespace Miam.DataLayer.EntityFramework
     {
         private readonly DbContext _context;
 
-        public EfEntityRepository(ApplicationContext applicationContext)
+        public EfEntityRepository(MiamDbContext dbContext)
         {
-
-            _context = applicationContext.Context;
+            _context = dbContext;
         }
-
-        //public EfEntityRepository()
-        //{
-        //    //_context = new MiamDbContext();
-        //}
-
+        
         public IQueryable<T> GetAll()
         {
             return _context.Set<T>().AsQueryable();

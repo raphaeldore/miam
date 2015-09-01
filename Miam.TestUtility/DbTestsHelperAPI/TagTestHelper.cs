@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
+﻿using System.Data.Entity.Infrastructure;
 using System.Linq;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 
-namespace Miam.TestUtility.TestsAPI
+namespace Miam.TestUtility.DbTestsHelperAPI
 {
     public class TagTestHelper
     {
@@ -15,13 +14,10 @@ namespace Miam.TestUtility.TestsAPI
             _dbContextFactory = dbContextFactory;
         }
 
-        public void Create(IEnumerable<Tag> restaurantTags)
+        public void Add(Tag tag)
         {
             var dbContext = _dbContextFactory.Create();
-            foreach (var tag in restaurantTags)
-            {
-                dbContext.RestaurantTags.Add(tag);
-            }
+            dbContext.RestaurantTags.Add(tag);
             dbContext.SaveChanges();
         }
 
@@ -29,6 +25,12 @@ namespace Miam.TestUtility.TestsAPI
         {
             var dbContext = _dbContextFactory.Create();
             return dbContext.RestaurantTags.Count();
+        }
+
+        public Tag GetFirst()
+        {
+            var dbContext = _dbContextFactory.Create();
+            return dbContext.RestaurantTags.First();
         }
     }
 }

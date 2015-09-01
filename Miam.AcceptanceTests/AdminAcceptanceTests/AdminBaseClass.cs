@@ -15,7 +15,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         protected void un_administrateur_authentifé()
         {
             _userAdmin = TestData.ApplicationUserAdmin;
-            _testHelperApi.User.CreateUser(_userAdmin);
+            DbTestHelper.User.Add(_userAdmin);
 
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
@@ -25,7 +25,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         protected void un_restaurant()
         {
             _restaurant1 = TestData.Restaurant1;
-            _testHelperApi.Restaurants.Create(_restaurant1);
+            DbTestHelper.Restaurants.Add(_restaurant1);
         }
 
         protected void AssertRestaurantsShouldBeEquivalent(Restaurant expectedRestaurant, Restaurant obtainedRestaurant)
