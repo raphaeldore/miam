@@ -1,7 +1,8 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Mvc;
-using AutoMapper;
 using Miam.DataLayer;
+using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
 using Miam.Web.Services;
@@ -11,28 +12,27 @@ namespace Miam.Web.Controllers
 {
     public partial class ReviewController : Controller
     {
-        private readonly IEntityRepository<Review> _reviewRepository;
-        private readonly IEntityRepository<Restaurant> _restaurantRepository;
         private readonly IHttpContextService _httpContextService;
+        private readonly IEntityRepository<Restaurant> _restaurantRepository;
+        private readonly IEntityRepository<Writer> _writerRepository;
 
-        public ReviewController(IEntityRepository<Review> reviewRepository,
-                                IEntityRepository<Restaurant> restaurantRepository,
+        public ReviewController(IEntityRepository<Restaurant> restaurantRepository,
+                                IEntityRepository<Writer> writerRepository,
                                 IHttpContextService httpContextService)
         {
-
-            if (reviewRepository == null) throw new NullReferenceException();
             if (restaurantRepository == null) throw new NullReferenceException();
+            if (writerRepository == null) throw new NullReferenceException();
             if (httpContextService == null) throw new NullReferenceException();
 
-            _reviewRepository = reviewRepository;
             _restaurantRepository = restaurantRepository;
+            _writerRepository = writerRepository;
             _httpContextService = httpContextService;
         }
 
         [Authorize(Roles = RoleName.Writer)]
         public virtual ActionResult Create()
         {
-            var model = new Create();
+            var model = new ReviewCreateViewModel();
             PopulateRestaurantSelectList(model);
 
             return View(model);
@@ -40,23 +40,35 @@ namespace Miam.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = RoleName.Writer)]
-        public virtual ActionResult Create(Create create)
+        public virtual ActionResult Create(ReviewCreateViewModel reviewCreateViewModel)
         {
+
             if (ModelState.IsValid)
             {
-                var review = Mapper.Map<Review>(create);
-                review.WriterId = _httpContextService.GetUserId();
+                var writerId = _httpContextService.GetUserId();
+                var writer = _writerRepository.GetById(writerId);
 
-                _reviewRepository.Add(review);
+                //Todo: faire la map
+                var review = new Review()
+                {
+                    WriterId = writer.Id,
+                    RestaurantId = reviewCreateViewModel.RestaurantId,
+                    Body = reviewCreateViewModel.Body,
+                    Rating = reviewCreateViewModel.Rating
+                };
+
+                writer.Reviews.Add(review);
+                _writerRepository.Update(writer);
 
                 return RedirectToAction(MVC.Home.Index());
             }
 
-            PopulateRestaurantSelectList(create);
-            return View(create);
+            PopulateRestaurantSelectList(reviewCreateViewModel);
+            return View(reviewCreateViewModel);
         }
 
-        private void PopulateRestaurantSelectList(Create model)
+        
+        private void PopulateRestaurantSelectList(ReviewCreateViewModel model)
         {
             model.Restaurants = new SelectList(_restaurantRepository.GetAll(), "Id", "Name");
         }

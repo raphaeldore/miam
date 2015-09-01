@@ -1,4 +1,4 @@
-﻿@model Miam.Web.ViewModels.Restaurant.Edit
+﻿@model Miam.Web.ViewModels.Restaurant.RestaurantEditViewModel
 
 <h2 id="edit-restaurant-page">Modifier un restaurant</h2>
 <div class="row">
@@ -21,7 +21,7 @@
                         <div class="col-md-6">
                             <h3>Contacts</h3>
 
-                            @Html.EditorFor(model => model.RestaurantContactDetail)
+                            @Html.EditorFor(model => model.ContactDetailViewModel)
 
                         </div>
 
@@ -38,7 +38,7 @@
                 <h3 class="panel-title">Critiques</h3>
             </div>
             <div class="panel-body">
-                @foreach (var review in Model.Reviews)
+                @foreach (var review in Model.ReviewsViewModel)
                 {
                     <div>
                         @review.Body (<i>@review.WriterName</i>) @review.Rating / 5

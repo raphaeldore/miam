@@ -1,8 +1,12 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using AutoMapper;
 using FluentAssertions;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
+using Miam.TestUtility;
+using Miam.TestUtility.AutoFixture;
 using Miam.Web.Controllers;
 using Miam.Web.Services;
 using Miam.Web.ViewModels.Review;
@@ -13,20 +17,26 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.ReviewTests
 {
     [TestClass]
-    public class ReviewControllerTests : AllControllersBaseClassTests
+    public class ReviewControllerTests
     {
         private ReviewController _reviewController;
-        private IEntityRepository<Review> _reviewRepository;
         private IEntityRepository<Restaurant> _restaurantRepository;
         private IHttpContextService _httpContextService;
+        private IEntityRepository<Writer> _writerRepository;
+        private Fixture _fixture;
 
         [TestInitialize]
         public void ReviewControllerTestInit()
         {
-            _reviewRepository = Substitute.For<IEntityRepository<Review>>();
+            _fixture = new Fixture();
+            _fixture.Customizations.Add(new VirtualMembersOmitter());
+
+            _writerRepository = Substitute.For<IEntityRepository<Writer>>();
             _restaurantRepository = Substitute.For<IEntityRepository<Restaurant>>();
             _httpContextService = Substitute.For<IHttpContextService>();
-            _reviewController = new ReviewController(_reviewRepository, _restaurantRepository, _httpContextService);
+            _reviewController = new ReviewController(_restaurantRepository,
+                                                     _writerRepository,
+                                                     _httpContextService);
         }
 
         [TestMethod]
@@ -41,22 +51,30 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         public void create_post_should_add_writer_review_to_repository()
         {
             // Arrange   
-            var review = _fixture.Create<Review>();
-            var reviewViewModel = Mapper.Map<Create>(review);
-            _httpContextService.GetUserId().Returns(review.WriterId);
+            var writer = _fixture.Create<Writer>();
+            var restaurant = _fixture.Create<Restaurant>();
+            var review = _fixture.Build<Review>()
+                                 .With(x => x.WriterId, writer.Id)
+                                 .With(x => x.RestaurantId, restaurant.Id)
+                                 .Create();
+
+            var reviewViewModel = Mapper.Map<ReviewCreateViewModel>(review);
+
+            _writerRepository.GetById(Arg.Any<int>()).Returns(writer);
 
             // Action
             _reviewController.Create(reviewViewModel);
 
             // Assert
             ReviewRepositoryAddMethodShouldHaveReceived(review);
+           
         }
 
         [TestMethod]
         public void create_post_should_return_view_with_errors_when_modelState_is_not_valid()
         {
             //Arrange
-            var reviewCreateViewModel = _fixture.Build<Create>()
+            var reviewCreateViewModel = _fixture.Build<ReviewCreateViewModel>()
                                                 .Without(x => x.Restaurants)
                                                 .Create();
             _reviewController.ModelState.AddModelError("Error", "Error");
@@ -73,11 +91,14 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         public void create_post_should_redirect_to_home_index_on_success()
         {
             //Arrange
-            var reviewCreateViewModel = _fixture.Build<Create>()
+            var writer = _fixture.Create<Writer>();
+            var reviewCreateViewModel = _fixture.Build<ReviewCreateViewModel>()
                                                 .Without(x => x.Restaurants)
                                                 .Create();
 
-            //Act
+            _writerRepository.GetById(Arg.Any<int>()).Returns(writer);
+
+            //Action
             var result = _reviewController.Create(reviewCreateViewModel) as RedirectToRouteResult;
             var action = result.RouteValues["Action"];
 
@@ -87,10 +108,9 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         }
         private void ReviewRepositoryAddMethodShouldHaveReceived(Review review)
         {
-            _reviewRepository.Received().Add(Arg.Is<Review>(x => x.WriterId == review.WriterId));
-            _reviewRepository.Received().Add(Arg.Is<Review>(x => x.RestaurantId == review.RestaurantId));
-            _reviewRepository.Received().Add(Arg.Is<Review>(x => x.Rating == review.Rating));
-            _reviewRepository.Received().Add(Arg.Is<Review>(x => x.Body == review.Body));
+            _writerRepository.Received().Update(Arg.Is<Writer>(x => x.Reviews.First().Body == review.Body));
+            _writerRepository.Received().Update(Arg.Is<Writer>(x => x.Reviews.First().Writer == review.Writer));
+            _writerRepository.Received().Update(Arg.Is<Writer>(x => x.Reviews.First().Restaurant == review.Restaurant));
         }
 
 

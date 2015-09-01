@@ -12,6 +12,7 @@ namespace Miam.Domain.Entities
 
         // Foreign key
         public int RestaurantId { get; set; }
+
         public int WriterId { get; set; }
 
         //Navigation properties

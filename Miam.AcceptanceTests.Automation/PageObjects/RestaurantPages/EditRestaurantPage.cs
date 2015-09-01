@@ -1,4 +1,5 @@
-﻿using Miam.Domain.Entities;
+﻿using Miam.AcceptanceTests.Automation.HtmlIdTag;
+using Miam.Domain.Entities;
 using TestStack.Seleno.PageObjects;
 using TestStack.Seleno.PageObjects.Locators;
 
@@ -25,26 +26,26 @@ namespace Miam.AcceptanceTests.Automation.PageObjects.RestaurantPages
 
         private void FillAllRestaurantFieldsWith(Restaurant newRestaurant)
         {
-            Find.Element(By.Id("Name")).SendKeys(newRestaurant.Name);
-            Find.Element(By.Id("City")).SendKeys(newRestaurant.City);
-            Find.Element(By.Id("Country")).SendKeys(newRestaurant.Country);
-            Find.Element(By.Id("RestaurantContactDetail_FaxPhone")).SendKeys(newRestaurant.RestaurantContactDetail.FaxPhone);
-            Find.Element(By.Id("RestaurantContactDetail_OfficePhone")).SendKeys(newRestaurant.RestaurantContactDetail.OfficePhone);
-            Find.Element(By.Id("RestaurantContactDetail_TwitterAlias")).SendKeys(newRestaurant.RestaurantContactDetail.TwitterAlias);
-            Find.Element(By.Id("RestaurantContactDetail_Facebook")).SendKeys(newRestaurant.RestaurantContactDetail.Facebook);
-            Find.Element(By.Id("RestaurantContactDetail_WebPage")).SendKeys(newRestaurant.RestaurantContactDetail.WebPage);
+            Find.Element(By.Id(RestaurantIDs.Name)).SendKeys(newRestaurant.Name);
+            Find.Element(By.Id(RestaurantIDs.City)).SendKeys(newRestaurant.City);
+            Find.Element(By.Id(RestaurantIDs.Country)).SendKeys(newRestaurant.Country);
+            Find.Element(By.Id(RestaurantIDs.FaxPhone)).SendKeys(newRestaurant.RestaurantContactDetail.FaxPhone);
+            Find.Element(By.Id(RestaurantIDs.OfficePhone)).SendKeys(newRestaurant.RestaurantContactDetail.OfficePhone);
+            Find.Element(By.Id(RestaurantIDs.Twitter)).SendKeys(newRestaurant.RestaurantContactDetail.TwitterAlias);
+            Find.Element(By.Id(RestaurantIDs.FaceBook)).SendKeys(newRestaurant.RestaurantContactDetail.Facebook);
+            Find.Element(By.Id(RestaurantIDs.WebPage)).SendKeys(newRestaurant.RestaurantContactDetail.WebPage);
         }
 
         private void ClearAllRestaurantFields()
         {
-            Find.Element(By.Id("Name")).Clear();
-            Find.Element(By.Id("City")).Clear();
-            Find.Element(By.Id("Country")).Clear();
-            Find.Element(By.Id("RestaurantContactDetail_FaxPhone")).Clear();
-            Find.Element(By.Id("RestaurantContactDetail_OfficePhone")).Clear();
-            Find.Element(By.Id("RestaurantContactDetail_TwitterAlias")).Clear();
-            Find.Element(By.Id("RestaurantContactDetail_Facebook")).Clear();
-            Find.Element(By.Id("RestaurantContactDetail_WebPage")).Clear();
+            Find.Element(By.Id(RestaurantIDs.Name)).Clear();
+            Find.Element(By.Id(RestaurantIDs.City)).Clear();
+            Find.Element(By.Id(RestaurantIDs.Country)).Clear();
+            Find.Element(By.Id(RestaurantIDs.FaxPhone)).Clear();
+            Find.Element(By.Id(RestaurantIDs.OfficePhone)).Clear();
+            Find.Element(By.Id(RestaurantIDs.Twitter)).Clear();
+            Find.Element(By.Id(RestaurantIDs.FaceBook)).Clear();
+            Find.Element(By.Id(RestaurantIDs.WebPage)).Clear();
         }
     }
 }

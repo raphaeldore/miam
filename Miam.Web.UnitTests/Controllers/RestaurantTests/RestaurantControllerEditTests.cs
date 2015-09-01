@@ -2,7 +2,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using FluentAssertions;
 using Miam.Domain.Entities;
-
+using Miam.Web.ViewModels.Restaurant;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Ploeh.AutoFixture;
@@ -10,22 +10,22 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 {
     [TestClass]
-    public class RestaurantControllerEditTests : RestaurantControllerBaseClassTests
+    public class RestaurantControllerEditTests : BaseRestaurantControllerTests
     {
         [TestMethod]
         public void edit_should_return_view_with_restaurantViewModel_when_restaurantId_is_valid()
         {
             //Arrange 
             var restaurant = _fixture.Create<Restaurant>();
-            _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
-            var viewModelExpected = Mapper.Map<ViewModels.Restaurant.Edit>(restaurant);
+            RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
+            var viewModelExpected = Mapper.Map<RestaurantEditViewModel>(restaurant);
 
             //Action
-            var viewResult = _restaurantController.Edit(restaurant.Id) as ViewResult;
-            var viewModelObtained = viewResult.ViewData.Model as ViewModels.Restaurant.Edit;
+            var viewResult = RestaurantController.Edit(restaurant.Id) as ViewResult;
+            var viewModelObtained = viewResult.ViewData.Model as RestaurantEditViewModel;
 
             //Assert 
-            viewModelObtained.ShouldBeEquivalentTo(viewModelExpected); 
+            viewModelObtained.ShouldBeEquivalentTo(viewModelExpected);
         }
 
         [TestMethod]
@@ -34,14 +34,14 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
             //Arrange 
 
             //Act
-            var result = _restaurantController.Edit(999999999);
-            
+            var result = RestaurantController.Edit(999999999);
+
             //Assert
             result.Should().BeOfType<HttpNotFoundResult>();
-            
+
             // Même assertion, mais sans fluent assertion
             // Assert.IsInstanceOfType(result, typeof(HttpNotFoundResult)); 
-            
+
         }
 
 
@@ -50,14 +50,14 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         {
             //Arrange
             var restaurant = _fixture.Create<Restaurant>();
-            _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
-            var restaurantViewModel = Mapper.Map<ViewModels.Restaurant.Edit>(restaurant);
+            RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
+            var restaurantViewModel = Mapper.Map<RestaurantEditViewModel>(restaurant);
 
             //Action
-            var actionResult = _restaurantController.Edit(restaurantViewModel);
+            var actionResult = RestaurantController.Edit(restaurantViewModel);
 
             // Assert
-            _restaurantRepository.Received().Update(Arg.Is<Restaurant>(x => x.Id == restaurant.Id));
+            RestaurantRepository.Received().Update(Arg.Is<Restaurant>(x => x.Id == restaurant.Id));
 
         }
 
@@ -66,11 +66,11 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         {
             //Arrange
             var restaurant = _fixture.Create<Restaurant>();
-            _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
-            var restaurantEditPageViewModel = Mapper.Map<Restaurant, ViewModels.Restaurant.Edit>(restaurant);
+            RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
+            var restaurantEditPageViewModel = Mapper.Map<RestaurantEditViewModel>(restaurant);
 
             //Act
-            var routeResult = _restaurantController.Edit(restaurantEditPageViewModel) as RedirectToRouteResult;
+            var routeResult = RestaurantController.Edit(restaurantEditPageViewModel) as RedirectToRouteResult;
             var routeAction = routeResult.RouteValues["Action"];
 
             //Assert
@@ -83,28 +83,28 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         {
             //Arrange
             var restaurant = _fixture.Create<Restaurant>();
-            var restaurantEditPageViewModel = _fixture.Build<ViewModels.Restaurant.Edit>()
-                                                      .With(x=>x.Id, restaurant.Id)
+            var restaurantViewModel = _fixture.Build<RestaurantEditViewModel>()
+                                                      .With(x => x.Id, restaurant.Id)
                                                       .Create();
-            _restaurantRepository.GetById(restaurant.Id).Returns(restaurant);
-            _restaurantController.ModelState.AddModelError("Error", "Error");
+            RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
+            RestaurantController.ModelState.AddModelError("Error", "Error");
 
             //Act
-            var result = _restaurantController.Edit(restaurantEditPageViewModel) as ViewResult;
+            var result = RestaurantController.Edit(restaurantViewModel) as ViewResult;
 
             //Assert
             Assert.AreEqual(result.ViewName, "");
-            
+
         }
         [TestMethod]
         public void edit_post_should_return_http_not_found_when_restaurantID_is_not_valid()
         {
             //Arrange 
-            var restaurant = _fixture.Create<ViewModels.Restaurant.Edit>();
-            _restaurantRepository.GetById(Arg.Any<int>()).Returns(a => null);
+            var restaurantViewModel = _fixture.Create<RestaurantEditViewModel>();
+            RestaurantRepository.GetById(Arg.Any<int>()).Returns(a => null);
 
             //Act
-            var result = _restaurantController.Edit(restaurant);
+            var result = RestaurantController.Edit(restaurantViewModel);
 
             //Assert
             result.Should().BeOfType<HttpNotFoundResult>();

@@ -1,4 +1,6 @@
-﻿namespace Miam.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Miam.Domain.Entities
 {
     public class UserRole : Entity
     {
@@ -9,7 +11,8 @@
         public int ApplicationUserId { get; set; }
 
         //Navigation properties
-        public ApplicationUser ApplicationUsers { get; set; }
+        [Required]
+        public MiamUser MiamUsers { get; set; }
 
     }
 }

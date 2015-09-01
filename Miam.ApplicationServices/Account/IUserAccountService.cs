@@ -5,7 +5,7 @@ namespace Miam.ApplicationsServices.Account
 {
     public interface IUserAccountService
     {
-        MayBe<ApplicationUser> ValidateUser(string email, string password);
+        MayBe<MiamUser> ValidateUser(string email, string password);
 
         string HashPassword(string password);
 

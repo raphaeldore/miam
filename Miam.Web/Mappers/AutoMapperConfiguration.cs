@@ -8,8 +8,13 @@ namespace Miam.Web.Mappers
         {
             Mapper.Initialize(x =>
                 {
-                    x.AddProfile<EntityToViewModelMappingProfile>();
-                    x.AddProfile<ViewModelToEntityMappingProfile>();
+                    x.AddProfile<MappersContactDetailsToEntity>();
+                    x.AddProfile<MappersContactDetailsToViewModel>();
+                    x.AddProfile<MappersHomeToViewModel>();
+                    x.AddProfile<MappersRestaurantToEntity>();
+                    x.AddProfile<MappersRestaurantToViewModel>();
+                    x.AddProfile<MappersReviewToEntity>();
+                    x.AddProfile<MappersReviewToViewModel>();
                 });
             Mapper.AssertConfigurationIsValid();
         }

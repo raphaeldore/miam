@@ -1,4 +1,6 @@
-﻿namespace Miam.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Miam.Domain.Entities
 {
     public class RestaurantContactDetail       
     {

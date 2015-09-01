@@ -2,7 +2,7 @@
 
 namespace Miam.Domain.Entities
 {
-    public class Writer : ApplicationUser
+    public class Writer : MiamUser
     {
         //Navigation properties
         public virtual ICollection<Review> Reviews { get; set; }

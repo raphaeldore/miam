@@ -7,7 +7,7 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers
 {
 
-    public class AllControllersBaseClassTests : TestUtilities
+    public class AllControllersBaseClassTests
     {
     
         [TestInitialize]

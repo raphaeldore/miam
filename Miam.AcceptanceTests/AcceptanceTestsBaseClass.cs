@@ -1,6 +1,8 @@
-﻿using Miam.AcceptanceTests.Automation.AcceptanceTestApi;
-using Miam.AcceptanceTests.Automation.PageObjects;
+﻿using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
+using Miam.DataLayer;
+using Miam.TestUtility;
+using Miam.TestUtility.DbTestsHelperAPI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
@@ -11,20 +13,15 @@ namespace Miam.AcceptanceTests
     [DeploymentItem("Miam.ConnectionStrings.Test.config")]
     public class AcceptanceTestsBaseClass
     {
+        protected DbTestHelper DbTestHelper;
 
-        protected UserAcceptanceTestsApi _userAcceptanceTestApi;
-        protected RestaurantAcceptanceTestApi _restaurantAcceptanceTestApi;
-        protected DatabaseHelperAcceptanceTestApi _databaseHelperAcceptanceTestApi;
-      
 
         [TestInitialize]
-        public void initialize()
+        public void Initialize()
         {
-            _userAcceptanceTestApi = new UserAcceptanceTestsApi();
-            _restaurantAcceptanceTestApi = new RestaurantAcceptanceTestApi();
+            DbTestHelper = new DbTestHelper(new DbContextFactory());
+            DbTestHelper.DatabaseDataHelper.ClearDataBaseTables();
 
-            _databaseHelperAcceptanceTestApi = new DatabaseHelperAcceptanceTestApi();
-            _databaseHelperAcceptanceTestApi.ClearDataBaseTables();
         }
 
         [TestCleanup]

@@ -1,6 +1,6 @@
 ﻿using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
-using Miam.TestUtility.Database;
+using Miam.TestUtility.Seed;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
@@ -18,7 +18,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         public void editer_un_restaurant()
         {
             this.Given(x => un_administrateur_authentifé())
-                .Given(x => un_restaurant_existe_dans_le_système())
+                .Given(x => un_restaurant())
                 .When(x => l_administrateur_edit_un_restaurant())
                 .Then(x => le_restaurant_est_mis_à_jour())
                 .BDDfy();
@@ -34,7 +34,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 
         private void le_restaurant_est_mis_à_jour()
         {
-            var restaurant = _restaurantAcceptanceTestApi.GetFirstRestaurant();
+            var restaurant = DbTestHelper.Restaurants.GetFirst();
             AssertRestaurantsShouldBeEquivalent(TestData.Restaurant3, restaurant);
             AssertContactDetailsShouldBeEquivalent(TestData.Restaurant3.RestaurantContactDetail, restaurant.RestaurantContactDetail);
         }

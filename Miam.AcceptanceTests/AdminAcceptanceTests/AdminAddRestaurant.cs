@@ -1,6 +1,6 @@
 ﻿using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
-using Miam.TestUtility.Database;
+using Miam.TestUtility.Seed;
 using Miam.Web.AcceptanceTests.AdminAcceptanceTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
@@ -34,7 +34,7 @@ namespace Miam.AcceptanceTests.AdminAcceptanceTests
 
         private void le_restaurant_est_ajouté()
         {
-            var restaurant = _restaurantAcceptanceTestApi.GetFirstRestaurant();
+            var restaurant = DbTestHelper.Restaurants.GetFirst();
             AssertRestaurantsShouldBeEquivalent(TestData.Restaurant2, restaurant);
         }
     }

@@ -1,7 +1,7 @@
 ﻿using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
 using Miam.Domain.Entities;
-using Miam.TestUtility.Database;
+using Miam.TestUtility.Seed;
 using Miam.Web.AcceptanceTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
@@ -31,7 +31,7 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
         private void un_chroniqueur_authentifé()
         {
             _writer = TestData.Writer1;
-            _userAcceptanceTestApi.createUser(_writer);
+            DbTestHelper.Users.Add(_writer);
 
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu

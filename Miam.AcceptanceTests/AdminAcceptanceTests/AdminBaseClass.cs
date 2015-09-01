@@ -3,29 +3,29 @@ using Miam.AcceptanceTests;
 using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
 using Miam.Domain.Entities;
-using Miam.TestUtility.Database;
+using Miam.TestUtility.Seed;
 
 namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 {
     public class AdminBaseClass : AcceptanceTestsBaseClass
     {
-        protected ApplicationUser _userAdmin;
+        protected MiamUser _userAdmin;
         protected Restaurant _restaurant1;
 
         protected void un_administrateur_authentifé()
         {
-            _userAdmin = TestData.ApplicationUserAdmin;
-            _userAcceptanceTestApi.createUser(_userAdmin);
+            _userAdmin = TestData.MiamUserAdmin;
+            DbTestHelper.Users.Add(_userAdmin);
 
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
                 .GotoLoginPage()
                 .LoginAs(_userAdmin.Email, _userAdmin.Password);
         }
-        protected void un_restaurant_existe_dans_le_système()
+        protected void un_restaurant()
         {
             _restaurant1 = TestData.Restaurant1;
-            _restaurantAcceptanceTestApi.CreateRestaurant(_restaurant1);
+            DbTestHelper.Restaurants.Add(_restaurant1);
         }
 
         protected void AssertRestaurantsShouldBeEquivalent(Restaurant expectedRestaurant, Restaurant obtainedRestaurant)
@@ -35,13 +35,13 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
             expectedRestaurant.Country.ShouldBeEquivalentTo(obtainedRestaurant.Country);
         }
 
-        protected void AssertContactDetailsShouldBeEquivalent(RestaurantContactDetail contactDetailsExpected, RestaurantContactDetail contactDetailsObtained)
+        protected void AssertContactDetailsShouldBeEquivalent(RestaurantContactDetail contactDetailsesExpected, RestaurantContactDetail contactDetailsesObtained)
         {
-            contactDetailsExpected.FaxPhone.ShouldBeEquivalentTo(contactDetailsObtained.FaxPhone);
-            contactDetailsExpected.OfficePhone.ShouldBeEquivalentTo(contactDetailsObtained.OfficePhone);
-            contactDetailsExpected.TwitterAlias.ShouldBeEquivalentTo(contactDetailsObtained.TwitterAlias);
-            contactDetailsExpected.Facebook.ShouldBeEquivalentTo(contactDetailsObtained.Facebook);
-            contactDetailsExpected.WebPage.ShouldBeEquivalentTo(contactDetailsObtained.WebPage);
+            contactDetailsesExpected.FaxPhone.ShouldBeEquivalentTo(contactDetailsesObtained.FaxPhone);
+            contactDetailsesExpected.OfficePhone.ShouldBeEquivalentTo(contactDetailsesObtained.OfficePhone);
+            contactDetailsesExpected.TwitterAlias.ShouldBeEquivalentTo(contactDetailsesObtained.TwitterAlias);
+            contactDetailsesExpected.Facebook.ShouldBeEquivalentTo(contactDetailsesObtained.Facebook);
+            contactDetailsesExpected.WebPage.ShouldBeEquivalentTo(contactDetailsesObtained.WebPage);
         }
     }
 }

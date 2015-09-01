@@ -32,7 +32,7 @@ namespace Miam.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Login(Login accountLoginViewModel)
+        public virtual ActionResult Login(LoginViewModel accountLoginViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -58,16 +58,16 @@ namespace Miam.Web.Controllers
             return RedirectToAction(Views.ViewNames.Login);
         }
 
-        private void AuthentificateUser(ApplicationUser applicationUser)
+        private void AuthentificateUser(MiamUser miamUser)
         {
             var identity = new ClaimsIdentity(new[]
             {
-                new Claim(ClaimTypes.Name, applicationUser.Email),
-                new Claim(ClaimTypes.NameIdentifier, applicationUser.Id.ToString()),
+                new Claim(ClaimTypes.Name, miamUser.Email),
+                new Claim(ClaimTypes.NameIdentifier, miamUser.Id.ToString()),
             },
                 DefaultAuthenticationTypes.ApplicationCookie);
 
-            foreach (var role in applicationUser.Roles)
+            foreach (var role in miamUser.Roles)
             {
                 identity.AddClaim(new Claim(ClaimTypes.Role, role.RoleName));
             }

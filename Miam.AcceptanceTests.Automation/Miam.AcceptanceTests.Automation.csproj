@@ -123,9 +123,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcceptanceTestApi\DatabaseHelperAcceptanceTestApi.cs" />
-    <Compile Include="AcceptanceTestApi\RestaurantAcceptanceTestApi.cs" />
-    <Compile Include="AcceptanceTestApi\UserAcceptanceTestsAPI.cs" />
+    <Compile Include="HtmlIdTag\PropertiesTool.cs" />
+    <Compile Include="HtmlIdTag\RestaurantIDs.cs" />
     <Compile Include="PageObjects\EmailPage.cs" />
     <Compile Include="PageObjects\FilePages\DownloadIndexPage.cs" />
     <Compile Include="PageObjects\FilePages\UploadPage.cs" />
@@ -146,6 +145,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Externalization\Externalization.csproj">
+      <Project>{902DF601-7437-470A-BE48-AFD4B46B6A0C}</Project>
+      <Name>Externalization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Miam.DataLayer\Miam.DataLayer.csproj">
       <Project>{45063f47-819b-4c94-a017-ce2fbe20e277}</Project>
       <Name>Miam.DataLayer</Name>

@@ -4,13 +4,13 @@ using Miam.Domain.Entities;
 
 namespace Miam.DataLayer.EntityFramework
 {
-    public class EfEntityRepository<T>: IEntityRepository<T> where T : Entity
+    public class EfEntityRepository<T> : IEntityRepository<T> where T : Entity
     {
         private readonly DbContext _context;
 
-        public EfEntityRepository()
+        public EfEntityRepository(MiamDbContext dbContext)
         {
-            _context = new MiamDbContext();
+            _context = dbContext;
         }
         
         public IQueryable<T> GetAll()
@@ -41,7 +41,7 @@ namespace Miam.DataLayer.EntityFramework
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
-     
+
     }
 
 }

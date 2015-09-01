@@ -1,4 +1,4 @@
-﻿@model Miam.Web.ViewModels.Restaurant.Create
+﻿@model Miam.Web.ViewModels.Restaurant.RestaurantCreateViewModel
 
 <h2>Ajouter un restaurant</h2>
 
@@ -21,9 +21,9 @@
         <div class="editor_field" id="restaurant_contry_field"> @Html.EditorFor(model => model.Country) </div>
         <div class="validation_field">@Html.ValidationMessageFor(model => model.Country)</div>
 
-        <div class="label_field"> @Html.LabelFor(model => model.RestaurantContactDetail.Facebook, "Facebook") </div>
-        <div class="editor_field" id="restaurant_facebook_field"> @Html.EditorFor(model => model.RestaurantContactDetail.Facebook) </div>
-        <div class="validation_field">@Html.ValidationMessageFor(model => model.RestaurantContactDetail.Facebook)</div>
+        <div class="label_field"> @Html.LabelFor(model => model.ContactDetailViewModel.Facebook, "Facebook") </div>
+        <div class="editor_field" id="restaurant_facebook_field"> @Html.EditorFor(model => model.ContactDetailViewModel.Facebook) </div>
+        <div class="validation_field">@Html.ValidationMessageFor(model => model.ContactDetailViewModel.Facebook)</div>
 
 
         <input class="btn btn-sm btn-success" id="create_button" type="submit" value="Ajouter" />

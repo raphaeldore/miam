@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Miam.DataLayer;
-using Miam.Domain;
 using Miam.Domain.Entities;
+using Miam.Web.ViewModels.Home;
 
 namespace Miam.Web.Controllers
 {
-    
+
     public partial class HomeController : Controller
     {
         private readonly IEntityRepository<Restaurant> _restaurantRepository;
@@ -26,9 +26,10 @@ namespace Miam.Web.Controllers
         {
             var restaurants = _restaurantRepository.GetAll().ToList();
 
-            var homeIndexViewModels = Mapper.Map<IEnumerable<ViewModels.Home.Index>>(restaurants);
-            
+            var homeIndexViewModels = Mapper.Map<IEnumerable<HomeIndexViewModel>>(restaurants);
+
             return View(homeIndexViewModels);
         }
+        
     }
 }
