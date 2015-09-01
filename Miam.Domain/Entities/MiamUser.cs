@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Miam.Domain.Entities
 {
-    public class ApplicationUser : Entity
+    public class MiamUser : Entity
     {
         [Required]
         public string Password { get; set; }
@@ -15,7 +15,7 @@ namespace Miam.Domain.Entities
         //Navigation properties
         public virtual ICollection<UserRole> Roles { get; set; }
 
-        public ApplicationUser()
+        public MiamUser()
         {
             Roles = new List<UserRole>();
         }

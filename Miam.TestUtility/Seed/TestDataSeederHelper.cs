@@ -70,7 +70,7 @@ namespace Miam.TestUtility.Seed
 
         private void AddAdmin()
         {
-            var admin = TestData.ApplicationUserAdmin;
+            var admin = TestData.MiamUserAdmin;
             _dbContext.Users.Add(admin);
         }
     }

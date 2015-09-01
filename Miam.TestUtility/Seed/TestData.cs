@@ -173,7 +173,7 @@ namespace Miam.TestUtility.Seed
         #endregion
 
         #region Admin (writer with roles admin + writer)
-        public static ApplicationUser ApplicationUserAdmin
+        public static MiamUser MiamUserAdmin
         {
             get
             {

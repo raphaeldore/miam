@@ -18,7 +18,7 @@ namespace Miam.Web
 
             // C'est dans NinjectWebCommon.cs que la dépendance (sur EFDatabaseHelper) est gérée
             var dbInitializer = DependencyResolver.Current.GetService<IApplicationDatabaseHelper>();
-            dbInitializer.MigrateDatabaseToLatestVersion();
+            dbInitializer.DropCreateDatabaseIfModelChanges();
 
             AutoMapperConfiguration.Configure();
 

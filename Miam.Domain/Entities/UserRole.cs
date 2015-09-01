@@ -12,7 +12,7 @@ namespace Miam.Domain.Entities
 
         //Navigation properties
         [Required]
-        public ApplicationUser ApplicationUsers { get; set; }
+        public MiamUser MiamUsers { get; set; }
 
     }
 }

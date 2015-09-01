@@ -8,26 +8,26 @@ namespace Miam.ApplicationsServices.Account
 {
     public class UserUserAccountService : IUserAccountService
     {
-        private IEntityRepository<ApplicationUser> _userRepository;
+        private IEntityRepository<MiamUser> _userRepository;
 
-        public UserUserAccountService(IEntityRepository<ApplicationUser> userRepository)
+        public UserUserAccountService(IEntityRepository<MiamUser> userRepository)
         {
             _userRepository = userRepository;
         }
-        public MayBe<ApplicationUser> ValidateUser(string email, string password)
+        public MayBe<MiamUser> ValidateUser(string email, string password)
         {
             var user = _userRepository.GetAll().FirstOrDefault(x => x.Email == email);
 
             if (user == null)
             {
-                return new MayBe<ApplicationUser>();
+                return new MayBe<MiamUser>();
             }
             if (user.Password != password)
             {
-                return new MayBe<ApplicationUser>();
+                return new MayBe<MiamUser>();
             }
 
-            return new MayBe<ApplicationUser>(user);
+            return new MayBe<MiamUser>(user);
         }
 
         public string HashPassword(string password)

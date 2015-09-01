@@ -73,7 +73,7 @@ namespace Miam.Web.App_Start
             //repositories
             kernel.Bind<IEntityRepository<Restaurant>>().To<EfEntityRepository<Restaurant>>().InRequestScope();
             kernel.Bind<IEntityRepository<Writer>>().To<EfEntityRepository<Writer>>().InRequestScope();
-            kernel.Bind<IEntityRepository<ApplicationUser>>().To<EfEntityRepository<ApplicationUser>>().InRequestScope();
+            kernel.Bind<IEntityRepository<MiamUser>>().To<EfEntityRepository<MiamUser>>().InRequestScope();
             kernel.Bind<IEntityRepository<Review>>().To<EfEntityRepository<Review>>().InRequestScope();
 
             //services

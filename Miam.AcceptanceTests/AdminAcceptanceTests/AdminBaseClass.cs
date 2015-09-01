@@ -9,12 +9,12 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
 {
     public class AdminBaseClass : AcceptanceTestsBaseClass
     {
-        protected ApplicationUser _userAdmin;
+        protected MiamUser _userAdmin;
         protected Restaurant _restaurant1;
 
         protected void un_administrateur_authentifé()
         {
-            _userAdmin = TestData.ApplicationUserAdmin;
+            _userAdmin = TestData.MiamUserAdmin;
             DbTestHelper.Users.Add(_userAdmin);
 
             Host.Instance.NavigateToInitialPage<HomePage>()

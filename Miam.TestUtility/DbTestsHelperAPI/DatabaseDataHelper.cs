@@ -15,7 +15,7 @@ namespace Miam.TestUtility.DbTestsHelperAPI
         }
         public void ClearDataBaseTables()
         {
-            _applicationDatabaseHelper.MigrateDatabaseToLatestVersion();
+            _applicationDatabaseHelper.DropCreateDatabaseIfModelChanges();
             _applicationDatabaseHelper.ClearAllTables();
         }
     }

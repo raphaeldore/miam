@@ -6,23 +6,23 @@ namespace Miam.AcceptanceTests.Automation.HtmlIdTag
     {
         public static string Country
         {
-            get {return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.Country);}
+            get {return PropertiesTool<RestaurantCreateViewModel>.GetPropertyName(x => x.Country);}
         }
 
         public static string City
         {
-            get { return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.City);}
+            get { return PropertiesTool<RestaurantCreateViewModel>.GetPropertyName(x => x.City);}
         }
 
         public static string Name
         {
-            get { return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.Name); }
+            get { return PropertiesTool<RestaurantCreateViewModel>.GetPropertyName(x => x.Name); }
         }
         public static string ContactDetail
         {
             get
             {
-                return ObjectsTool<RestaurantCreateViewModel>.GetPropertyName(x => x.ContactDetailViewModel);
+                return PropertiesTool<RestaurantCreateViewModel>.GetPropertyName(x => x.ContactDetailViewModel);
             }
         }
         public static string FaxPhone
@@ -30,7 +30,7 @@ namespace Miam.AcceptanceTests.Automation.HtmlIdTag
             get
             {
                 return RestaurantIDs.ContactDetail + "_" +
-                       ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.FaxPhone);
+                       PropertiesTool<ContactDetailViewModel>.GetPropertyName(x => x.FaxPhone);
             }
         }
         public static string WebPage
@@ -38,7 +38,7 @@ namespace Miam.AcceptanceTests.Automation.HtmlIdTag
             get
             {
                 return RestaurantIDs.ContactDetail + "_" +
-                       ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.WebPage);
+                       PropertiesTool<ContactDetailViewModel>.GetPropertyName(x => x.WebPage);
             }
         }
 
@@ -47,7 +47,7 @@ namespace Miam.AcceptanceTests.Automation.HtmlIdTag
             get
             {
                 return RestaurantIDs.ContactDetail + "_" +
-                       ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.Facebook);
+                       PropertiesTool<ContactDetailViewModel>.GetPropertyName(x => x.Facebook);
             }
         }
 
@@ -56,7 +56,7 @@ namespace Miam.AcceptanceTests.Automation.HtmlIdTag
             get
             {
                 return RestaurantIDs.ContactDetail + "_" +
-                       ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.TwitterAlias);
+                       PropertiesTool<ContactDetailViewModel>.GetPropertyName(x => x.TwitterAlias);
             }
         }
 
@@ -65,7 +65,7 @@ namespace Miam.AcceptanceTests.Automation.HtmlIdTag
             get
             {
                 return RestaurantIDs.ContactDetail + "_" +
-                       ObjectsTool<ContactDetailViewModel>.GetPropertyName(x => x.OfficePhone);
+                       PropertiesTool<ContactDetailViewModel>.GetPropertyName(x => x.OfficePhone);
             }
         }
     }

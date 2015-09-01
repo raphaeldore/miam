@@ -92,7 +92,7 @@
     <Compile Include="Entities\RestaurantContactDetail.cs" />
     <Compile Include="Entities\Review.cs" />
     <Compile Include="Entities\Tag.cs" />
-    <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Entities\MiamUser.cs" />
     <Compile Include="Entities\Writer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

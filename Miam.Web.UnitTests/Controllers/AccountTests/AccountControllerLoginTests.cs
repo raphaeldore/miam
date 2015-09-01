@@ -51,7 +51,7 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
          {
              //Arrange
              var loginViewModel = _fixture.Create<LoginViewModel>();
-             var invalidUser = new MayBe<ApplicationUser>();
+             var invalidUser = new MayBe<MiamUser>();
              _userAccountService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(invalidUser);
 
              //Action    
@@ -67,14 +67,14 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         public void login_should_redirect_to_home_index_when_user_is_valid()
         {
             //Arrange
-            var user = _fixture.Create<ApplicationUser>();
+            var user = _fixture.Create<MiamUser>();
             var loginViewModel = new LoginViewModel()
             {
                 Email = user.Email,
                 Password = user.Password
             };
 
-            var valideUser = new MayBe<ApplicationUser>(user);
+            var valideUser = new MayBe<MiamUser>(user);
             _userAccountService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(valideUser);
 
             //Action    
@@ -89,14 +89,14 @@ namespace Miam.Web.UnitTests.Controllers.AccountTests
         public void login_should_authentificate_user_when_user_is_valid()
         {      
             //Arrange
-            var user = _fixture.Create<ApplicationUser>();
+            var user = _fixture.Create<MiamUser>();
             var loginViewModel = new LoginViewModel()
                                  {
                                     Email = user.Email,
                                     Password = user.Password
                                  };
             
-            var valideUser = new MayBe<ApplicationUser>(user);
+            var valideUser = new MayBe<MiamUser>(user);
             _userAccountService.ValidateUser(loginViewModel.Email, loginViewModel.Password).Returns(valideUser);
 
             //Action    

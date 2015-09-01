@@ -123,8 +123,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HtmlIdTag\PropertiesTool.cs" />
     <Compile Include="HtmlIdTag\RestaurantIDs.cs" />
-    <Compile Include="HtmlIdTag\Tools.cs" />
     <Compile Include="PageObjects\EmailPage.cs" />
     <Compile Include="PageObjects\FilePages\DownloadIndexPage.cs" />
     <Compile Include="PageObjects\FilePages\UploadPage.cs" />

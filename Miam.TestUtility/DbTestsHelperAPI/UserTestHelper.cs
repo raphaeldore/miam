@@ -12,10 +12,10 @@ namespace Miam.TestUtility.DbTestsHelperAPI
         {
             _dbContextFactory = dbContextFactory;
         }
-        public void Add(ApplicationUser applicationUserAdmin)
+        public void Add(MiamUser miamUserAdmin)
         {
             var dbContext = _dbContextFactory.Create();
-            dbContext.Users.Add(applicationUserAdmin);
+            dbContext.Users.Add(miamUserAdmin);
             dbContext.SaveChanges();
         }
     }
