@@ -37,7 +37,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         private void un_administrateur_existant_non_authentifé()
         {
             _userAdmin = TestData.ApplicationUserAdmin;
-            DbTestHelper.User.Add(_userAdmin);
+            DbTestHelper.Users.Add(_userAdmin);
         }
         private void l_administrateur_entre_son_courriel_et_mot_de_passe_valide()
         {

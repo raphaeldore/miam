@@ -95,12 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbTestsHelperAPI\TagTestHelper.cs" />
-    <Compile Include="DbTestsHelperAPI\RestaurantContactDetailTestHelper.cs" />
     <Compile Include="DbTestsHelperAPI\DbTestHelper.cs" />
     <Compile Include="DbTestsHelperAPI\BaseTestHelper.cs" />
     <Compile Include="DbTestsHelperAPI\DatabaseDataHelper.cs" />
     <Compile Include="DbTestsHelperAPI\ReviewTestHelper.cs" />
-    <Compile Include="DbTestsHelperAPI\WriterTestHelper.cs" />
     <Compile Include="DbTestsHelperAPI\RestaurantTestHelper.cs" />
     <Compile Include="AutoFixture\CollectionPropertyOmitter.cs" />
     <Compile Include="AutoFixture\VirtualMembersOmitter.cs" />

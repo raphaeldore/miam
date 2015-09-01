@@ -31,7 +31,7 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
         private void un_chroniqueur_authentifé()
         {
             _writer = TestData.Writer1;
-            DbTestHelper.User.Add(_writer);
+            DbTestHelper.Users.Add(_writer);
 
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu

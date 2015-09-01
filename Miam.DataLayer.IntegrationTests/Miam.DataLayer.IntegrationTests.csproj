@@ -113,7 +113,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="EntityFrameworkTests\EntityFrameworkContextTests.cs" />
     <Compile Include="GenericRepositoryTests\BaseRepositoryTests.cs" />
     <Compile Include="GenericRepositoryTests\WriterRepositoryTests.cs" />
     <Compile Include="GenericRepositoryTests\RestaurantRepositoryTests.cs" />

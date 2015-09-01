@@ -15,7 +15,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         protected void un_administrateur_authentifé()
         {
             _userAdmin = TestData.ApplicationUserAdmin;
-            DbTestHelper.User.Add(_userAdmin);
+            DbTestHelper.Users.Add(_userAdmin);
 
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu

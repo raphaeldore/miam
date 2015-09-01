@@ -19,22 +19,13 @@ namespace Miam.TestUtility.DbTestsHelperAPI
         {
             get { return new RestaurantTestHelper(_dbContextFactory); }
         }
-        public WriterTestHelper Writers
-        {
-            get { return new WriterTestHelper(_dbContextFactory); }
-        }
         public ReviewTestHelper Reviews
         {
             get { return new ReviewTestHelper(_dbContextFactory); }
         }
-        public UserTestHelper User
+        public UserTestHelper Users
         {
             get { return new UserTestHelper(_dbContextFactory); }
-        }
-
-        public RestaurantContactDetailTestHelper RestaurantContactDetails
-        {
-            get { return new RestaurantContactDetailTestHelper(_dbContextFactory); }
         }
 
         public TagTestHelper Tags
