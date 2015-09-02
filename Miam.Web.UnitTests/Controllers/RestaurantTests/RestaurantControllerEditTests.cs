@@ -101,7 +101,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         {
             //Arrange 
             var restaurantViewModel = _fixture.Create<RestaurantEditViewModel>();
-            RestaurantRepository.GetById(Arg.Any<int>()).Returns(a => null);
+            RestaurantRepository.GetById(Arg.Any<int>()).Returns(x => null);
 
             //Act
             var result = RestaurantController.Edit(restaurantViewModel);

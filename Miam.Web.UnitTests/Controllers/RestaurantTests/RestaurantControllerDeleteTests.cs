@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Ploeh.AutoFixture;
 using Miam.Domain.Entities;
+using Miam.Web.ViewModels.Restaurant;
 
 namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 {
@@ -20,7 +21,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 
             //Action
             var result = RestaurantController.Delete(restaurant.Id) as ViewResult;
-            var restaurantViewModel = result.ViewData.Model as ViewModels.Restaurant.RestaurantDeleteViewModel;
+            var restaurantViewModel = result.ViewData.Model as RestaurantDeleteViewModel;
 
             //Assert 
             restaurantViewModel.ShouldBeEquivalentTo(restaurant); 
