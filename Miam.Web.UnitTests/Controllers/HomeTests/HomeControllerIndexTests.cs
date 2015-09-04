@@ -14,7 +14,7 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.HomeTests
 {
     [TestClass]
-    public class HomControllerIndexTests
+    public class HomControllerIndexTests : AllControllersBaseClassTests
     {
         private HomeController _homeController;
         private IEntityRepository<Restaurant> _restaurantRepository;

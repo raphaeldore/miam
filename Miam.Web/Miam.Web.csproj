@@ -190,7 +190,6 @@
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
     <Compile Include="Mappers\Restaurant\ContactDetailsToEntity.cs" />
     <Compile Include="Mappers\Review\ReviewToEntity.cs" />
-    <Compile Include="Mappers\Home\HomeToViewModel.cs" />
     <Compile Include="Mappers\Restaurant\ContactDetailsToViewModel.cs" />
     <Compile Include="Mappers\Restaurant\RestaurantToViewModel.cs" />
     <Compile Include="Mappers\Review\ReviewToViewModel.cs" />

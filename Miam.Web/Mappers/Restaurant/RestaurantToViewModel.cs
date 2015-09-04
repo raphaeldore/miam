@@ -25,6 +25,10 @@ namespace Miam.Web.Mappers
             Mapper.CreateMap<Restaurant, RestaurantCreateViewModel>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
               .ForMember(dest => dest.ContactDetailViewModel, opt => opt.MapFrom(src => src.RestaurantContactDetail));
+
+             Mapper.CreateMap<Restaurant, HomeIndexViewModel>()
+                  .ForMember(dest => dest.RatingReviewsAverage, 
+                             opt => opt.MapFrom(src => src.CalculateReviewsRatingAverage()));
         }
     }
 }
