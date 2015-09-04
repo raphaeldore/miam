@@ -194,16 +194,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Miam.Web\Miam.ConnectionStrings.Local.config">
-      <Link>Miam.ConnectionStrings.Local.config</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="..\Miam.Web\Miam.ConnectionStrings.Test.config">
       <Link>Miam.ConnectionStrings.Test.config</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="App.CI-Release.config">
-      <DependentUpon>App.config</DependentUpon>
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
