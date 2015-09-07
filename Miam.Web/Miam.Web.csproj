@@ -168,6 +168,7 @@
     <Content Include="Miam.ConnectionStrings.Local.config" />
     <Content Include="Miam.ConnectionStrings.Test.config" />
     <Content Include="Miam.ConnectionStrings.Production.config" />
+    <Content Include="ConnectionStrings.config" />
     <None Include="parameters.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
