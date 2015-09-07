@@ -53,8 +53,15 @@ Créer un package
 
     <!-- deploiement -->
     <WebsitePublishDir Include=".\buildartifacts\_PublishedWebsites\Miam.Web"/>
-    <PackageFile Include=".\buildartifacts\package\miam.zip"/>
+    
     <MsDeployExe Include=".\tools\WebDeploy\msdeploy.exe"/>
+    
+    <PackageFile Include=".\buildartifacts\package\miam.zip"/>
+    <MsDeployBatCmd Include=".\tools\WebDeploy\msdeploy.exe"/>
+    
+    <MsDeployCmd Include=".\buildartifacts\_PublishedWebsites\Miam.Web_Package\Miam.Web.deploy.cmd"/>
+    <PackageWebSiteZipSource Include=".\buildartifacts\_PublishedWebsites\Miam.Web_Package\Miam.Web.zip"/>
+  
   </ItemGroup>
 
   <Target Name="VerifyProperties">
@@ -96,13 +103,38 @@ Créer un package
     <MakeDir Directories="$(PackageDir)"/>
     <Exec Command='"%(MsDeployExe.FullPath)" -verb:sync -source:iisApp="$(Source)" -dest:package="$(Destination)" -declareParamFile="$(DeployParametersFile)"'/>
   </Target>
+  
+    <Target Name="Package2"  DependsOnTargets="">
+    <PropertyGroup>
+      <PackageDir>%(PackageFile.RootDir)%(PackageFile.Directory)</PackageDir>
+      <Source>%(PackageWebSiteZipSource.FullPath)</Source>
+      <Destination>%(PackageFile.FullPath)</Destination>
+      <DeployParametersFile>%(BuildArtifacts.FullPath)parameters.xml</DeployParametersFile>
+    </PropertyGroup>
+    <MakeDir Directories="$(PackageDir)"/>
+    <Exec Command='"%(MsDeployExe.FullPath)" -verb:sync -source:iisApp="$(Source)" -dest:package="$(Destination)" -declareParamFile="$(DeployParametersFile)"'/>
+  </Target>
 
-  <Target Name='Deploy' DependsOnTargets=''>
+  <Target Name='Deploy2' DependsOnTargets=''>
     <PropertyGroup>
       <Source>%(PackageFile.FullPath)</Source>
     </PropertyGroup>
-    <Exec Command='"%(MsDeployExe.FullPath)" -verb:sync -source:package="$(Source)" -dest:iisApp="$(DeployIisAppPath)",computerName="$(WebDeployServiceURL)",authtype=basic,username="$(WebDeployUserName)",password="$(WebDeployPassword)" -setParam:name=ConnectionStringFile,value="$(ConnectionStringFile)"'/>
+    <Exec Command='"%(MsDeployCmd.FullPath)" -verb:sync -source:package="$(Source)" -dest:iisApp="$(DeployIisAppPath)",computerName="$(WebDeployServiceURL)",authtype=basic,username="$(WebDeployUserName)",password="$(WebDeployPassword)" -setParam:name=ConnectionStringFile,value="$(ConnectionStringFile)"'/>
   </Target>
+
+    <Target Name='Deploy3' DependsOnTargets=''>
+    <PropertyGroup>
+      <Source>%(PackageWebSiteZipSource.FullPath)</Source>
+    </PropertyGroup>
+    <Exec Command='"%(MsDeployCmd.FullPath)" /Y /M:"$(WebDeployServiceURL)" /U:"$(WebDeployUserName)" /P:"$(WebDeployPassword)" /A:Basic"'/>
+  </Target>
+    <Target Name='Deploy' DependsOnTargets=''>
+    <PropertyGroup>
+      <Source>%(WebsitePublishDir.FullPath)</Source>
+    </PropertyGroup>
+    <Exec Command='"%(MsDeployExe.FullPath)" -verb:sync -source:iisApp="$(Source)" -dest:iisApp="$(DeployIisAppPath)",computerName="$(WebDeployServiceURL)",authtype=basic,username="$(WebDeployUserName)",password="$(WebDeployPassword)" -setParam:name=ConnectionStringFile,value="$(ConnectionStringFile)"'/>
+  </Target>
+
 
   <Target Name='DeployToProduction' DependsOnTargets=''>
     <PropertyGroup>

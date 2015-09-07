@@ -24,7 +24,7 @@ namespace Miam.Web.UnitTests.ViewModelsTests
             _fixture.Customizations.Add(new VirtualMembersOmitter());
 
             _restaurantCreateViewModel = _fixture.Create<RestaurantCreateViewModel>();
-            _validationContext = new ValidationContext(_restaurantCreateViewModel, null, null);
+            _validationContext = new ValidationContext(_restaurantCreateViewModel);
             _validationResults = new List<ValidationResult>();
         }
 
