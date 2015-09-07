@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- Exemples de ligne de commandes: 
 
-Par défaut: configuration RELEASE et environment DEVELOPMENT
-
 Compiler en debug (équivalent):  
   msbuild miam.build /p:Configuration=Debug   ou  msbuild miam.build /property:Configuration=Debug
   
@@ -11,9 +9,6 @@ Compiler en Release:
 
 Execution des tests en release:
   msbuild miam.build /t:UnitTests             ou  msbuild miam.build /target:UnitTests 
- 
-Créer un package
-  msbuild miam.build /t:package
 
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
@@ -21,54 +16,40 @@ Créer un package
          DefaultTargets="Compile">
 
   <PropertyGroup>
-    <!-- Option de connexion du service web deploy-->
-    <DeployIisAppPath Condition=" '$(DeployIisAppPath)' == '' "></DeployIisAppPath>
-    <WebDeployUserName Condition=" '$(WebDeployUserName)' == '' "></WebDeployUserName>
-    <WebDeployPassword Condition=" '$(WebDeployPassword)' == '' "></WebDeployPassword>
-    <WebDeployServiceURL Condition=" '$(WebDeployServiceURL)' == '' "></WebDeployServiceURL>
-
-    <!-- Configuration de l'application -->
-    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <ConnectionStringFile Condition=" '$(ConnectionStringFile)' == '' ">Miam.ConnectionStrings.Test.config</ConnectionStringFile>
-
-    <!-- Outils -->
-    <!--<MsTestExe Condition=" '$(MsTestExe)' == '' ">"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\mstest.exe"</MsTestExe>-->
-    <!--<MsDeployExe Condition=" '$(MsDeployExe)' == '' ">"C:\Program Files (x86)\IIS\Microsoft Web Deploy V3\msdeploy.exe"</MsDeployExe>-->
+    <!-- Valeur par défaut des paramètres pour le script -->
+    <BuildConfiguration Condition=" '$(BuildConfiguration)' == '' ">Release</BuildConfiguration>
+    <ConnectionString Condition=" '$(ConnectionString)' == '' "></ConnectionString>
+    <DeployIIsAppURL Condition=" '$(DeployIIsAppURL )' == '' "></DeployIIsAppURL>
+    <DeployIIsAppUser Condition=" '$(DeployIIsAppUser )' == '' "></DeployIIsAppUser>
+    <DeployIIsAppPassword Condition=" '$(DeployIIsAppPassword )' == '' "></DeployIIsAppPassword>
   
 </PropertyGroup>
 
   <ItemGroup>
-    <!-- genral -->
+    <!-- general -->
     <SolutionFile Include=".\Miam.sln"/>
     <BuildArtifacts Include=".\buildartifacts\"/>
 
-    <!-- tests -->
+    <!-- Paramètres pour les tests -->
     <WebUnitTestsAssembly Include=".\buildartifacts\Miam.Web.UnitTests.dll"/>
     <ApplicationServicesUnitTestsAssembly Include=".\buildartifacts\Miam.ApplicationServices.UnitTests.dll"/>
     <UnitTestsResults Include=".\buildartifacts\UnitTestsResults.trx"/>
     <MsTestExe Include=".\tools\MsTest\mstest.exe"/>
-    
     <AcceptanceTestsAssembly Include=".\buildartifacts\Miam.AcceptanceTests.dll"/>
     <AcceptanceTestsResults Include=".\buildartifacts\AcceptanceTests.trx"/>
 
     <!-- deploiement -->
-    <WebsitePublishDir Include=".\buildartifacts\_PublishedWebsites\Miam.Web"/>
-    
-    <MsDeployExe Include=".\tools\WebDeploy\msdeploy.exe"/>
-    
-    <PackageFile Include=".\buildartifacts\package\miam.zip"/>
-    <MsDeployBatCmd Include=".\tools\WebDeploy\msdeploy.exe"/>
-    
-    <MsDeployCmd Include=".\buildartifacts\_PublishedWebsites\Miam.Web_Package\Miam.Web.deploy.cmd"/>
-    <PackageWebSiteZipSource Include=".\buildartifacts\_PublishedWebsites\Miam.Web_Package\Miam.Web.zip"/>
 
     <DeployScriptFile Include=".\buildartifacts\_PublishedWebsites\Miam.Web_Package\miam.Web.deploy.cmd"/>
   
   </ItemGroup>
 
   <Target Name="VerifyProperties">
-    <!-- Verify that we have values for all required properties -->
-    <Error Condition=" '$(ProjectName)' == '' " Text="ProjectName is required." />
+    <!-- Vérification des paramètres obligatoires -->
+    <Error Condition=" '$(ConnectionString)' == '' " Text="Paramètre ConnectionString manquant." />
+    <Error Condition=" '$(DeployIIsAppURL)' == '' " Text="Paramètre DeployIIsAppURL manquant." />
+    <Error Condition=" '$(DeployIIsAppUser)' == '' " Text="Paramètre DeployIIsAppUser manquant." />
+    <Error Condition=" '$(DeployIIsAppPassword)' == '' " Text="Paramètre DeployIIsAppPassword manquant." />
   </Target>
 
   <!-- Compilation -->
@@ -81,11 +62,11 @@ Créer un package
   </Target>
 
   <Target Name="Compile" DependsOnTargets="Init">
-    <Exec Command='set PATH=%PATH%;%(MsDeployExe.FullPath)'/>
+    <Exec Command='set PATH=%PATH%;%(MsDeployExe.FullPath) DeployOnBuild=True'/>
     <MSBuild Projects="@(SolutionFile)"
              Targets="Rebuild"
              Properties="OutDir=%(BuildArtifacts.FullPath);
-                         Configuration=$(Configuration);"/>
+                         Configuration=$(BuildConfiguration);DeployOnBuild=True"/>
   </Target>
 
   <Target Name="UnitTests" DependsOnTargets="compile">
@@ -96,17 +77,12 @@ Créer un package
     <Exec Command="@(MsTestExe)  /testcontainer:@(AcceptanceTestsAssembly) /resultsfile:@(AcceptanceTestsResults)"/>
   </Target>
   
-  <Target Name='Deploy' DependsOnTargets=''>
+  <Target Name='Deploy' DependsOnTargets='VerifyProperties'>
     <PropertyGroup>
-      <script>%(DeployScriptFile.FullPath)</script>
-      <website>https://miamtest.scm.gear.host/msdeploy.axd</website>
-      <user>$miamtest</user>
-      <password>0juJT0bmLoYnhK2GmtQ3gGDElgrFx4AnJhFccz9FKYm5cFNNGGY0r5bl9T2i</password>
-      <IIsApplicationNameParam>" -setParam:'IIS Web Application Name'=miamTest "</IIsApplicationNameParam>
-      <ConnectionStringParam>" -setParam:'ConnectionString'='Data Source=mssql2.gear.host;Initial Catalog=miamtestdb;user id=miamtestdb;password=Ex37j6V!o!4N' "</ConnectionStringParam>
+      <DeployScript>%(DeployScriptFile.FullPath)</DeployScript>
+      <IIsApplicationNameParam>" -setParam:'IIS Web Application Name'=$(DeployIIsAppUser) "</IIsApplicationNameParam>
+      <ConnectionStringParam>" -setParam:'ConnectionString'='$(ConnectionString)' "</ConnectionStringParam>
     </PropertyGroup>
-    <Exec Command="$(script) /Y /M:$(website) /U:$(user) /P:$(password) /a:basic $(IIsApplicationNameParam) $(ConnectionStringParam)"/>
+    <Exec Command="$(DeployScript) /Y /M:$(DeployIIsAppURL) /U:$$(DeployIIsAppUser) /P:$(DeployIIsAppPassword) /a:basic $(IIsApplicationNameParam) $(ConnectionStringParam)"/>
   </Target>
-
-  
 </Project>
