@@ -1,8 +1,6 @@
 ﻿<!-- 
 Le paramètre /P:DeployOnBuild=True utlisé avec Msbuild cré un dossier contenant les fichiers nécessaires à la publication de l'application.
 Le fichier parameters.xml permet d'indiquer quels sont les fichiers de config qui peuvent être modifié lors du déploiement. 
-
-
 -->
 
 <parameters>
