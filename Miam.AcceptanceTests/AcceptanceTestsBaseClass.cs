@@ -9,8 +9,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Miam.AcceptanceTests
 {
     [TestClass]
-    [DeploymentItem("Miam.ConnectionStrings.Local.config")]
-    [DeploymentItem("Miam.ConnectionStrings.Test.config")]
+    //[DeploymentItem("Miam.ConnectionStrings.Local.config")]
+    //[DeploymentItem("Miam.ConnectionStrings.Test.config")]
     public class AcceptanceTestsBaseClass
     {
         protected DbTestHelper DbTestHelper;

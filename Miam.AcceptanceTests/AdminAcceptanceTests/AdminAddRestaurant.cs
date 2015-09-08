@@ -9,10 +9,10 @@ namespace Miam.AcceptanceTests.AdminAcceptanceTests
 {
     [TestClass]
     [Story(
-        Title = "Un administrateur peut ajouter un restaurantExpected",
+        Title = "Un administrateur peut ajouter un restaurant",
         AsA = "En tant qu'administrateur",
-        IWant = "Je veux pouvoir ajouter un restaurantExpected",
-        SoThat = "Afin d'avoir un nouveau restaurantExpected dans le système")]
+        IWant = "Je veux pouvoir ajouter un restaurant",
+        SoThat = "Afin d'avoir un nouveau restaurant dans le système")]
     public class AdminAddRestaurant : AdminBaseClass
     {
         [TestMethod]

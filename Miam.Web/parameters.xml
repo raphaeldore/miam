@@ -1,12 +1,23 @@
-﻿<parameters>
+﻿<!-- 
+Le paramètre /P:DeployOnBuild=True utlisé avec Msbuild cré un dossier contenant les fichiers nécessaires à la publication de l'application.
+Le fichier parameters.xml permet d'indiquer quels sont les fichiers de config qui peuvent être modifié lors du déploiement. 
+-->
+
+<parameters>
   <!--<parameter name="Environment">
     <parameterEntry kind="XmlFile" scope="web.config" match="/configuration/appSettings/add[@key='Environment']/@value" />
   </parameter>-->
 
-  <!--<parameter name="ConnectionString">
-    <parameterEntry kind="XmlFile" scope="web.config" match="/configuration/connectionStrings/add/@connectionString" />
-  </parameter>-->
-  <parameter name="ConnectionStringFile">
-    <parameterEntry kind="XmlFile" scope="web.config" match="/configuration/connectionStrings/@configSource" />
+  <parameter name="ConnectionString" defaultValue="Chaine de connexion par défaut" >
+    <parameterEntry kind="XmlFile" scope="ConnectionStrings.config" match="/connectionStrings/add/@connectionString" />
   </parameter>
+  <!--<parameter name="ConnectionStringFile" defaultValue="ConnectionStrings.config">
+    <parameterEntry kind="XmlFile" scope="web.config" match="/configuration/connectionStrings/@configSource" />
+  </parameter>-->
 </parameters>
+
+<!--<connectionStrings>
+  <add name="MiamDbContext"
+       connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=MiamDemoDevelopment;user id=MiamUser;password=miam"
+       providerName="System.Data.SqlClient" />
+</connectionStrings>-->
