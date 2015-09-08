@@ -1,4 +1,5 @@
-﻿using Miam.AcceptanceTests.Automation.PageObjects;
+﻿using System.Diagnostics;
+using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
 using Miam.DataLayer;
 using Miam.TestUtility;
@@ -9,8 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Miam.AcceptanceTests
 {
     [TestClass]
-    //[DeploymentItem("Miam.ConnectionStrings.Local.config")]
-    //[DeploymentItem("Miam.ConnectionStrings.Test.config")]
+    [DeploymentItem("ConnectionStrings.config")]
     public class AcceptanceTestsBaseClass
     {
         protected DbTestHelper DbTestHelper;
