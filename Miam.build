@@ -18,10 +18,10 @@ Execution des tests en release:
   <PropertyGroup>
     <!-- Valeur par défaut des paramètres pour le script -->
     <BuildConfiguration Condition=" '$(BuildConfiguration)' == '' ">Release</BuildConfiguration>
-    <ConnectionString Condition=" '$(ConnectionString)' == '' "></ConnectionString>
+    <!--<ConnectionString Condition=" '$(ConnectionString)' == '' "></ConnectionString>
     <DeployIIsAppURL Condition=" '$(DeployIIsAppURL )' == '' "></DeployIIsAppURL>
     <DeployIIsAppUser Condition=" '$(DeployIIsAppUser )' == '' "></DeployIIsAppUser>
-    <DeployIIsAppPassword Condition=" '$(DeployIIsAppPassword )' == '' "></DeployIIsAppPassword>
+    <DeployIIsAppPassword Condition=" '$(DeployIIsAppPassword )' == '' "></DeployIIsAppPassword>-->
   
 </PropertyGroup>
 
@@ -44,13 +44,13 @@ Execution des tests en release:
   
   </ItemGroup>
 
-  <Target Name="VerifyProperties">
-    <!-- Vérification des paramètres obligatoires -->
+  <!--<Target Name="VerifyProperties">
+    --><!-- Vérification des paramètres obligatoires --><!--
     <Error Condition=" '$(ConnectionString)' == '' " Text="Paramètre ConnectionString manquant." />
     <Error Condition=" '$(DeployIIsAppURL)' == '' " Text="Paramètre DeployIIsAppURL manquant." />
     <Error Condition=" '$(DeployIIsAppUser)' == '' " Text="Paramètre DeployIIsAppUser manquant." />
     <Error Condition=" '$(DeployIIsAppPassword)' == '' " Text="Paramètre DeployIIsAppPassword manquant." />
-  </Target>
+  </Target>-->
 
   <!-- Compilation -->
   <Target Name="Clean">
@@ -77,12 +77,12 @@ Execution des tests en release:
     <Exec Command="@(MsTestExe)  /testcontainer:@(AcceptanceTestsAssembly) /resultsfile:@(AcceptanceTestsResults)"/>
   </Target>
   
-  <Target Name='Deploy' DependsOnTargets='VerifyProperties'>
+  <!--<Target Name='Deploy' DependsOnTargets='VerifyProperties'>
     <PropertyGroup>
       <DeployScript>%(DeployScriptFile.FullPath)</DeployScript>
       <IIsApplicationNameParam>" -setParam:'IIS Web Application Name'=$(DeployIIsAppUser) "</IIsApplicationNameParam>
       <ConnectionStringParam>" -setParam:'ConnectionString'='$(ConnectionString)' "</ConnectionStringParam>
     </PropertyGroup>
     <Exec Command="$(DeployScript) /Y /M:$(DeployIIsAppURL) /U:$$(DeployIIsAppUser) /P:$(DeployIIsAppPassword) /a:basic $(IIsApplicationNameParam) $(ConnectionStringParam)"/>
-  </Target>
+  </Target>-->
 </Project>

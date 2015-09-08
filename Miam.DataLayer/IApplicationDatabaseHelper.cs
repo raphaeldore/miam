@@ -5,7 +5,7 @@ namespace Miam.DataLayer
         void DropCreateDatabaseIfModelChanges();
         void DropCreateDatabaseAlways();
 
-        //void MigrateDatabaseToLatestVersion();
+        void MigrateDatabaseToLatestVersion();
 
         void CreatedatabaseIfNotExists();
 

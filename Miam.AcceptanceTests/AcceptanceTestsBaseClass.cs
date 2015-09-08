@@ -21,7 +21,6 @@ namespace Miam.AcceptanceTests
         {
             DbTestHelper = new DbTestHelper(new DbContextFactory());
             DbTestHelper.DatabaseDataHelper.ClearDataBaseTables();
-
         }
 
         [TestCleanup]
