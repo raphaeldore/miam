@@ -4,11 +4,11 @@ using Miam.DataLayer.Migrations;
 
 namespace Miam.DataLayer.EntityFramework
 {
-    public class EfApplicationDatabaseHelper : IApplicationDatabaseHelper
+    public class EfApplicationDatabase : IApplicationDatabase
     {
         private readonly MiamDbContext _context;
 
-        public EfApplicationDatabaseHelper(MiamDbContext miamDbContext)
+        public EfApplicationDatabase(MiamDbContext miamDbContext)
         {
             _context = miamDbContext;
         }
@@ -53,6 +53,7 @@ namespace Miam.DataLayer.EntityFramework
 
         public void ClearAllTables()
         {
+            MigrateDatabaseToLatestVersion();
 
             //var context = new MiamDbContext();
 

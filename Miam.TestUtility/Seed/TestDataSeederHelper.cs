@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Miam.DataLayer;
+using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
 using Miam.TestUtility.DbTestsHelperAPI;
 
@@ -20,8 +21,10 @@ namespace Miam.TestUtility.Seed
 
         public void ClearTables()
         {
-            var dbTestHelper = new DbTestHelper(new DbContextFactory());
-            dbTestHelper.DatabaseDataHelper.ClearDataBaseTables();
+            //var dbTestHelper = new DbTestHelper(new DbContextFactory());
+            //dbTestHelper.DatabaseDataHelper.ClearDataBaseTables();
+            var database = new EfApplicationDatabase(new MiamDbContext());
+            database.ClearAllTables();
         }
         public void SeedTables()
         {

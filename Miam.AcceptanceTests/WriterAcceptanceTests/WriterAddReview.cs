@@ -18,7 +18,7 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
     {
         private Writer _writer;
 
-        [TestMethod]
+        [TestMethod, Ignore]
         public void s_authentifier_avec_courriel_et_mot_de_passe_valide()
         {
             this.Given(x => un_chroniqueur_authentifé())

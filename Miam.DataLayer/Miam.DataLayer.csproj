@@ -95,8 +95,8 @@
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="EntityFramework\EfDatabaseConfiguration.cs" />
     <Compile Include="EntityFramework\EfDropCreateDatabaseAlwaysSeeder.cs" />
-    <Compile Include="EntityFramework\EfApplicationDatabaseHelper.cs" />
-    <Compile Include="IApplicationDatabaseHelper.cs" />
+    <Compile Include="EntityFramework\EfApplicationDatabase.cs" />
+    <Compile Include="IApplicationDatabase.cs" />
     <Compile Include="IEntityRepository.cs" />
     <Compile Include="EntityFramework\MiamDbContext.cs" />
     <Compile Include="EntityFramework\EfEntityRepository.cs" />

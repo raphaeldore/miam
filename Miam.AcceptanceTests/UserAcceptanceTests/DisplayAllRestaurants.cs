@@ -12,7 +12,7 @@ namespace Miam.AcceptanceTests.UserAcceptanceTests
         SoThat = "Afin de choisir un restaurant")]
     public class DisplayAllRestaurants : AdminBaseClass
     {
-        [TestMethod]
+        [TestMethod, Ignore]
         public void voir_la_liste_des_restaurants()
         {
             this.Given(x => des_restaurants_avec_des_critiques())

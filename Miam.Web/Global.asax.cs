@@ -16,8 +16,8 @@ namespace Miam.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            // C'est dans NinjectWebCommon.cs que la dépendance (sur EFDatabaseHelper) est gérée
-            var dbInitializer = DependencyResolver.Current.GetService<IApplicationDatabaseHelper>();
+            // C'est dans NinjectWebCommon.cs que la dépendance est gérée
+            var dbInitializer = DependencyResolver.Current.GetService<IApplicationDatabase>();
             dbInitializer.MigrateDatabaseToLatestVersion();
 
             AutoMapperConfiguration.Configure();
