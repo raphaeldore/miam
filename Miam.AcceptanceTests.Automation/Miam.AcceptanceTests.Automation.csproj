@@ -128,6 +128,7 @@
     <Compile Include="PageObjects\EmailPage.cs" />
     <Compile Include="PageObjects\FilePages\DownloadIndexPage.cs" />
     <Compile Include="PageObjects\FilePages\UploadPage.cs" />
+    <Compile Include="AcceptanceTestsConfiguration.cs" />
     <Compile Include="UiComponents\LoginPanel.cs" />
     <Compile Include="UiComponents\NavigationMenu.cs" />
     <Compile Include="PageObjects\RestaurantPages\CreateRestaurantPage.cs" />

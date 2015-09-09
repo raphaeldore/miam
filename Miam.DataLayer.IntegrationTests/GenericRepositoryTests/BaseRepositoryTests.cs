@@ -1,3 +1,4 @@
+using Miam.DataLayer.EntityFramework;
 using Miam.TestUtility;
 using Miam.TestUtility.AutoFixture;
 using Miam.TestUtility.DbTestsHelperAPI;
@@ -14,8 +15,10 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         [TestInitialize]
         public void BaseTestInitialize()
         {
-            DbTestHelper = new DbTestHelper(new DbContextFactory());
-            DbTestHelper.DatabaseDataHelper.ClearDataBaseTables();
+            DbTestHelper = new DbTestHelper();
+            
+            var database = new EfApplicationDatabase(new MiamDbContext());
+            database.ClearAllTables();
 
             Fixture = new Fixture();
             Fixture.Customizations.Add(new VirtualMembersOmitter());

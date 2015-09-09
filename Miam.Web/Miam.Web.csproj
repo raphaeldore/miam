@@ -185,6 +185,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MiamEnvironmentVariable.cs" />
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
     <Compile Include="Mappers\Restaurant\ContactDetailsToEntity.cs" />
     <Compile Include="Mappers\Review\ReviewToEntity.cs" />

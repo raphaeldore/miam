@@ -3,13 +3,8 @@
 
 Compiler en debug (équivalent):  
   msbuild miam.build /p:Configuration=Debug   ou  msbuild miam.build /property:Configuration=Debug
-  
 Compiler en Release:
   msbuild miam.build                          ou  msbuild miam.build /p:Configuration=Release
-
-Execution des tests en release:
-  msbuild miam.build /t:UnitTests             ou  msbuild miam.build /target:UnitTests 
-
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
          ToolsVersion="4.0"
@@ -18,71 +13,26 @@ Execution des tests en release:
   <PropertyGroup>
     <!-- Valeur par défaut des paramètres pour le script -->
     <BuildConfiguration Condition=" '$(BuildConfiguration)' == '' ">Release</BuildConfiguration>
-    <ConnectionString Condition=" '$(ConnectionString)' == '' "></ConnectionString>
-    <DeployIIsAppURL Condition=" '$(DeployIIsAppURL )' == '' "></DeployIIsAppURL>
-    <DeployIIsAppUser Condition=" '$(DeployIIsAppUser )' == '' "></DeployIIsAppUser>
-    <DeployIIsAppPassword Condition=" '$(DeployIIsAppPassword )' == '' "></DeployIIsAppPassword>
-  
-</PropertyGroup>
+  </PropertyGroup>
 
   <ItemGroup>
-    <!-- general -->
     <SolutionFile Include=".\Miam.sln"/>
     <BuildArtifacts Include=".\buildartifacts\"/>
-
-    <!-- Paramètres pour les tests -->
-    <WebUnitTestsAssembly Include=".\buildartifacts\Miam.Web.UnitTests.dll"/>
-    <ApplicationServicesUnitTestsAssembly Include=".\buildartifacts\Miam.ApplicationServices.UnitTests.dll"/>
-    <UnitTestsResults Include=".\buildartifacts\UnitTestsResults.trx"/>
-    <MsTestExe Include=".\tools\MsTest\mstest.exe"/>
-    <AcceptanceTestsAssembly Include=".\buildartifacts\Miam.AcceptanceTests.dll"/>
-    <AcceptanceTestsResults Include=".\buildartifacts\AcceptanceTests.trx"/>
-
-    <!-- deploiement -->
-
-    <DeployScriptFile Include=".\buildartifacts\_PublishedWebsites\Miam.Web_Package\miam.Web.deploy.cmd"/>
-  
   </ItemGroup>
 
-  <Target Name="VerifyProperties">
-    <!-- Vérification des paramètres obligatoires -->
-    <Error Condition=" '$(ConnectionString)' == '' " Text="Paramètre ConnectionString manquant." />
-    <Error Condition=" '$(DeployIIsAppURL)' == '' " Text="Paramètre DeployIIsAppURL manquant." />
-    <Error Condition=" '$(DeployIIsAppUser)' == '' " Text="Paramètre DeployIIsAppUser manquant." />
-    <Error Condition=" '$(DeployIIsAppPassword)' == '' " Text="Paramètre DeployIIsAppPassword manquant." />
-  </Target>
-
-  <!-- Compilation -->
   <Target Name="Clean">
     <RemoveDir Directories="@(BuildArtifacts)"/>
   </Target>
-  
+
   <Target Name="Init" DependsOnTargets="Clean">
     <MakeDir Directories="@(BuildArtifacts)"/>
   </Target>
 
   <Target Name="Compile" DependsOnTargets="Init">
-    <Exec Command='set PATH=%PATH%;%(MsDeployExe.FullPath) DeployOnBuild=True'/>
     <MSBuild Projects="@(SolutionFile)"
              Targets="Rebuild"
              Properties="OutDir=%(BuildArtifacts.FullPath);
-                         Configuration=$(BuildConfiguration);DeployOnBuild=True"/>
-  </Target>
-
-  <Target Name="UnitTests" DependsOnTargets="compile">
-    <Exec Command="@(MsTestExe)  /testcontainer:@(ApplicationServicesUnitTestsAssembly) /testcontainer:@(WebUnitTestsAssembly) /resultsfile:@(UnitTestsResults)"/>
-  </Target>
-  
-  <Target Name="acceptanceTests" DependsOnTargets="">
-    <Exec Command="@(MsTestExe)  /testcontainer:@(AcceptanceTestsAssembly) /resultsfile:@(AcceptanceTestsResults)"/>
-  </Target>
-  
-  <Target Name='Deploy' DependsOnTargets='VerifyProperties'>
-    <PropertyGroup>
-      <DeployScript>%(DeployScriptFile.FullPath)</DeployScript>
-      <IIsApplicationNameParam>" -setParam:'IIS Web Application Name'=$(DeployIIsAppUser) "</IIsApplicationNameParam>
-      <ConnectionStringParam>" -setParam:'ConnectionString'='$(ConnectionString)' "</ConnectionStringParam>
-    </PropertyGroup>
-    <Exec Command="$(DeployScript) /Y /M:$(DeployIIsAppURL) /U:$$(DeployIIsAppUser) /P:$(DeployIIsAppPassword) /a:basic $(IIsApplicationNameParam) $(ConnectionStringParam)"/>
+                         Configuration=$(BuildConfiguration);
+                         DeployOnBuild=True"/>
   </Target>
 </Project>

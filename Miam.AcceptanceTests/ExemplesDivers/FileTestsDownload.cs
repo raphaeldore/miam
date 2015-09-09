@@ -13,7 +13,7 @@ namespace Miam.Web.AcceptanceTests.ExemplesDivers
        SoThat = "Afin de ...")]
     public class FileTestsDownload : AcceptanceTestsBaseClass
     {
-        [TestMethod]
+        [TestMethod,Ignore]
         public void uploader_un_fichier()
         {
             this.Given(x => un_utilisateur_anonyme())

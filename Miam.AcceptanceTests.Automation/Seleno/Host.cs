@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
+using Miam.Web;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using TestStack.Seleno.Configuration;
 using TestStack.Seleno.Configuration.WebServers;
 using WebApplication1;
+
 
 namespace Miam.AcceptanceTests.Automation.Seleno
 {
@@ -16,7 +19,7 @@ namespace Miam.AcceptanceTests.Automation.Seleno
         static Host()
         {
             Instance.Run(configure => configure
-                .WithWebServer(new InternetWebServer("http://miam.local"))
+                .WithWebServer(new InternetWebServer(AcceptanceTestsConfiguration.WebSiteUrl))
                 .WithRouteConfig(RouteConfig.RegisterRoutes)
                 .WithMinimumWaitTimeoutOf(TimeSpan.FromSeconds(5))
                 .WithRemoteWebDriver(fireFoxWebDriver)

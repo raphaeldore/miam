@@ -81,7 +81,7 @@ namespace Miam.Web.App_Start
             kernel.Bind<IUserAccountService>().To<UserUserAccountService>().InRequestScope();
 
             //database
-            kernel.Bind<IApplicationDatabaseHelper>().To<EfApplicationDatabaseHelper>().InRequestScope();
+            kernel.Bind<IApplicationDatabase>().To<EfApplicationDatabase>().InRequestScope();
         }        
     }
 }

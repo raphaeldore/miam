@@ -15,7 +15,7 @@ namespace Miam.AcceptanceTests.ExemplesDivers
         SoThat = "Afin de ...")]
     public class SendEmail : AcceptanceTestsBaseClass
     {
-        [TestMethod]
+        [TestMethod, Ignore]
         public void envoyer_un_courriel()
         {
             this.Given(x => un_utilisateur_anonyme())
