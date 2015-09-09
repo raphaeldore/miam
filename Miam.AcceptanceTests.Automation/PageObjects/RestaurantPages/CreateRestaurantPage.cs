@@ -1,4 +1,5 @@
-﻿using Miam.AcceptanceTests.Automation.HtmlIdTag;
+﻿using Externalization;
+using Miam.AcceptanceTests.Automation.HtmlIdTag;
 using Miam.Domain.Entities;
 using TestStack.Seleno.PageObjects;
 using TestStack.Seleno.PageObjects.Locators;

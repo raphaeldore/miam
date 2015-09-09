@@ -36,7 +36,7 @@ namespace Externalization
             public const string UPDATE_RESTAURANTS = "Modifier les restaurants";
             public const string ADD_RESTAURANT = "Ajouter un restaurant";
             public const string DELETE_RESTAURANT = "Effacer un restaurant";
-            public const string SELECT_RESTAURANT = "Choisir le restaurant";
+            public const string SELECT_RESTAURANT = "Choisir un restaurant";
             
 
             public const string NAME = "Nom";
