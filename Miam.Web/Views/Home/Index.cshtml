@@ -1,9 +1,10 @@
-﻿@model IEnumerable<Miam.Web.ViewModels.Home.HomeIndexViewModel>
+﻿@using Externalization
+@model IEnumerable<Miam.Web.ViewModels.Home.HomeIndexViewModel>
 
 <div>
-    <h2 id="home-page">La MIAM Liste</h2>
+    <h2 id="home-page">@UiText.Miam.MIAM_LIST</h2>
 
-    <div class="text-right" id="restaurants-count">@Model.Count() restaurants</div>
+    <div class="text-right" id="restaurants-count">@Model.Count() @UiText.Restaurant.RESTAURANTS</div>
 
     <ul class="list-group">
         @foreach (var restaurant in Model)

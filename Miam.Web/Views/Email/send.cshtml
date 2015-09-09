@@ -1,4 +1,6 @@
-﻿@using (Html.BeginForm())
+﻿<!-- Todo: Externaliser la vue -->
+
+@using (Html.BeginForm())
 {
     <input class="btn btn-sm btn-success" id="submit_button" type="submit" value="Envoyer" />
     @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-
+//Todo : Externaliser les messages
 namespace Miam.Web.ViewModels.Review
 {
     public class ReviewCreateViewModel

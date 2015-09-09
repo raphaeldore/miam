@@ -1,11 +1,12 @@
-﻿@model Miam.Web.ViewModels.Restaurant.RestaurantEditViewModel
+﻿@using Externalization
+@model Miam.Web.ViewModels.Restaurant.RestaurantEditViewModel
 
-<h2 id="edit-restaurant-page">Modifier un restaurant</h2>
+<h2 id="edit-restaurant-page">@UiText.Restaurant.UPDATE_RESTAURANT</h2>
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Restaurant</h3>
+                <h3 class="panel-title">@UiText.Restaurant.RESTAURANT</h3>
             </div>
             @using (Html.BeginForm())
             {
@@ -13,21 +14,21 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3>Adresse</h3>
+                            <h3>@UiText.Restaurant.RESTAURANT_ADDRESS</h3>
 
                             @Html.EditorFor(model => model)
 
                         </div>
                         <div class="col-md-6">
-                            <h3>Contacts</h3>
+                            <h3>@UiText.Restaurant.CONTACT_DETAILS</h3>
 
                             @Html.EditorFor(model => model.ContactDetailViewModel)
 
                         </div>
 
                     </div>
-                    <input class="btn btn-sm btn-success" id="submit_button" type="submit" value="Confirmer" />
-                    @Html.ActionLink("Annuler", MVC.Restaurant.Index(), new { @class = "btn btn-sm btn-danger" })
+                    <input class="btn btn-sm btn-success" id="submit_button" type="submit" value=@UiText.Buttons.CONFIRM_LABEL />
+                    @Html.ActionLink(UiText.Buttons.CANCEL_LABEL, MVC.Restaurant.Index(), new { @class = "btn btn-sm btn-danger" })
                 </div>
             }
         </div>
@@ -35,7 +36,7 @@
     <div class="col-md-4">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Critiques</h3>
+                <h3 class="panel-title">@UiText.Review.REVIEWS</h3>
             </div>
             <div class="panel-body">
                 @foreach (var review in Model.ReviewsViewModel)

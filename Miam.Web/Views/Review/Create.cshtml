@@ -1,16 +1,17 @@
-﻿@model Miam.Web.ViewModels.Review.ReviewCreateViewModel
+﻿@using Externalization
+@model Miam.Web.ViewModels.Review.ReviewCreateViewModel
 
-<h2>Ajouter une critique</h2>
+<h2>@UiText.Review.ADD_REVIEW</h2>
 
 @using (Html.BeginForm())
 {
     <fieldset>
-        <legend>Critique</legend>
+        <legend>@UiText.Review.REVIEW</legend>
 
         @Html.ValidationSummary(true)
         
-        <div class="label_field"> @Html.LabelFor(model => model.RestaurantId, "Restaurant") </div>
-        <div class="editor_field" id="restaurant_id"> @Html.DropDownListFor(model => model.RestaurantId, Model.Restaurants,"Choisir un reataurant") </div>
+        <div class="label_field"> @Html.LabelFor(model => model.RestaurantId, UiText.Restaurant.SELECT_RESTAURANT) </div>
+        <div class="editor_field" id="restaurant_id"> @Html.DropDownListFor(model => model.RestaurantId, Model.Restaurants, UiText.Restaurant.SELECT_RESTAURANT) </div>
         <div class="validation_field">@Html.ValidationMessageFor(model => model.RestaurantId)</div>
 
         <div class="label_field"> @Html.LabelFor(model => model.Body) </div>
@@ -21,8 +22,8 @@
         <div class="editor_field" id="review_rating"> @Html.EditorFor(model => model.Rating) </div>
         <div class="validation_field">@Html.ValidationMessageFor(model => model.Rating)</div>
 
-        <input class="btn btn-sm btn-success" id="create_button" type="submit" value="Ajouter" />
-        @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
+        <input class="btn btn-sm btn-success" id="create_button" type="submit" value=@UiText.Buttons.ADD_LABEL />
+        @Html.ActionLink(@UiText.Buttons.CANCEL_LABEL, MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
 
 
     </fieldset>
