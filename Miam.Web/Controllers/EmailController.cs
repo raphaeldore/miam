@@ -38,8 +38,8 @@ namespace Miam.Web.Controllers
             myMessage.Subject = "le texte";
             myMessage.Text = "le message";
 
-            //var accountSendGrid = ConfigurationManager.AppSettings["SendGridApi"];
-            var transportWeb = new SendGrid.Web("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");
+            var sendGridApi = ConfigurationManager.AppSettings["SendGridApi"];
+            var transportWeb = new SendGrid.Web(sendGridApi);
 
             await transportWeb.DeliverAsync(myMessage);
         }
