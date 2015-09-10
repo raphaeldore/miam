@@ -44,6 +44,14 @@
       <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentValidation, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.5.6.2.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.MVC5.5.6.2.0\lib\Net45\FluentValidation.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -240,12 +248,16 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Account\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Account\LoginViewModelValidator.cs" />
     <Compile Include="ViewModels\Home\HomeIndexViewModel.cs" />
+    <Compile Include="ViewModels\Restaurant\RestaurantCreateViewModelValidator.cs" />
     <Compile Include="ViewModels\Restaurant\RestaurantDeleteViewModel.cs" />
     <Compile Include="ViewModels\Restaurant\ContactDetailViewModel.cs" />
     <Compile Include="ViewModels\Restaurant\RestaurantCreateViewModel.cs" />
+    <Compile Include="ViewModels\Restaurant\RestaurantEditViewModelValidator.cs" />
     <Compile Include="ViewModels\Restaurant\RestaurantIndexViewModel.cs" />
     <Compile Include="ViewModels\Restaurant\RestaurantEditViewModel.cs" />
+    <Compile Include="ViewModels\Review\ReviewCreateViewModelValidator.cs" />
     <Compile Include="ViewModels\Review\ReviewIndexViewModel.cs" />
     <Compile Include="ViewModels\Review\ReviewCreateViewModel.cs" />
   </ItemGroup>
