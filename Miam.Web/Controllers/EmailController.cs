@@ -1,8 +1,10 @@
 ﻿using System.Configuration;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using SendGrid;
+
 
 namespace Miam.Web.Controllers
 {
@@ -18,13 +20,17 @@ namespace Miam.Web.Controllers
         public virtual ActionResult SendConfirmed()
         {
             //Todo: un service devrait être créé pour l'envoi de courriel
-            //Todo: gérer les exceptions
+            
+            SendEmailExample();
+            
+            //Todo: une confirmation que le message a été envoyé devrait être ajouté
 
-            // Envoi de courriel avec l'api de Sendgrid
-            var accountSendGrid = ConfigurationManager.AppSettings["mailAccountSendGrid"];
-            var passwordSendGrid = ConfigurationManager.AppSettings["mailPasswordSenGrid"];
-            var credentials = new NetworkCredential(accountSendGrid, passwordSendGrid);
-            var transportWeb = new SendGrid.Web(credentials);
+            return RedirectToAction("Send");
+        }
+
+        private async void SendEmailExample()
+        {
+            // Todo: Gérer les exceptions 
 
             SendGridMessage myMessage = new SendGridMessage();
             myMessage.AddTo("tomiamtest@yopmail.com");
@@ -32,11 +38,10 @@ namespace Miam.Web.Controllers
             myMessage.Subject = "le texte";
             myMessage.Text = "le message";
 
-            //transportWeb.Deliver(myMessage);
-            
-            //Todo: une confirmation que le message a été envoyé devrait être ajouté
+            //var accountSendGrid = ConfigurationManager.AppSettings["SendGridApi"];
+            var transportWeb = new SendGrid.Web("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");
 
-            return RedirectToAction("Send");
+            await transportWeb.DeliverAsync(myMessage);
         }
     }
 }

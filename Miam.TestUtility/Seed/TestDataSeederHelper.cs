@@ -21,8 +21,6 @@ namespace Miam.TestUtility.Seed
 
         public void ClearTables()
         {
-            //var dbTestHelper = new DbTestHelper(new DbContextFactory());
-            //dbTestHelper.DatabaseDataHelper.ClearDataBaseTables();
             var database = new EfApplicationDatabase(new MiamDbContext());
             database.ClearAllTables();
         }
