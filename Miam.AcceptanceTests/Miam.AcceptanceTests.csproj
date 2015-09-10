@@ -160,7 +160,6 @@
   <ItemGroup>
     <Compile Include="ExemplesDivers\FileTestsDownload.cs" />
     <Compile Include="ExemplesDivers\SendEmail.cs" />
-    <Compile Include="Authentification\InvalidAuthentification.cs" />
     <Compile Include="Authentification\WriterAuthentificationTests.cs" />
     <Compile Include="Admin\AdminTests.cs" />
     <Compile Include="Authentification\AdminAuthentificationTests.cs" />

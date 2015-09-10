@@ -16,7 +16,7 @@ namespace Miam.AcceptanceTests.ExemplesDivers
         public void uploader_un_fichier()
         {
             this.Given(x => un_utilisateur_anonyme())
-                .When(x => l_utilisateur_télécharge_un_fichier())
+                .When(x => l_utilisateur_télécharge_un_fichier_depuis_le_serveur())
                 .Then(x => le_fichier_est_envoyé())
                 .BDDfy();
         }
@@ -26,7 +26,7 @@ namespace Miam.AcceptanceTests.ExemplesDivers
             throw new System.NotImplementedException();
         }
 
-        private void l_utilisateur_télécharge_un_fichier()
+        private void l_utilisateur_télécharge_un_fichier_depuis_le_serveur()
         {
             throw new System.NotImplementedException();
         }

@@ -21,14 +21,14 @@ namespace Miam.Web.Controllers
         {
             //Todo: un service devrait être créé pour l'envoi de courriel
             
-            SendEmailExample();
+            var a = SendEmailExample();
             
             //Todo: une confirmation que le message a été envoyé devrait être ajouté
 
             return RedirectToAction("Send");
         }
 
-        private async void SendEmailExample()
+        private async Task SendEmailExample()
         {
             // Todo: Gérer les exceptions 
 
