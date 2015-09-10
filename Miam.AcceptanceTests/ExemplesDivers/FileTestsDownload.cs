@@ -1,8 +1,7 @@
-﻿using Miam.AcceptanceTests;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
-namespace Miam.Web.AcceptanceTests.ExemplesDivers
+namespace Miam.AcceptanceTests.ExemplesDivers
 {
     // Todo: à completer 
     [TestClass]
@@ -11,7 +10,7 @@ namespace Miam.Web.AcceptanceTests.ExemplesDivers
        AsA = "En tant qu'utilisateur",
        IWant = "Je veux pouvoir télécharger un fichier sur le serveur",
        SoThat = "Afin de ...")]
-    public class FileTestsDownload : AcceptanceTestsBaseClass
+    public class FileTestsDownload : BaseAcceptanceTests
     {
         [TestMethod,Ignore]
         public void uploader_un_fichier()

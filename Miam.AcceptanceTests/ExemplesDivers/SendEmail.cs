@@ -1,6 +1,6 @@
-﻿using Miam.AcceptanceTests.Automation.PageObjects;
+﻿using System;
+using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
-using Miam.Web.AcceptanceTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
@@ -13,7 +13,7 @@ namespace Miam.AcceptanceTests.ExemplesDivers
         AsA = "En tant qu'utilisateur",
         IWant = "Je veux pouvoir envoyer un courriel",
         SoThat = "Afin de ...")]
-    public class SendEmail : AcceptanceTestsBaseClass
+    public class SendEmail : BaseAcceptanceTests
     {
         [TestMethod, Ignore]
         public void envoyer_un_courriel()
@@ -39,7 +39,7 @@ namespace Miam.AcceptanceTests.ExemplesDivers
         private void le_courriel_est_envoyé()
         {
             //Todo: Vérifier le message de confirmation
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

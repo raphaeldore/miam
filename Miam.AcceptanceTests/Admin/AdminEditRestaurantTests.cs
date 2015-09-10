@@ -4,7 +4,7 @@ using Miam.TestUtility.Seed;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
-namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
+namespace Miam.AcceptanceTests.Admin
 {
     [TestClass]
     [Story(
@@ -12,7 +12,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         AsA = "En tant qu'administrateur",
         IWant = "Je veux pouvoir metttre à jour un restaurant",
         SoThat = "Afin d'avoir les informations sur un restaurant à jour")]
-    public class AdminEditRestaurant : AdminBaseClass
+    public class AdminEditRestaurantTests : AdminTests
     {
         [TestMethod]
         public void editer_un_restaurant()

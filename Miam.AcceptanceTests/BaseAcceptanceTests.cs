@@ -13,7 +13,7 @@ namespace Miam.AcceptanceTests
 {
     [TestClass]
     [DeploymentItem("ConnectionStrings.config")]
-    public class AcceptanceTestsBaseClass
+    public class BaseAcceptanceTests
     {
         protected DbTestHelper DbTestHelper;
 

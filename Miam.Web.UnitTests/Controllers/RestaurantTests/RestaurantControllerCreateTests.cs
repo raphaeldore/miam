@@ -41,6 +41,8 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         {
             //Arrange
             var restaurantViewModel = _fixture.Create<RestaurantCreateViewModel>();
+
+            restaurantViewModel.Name = "";
             RestaurantController.ModelState.AddModelError("Error", "Error");
 
             //Act

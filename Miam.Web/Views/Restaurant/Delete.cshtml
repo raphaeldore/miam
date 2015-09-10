@@ -13,8 +13,8 @@
         <div class="display_field"> @Html.DisplayFor(model => model.Country) </div>
 
         <div>
-            <input class="btn btn-sm btn-success" type="submit" value=@UiText.Buttons.CONFIRM_LABEL />
-            @Html.ActionLink(@UiText.Buttons.CANCEL_LABEL, MVC.Restaurant.Index(), new { @class = "btn btn-sm btn-danger" })
+            <input class="btn btn-sm btn-success" type="submit" value=@UiText.Buttons.CONFIRM />
+            @Html.ActionLink(@UiText.Buttons.CANCEL, MVC.Restaurant.Index(), new { @class = "btn btn-sm btn-danger" })
         </div>
 
     </fieldset>
