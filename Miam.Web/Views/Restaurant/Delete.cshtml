@@ -1,19 +1,20 @@
-﻿@model Miam.Web.ViewModels.Restaurant.RestaurantDeleteViewModel
+﻿@using Externalization
+@model Miam.Web.ViewModels.Restaurant.RestaurantDeleteViewModel
 
-<h2>Effacer un restaurant</h2>
+<h2>@UiText.Restaurant.DELETE_RESTAURANT</h2>
 
 @using (Html.BeginForm())
 {
     <fieldset>
-        <legend>Restaurant</legend>
+        <legend>@UiText.Restaurant.RESTAURANT</legend>
 
         <div class="display_field"> @Html.DisplayFor(model => model.Name) </div>
         <div class="display_field"> @Html.DisplayFor(model => model.City) </div>
         <div class="display_field"> @Html.DisplayFor(model => model.Country) </div>
 
         <div>
-            <input class="btn btn-sm btn-success" type="submit" value="Confirmer" />
-            @Html.ActionLink("Annuler", MVC.Restaurant.Index(), new { @class = "btn btn-sm btn-danger" })
+            <input class="btn btn-sm btn-success" type="submit" value=@UiText.Buttons.CONFIRM_LABEL />
+            @Html.ActionLink(@UiText.Buttons.CANCEL_LABEL, MVC.Restaurant.Index(), new { @class = "btn btn-sm btn-danger" })
         </div>
 
     </fieldset>

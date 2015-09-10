@@ -39,9 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GlobalsErrorsMessages.cs" />
-    <Compile Include="RestaurantMessages.cs" />
-    <Compile Include="GlobalsMessages.cs" />
+    <Compile Include="UiText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

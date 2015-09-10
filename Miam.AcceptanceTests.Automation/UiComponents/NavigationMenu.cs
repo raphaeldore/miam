@@ -9,28 +9,30 @@ namespace Miam.AcceptanceTests.Automation.UiComponents
 {
     public class NavigationMenu : UiComponent
     {
-        public LoginPage GotoLoginPage()
+        public LoginPage ClickLogin()
         {
             return Navigate.To<LoginPage>(By.Id("login-link"));
 ;       }
 
-        public EditRestaurantPage ClickEditRestaurantPage()
+        public EditRestaurantsPage ClickEditRestaurants()
         {
             Find.Element(By.Id("admin-menu"))
                 .Click();
-            return Navigate.To<EditRestaurantPage>(By.Id("manage-restaurant-menu-item"));
+            return Navigate.To<EditRestaurantsPage>(By.Id("manage-restaurant-menu-item"));
         }
 
-        public CreateRestaurantPage ClickCreateRestaurantPage()
+        public CreateRestaurantPage ClickCreateRestaurant()
         {
             Find.Element(By.Id("admin-menu"))
                 .Click();
             return Navigate.To<CreateRestaurantPage>(By.Id("add-restaurant-menu-item"));
         }
 
-        public EmailPage GoToEmailPage()
+        public EmailPage ClickSendEmail()
         {
-            // Il n'ya pas de menu donc on utilise le lien URL et non un click dans un menu)
+            //Todo :ajouter un menu pour envoyer des courriels
+            // Il n'y a pas de menu pour l'instant, donc on utilise le lien URL et non un click dans un menu.
+            
             return Host.Instance.NavigateToInitialPage<EmailController, EmailPage>(x => x.Send());
         }
     }

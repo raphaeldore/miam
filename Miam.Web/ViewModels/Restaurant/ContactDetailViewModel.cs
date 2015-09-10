@@ -1,22 +1,24 @@
 ﻿using System.ComponentModel;
+using Externalization;
 
 namespace Miam.Web.ViewModels.Restaurant
 {
     public class ContactDetailViewModel
     {
-        [DisplayName("Fax")]
+
+        [DisplayName(UiText.Restaurant.FAX)]
         public string FaxPhone { get; set; }
 
-        [DisplayName("Téléphone")]
+        [DisplayName(UiText.Restaurant.PHONE)]
         public string OfficePhone { get; set; }
 
-        [DisplayName("Twitter")]
+        [DisplayName(UiText.Restaurant.TWITTER)]
         public string TwitterAlias { get; set; }
 
-        [DisplayName("Facebook")]
+        [DisplayName(UiText.Restaurant.FACEBOOK)]
         public string Facebook { get; set; }
 
-        [DisplayName("Site web")]
+        [DisplayName(UiText.Restaurant.WEBSITE)]
         public string WebPage { get; set; }
 
     }

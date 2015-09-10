@@ -1,4 +1,5 @@
-﻿using Miam.AcceptanceTests.Automation.HtmlIdTag;
+﻿using Externalization;
+using Miam.AcceptanceTests.Automation.HtmlIdTag;
 using Miam.Domain.Entities;
 using TestStack.Seleno.PageObjects;
 using TestStack.Seleno.PageObjects.Locators;
@@ -15,9 +16,9 @@ namespace Miam.AcceptanceTests.Automation.PageObjects.RestaurantPages
 
         private void FillAllRestaurantFieldsWith(Restaurant newRestaurant)
         {
-            Find.Element(By.Id(RestaurantIDs.Name)).SendKeys(newRestaurant.Name);
-            Find.Element(By.Id(RestaurantIDs.City)).SendKeys(newRestaurant.City);
-            Find.Element(By.Id(RestaurantIDs.Country)).SendKeys(newRestaurant.Country);
+            Find.Element(By.Id(Id.Restaurant.Name)).SendKeys(newRestaurant.Name);
+            Find.Element(By.Id(Id.Restaurant.City)).SendKeys(newRestaurant.City);
+            Find.Element(By.Id(Id.Restaurant.Country)).SendKeys(newRestaurant.Country);
         }
     }
 }

@@ -14,16 +14,16 @@ namespace Miam.Web.ViewModels.Restaurant
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        [DisplayName(RestaurantsMessages.NAME_LABEL)]
-        [Required(ErrorMessage = RestaurantsMessages.NAME_REQUIRED_ERROR)]
+        [DisplayName(UiText.Restaurant.NAME)]
+        [Required(ErrorMessage = UiText.Restaurant.NAME_REQUIRED_ERROR)]
         public string Name { get; set; }
 
-        [DisplayName(RestaurantsMessages.CITY_LABEL)]
-        [Required(ErrorMessage = RestaurantsMessages.CITY_REQUIRED_ERROR)]
+        [DisplayName(UiText.Restaurant.CITY)]
+        [Required(ErrorMessage = UiText.Restaurant.CITY_REQUIRED_ERROR)]
         public string City { get; set; }
 
-        [DisplayName(RestaurantsMessages.COUNTRY_LABEL)]
-        [Required(ErrorMessage = RestaurantsMessages.COUNTRY_REQUIRED_ERROR)]
+        [DisplayName(UiText.Restaurant.COUNTRY)]
+        [Required(ErrorMessage = UiText.Restaurant.COUNTRY_REQUIRED_ERROR)]
         public string Country { get; set; }
         public ContactDetailViewModel ContactDetailViewModel { get; set; }
         public List<ReviewIndexViewModel> ReviewsViewModel { get; set; }

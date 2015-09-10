@@ -4,6 +4,7 @@ using TestStack.BDDfy;
 
 namespace Miam.AcceptanceTests.UserAcceptanceTests
 {
+    //Todo: à compléter
     [TestClass]
     [Story(
         Title = "Un utilisateur non authentifié peut voir la liste des restaurants",

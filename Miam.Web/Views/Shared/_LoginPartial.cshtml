@@ -1,13 +1,15 @@
-﻿@if (Request.IsAuthenticated)
+﻿@using Externalization
+
+@if (Request.IsAuthenticated)
 {
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink(@User.Identity.Name, MVC.Home.Index(), new { id = "login-username" })</li>
-        <li>@Html.ActionLink("Se déconnecter", MVC.Account.Logout(), new { id = "logout-link" })</li>
+        <li>@Html.ActionLink(UiText.Login.LOGOUT, MVC.Account.Logout(), new { id = "logout-link" })</li>
     </ul>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Se connecter", MVC.Account.Login(), new { id = "login-link" })</li>
+        <li>@Html.ActionLink(UiText.Login.LOGIN, MVC.Account.Login(), new { id = "login-link" })</li>
     </ul>
 }

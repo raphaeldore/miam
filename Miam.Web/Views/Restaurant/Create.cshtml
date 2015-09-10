@@ -1,11 +1,12 @@
-﻿@model Miam.Web.ViewModels.Restaurant.RestaurantCreateViewModel
+﻿@using Externalization
+@model Miam.Web.ViewModels.Restaurant.RestaurantCreateViewModel
 
 <h2>Ajouter un restaurant</h2>
 
 @using (Html.BeginForm())
 {
     <fieldset>
-        <legend>Restaurant</legend>
+        <legend>@UiText.Restaurant.RESTAURANT</legend>
 
         @Html.ValidationSummary(true)
 
@@ -26,8 +27,8 @@
         <div class="validation_field">@Html.ValidationMessageFor(model => model.ContactDetailViewModel.Facebook)</div>
 
 
-        <input class="btn btn-sm btn-success" id="create_button" type="submit" value="Ajouter" />
-        @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
+        <input class="btn btn-sm btn-success" id="create_button" type="submit" value=@UiText.Buttons.ADD_LABEL>
+        @Html.ActionLink(UiText.Buttons.CANCEL_LABEL, MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
 
 
     </fieldset>

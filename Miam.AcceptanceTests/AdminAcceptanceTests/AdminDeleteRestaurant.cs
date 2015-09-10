@@ -28,15 +28,15 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         {
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
-                .ClickEditRestaurantPage()
+                .ClickEditRestaurants()
                 .DeleteFisrtRestaurant();
 
         }
         private void le_restaurant_est_supprimé()
         {
-            //todo
             var countRestaurant = Host.Instance.NavigateToInitialPage<HomePage>()
                                     .RestaurantCount();
+
             countRestaurant.ShouldBeEquivalentTo(0);
         }
 
