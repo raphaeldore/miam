@@ -48,7 +48,7 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
             var homePage = Host.Instance.NavigateToInitialPage<HomePage>();
             homePage
                 .NavigationMenu
-                .GotoLoginPage()
+                .ClickLogin()
                 .LoginAs(_writer.Email, _writer.Password);
         }
         private void le_chroniqueur_devrait_être_authentifié()
@@ -64,7 +64,7 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
         {
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
-                .GotoLoginPage()
+                .ClickLogin()
                 .LoginAs(_writer.Email, _writer.Password + "invalid_password");
         }
 

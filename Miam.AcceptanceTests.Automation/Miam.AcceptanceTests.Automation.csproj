@@ -124,21 +124,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HtmlIdTag\PropertiesTool.cs" />
-    <Compile Include="HtmlIdTag\RestaurantIDs.cs" />
+    <Compile Include="HtmlIdTag\Id.cs" />
     <Compile Include="PageObjects\EmailPage.cs" />
-    <Compile Include="PageObjects\FilePages\DownloadIndexPage.cs" />
-    <Compile Include="PageObjects\FilePages\UploadPage.cs" />
     <Compile Include="AcceptanceTestsConfiguration.cs" />
     <Compile Include="UiComponents\LoginPanel.cs" />
     <Compile Include="UiComponents\NavigationMenu.cs" />
     <Compile Include="PageObjects\RestaurantPages\CreateRestaurantPage.cs" />
-    <Compile Include="PageObjects\RestaurantPages\EditRestaurantPage.cs" />
+    <Compile Include="PageObjects\RestaurantPages\EditRestaurantsPage.cs" />
     <Compile Include="PageObjects\HomePage.cs" />
     <Compile Include="PageObjects\LoginPage.cs" />
-    <Compile Include="Navigation\MenuSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Navigation\Navigation.cs" />
-    <Compile Include="PageObjects\ReviewPages\CreateReviewPage.cs" />
     <Compile Include="Seleno\Host.cs" />
   </ItemGroup>
   <ItemGroup>

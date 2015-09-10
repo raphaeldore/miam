@@ -43,15 +43,15 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         {
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
-                .GotoLoginPage()
+                .ClickLogin()
                 .LoginAs(_userAdmin.Email, _userAdmin.Password);
         }
         private void l_administrateur_entre_un_mot_de_passe_invalide()
         {
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
-                .GotoLoginPage()
-                .LoginAs(_userAdmin.Email, _userAdmin.Password + "invalid_password");
+                .ClickLogin()
+                .LoginAs(_userAdmin.Email, "invalid_password");
         }
 
         private void l_administrateur_ne_devrait_pas_être_authentifié()

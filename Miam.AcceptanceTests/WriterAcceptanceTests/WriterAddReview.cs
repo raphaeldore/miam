@@ -18,6 +18,7 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
     {
         private Writer _writer;
 
+        //Todo: à compléter
         [TestMethod, Ignore]
         public void s_authentifier_avec_courriel_et_mot_de_passe_valide()
         {
@@ -35,7 +36,7 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
 
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
-                .GotoLoginPage()
+                .ClickLogin()
                 .LoginAs(_writer.Email, _writer.Password);
         }
 

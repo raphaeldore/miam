@@ -28,7 +28,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         {
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
-                .ClickEditRestaurantPage()
+                .ClickEditRestaurants()
                 .EditFisrtRestaurantWith(TestData.Restaurant3);
         }
 

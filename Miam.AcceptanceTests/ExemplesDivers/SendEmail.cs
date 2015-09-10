@@ -6,7 +6,7 @@ using TestStack.BDDfy;
 
 namespace Miam.AcceptanceTests.ExemplesDivers
 {
-    // Scénarios et user story INCOMPLETS. Exemple pour montrer un test d'acceptation pour l'envoi d'un courriel. 
+    // Todo: À compléter. Scénarios et user story INCOMPLETS. Exemple pour montrer un test d'acceptation pour l'envoi d'un courriel. 
     [TestClass]
     [Story(
         Title = "Un utilisateur peut envoyer un courriel",
@@ -32,8 +32,8 @@ namespace Miam.AcceptanceTests.ExemplesDivers
         {
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
-                .GoToEmailPage()
-                .SendEamil();
+                .ClickSendEmail()
+                .SubmitEmail();
         }
 
         private void le_courriel_est_envoyé()
