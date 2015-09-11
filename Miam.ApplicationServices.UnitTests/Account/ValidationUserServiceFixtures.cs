@@ -1,15 +1,14 @@
 ﻿using System.Linq;
 using FluentAssertions;
-using Miam.ApplicationsServices.Account;
+using Miam.ApplicationServices.Account;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
-using Miam.TestUtility;
 using Miam.TestUtility.AutoFixture;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Ploeh.AutoFixture;
 
-namespace Miam.ApplicationServices.UnitTests
+namespace Miam.ApplicationServices.UnitTests.Account
 {
     
     [TestClass]

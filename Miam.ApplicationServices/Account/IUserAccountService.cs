@@ -1,7 +1,7 @@
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
 
-namespace Miam.ApplicationsServices.Account
+namespace Miam.ApplicationServices.Account
 {
     public interface IUserAccountService
     {

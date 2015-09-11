@@ -4,7 +4,7 @@ using Miam.DataLayer;
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
 
-namespace Miam.ApplicationsServices.Account
+namespace Miam.ApplicationServices.Account
 {
     public class UserUserAccountService : IUserAccountService
     {

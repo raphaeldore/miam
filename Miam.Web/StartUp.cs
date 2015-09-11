@@ -12,8 +12,6 @@ namespace Miam.Web
     {
         public void Configuration(IAppBuilder app)
         {
-            MiamEnvironmentVariable.Initialize();
-
             ConfigureAuthentication(app);
         }
 

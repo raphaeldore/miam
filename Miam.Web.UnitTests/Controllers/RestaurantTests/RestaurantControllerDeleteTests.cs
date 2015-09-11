@@ -16,7 +16,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void delete_restaurant_should_return_view_when_restaurantID_is_valid()
         {
             //Arrange 
-            var restaurant = _fixture.Create<Restaurant>();
+            var restaurant = Fixture.Create<Restaurant>();
             RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
 
             //Action
@@ -46,7 +46,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void delete_post_should_remove_restaurant()
         {
             //Arrange
-            var restaurant = _fixture.Create<Restaurant>();
+            var restaurant = Fixture.Create<Restaurant>();
             RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
 
 
@@ -61,7 +61,7 @@ namespace Miam.Web.UnitTests.Controllers.RestaurantTests
         public void delete_post_should_redirect_to_index_on_success()
         {
             //Arrange
-            var restaurant = _fixture.Create<Restaurant>();
+            var restaurant = Fixture.Create<Restaurant>();
             RestaurantRepository.GetById(restaurant.Id).Returns(restaurant);
 
             //Act

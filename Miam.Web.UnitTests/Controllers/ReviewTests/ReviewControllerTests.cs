@@ -17,20 +17,17 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.ReviewTests
 {
     [TestClass]
-    public class ReviewControllerTests
+    public class ReviewControllerTests : BaseControllerClassTests
     {
         private ReviewController _reviewController;
         private IEntityRepository<Restaurant> _restaurantRepository;
         private IHttpContextService _httpContextService;
         private IEntityRepository<Writer> _writerRepository;
-        private Fixture _fixture;
+        
 
         [TestInitialize]
         public void ReviewControllerTestInit()
         {
-            _fixture = new Fixture();
-            _fixture.Customizations.Add(new VirtualMembersOmitter());
-
             _writerRepository = Substitute.For<IEntityRepository<Writer>>();
             _restaurantRepository = Substitute.For<IEntityRepository<Restaurant>>();
             _httpContextService = Substitute.For<IHttpContextService>();
@@ -51,9 +48,9 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         public void create_post_should_add_writer_review_to_repository()
         {
             // Arrange   
-            var writer = _fixture.Create<Writer>();
-            var restaurant = _fixture.Create<Restaurant>();
-            var review = _fixture.Build<Review>()
+            var writer = Fixture.Create<Writer>();
+            var restaurant = Fixture.Create<Restaurant>();
+            var review = Fixture.Build<Review>()
                                  .With(x => x.WriterId, writer.Id)
                                  .With(x => x.RestaurantId, restaurant.Id)
                                  .Create();
@@ -74,7 +71,7 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         public void create_post_should_return_view_with_errors_when_modelState_is_not_valid()
         {
             //Arrange
-            var reviewCreateViewModel = _fixture.Build<ReviewCreateViewModel>()
+            var reviewCreateViewModel = Fixture.Build<ReviewCreateViewModel>()
                                                 .Without(x => x.Restaurants)
                                                 .Create();
             _reviewController.ModelState.AddModelError("Error", "Error");
@@ -91,8 +88,8 @@ namespace Miam.Web.UnitTests.Controllers.ReviewTests
         public void create_post_should_redirect_to_home_index_on_success()
         {
             //Arrange
-            var writer = _fixture.Create<Writer>();
-            var reviewCreateViewModel = _fixture.Build<ReviewCreateViewModel>()
+            var writer = Fixture.Create<Writer>();
+            var reviewCreateViewModel = Fixture.Build<ReviewCreateViewModel>()
                                                 .Without(x => x.Restaurants)
                                                 .Create();
 

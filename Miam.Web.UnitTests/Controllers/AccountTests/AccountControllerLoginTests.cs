@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Web.Mvc;
 using FluentAssertions;
-using Miam.ApplicationsServices.Account;
+using Miam.ApplicationServices.Account;
 using Miam.Domain.Application;
 using Miam.Domain.Entities;
 using Miam.TestUtility;

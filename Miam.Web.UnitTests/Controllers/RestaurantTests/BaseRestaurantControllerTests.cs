@@ -10,21 +10,20 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.RestaurantTests
 {
 
-    public class BaseRestaurantControllerTests : AllControllersBaseClassTests
+    public class BaseRestaurantControllerTests : BaseControllerClassTests
     {
         protected IEntityRepository<Restaurant> RestaurantRepository;
         protected IEntityRepository<Review> ReviewRepository;
         
         protected RestaurantController RestaurantController;
 
-        protected Fixture _fixture;
+        
 
 
         [TestInitialize]
         public void AdminControllerTestInit()
         {
-            _fixture = new Fixture();
-            _fixture.Customizations.Add(new VirtualMembersOmitter());
+           
 
             RestaurantRepository = Substitute.For<IEntityRepository<Restaurant>>();
             ReviewRepository = Substitute.For<IEntityRepository<Review>>();

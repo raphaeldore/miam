@@ -76,14 +76,12 @@ namespace Miam.Web.Controllers
         public class ActionNamesClass
         {
             public readonly string Send = "Send";
-            public readonly string SendConfirmed = "Send";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Send = "Send";
-            public const string SendConfirmed = "Send";
         }
 
 
@@ -116,17 +114,6 @@ namespace Miam.Web.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Send);
             SendOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void SendConfirmedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult SendConfirmed()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SendConfirmed);
-            SendConfirmedOverride(callInfo);
             return callInfo;
         }
 

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web.Mvc;
 using Externalization;
-using Miam.ApplicationsServices.Account;
+using Miam.ApplicationServices.Account;
 using Miam.Domain.Entities;
 using Miam.Web.Services;
 using Miam.Web.ViewModels.Account;

@@ -14,18 +14,14 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers.HomeTests
 {
     [TestClass]
-    public class HomControllerIndexTests : AllControllersBaseClassTests
+    public class HomControllerIndexTests : BaseControllerClassTests
     {
         private HomeController _homeController;
         private IEntityRepository<Restaurant> _restaurantRepository;
-        private Fixture _fixture;
 
         [TestInitialize]
         public void HomeControllerTestInit()
         {
-            _fixture = new Fixture();
-            _fixture.Customizations.Add(new VirtualMembersOmitter());
-
             _restaurantRepository = Substitute.For<IEntityRepository<Restaurant>>();
             _homeController = new HomeController(_restaurantRepository);
         }
@@ -35,9 +31,9 @@ namespace Miam.Web.UnitTests.Controllers.HomeTests
         {
             // Arrange   
             const int RESTAURANT_COUNT = 5;
-            var restaurant = _fixture.Create<Restaurant>();
+            var restaurant = Fixture.Create<Restaurant>();
 
-            var restaurants = _fixture.CreateMany<Restaurant>(RESTAURANT_COUNT);
+            var restaurants = Fixture.CreateMany<Restaurant>(RESTAURANT_COUNT);
             _restaurantRepository.GetAll().Returns(restaurants.AsQueryable());
 
             // Action
