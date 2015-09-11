@@ -149,7 +149,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Controllers\AccountTests\AccountControllerLoginTests.cs" />
-    <Compile Include="Controllers\AllControllersBaseClassTests.cs" />
+    <Compile Include="Controllers\BaseControllerClassTests.cs" />
     <Compile Include="Controllers\RestaurantTests\BaseRestaurantControllerTests.cs" />
     <Compile Include="Controllers\RestaurantTests\RestaurantControllerDeleteTests.cs" />
     <Compile Include="Controllers\RestaurantTests\RestaurantControllerEditTests.cs" />

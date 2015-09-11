@@ -7,13 +7,17 @@ using Ploeh.AutoFixture;
 namespace Miam.Web.UnitTests.Controllers
 {
 
-    public class AllControllersBaseClassTests
+    public class BaseControllerClassTests
     {
-    
+        protected Fixture Fixture;
+
         [TestInitialize]
         public void ControllerTestInit()
         {
             AutoMapperConfiguration.Configure();
+
+            Fixture = new Fixture();
+            Fixture.Customizations.Add(new VirtualMembersOmitter());
         }
     }
 }
