@@ -1,9 +1,10 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Miam.ApplicationService.IntegrationTests;
+using Miam.ApplicationServices.Email;
 using SendGrid;
 
 
@@ -18,9 +19,9 @@ namespace Miam.Web.Controllers
         }
 
         [HttpPost, ActionName("Send")]
-        public virtual ActionResult SendConfirmed()
+        public virtual async Task<ActionResult> SendConfirmed()
         {
-            //Todo: La classe ne devrait pas dépendre du service de email, mais d'une interface injecté au constructeur.
+            //Todo: La classe ne devrait pas dépendre du service de EmailService, mais d'une interface injectée au constructeur.
 
             var emailService = new EmailService();
 
@@ -34,7 +35,16 @@ namespace Miam.Web.Controllers
             };
 
             //Todo: Gérer les exceptions et envoyer un message à l'utlisateur si erreur lors de l'envoi.
-            var asyncEmail = emailService.SendMessage(email);
+            try
+            {
+                await emailService.SendMessage(email);
+            }
+            catch (Exception)
+            {
+                int a = 1;
+                throw;
+            }
+            
 
             //Todo: une confirmation que le message a été envoyé devrait être ajouté
 

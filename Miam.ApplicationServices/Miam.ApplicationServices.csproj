@@ -54,6 +54,7 @@
     <Compile Include="Account\UserUserAccountService.cs" />
     <Compile Include="Account\IUserAccountService.cs" />
     <Compile Include="Email\EmailService.cs" />
+    <Compile Include="File\FileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,9 +67,7 @@
       <Name>Miam.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="File\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

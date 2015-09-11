@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Miam.ApplicationServices.File;
+using Miam.ApplicationServices.IntegrationTests;
 
 namespace Miam.Web.Controllers
 {
@@ -19,7 +21,9 @@ namespace Miam.Web.Controllers
         [HttpGet]
         public virtual ActionResult Index()
         {
-            var uploadDirectory = Server.MapPath("~/uploads");
+            //Todo : créer les tests
+
+            var uploadDirectory = AppDomain.CurrentDomain.GetData("DataDirectory") + "\\uploads";
             var filesFullPath = Directory.GetFiles(uploadDirectory, "*.docx");
 
             return View(filesFullPath);
@@ -33,7 +37,7 @@ namespace Miam.Web.Controllers
             //Todo: Gérer les exceptions
 
             // Exemple pour télécharger un fichier sur le serveur
-            // Voir fichier README.txt dans le dossier uplaods du projet miam.web
+            // Voir fichier README.txt dans le dossier app_data/uplaods du projet miam.web
             if (file == null)
             {
                 ModelState.AddModelError("fileError", "Fichier inexistant");
@@ -46,9 +50,9 @@ namespace Miam.Web.Controllers
                 return View("");
             }
 
-            var fileName = Path.GetFileName(file.FileName);
-            var path = Path.Combine(Server.MapPath("~/uploads"), fileName);
-            file.SaveAs(path);
+            var fileService = new FileService();
+            fileService.SaveFileToServer(file);
+            
             return RedirectToAction(MVC.Home.Index());
             
         }

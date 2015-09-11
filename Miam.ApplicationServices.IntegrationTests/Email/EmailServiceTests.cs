@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Mail;
 using System.Threading.Tasks;
-using Miam.ApplicationService.IntegrationTests;
+using Miam.ApplicationServices.Email;
 using Miam.TestUtility.AutoFixture;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ploeh.AutoFixture;
@@ -16,13 +16,8 @@ namespace Miam.ApplicationServices.IntegrationTests
     [TestClass]
     public class UnitTest1
     {
-        [TestInitialize]
-        public void TestMethod1()
-        {
-            var _fixture = new Fixture();
-            _fixture.Customizations.Add(new VirtualMembersOmitter());
-        }
 
+        //Todo: refactoriser
         [TestMethod]
         public async Task Send_email_should_not_throw_any_exceptions()
         {
