@@ -8,14 +8,21 @@ namespace Miam.ApplicationServices.File
     {
         public void SaveFileToServer(HttpPostedFileBase httpPostFile)
         {
+            //Todo: refactoriser
+            //Todo: vérifier que le nom du fichier n'est pas vide ou null
+
             var fileName = Path.GetFileName(httpPostFile.FileName);
 
-            // AppDomain.CurrentDomain.GetData("DataDirectory") correspond au dossier app_data dans le dossier web.
-            // Est initialisé par MVC.
+            var pathToSaveFile = Path.Combine(AppDomain.CurrentDomain.GetData("APPBASE").ToString(),"uploads\\");
 
-            var path = AppDomain.CurrentDomain.GetData("DataDirectory") + "\\uploads";
-            path = Path.Combine(path, fileName);
-            httpPostFile.SaveAs(path);
+            if (!Directory.Exists(pathToSaveFile))
+            {
+                FileInfo file = new System.IO.FileInfo(pathToSaveFile);
+                file.Directory.Create(); 
+            }
+
+            var pathToSaveWithFileName = Path.Combine(pathToSaveFile, fileName);
+            httpPostFile.SaveAs(pathToSaveWithFileName);
         }
     }
 }
