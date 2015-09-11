@@ -35,16 +35,8 @@ namespace Miam.Web.Controllers
             };
 
             //Todo: Gérer les exceptions et envoyer un message à l'utlisateur si erreur lors de l'envoi.
-            try
-            {
-                await emailService.SendMessage(email);
-            }
-            catch (Exception)
-            {
-                int a = 1;
-                throw;
-            }
-            
+
+             await emailService.SendMessage(email);
 
             //Todo: une confirmation que le message a été envoyé devrait être ajouté
 

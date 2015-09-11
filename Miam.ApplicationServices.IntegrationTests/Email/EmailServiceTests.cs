@@ -8,7 +8,7 @@ using Ploeh.AutoFixture;
 
 namespace Miam.ApplicationServices.IntegrationTests
 {
-    // DeploymentItem copie le fichier AppSettingsSecrets.config avec le DLL des tests d'integrations. 
+    // DeploymentItem copie le fichier AppSettingsSecrets.config avec le DLL des tests d'integration. 
     // Fichier nécessaire lors de l'execution avec Jenkins
     // App.config, fait référence à ce fichier.
     [DeploymentItem("AppSettingsSecrets.config")]

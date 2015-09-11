@@ -7,6 +7,11 @@ using Ploeh.AutoFixture;
 
 namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
 {
+    // DeploymentItem copie le fichier ConnectionStrings.config avec le DLL des tests d'integration. 
+    // Fichier nécessaire lors de l'execution avec Jenkins
+    // App.config, fait référence à ce fichier.
+    [DeploymentItem("ConnectionStrings.config")]
+
     public class BaseRepositoryTests
     {
         protected Fixture Fixture;
