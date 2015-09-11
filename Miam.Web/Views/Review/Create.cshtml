@@ -22,8 +22,8 @@
         <div class="editor_field" id="review_rating"> @Html.EditorFor(model => model.Rating) </div>
         <div class="validation_field">@Html.ValidationMessageFor(model => model.Rating)</div>
 
-        <input class="btn btn-sm btn-success" id="create_button" type="submit" value=@UiText.Buttons.ADD_LABEL />
-        @Html.ActionLink(@UiText.Buttons.CANCEL_LABEL, MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
+        <input class="btn btn-sm btn-success" id="create_button" type="submit" value=@UiText.Buttons.ADD />
+        @Html.ActionLink(@UiText.Buttons.CANCEL, MVC.Home.Index(), new { @class = "btn btn-sm btn-danger" })
 
 
     </fieldset>

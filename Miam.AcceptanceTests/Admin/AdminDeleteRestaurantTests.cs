@@ -4,7 +4,7 @@ using Miam.AcceptanceTests.Automation.Seleno;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
-namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
+namespace Miam.AcceptanceTests.Admin
 {
     [TestClass]
     [Story(
@@ -12,7 +12,7 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         AsA = "En tant qu'administrateur",
         IWant = "Je veux pouvoir supprimer un restaurant",
         SoThat = "Afin qu'il ne soit plus dans le système")]
-    public class AdminDeleteRestaurant : AdminBaseClass
+    public class AdminDeleteRestaurantTests : AdminTests
     {
         [TestMethod]
         public void supprimer_un_restaurant()

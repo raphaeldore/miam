@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FluentValidation.Mvc;
 using Miam.DataLayer;
 using Miam.Web.Mappers;
 using WebApplication1;
@@ -21,6 +22,8 @@ namespace Miam.Web
             dbInitializer.MigrateDatabaseToLatestVersion();
 
             AutoMapperConfiguration.Configure();
+
+            FluentValidationModelValidatorProvider.Configure();
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
         }

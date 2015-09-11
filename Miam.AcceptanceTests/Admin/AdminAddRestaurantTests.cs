@@ -1,11 +1,10 @@
 ﻿using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
 using Miam.TestUtility.Seed;
-using Miam.Web.AcceptanceTests.AdminAcceptanceTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
-namespace Miam.AcceptanceTests.AdminAcceptanceTests
+namespace Miam.AcceptanceTests.Admin
 {
     [TestClass]
     [Story(
@@ -13,7 +12,7 @@ namespace Miam.AcceptanceTests.AdminAcceptanceTests
         AsA = "En tant qu'administrateur",
         IWant = "Je veux pouvoir ajouter un restaurant",
         SoThat = "Afin d'avoir un nouveau restaurant dans le système")]
-    public class AdminAddRestaurant : AdminBaseClass
+    public class AdminAddRestaurantTests : AdminTests
     {
         [TestMethod]
         public void ajouter_un_restaurant()

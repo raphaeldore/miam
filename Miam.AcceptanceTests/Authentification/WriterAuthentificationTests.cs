@@ -1,23 +1,22 @@
 ﻿using FluentAssertions;
 using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
-using Miam.Domain.Entities;
 using Miam.TestUtility.Seed;
-using Miam.Web.AcceptanceTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
+using Miam.Domain.Entities;
 
-namespace Miam.AcceptanceTests.WriterAcceptanceTests
+namespace Miam.AcceptanceTests.Authentification
 {
     [TestClass]
     [Story(
         Title = "Un chroniqueur peut s'authentifier",
         AsA = "En tant que chroniqueur",
         IWant = "Je veux  m'authentifier",
-        SoThat = "Afin d'avoir écrire des commetaires")]
-    public class WriterAuthentification : AcceptanceTestsBaseClass
+        SoThat = "Afin de pouvoir écrire des commetaires")]
+    public class WriterAuthentificationTests : BaseAcceptanceTests
     {
-        private Writer _writer;
+        private Domain.Entities.Writer _writer;
 
         [TestMethod]
         public void s_authentifier_avec_courriel_et_mot_de_passe_valide()
@@ -25,15 +24,6 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
             this.Given(x => un_chroniqueur_existant_non_authentifé())
                 .When(x => le_chroniqueur_entre_son_courriel_et_mot_de_passe_valide())
                 .Then(x => le_chroniqueur_devrait_être_authentifié())
-                .BDDfy();
-        }
-
-        [TestMethod]
-        public void s_authentifier_avec_courriel_invalide()
-        {
-            this.Given(x => un_chroniqueur_existant_non_authentifé())
-                .When(x => le_chroniqueur_entre_un_mot_de_passe_invalide())
-                .Then(x => le_chroniqueur_ne_devrait_pas_être_authentifié())
                 .BDDfy();
         }
 
@@ -60,21 +50,6 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
             loggedInUserName.ShouldBeEquivalentTo(_writer.Email);
         }
 
-        private void le_chroniqueur_entre_un_mot_de_passe_invalide()
-        {
-            Host.Instance.NavigateToInitialPage<HomePage>()
-                .NavigationMenu
-                .ClickLogin()
-                .LoginAs(_writer.Email, _writer.Password + "invalid_password");
-        }
-
-        private void le_chroniqueur_ne_devrait_pas_être_authentifié()
-        {
-            var islogged= Host.Instance.NavigateToInitialPage<HomePage>()
-                .LoginPanel
-                .IsLoggedIn(_writer.Email);
-            
-            Assert.IsFalse(islogged);
-        }
+      
     }
 }

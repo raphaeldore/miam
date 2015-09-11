@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Security.Claims;
 using System.Web.Mvc;
+using Externalization;
 using Miam.ApplicationsServices.Account;
 using Miam.Domain.Entities;
 using Miam.Web.Services;
@@ -43,7 +44,7 @@ namespace Miam.Web.Controllers
 
             if (!user.Any())
             {
-                ModelState.AddModelError("loginError", "Utilisateur ou mot de passe inexistant");
+                ModelState.AddModelError("loginError", UiText.Login.INCORRECT_LOGIN_OR_PASSWORD);
                 return View("");
             }
             

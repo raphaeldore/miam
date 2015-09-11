@@ -86,6 +86,14 @@
     <Reference Include="FluentAssertions.Core">
       <HintPath>..\packages\FluentAssertions.3.3.0\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.5.6.2.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.MVC5.5.6.2.0\lib\Net45\FluentValidation.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -149,13 +157,20 @@
     <Compile Include="Controllers\HomeTests\HomeControllerIndexTests.cs" />
     <Compile Include="Controllers\ReviewTests\ReviewControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModelsTests\RestaurantViewModelTests.cs" />
+    <Compile Include="ViewModelsValidation\BaseViewModelValidation.cs" />
+    <Compile Include="ViewModelsValidation\ReviewCreateViewModelTests.cs" />
+    <Compile Include="ViewModelsValidation\RestaurantEditViewModelTests.cs" />
+    <Compile Include="ViewModelsValidation\RestaurantCreateViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Externalization\Externalization.csproj">
+      <Project>{902DF601-7437-470A-BE48-AFD4B46B6A0C}</Project>
+      <Name>Externalization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Miam.ApplicationServices\Miam.ApplicationServices.csproj">
       <Project>{70287143-42AB-4F50-BB1A-CD61C1D0BC31}</Project>
       <Name>Miam.ApplicationServices</Name>
@@ -177,9 +192,7 @@
       <Name>Miam.TestUtility</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

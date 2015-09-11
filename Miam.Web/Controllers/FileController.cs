@@ -30,9 +30,9 @@ namespace Miam.Web.Controllers
         public virtual ActionResult Upload(HttpPostedFileBase file)
         {
             //Todo: un service devrait être créé pour l'envoi de fichier
+            //Todo: Gérer les exceptions
 
             // Exemple pour télécharger un fichier sur le serveur
-            // Voir le test d'acceptation user_can_upload_file de la classe FileTests.
             // Voir fichier README.txt dans le dossier uplaods du projet miam.web
             if (file == null)
             {
@@ -57,11 +57,13 @@ namespace Miam.Web.Controllers
         public virtual ActionResult Download(string fullPathFileName)
         {
             //Todo: un service devrait être utlisé
-
+            //Todo: Gérer les exceptions
+            
+            //Methode appelée par /File/Index
             // Exemple pour démontrer le téléchargement d'un fichier du serveur au poste client
             // Dans cet exemple le chemin complet est utilisé comme paramètre. Devrait être un id unique. 
 
-            // Voir le test d'acceptation user_can_download_file de la classe FileTests.
+
             if (!System.IO.File.Exists(fullPathFileName))
             {
                 return HttpNotFound();

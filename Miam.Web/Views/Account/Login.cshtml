@@ -17,7 +17,7 @@
     @Html.ValidationMessage("loginError")
 
     @Html.ValidationMessageFor(model => model.Email)
-    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = UiText.Login.EMAIL, type = "email" })
+    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = UiText.Login.EMAIL})
 
 
     @Html.ValidationMessageFor(model => model.Password)

@@ -21,9 +21,9 @@ namespace Externalization
 
         public static class Buttons
         {
-            public const string ADD_LABEL = "Ajouter";
-            public const string CANCEL_LABEL = "Annuler";
-            public const string CONFIRM_LABEL = "Confirmer";
+            public const string ADD = "Ajouter";
+            public const string CANCEL = "Annuler";
+            public const string CONFIRM = "Confirmer";
 
         }
         public static class Restaurant
@@ -49,9 +49,9 @@ namespace Externalization
             public const string FACEBOOK = "Facebook";
             public const string WEBSITE = "Site web";
 
-            public const string NAME_REQUIRED_ERROR = "Le champ nom est requis";
-            public const string CITY_REQUIRED_ERROR = "Le champ ville est requis";
-            public const string COUNTRY_REQUIRED_ERROR = "Le champ pays est requis";
+            public const string NAME_REQUIRED = "Le champ nom est requis.";
+            public const string CITY_REQUIRED = "Le champ ville est requis.";
+            public const string COUNTRY_REQUIRED = "Le champ pays est requis.";
 
         }
 
@@ -74,13 +74,15 @@ namespace Externalization
         {
             public const string EMAIL = "Courriel";
             public const string  PASSWORD = "Mot de passe";
-            public const string CONNECT_TO_YOUR_ACCOUNT = "Connectez-vous à votre compte Miam";
+            public const string CONNECT_TO_YOUR_ACCOUNT = "Connectez-vous à votre compte Miam.";
             
             public const string LOGIN = "Se connecter";
             public const string LOGOUT = "Se déconnecter";
 
-            public const string EMAIL_REQUIRED_ERROR = "Le champ courriel est requis";
-            public const string PASSWORD_REQUIRED_ERROR = "Le champ mot de passe est requis";
+            public const string INVALID_EMAIL = "Veuillez saisir une adresse courriel valide.";
+            public const string EMPTY_EMAIL= "Veuillez saisir votre adresse courriel.";
+            public static string EMPTY_PASSWORD = "Veuillez saisir votre mot de passe.";
+            public const string INCORRECT_LOGIN_OR_PASSWORD = "Utilisateur ou mot de passe inexistant.";
 
         }
       

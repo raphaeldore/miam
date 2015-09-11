@@ -16,7 +16,19 @@
                         <div class="col-md-6">
                             <h3>@UiText.Restaurant.RESTAURANT_ADDRESS</h3>
 
-                            @Html.EditorFor(model => model)
+                            @Html.HiddenFor(model => model.Id)
+
+                            <div class="label_field">@Html.LabelFor(model => model.Name, "Nom") </div>
+                            <div class="editor_field" id="restaurant_name_field"> @Html.EditorFor(model => model.Name) </div>
+                            <div class="validation_field">@Html.ValidationMessageFor(model => model.Name)</div>
+
+                            <div class="label_field"> @Html.LabelFor(model => model.City, "Ville") </div>
+                            <div class="editor_field" id="restaurant_city_field"> @Html.EditorFor(model => model.City) </div>
+                            <div class="validation_field">@Html.ValidationMessageFor(model => model.City)</div>
+
+                            <div class="label_field"> @Html.LabelFor(model => model.Country, "Pays") </div>
+                            <div class="editor_field" id="restaurant_contry_field"> @Html.EditorFor(model => model.Country) </div>
+                            <div class="validation_field">@Html.ValidationMessageFor(model => model.Country)</div>
 
                         </div>
                         <div class="col-md-6">
@@ -27,8 +39,8 @@
                         </div>
 
                     </div>
-                    <input class="btn btn-sm btn-success" id="submit_button" type="submit" value=@UiText.Buttons.CONFIRM_LABEL />
-                    @Html.ActionLink(UiText.Buttons.CANCEL_LABEL, MVC.Restaurant.Index(), new { @class = "btn btn-sm btn-danger" })
+                    <input class="btn btn-sm btn-success" id="submit_button" type="submit" value=@UiText.Buttons.CONFIRM />
+                    @Html.ActionLink(UiText.Buttons.CANCEL, MVC.Restaurant.Index(), new { @class = "btn btn-sm btn-danger" })
                 </div>
             }
         </div>

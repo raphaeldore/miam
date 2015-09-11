@@ -1,13 +1,12 @@
 ﻿using FluentAssertions;
-using Miam.AcceptanceTests;
 using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
 using Miam.Domain.Entities;
 using Miam.TestUtility.Seed;
 
-namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
+namespace Miam.AcceptanceTests.Admin
 {
-    public class AdminBaseClass : AcceptanceTestsBaseClass
+    public class AdminTests : BaseAcceptanceTests
     {
         protected MiamUser _userAdmin;
         protected Restaurant _restaurant1;

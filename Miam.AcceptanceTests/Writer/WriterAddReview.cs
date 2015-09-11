@@ -1,12 +1,10 @@
 ﻿using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
-using Miam.Domain.Entities;
 using Miam.TestUtility.Seed;
-using Miam.Web.AcceptanceTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
-namespace Miam.AcceptanceTests.WriterAcceptanceTests
+namespace Miam.AcceptanceTests.Writer
 {
     [TestClass]
     [Story(
@@ -14,13 +12,13 @@ namespace Miam.AcceptanceTests.WriterAcceptanceTests
         AsA = "En tant que chroniqueur",
         IWant = "Je veux  pouvoir écrire une chronique",
         SoThat = "Afin de donner mon appréciation sur un restaurant")]
-    public class WriterAddReview : AcceptanceTestsBaseClass
+    public class WriterAddReview : BaseAcceptanceTests
     {
-        private Writer _writer;
+        private Domain.Entities.Writer _writer;
 
         //Todo: à compléter
         [TestMethod, Ignore]
-        public void s_authentifier_avec_courriel_et_mot_de_passe_valide()
+        public void ajouter_une_chronique_a_un_restaurant()
         {
             this.Given(x => un_chroniqueur_authentifé())
                 .Given(x => un_restaurant())

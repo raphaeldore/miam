@@ -1,12 +1,13 @@
 ﻿using FluentAssertions;
+using Miam.AcceptanceTests.Admin;
 using Miam.AcceptanceTests.Automation.PageObjects;
 using Miam.AcceptanceTests.Automation.Seleno;
+using Miam.Domain.Entities;
 using Miam.TestUtility.Seed;
-using Miam.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestStack.BDDfy;
 
-namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
+namespace Miam.AcceptanceTests.Authentification
 {
     [TestClass]
     [Story(
@@ -14,10 +15,12 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
         AsA = "En tant qu'administrateur",
         IWant = "Je veux  m'authentifier",
         SoThat = "Afin d'avoir accès au système")]
-    public class AdminAuthentification : AdminBaseClass
+    public class AdminAuthentificationTests : BaseAcceptanceTests
     {
+        private MiamUser _userAdmin;
+
         [TestMethod]
-        public void s_authentifier_avec_courriel_et_mot_de_passe_valide()
+        public void authentification_admin_avec_courriel_et_mot_de_passe_valide()
         {
             this.Given(x => un_administrateur_existant_non_authentifé())
                 .When(x => l_administrateur_entre_son_courriel_et_mot_de_passe_valide())
@@ -25,14 +28,6 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
                 .BDDfy();
         }
 
-        [TestMethod]
-        public void s_authentifier_avec_courriel_invalide()
-        {
-            this.Given(x => un_administrateur_existant_non_authentifé())
-                .When(x => l_administrateur_entre_un_mot_de_passe_invalide())
-                .Then(x => l_administrateur_ne_devrait_pas_être_authentifié())
-                .BDDfy();
-        }
 
         private void un_administrateur_existant_non_authentifé()
         {
@@ -45,22 +40,6 @@ namespace Miam.Web.AcceptanceTests.AdminAcceptanceTests
                 .NavigationMenu
                 .ClickLogin()
                 .LoginAs(_userAdmin.Email, _userAdmin.Password);
-        }
-        private void l_administrateur_entre_un_mot_de_passe_invalide()
-        {
-            Host.Instance.NavigateToInitialPage<HomePage>()
-                .NavigationMenu
-                .ClickLogin()
-                .LoginAs(_userAdmin.Email, "invalid_password");
-        }
-
-        private void l_administrateur_ne_devrait_pas_être_authentifié()
-        {
-            var isLoggedIn = Host.Instance.NavigateToInitialPage<HomePage>()
-                .LoginPanel
-                .IsLoggedIn(_userAdmin.Email);
-
-            Assert.IsFalse(isLoggedIn);
         }
 
         private void l_administrateur_devrait_être_authentifié()
