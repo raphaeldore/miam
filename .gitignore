@@ -4,8 +4,8 @@
 # Exclude build artifacts
 /buildartifacts
 
-# Exclude secrets files
-*.secrets.*
+# Exclude config secrets files
+*secrets.config
 
 # User-specific files
 *.suo

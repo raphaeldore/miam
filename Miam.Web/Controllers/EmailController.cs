@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Miam.ApplicationService.IntegrationTests;
 using SendGrid;
 
 
@@ -19,10 +20,22 @@ namespace Miam.Web.Controllers
         [HttpPost, ActionName("Send")]
         public virtual ActionResult SendConfirmed()
         {
-            //Todo: un service devrait être créé pour l'envoi de courriel
-            
-            var a = SendEmailExample();
-            
+            //Todo: La classe ne devrait pas dépendre du service de email, mais d'une interface injecté au constructeur.
+
+            var emailService = new EmailService();
+
+            var email = new MailMessage()
+            {
+                From = new MailAddress("miamadmin@yopmail.com", "Miam admin"),
+                To = { new MailAddress("lindachampagne@yopmail.com", "Linda Champagne") },
+                Subject = "Le sujet",
+                Body = "Le message"
+
+            };
+
+            //Todo: Gérer les exceptions et envoyer un message à l'utlisateur si erreur lors de l'envoi.
+            var asyncEmail = emailService.SendMessage(email);
+
             //Todo: une confirmation que le message a été envoyé devrait être ajouté
 
             return RedirectToAction("Send");
@@ -33,7 +46,7 @@ namespace Miam.Web.Controllers
             // Todo: Gérer les exceptions 
 
             SendGridMessage myMessage = new SendGridMessage();
-            myMessage.AddTo("tomiamtest@yopmail.com");
+            myMessage.AddTo("Linda Champagne<lindachampagne@yopmail.com>");
             myMessage.From = new MailAddress("frommiamtest@yopmail.com", "Coordonateur de miam");
             myMessage.Subject = "le texte";
             myMessage.Text = "le message";
