@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
-using Miam.TestUtility.DbTestsHelperAPI;
 
 namespace Miam.TestUtility.Seed
 {
-    public class TestDataSeederHelper
+    public class TestDataSeeder
     {
         private MiamDbContext _dbContext;
       
         private Writer _writer1;
         private Writer _writer2;
 
-        public TestDataSeederHelper()
+        public TestDataSeeder()
         {
             _dbContext = new MiamDbContext();  
         }
@@ -72,7 +71,7 @@ namespace Miam.TestUtility.Seed
         private void AddAdmin()
         {
             var admin = TestData.MiamUserAdmin;
-            _dbContext.Users.Add(admin);
+            _dbContext.MiamUsers.Add(admin);
         }
     }
 }

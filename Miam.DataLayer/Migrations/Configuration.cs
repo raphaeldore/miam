@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using Miam.Domain.Application;
+using Miam.Domain.Entities;
+
 namespace Miam.DataLayer.Migrations
 {
     using System;
@@ -27,6 +31,19 @@ namespace Miam.DataLayer.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.MiamUsers.AddOrUpdate(
+                new MiamUser
+                {
+                    Name = "admin",
+                    Password = "admin",
+                    Email = "admin@admin.com",
+                    Roles = new List<UserRole>()
+                             {
+                                 new UserRole() {RoleName = RoleName.Writer},
+                                 new UserRole() {RoleName = RoleName.Admin}
+                             }
+                }
+                );
         }
     }
 }

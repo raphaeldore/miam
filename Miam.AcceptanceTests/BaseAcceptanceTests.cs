@@ -5,7 +5,7 @@ using Miam.AcceptanceTests.Automation.Seleno;
 using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
 using Miam.TestUtility;
-using Miam.TestUtility.DbTestsHelperAPI;
+using Miam.TestUtility.TestsHelperAPI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
@@ -15,7 +15,7 @@ namespace Miam.AcceptanceTests
     [DeploymentItem("ConnectionStrings.config")]
     public class BaseAcceptanceTests
     {
-        protected DbTestHelper DbTestHelper;
+        protected TestHelper TestHelper;
 
 
         [TestInitialize]
@@ -24,7 +24,7 @@ namespace Miam.AcceptanceTests
             var database = new EfApplicationDatabase(new MiamDbContext());
             database.ClearAllTables();
 
-            DbTestHelper = new DbTestHelper();
+            TestHelper = new TestHelper();
         }
 
         [TestCleanup]

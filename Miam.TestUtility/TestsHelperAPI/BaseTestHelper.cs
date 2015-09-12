@@ -2,7 +2,7 @@ using Miam.DataLayer;
 using Miam.TestUtility.AutoFixture;
 using Ploeh.AutoFixture;
 
-namespace Miam.TestUtility.DbTestsHelperAPI
+namespace Miam.TestUtility.TestsHelperAPI
 {
     public class BaseTestHelper
     {

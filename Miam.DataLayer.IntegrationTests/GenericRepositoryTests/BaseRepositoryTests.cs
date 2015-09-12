@@ -1,7 +1,7 @@
 using Miam.DataLayer.EntityFramework;
 using Miam.TestUtility;
 using Miam.TestUtility.AutoFixture;
-using Miam.TestUtility.DbTestsHelperAPI;
+using Miam.TestUtility.TestsHelperAPI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ploeh.AutoFixture;
 
@@ -15,12 +15,12 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
     public class BaseRepositoryTests
     {
         protected Fixture Fixture;
-        protected DbTestHelper DbTestHelper;
+        protected TestHelper TestHelper;
 
         [TestInitialize]
         public void BaseTestInitialize()
         {
-            DbTestHelper = new DbTestHelper();
+            TestHelper = new TestHelper();
             
             var database = new EfApplicationDatabase(new MiamDbContext());
             database.ClearAllTables();

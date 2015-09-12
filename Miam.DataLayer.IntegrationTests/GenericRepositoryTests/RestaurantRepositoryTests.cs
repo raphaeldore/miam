@@ -33,21 +33,21 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             _restaurantRepository.Add(_restaurant);
 
             //Assert 
-            DbTestHelper.Restaurants.Count().Should().Be(1);
+            TestHelper.Restaurants.Count().Should().Be(1);
         }
 
         [TestMethod]
         public void delete_restaurant()
         {
             //Arrange
-            DbTestHelper.Restaurants.Add(_restaurant);
+            TestHelper.Restaurants.Add(_restaurant);
 
             //Action
             var restaurantToDelete = _restaurantRepository.GetById(_restaurant.Id);
             _restaurantRepository.Delete(restaurantToDelete);
 
             //Assert 
-            DbTestHelper.Restaurants.Count().Should().Be(0);
+            TestHelper.Restaurants.Count().Should().Be(0);
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         {
             //Arrange 
             const string NEW_RESTAURANT_NAME = "Le lapin choqué";
-            DbTestHelper.Restaurants.Add(_restaurant);
+            TestHelper.Restaurants.Add(_restaurant);
 
             //Action
             var restaurantToUpdate = _restaurantRepository.GetById(_restaurant.Id);
@@ -63,7 +63,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             _restaurantRepository.Update(restaurantToUpdate);
 
             //Assert 
-            var restaurantAfter = DbTestHelper.Restaurants.GetRestaurant(restaurantToUpdate);
+            var restaurantAfter = TestHelper.Restaurants.GetRestaurant(restaurantToUpdate);
             restaurantAfter.Name.Should().Be(NEW_RESTAURANT_NAME);
         }
 
@@ -72,7 +72,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
         {
             //Arrange 
             const string BODY_REVIEW = "Service exceptionnel. Ambiance décontractée";
-            DbTestHelper.Restaurants.Add(_restaurant);
+            TestHelper.Restaurants.Add(_restaurant);
 
             var reviewToAdd = Fixture.Build<Review>()
                                  .With(x => x.Writer, _writer)
@@ -85,7 +85,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             _restaurantRepository.Update(restaurantToUpdate);
 
             //Assert 
-            var reviewAfter = DbTestHelper.Restaurants.GetFirstReviewOf(restaurantToUpdate);
+            var reviewAfter = TestHelper.Restaurants.GetFirstReviewOf(restaurantToUpdate);
             reviewAfter.Body.Should().Be(BODY_REVIEW);
         }
 
@@ -99,7 +99,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
                                  .With(x => x.Writer, _writer)
                                  .With(x => x.Restaurant, _restaurant)
                                  .Create();
-            DbTestHelper.Reviews.Add(review);
+            TestHelper.Reviews.Add(review);
 
             //Action 
             var restaurantToUpdate = _restaurantRepository.GetById(_restaurant.Id);
@@ -107,7 +107,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             _restaurantRepository.Update(restaurantToUpdate);
 
             //Assert 
-            var reviewAfter = DbTestHelper.Restaurants.GetFirstReviewOf(_restaurant);
+            var reviewAfter = TestHelper.Restaurants.GetFirstReviewOf(_restaurant);
             reviewAfter.Body.Should().Be(NEW_BODY_REVIEW);
         }
 
@@ -120,7 +120,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
                                                    .With(x => x.RestaurantId, _restaurant.Id)
                                                    .Create();
             _restaurant.RestaurantContactDetail = restaurantContactDetail;
-            DbTestHelper.Restaurants.Add(_restaurant);
+            TestHelper.Restaurants.Add(_restaurant);
             
             //Action
             var restaurantToUpdate = _restaurantRepository.GetById(_restaurant.Id);
@@ -128,7 +128,7 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             _restaurantRepository.Update(restaurantToUpdate);
 
             //Assert 
-            var contactDetailsAfter = DbTestHelper.Restaurants.GetContactDetailOf(restaurantToUpdate);
+            var contactDetailsAfter = TestHelper.Restaurants.GetContactDetailOf(restaurantToUpdate);
             contactDetailsAfter.WebPage.Should().Be(NEW_WEB_PAGE);
         }
 
@@ -141,14 +141,14 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
                                  .With(x => x.Writer, _writer)
                                  .With(x => x.Restaurant, _restaurant)
                                  .Create();
-            DbTestHelper.Reviews.Add(review);
+            TestHelper.Reviews.Add(review);
 
             //Action
             var restaurantToDelete = _restaurantRepository.GetById(_restaurant.Id);
             _restaurantRepository.Delete(restaurantToDelete);
 
             //Assert 
-            DbTestHelper.Reviews.Count().Should().Be(0);
+            TestHelper.Reviews.Count().Should().Be(0);
         }
 
         [TestMethod]
@@ -159,14 +159,14 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
                                  .With(x => x.Writer, _writer)
                                  .With(x => x.Restaurant, _restaurant)
                                  .Create();
-            DbTestHelper.Reviews.Add(review);
+            TestHelper.Reviews.Add(review);
 
             //Action
             var restaurantToDelete = _restaurantRepository.GetById(_restaurant.Id);
             _restaurantRepository.Delete(restaurantToDelete);
 
             //Assert 
-            DbTestHelper.Reviews.Count().Should().Be(0);
+            TestHelper.Reviews.Count().Should().Be(0);
         }
 
         [TestMethod]
@@ -175,14 +175,14 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
             //Arrange
             var tag = Fixture.Create<Tag>();
             _restaurant.Tags.Add(tag);
-            DbTestHelper.Restaurants.Add(_restaurant);
+            TestHelper.Restaurants.Add(_restaurant);
 
             //Action
             var restaurantToDelete = _restaurantRepository.GetById(_restaurant.Id);
             _restaurantRepository.Delete(restaurantToDelete);
 
             //Assert 
-            int tagCountAfter = DbTestHelper.Tags.Count();
+            int tagCountAfter = TestHelper.Tags.Count();
             tagCountAfter.Should().Be(1);
         }
     }

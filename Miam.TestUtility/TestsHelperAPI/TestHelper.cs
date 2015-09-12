@@ -3,13 +3,13 @@ using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using Miam.DataLayer;
 
-namespace Miam.TestUtility.DbTestsHelperAPI
+namespace Miam.TestUtility.TestsHelperAPI
 {
-    public class DbTestHelper 
+    public class TestHelper 
     {
         private IDbContextFactory<MiamDbContext> _dbContextFactory;
 
-        public DbTestHelper()
+        public TestHelper()
         {
             _dbContextFactory = new DbContextFactory();
             WriteToConsoleDataBaseInformation();

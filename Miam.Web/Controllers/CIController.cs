@@ -8,19 +8,19 @@ namespace Miam.Web.Controllers
 {
     public partial class CIController : Controller
     {
-        private readonly TestDataSeederHelper _testDataSeederHelper;
+        private readonly TestDataSeeder _testDataSeeder;
 
         public CIController()
         {
-            _testDataSeederHelper = new TestDataSeederHelper();
+            _testDataSeeder = new TestDataSeeder();
         }
 
         public virtual ActionResult Index()
         {
             try
             {
-                _testDataSeederHelper.ClearTables();
-                _testDataSeederHelper.SeedTables();
+                _testDataSeeder.ClearTables();
+                _testDataSeeder.SeedTables();
             }
             catch (Exception ex)
             {
@@ -33,7 +33,7 @@ namespace Miam.Web.Controllers
         {
             try
             {
-                _testDataSeederHelper.ClearTables();
+                _testDataSeeder.ClearTables();
             }
             catch (Exception ex)
             {

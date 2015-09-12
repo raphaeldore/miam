@@ -1,9 +1,8 @@
 ﻿using System.Data.Entity.Infrastructure;
 using System.Linq;
 using Miam.DataLayer;
-using Miam.Domain.Entities;
 
-namespace Miam.TestUtility.DbTestsHelperAPI
+namespace Miam.TestUtility.TestsHelperAPI
 {
     public class TagTestHelper
     {

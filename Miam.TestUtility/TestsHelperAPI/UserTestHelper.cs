@@ -2,7 +2,7 @@ using System.Data.Entity.Infrastructure;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 
-namespace Miam.TestUtility.DbTestsHelperAPI
+namespace Miam.TestUtility.TestsHelperAPI
 {
     public class UserTestHelper : BaseTestHelper
     {
@@ -15,7 +15,7 @@ namespace Miam.TestUtility.DbTestsHelperAPI
         public void Add(MiamUser miamUserAdmin)
         {
             var dbContext = _dbContextFactory.Create();
-            dbContext.Users.Add(miamUserAdmin);
+            dbContext.MiamUsers.Add(miamUserAdmin);
             dbContext.SaveChanges();
         }
     }
