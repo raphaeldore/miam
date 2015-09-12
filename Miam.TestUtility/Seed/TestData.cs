@@ -93,9 +93,9 @@ namespace Miam.TestUtility.Seed
                 var writer = new Writer()
 
                          {
-                             Roles = new List<UserRole>()
+                             Roles = new List<MiamRole>()
                              {
-                                 new UserRole() {RoleName = RoleName.Writer}
+                                 new MiamRole() {RoleName = Role.Writer}
                              },
                              Password = "irma",
                              Name = "Irma Larose",
@@ -113,9 +113,9 @@ namespace Miam.TestUtility.Seed
                 var writer = new Writer()
 
                 {
-                    Roles = new List<UserRole>()
+                    Roles = new List<MiamRole>()
                              {
-                                 new UserRole() {RoleName = RoleName.Writer}
+                                 new MiamRole() {RoleName = Role.Writer}
                              },
                     Password = "lucien",
                     Name = "Lucien Lafleur",
@@ -180,10 +180,10 @@ namespace Miam.TestUtility.Seed
                 var user = new Writer()
 
                 {
-                    Roles = new List<UserRole>()
+                    Roles = new List<MiamRole>()
                              {
-                                 new UserRole() {RoleName = RoleName.Writer},
-                                 new UserRole() {RoleName = RoleName.Admin}
+                                 new MiamRole() {RoleName = Role.Writer},
+                                 new MiamRole() {RoleName = Role.Admin}
                              },
                     Password = "admin",
                     Name = "Super AdminLafleur",
@@ -201,6 +201,6 @@ namespace Miam.TestUtility.Seed
             get { return "exemple.docx"; }
         }
 
-        public static UserRole UserRoles { get; set; }
+        public static MiamRole MiamRoles { get; set; }
     }
 }

@@ -85,8 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\MayBe.cs" />
-    <Compile Include="Application\RoleName.cs" />
-    <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Application\Role.cs" />
+    <Compile Include="Entities\MiamRole.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Restaurant.cs" />
     <Compile Include="Entities\RestaurantContactDetail.cs" />

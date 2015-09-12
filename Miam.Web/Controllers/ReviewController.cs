@@ -29,7 +29,7 @@ namespace Miam.Web.Controllers
             _httpContextService = httpContextService;
         }
 
-        [Authorize(Roles = RoleName.Writer)]
+        [Authorize(Roles = Role.Writer)]
         public virtual ActionResult Create()
         {
             var model = new ReviewCreateViewModel();
@@ -39,7 +39,7 @@ namespace Miam.Web.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = RoleName.Writer)]
+        [Authorize(Roles = Role.Writer)]
         public virtual ActionResult Create(ReviewCreateViewModel reviewCreateViewModel)
         {
 

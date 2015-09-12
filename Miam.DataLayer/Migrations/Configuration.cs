@@ -37,10 +37,10 @@ namespace Miam.DataLayer.Migrations
                     Name = "admin",
                     Password = "admin",
                     Email = "admin@admin.com",
-                    Roles = new List<UserRole>()
+                    Roles = new List<MiamRole>()
                              {
-                                 new UserRole() {RoleName = RoleName.Writer},
-                                 new UserRole() {RoleName = RoleName.Admin}
+                                 new MiamRole() {RoleName = Role.Writer},
+                                 new MiamRole() {RoleName = Role.Admin}
                              }
                 }
                 );

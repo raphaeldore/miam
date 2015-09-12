@@ -13,11 +13,11 @@ namespace Miam.Domain.Entities
         public string Name { get; set; }
 
         //Navigation properties
-        public virtual ICollection<UserRole> Roles { get; set; }
+        public virtual ICollection<MiamRole> Roles { get; set; }
 
         public MiamUser()
         {
-            Roles = new List<UserRole>();
+            Roles = new List<MiamRole>();
         }
   
     }

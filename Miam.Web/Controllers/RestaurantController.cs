@@ -11,7 +11,7 @@ using Miam.Web.ViewModels.Review;
 
 namespace Miam.Web.Controllers
 {
-    [Authorize(Roles = RoleName.Admin)]
+    [Authorize(Roles = Role.Admin)]
     public partial class RestaurantController : Controller
     {
         private readonly IEntityRepository<Restaurant> _restaurantRepository;

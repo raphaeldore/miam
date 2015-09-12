@@ -2,7 +2,7 @@
 
 namespace Miam.Domain.Entities
 {
-    public class UserRole : Entity
+    public class MiamRole : Entity
     {
 
         public string RoleName { get; set; }
