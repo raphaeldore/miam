@@ -13,7 +13,7 @@ namespace Miam.DataLayer.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201509071836398_InitialCreate"; }
+            get { return "201509121048167_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
