@@ -5,11 +5,11 @@ using Miam.DataLayer;
 
 namespace Miam.TestUtility.TestsHelperAPI
 {
-    public class TestHelper 
+    public class TestHelperAPI 
     {
         private IDbContextFactory<MiamDbContext> _dbContextFactory;
 
-        public TestHelper()
+        public TestHelperAPI()
         {
             _dbContextFactory = new DbContextFactory();
             WriteToConsoleDataBaseInformation();

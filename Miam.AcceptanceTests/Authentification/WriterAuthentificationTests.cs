@@ -30,7 +30,7 @@ namespace Miam.AcceptanceTests.Authentification
         private void un_chroniqueur_existant_non_authentifé()
         {
             _writer = TestData.Writer1;
-            TestHelper.Users.Add(_writer);
+            TestHelperApi.Users.Add(_writer);
         }
 
         private void le_chroniqueur_entre_son_courriel_et_mot_de_passe_valide()

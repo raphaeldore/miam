@@ -33,7 +33,7 @@ namespace Miam.AcceptanceTests.Admin
 
         private void le_restaurant_est_ajouté()
         {
-            var restaurant = TestHelper.Restaurants.GetFirst();
+            var restaurant = TestHelperApi.Restaurants.GetFirst();
             AssertRestaurantsShouldBeEquivalent(TestData.Restaurant2, restaurant);
         }
     }

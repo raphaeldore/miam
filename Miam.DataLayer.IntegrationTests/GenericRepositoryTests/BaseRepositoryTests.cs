@@ -15,12 +15,12 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
     public class BaseRepositoryTests
     {
         protected Fixture Fixture;
-        protected TestHelper TestHelper;
+        protected TestHelperAPI TestHelperApi;
 
         [TestInitialize]
         public void BaseTestInitialize()
         {
-            TestHelper = new TestHelper();
+            TestHelperApi = new TestHelperAPI();
             
             var database = new EfApplicationDatabase(new MiamDbContext());
             database.ClearAllTables();

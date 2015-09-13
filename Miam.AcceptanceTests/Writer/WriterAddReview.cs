@@ -30,7 +30,7 @@ namespace Miam.AcceptanceTests.Writer
         private void un_chroniqueur_authentifé()
         {
             _writer = TestData.Writer1;
-            TestHelper.Users.Add(_writer);
+            TestHelperApi.Users.Add(_writer);
 
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu

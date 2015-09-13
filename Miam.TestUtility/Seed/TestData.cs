@@ -186,8 +186,8 @@ namespace Miam.TestUtility.Seed
                                  new MiamRole() {RoleName = Role.Admin}
                              },
                     Password = "admin",
-                    Name = "Super AdminLafleur",
-                    Email = "admin@admin.com",
+                    Name = "Admin Lafleur",
+                    Email = "test@admin.com",
                 };
 
                 return user;

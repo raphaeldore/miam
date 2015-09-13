@@ -31,14 +31,14 @@ namespace Miam.DataLayer.IntegrationTests.GenericRepositoryTests
                                  .With(x => x.Writer, _writer)
                                  .With(x => x.Restaurant, _restaurant)
                                  .Create();
-            TestHelper.Reviews.Add(review);   
+            TestHelperApi.Reviews.Add(review);   
 
             //Action
             var writerToDelete = _writerRepository.GetById(_writer.Id);
             _writerRepository.Delete(writerToDelete);
             
             //Assert 
-            int reviewsCountAfter = TestHelper.Reviews.Count();
+            int reviewsCountAfter = TestHelperApi.Reviews.Count();
             reviewsCountAfter.Should().Be(0);
         }
     }

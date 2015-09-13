@@ -15,7 +15,7 @@ namespace Miam.AcceptanceTests
     [DeploymentItem("ConnectionStrings.config")]
     public class BaseAcceptanceTests
     {
-        protected TestHelper TestHelper;
+        protected TestHelperAPI TestHelperApi;
 
 
         [TestInitialize]
@@ -24,7 +24,7 @@ namespace Miam.AcceptanceTests
             var database = new EfApplicationDatabase(new MiamDbContext());
             database.ClearAllTables();
 
-            TestHelper = new TestHelper();
+            TestHelperApi = new TestHelperAPI();
         }
 
         [TestCleanup]

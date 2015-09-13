@@ -95,7 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestsHelperAPI\TagTestHelper.cs" />
-    <Compile Include="TestsHelperAPI\TestHelper.cs" />
+    <Compile Include="TestsHelperAPI\TestHelperAPI.cs" />
     <Compile Include="TestsHelperAPI\BaseTestHelper.cs" />
     <Compile Include="TestsHelperAPI\ReviewTestHelper.cs" />
     <Compile Include="TestsHelperAPI\RestaurantTestHelper.cs" />
