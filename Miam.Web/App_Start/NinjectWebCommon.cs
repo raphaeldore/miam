@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 using Miam.ApplicationServices.Account;
+using Miam.ApplicationServices.Security;
 using Miam.DataLayer;
 using Miam.DataLayer.EntityFramework;
 using Miam.Domain.Entities;
@@ -79,6 +80,7 @@ namespace Miam.Web.App_Start
             //services
             kernel.Bind<IHttpContextService>().To<HttpContextService>().InRequestScope();
             kernel.Bind<IUserAccountService>().To<UserUserAccountService>().InRequestScope();
+            kernel.Bind<IHashService>().To<BCryptService>().InRequestScope();
 
             //database
             kernel.Bind<IApplicationDatabase>().To<EfApplicationDatabase>().InRequestScope();
