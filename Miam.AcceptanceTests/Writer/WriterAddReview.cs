@@ -35,7 +35,7 @@ namespace Miam.AcceptanceTests.Writer
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
                 .ClickLogin()
-                .LoginAs(_writer.Email, _writer.Password);
+                .LoginAs(_writer.Email, TestData.WRITER1_PLAIN_TEXT_PASSWORD);
         }
 
         private void un_restaurant()

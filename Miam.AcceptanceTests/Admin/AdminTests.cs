@@ -19,7 +19,7 @@ namespace Miam.AcceptanceTests.Admin
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
                 .ClickLogin()
-                .LoginAs(_userAdmin.Email, _userAdmin.Password);
+                .LoginAs(_userAdmin.Email, TestData.ADMIN_PLAIN_TEXT_PASSWORD);
         }
         protected void un_restaurant()
         {

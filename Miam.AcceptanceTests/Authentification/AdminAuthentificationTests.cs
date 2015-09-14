@@ -39,7 +39,7 @@ namespace Miam.AcceptanceTests.Authentification
             Host.Instance.NavigateToInitialPage<HomePage>()
                 .NavigationMenu
                 .ClickLogin()
-                .LoginAs(_userAdmin.Email, _userAdmin.Password);
+                .LoginAs(_userAdmin.Email, TestData.ADMIN_PLAIN_TEXT_PASSWORD);
         }
 
         private void l_administrateur_devrait_être_authentifié()
