@@ -97,7 +97,7 @@ namespace Miam.TestUtility.Seed
                              {
                                  new MiamRole() {RoleName = Role.Writer}
                              },
-                             Password = "irma",
+                             Password = "$2a$12$hfy9USR35e4CvlyauX5Qie2TpW2q/VxT86IvdQ5LhdYLdhIE/hspu",
                              Name = "Irma Larose",
                              Email = "irma@Larose.fr",
                          };
@@ -105,6 +105,8 @@ namespace Miam.TestUtility.Seed
                 return writer;
             }
         }
+
+        public const string WRITER1_PLAIN_TEXT_PASSWORD = "irma";
 
         static public Writer Writer2
         {
@@ -117,7 +119,7 @@ namespace Miam.TestUtility.Seed
                              {
                                  new MiamRole() {RoleName = Role.Writer}
                              },
-                    Password = "lucien",
+                    Password = "$2y$12$Q1gtaDwkjn14mnV1spmqgeycLMj6GslWnVAj4Gis3D0xiJhZb41zG",
                     Name = "Lucien Lafleur",
                     Email = "lucien@lafleur.com",
 
@@ -126,6 +128,9 @@ namespace Miam.TestUtility.Seed
                 return writer;
             }
         }
+
+        public const string WRITER2_PLAIN_TEXT_PASSWORD = "lucien";
+
         #endregion
         
         #region reviews
@@ -185,7 +190,7 @@ namespace Miam.TestUtility.Seed
                                  new MiamRole() {RoleName = Role.Writer},
                                  new MiamRole() {RoleName = Role.Admin}
                              },
-                    Password = "admin",
+                    Password = "$2a$12$3lh/.0ZeCv0meLXECCEqBOCtXsnMU.boWoMiBViEu9MqvyodKju46",
                     Name = "Admin Lafleur",
                     Email = "test@admin.com",
                 };
@@ -193,6 +198,9 @@ namespace Miam.TestUtility.Seed
                 return user;
             }
         }
+
+        public const string ADMIN_PLAIN_TEXT_PASSWORD = "admin";
+
         #endregion
 
         public static string WordFileName
