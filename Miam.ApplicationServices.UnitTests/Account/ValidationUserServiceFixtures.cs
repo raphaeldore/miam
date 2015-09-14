@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using FluentAssertions;
 using Miam.ApplicationServices.Account;
+using Miam.ApplicationServices.Security;
 using Miam.DataLayer;
 using Miam.Domain.Entities;
 using Miam.TestUtility.AutoFixture;
@@ -17,6 +19,7 @@ namespace Miam.ApplicationServices.UnitTests.Account
         private IEntityRepository<MiamUser> _userRepository;
         private UserUserAccountService _accountService;
         private Fixture _fixture;
+        private IHashService _hashService;
 
         [TestInitialize]
         public void test_initialize()
@@ -25,14 +28,16 @@ namespace Miam.ApplicationServices.UnitTests.Account
             _fixture.Customizations.Add(new VirtualMembersOmitter());
 
             _userRepository = Substitute.For<IEntityRepository<MiamUser>>();
-            _accountService = new UserUserAccountService(_userRepository);
+            _hashService = Substitute.For<IHashService>();
+            _accountService = new UserUserAccountService(_userRepository, _hashService);
         }
 
         [TestMethod]
         public void validate_should_return_a_user_when_email_and_password_are_valid()
         {
-            var users = _fixture.CreateMany<MiamUser>(3).AsQueryable();
+            var users = _fixture.CreateMany<MiamUser>(1).AsQueryable();
             _userRepository.GetAll().Returns(users);
+            _hashService.VerifyPassword(Arg.Any<String>(), Arg.Any<String>()).Returns(true);
 
             var user = _accountService.ValidateUser(users.First().Email, users.First().Password);
 
@@ -44,6 +49,7 @@ namespace Miam.ApplicationServices.UnitTests.Account
         {
             var users = _fixture.CreateMany<MiamUser>(3).AsQueryable();
             _userRepository.GetAll().Returns(users);
+            _hashService.VerifyPassword(Arg.Any<String>(), Arg.Any<String>()).Returns(false);
 
             var user = _accountService.ValidateUser(users.First().Email, "INVALID PASSWORD");
 
