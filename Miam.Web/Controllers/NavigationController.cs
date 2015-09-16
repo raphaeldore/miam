@@ -5,9 +5,10 @@ namespace Miam.Web.Controllers
 {
     public partial class NavigationController : Controller
     {
+        //Todo: tests unitaires manquants
+        
         [ChildActionOnly]
 
-        //Todo: tests unitaires manquants
         public virtual ActionResult NavigationMenu()
         {
             if (User.IsInRole(Role.Admin))
@@ -23,6 +24,7 @@ namespace Miam.Web.Controllers
             return PartialView("_NavigationMenuPublic");
         }
 
+        [ChildActionOnly]
         public virtual ActionResult LoginPanel()
         {
             if (Request.IsAuthenticated)
@@ -30,7 +32,7 @@ namespace Miam.Web.Controllers
                 return PartialView("_LoginPanelAuthentificatedUser");
             }
 
-            return PartialView("_LoginPanelNotConnectedUser"); 
+            return PartialView("_LoginPanelNotConnectedUser");
         }
     }
 }
