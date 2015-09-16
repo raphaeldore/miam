@@ -1,4 +1,6 @@
-﻿@using Externalization
+﻿<!-- Éviter toute logique dans les vues. Cette logique se trouve dans le controleur Navigation-->
+
+@*@using Externalization
 
 @if (Request.IsAuthenticated)
 {
@@ -12,4 +14,4 @@ else
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink(UiText.Login.LOGIN, MVC.Account.Login(), new { id = "login-link" })</li>
     </ul>
-}
+}*@

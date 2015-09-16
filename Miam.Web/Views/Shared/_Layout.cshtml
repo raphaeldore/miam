@@ -33,9 +33,12 @@
             </div>
             <div class="navbar-collapse collapse">
 
-                @Html.Partial("_menuPartial")
+                @Html.Action("NavigationMenu", "Navigation")
+                @Html.Action("LoginPanel", "Navigation")
 
-                @Html.Partial("_LoginPartial")
+                <!-- À éviter voir commentaire dans _menuPartial.cshtml et _loginPartial -->
+                @*@Html.Partial("_menuPartial")
+                @Html.Partial("_LoginPartial")*@
 
             </div>
             <!--/.nav-collapse -->
@@ -63,3 +66,4 @@
     @RenderSection("SectionJavascript", required: false)
 
 </body>
+</html>

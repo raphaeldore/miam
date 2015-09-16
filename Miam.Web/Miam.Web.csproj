@@ -195,6 +195,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
     <Compile Include="Mappers\Restaurant\ContactDetailsToEntity.cs" />
     <Compile Include="Mappers\Review\ReviewToEntity.cs" />
@@ -232,6 +233,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappers\Restaurant\RestaurantToEntity.cs" />
+    <Compile Include="NavigationController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestaurantController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -280,6 +284,11 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Navigation\_NavigationMenuAdmin.cshtml" />
+    <Content Include="Views\Navigation\_NavigationMenuWriter.cshtml" />
+    <Content Include="Views\Navigation\_NavigationMenuPublic.cshtml" />
+    <Content Include="Views\Navigation\_LoginPanelAuthentificatedUser.cshtml" />
+    <Content Include="Views\Navigation\_LoginPanelNotConnectedUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
