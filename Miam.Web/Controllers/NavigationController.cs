@@ -6,19 +6,22 @@ namespace Miam.Web.Controllers
     public partial class NavigationController : Controller
     {
         //Todo: tests unitaires manquants
-        
+
         [ChildActionOnly]
 
         public virtual ActionResult NavigationMenu()
         {
-            if (User.IsInRole(Role.Admin))
+            if (Request.IsAuthenticated)
             {
-                return PartialView("_NavigationMenuAdmin");
-            }
+                if (User.IsInRole(Role.Admin))
+                {
+                    return PartialView("_NavigationMenuAdmin");
+                }
 
-            if (User.IsInRole(Role.Writer))
-            {
-                return PartialView("_NavigationMenuWriter");
+                if (User.IsInRole(Role.Writer))
+                {
+                    return PartialView("_NavigationMenuWriter");
+                }
             }
 
             return PartialView("_NavigationMenuPublic");
