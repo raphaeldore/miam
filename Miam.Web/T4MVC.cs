@@ -32,6 +32,7 @@ public static partial class MVC
     public static Miam.Web.Controllers.EmailController Email = new Miam.Web.Controllers.T4MVC_EmailController();
     public static Miam.Web.Controllers.FileController File = new Miam.Web.Controllers.T4MVC_FileController();
     public static Miam.Web.Controllers.HomeController Home = new Miam.Web.Controllers.T4MVC_HomeController();
+    public static Miam.Web.Controllers.NavigationController Navigation = new Miam.Web.Controllers.T4MVC_NavigationController();
     public static Miam.Web.Controllers.RestaurantController Restaurant = new Miam.Web.Controllers.T4MVC_RestaurantController();
     public static Miam.Web.Controllers.ReviewController Review = new Miam.Web.Controllers.T4MVC_ReviewController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
