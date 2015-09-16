@@ -25,13 +25,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace Miam.Web.Controllers
 {
-    public partial class EmailController
+    public partial class NavigationController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public EmailController() { }
+        public NavigationController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected EmailController(Dummy d) { }
+        protected NavigationController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -61,13 +61,13 @@ namespace Miam.Web.Controllers
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public EmailController Actions { get { return MVC.Email; } }
+        public NavigationController Actions { get { return MVC.Navigation; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Email";
+        public readonly string Name = "Navigation";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Email";
+        public const string NameConst = "Navigation";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -75,15 +75,15 @@ namespace Miam.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Send = "Send";
-            public readonly string SendConfirmed = "Send";
+            public readonly string Navigation = "Navigation";
+            public readonly string LoginPanel = "LoginPanel";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Send = "Send";
-            public const string SendConfirmed = "Send";
+            public const string Navigation = "Navigation";
+            public const string LoginPanel = "LoginPanel";
         }
 
 
@@ -97,37 +97,45 @@ namespace Miam.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string send = "send";
+                public readonly string _LoginPanelAuthentificatedUser = "_LoginPanelAuthentificatedUser";
+                public readonly string _LoginPanelNotConnectedUser = "_LoginPanelNotConnectedUser";
+                public readonly string _NavigationMenuAdmin = "_NavigationMenuAdmin";
+                public readonly string _NavigationMenuPublic = "_NavigationMenuPublic";
+                public readonly string _NavigationMenuWriter = "_NavigationMenuWriter";
             }
-            public readonly string send = "~/Views/Email/send.cshtml";
+            public readonly string _LoginPanelAuthentificatedUser = "~/Views/Navigation/_LoginPanelAuthentificatedUser.cshtml";
+            public readonly string _LoginPanelNotConnectedUser = "~/Views/Navigation/_LoginPanelNotConnectedUser.cshtml";
+            public readonly string _NavigationMenuAdmin = "~/Views/Navigation/_NavigationMenuAdmin.cshtml";
+            public readonly string _NavigationMenuPublic = "~/Views/Navigation/_NavigationMenuPublic.cshtml";
+            public readonly string _NavigationMenuWriter = "~/Views/Navigation/_NavigationMenuWriter.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_EmailController : Miam.Web.Controllers.EmailController
+    public partial class T4MVC_NavigationController : Miam.Web.Controllers.NavigationController
     {
-        public T4MVC_EmailController() : base(Dummy.Instance) { }
+        public T4MVC_NavigationController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void SendOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void NavigationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Send()
+        public override System.Web.Mvc.ActionResult NavigationMenu()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Send);
-            SendOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Navigation);
+            NavigationOverride(callInfo);
             return callInfo;
         }
 
         [NonAction]
-        partial void SendConfirmedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void LoginPanelOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> SendConfirmed()
+        public override System.Web.Mvc.ActionResult LoginPanel()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SendConfirmed);
-            SendConfirmedOverride(callInfo);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LoginPanel);
+            LoginPanelOverride(callInfo);
+            return callInfo;
         }
 
     }
